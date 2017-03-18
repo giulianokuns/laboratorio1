@@ -8,8 +8,8 @@ class DtSocio{
       string nombre;
     public:
       DtSocio(int CI,string nombre);
-      getNombre();
-      getCI();
+      string getNombre();
+      int getCI();
       ~DtSocio();
 }
 
