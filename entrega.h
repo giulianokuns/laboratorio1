@@ -1,5 +1,5 @@
-enum turno = {Manana,Tarde,Noche};
-
+enum turno = {Manana, Tarde, Noche};
+//Hola
 using std::string;
 
 class DtSocio{
