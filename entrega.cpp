@@ -1,0 +1,1 @@
+DtClase::getid(){ "Codigo" }
