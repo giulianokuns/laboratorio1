@@ -1,7 +1,4 @@
 /* Definicion de las clases */
-#ifndef 
-#define 
-/* No estoy segur de que va en los #ifndef y #define por que hay muchas clases en el mismo .h */
 
 enum turno = {Manana, Tarde, Noche};
 
