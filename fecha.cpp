@@ -15,6 +15,7 @@ Fecha::Fecha(int dia, int mes, int anio) {
 	} else {
 		this->mes = mes;		
 	}
+	
 	if (anio < 1900) {
 		throw std::invalid_argument;
 	} else {
