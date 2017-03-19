@@ -1,3 +1,8 @@
+/* Definicion de las clases */
+#ifndef 
+#define 
+/* No estoy segur de que va en los #ifndef y #define por que hay muchas clases en el mismo .h */
+
 enum turno = {Manana, Tarde, Noche};
 
 using std::string;
@@ -19,7 +24,7 @@ class Fecha{
         int mes;
         int anio;
     public:
-        Fecha(int dia,int mes,int anio);
+        Fecha(int nuevo_dia, int nuevo_mes, int nuevo_anio);
         ~Fecha();
         int getDia();
         int getMes();
