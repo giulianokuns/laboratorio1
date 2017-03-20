@@ -1,5 +1,6 @@
 #include <iostream>
 #include "DtClase.h"
+#include "Inscripcion.h"
 
 #ifndef CLASE
 #define CLASE;
