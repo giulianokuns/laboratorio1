@@ -33,7 +33,7 @@ int Entrenamiento::cupo(){
 Entrenamiento::~Entrenamiento(){
 	Inscripcion **Inscripciones = this->getInscriptos();
 	for(int i=0;i<this->getCantInscriptos();i++){
-		delete *Inscripciones[i];
+		delete Inscripciones[i];
 	}
 	delete Inscripciones;
 }

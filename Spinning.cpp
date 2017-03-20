@@ -27,7 +27,7 @@ int Spinning::cupo(){
 Spinning::~Spinning(){
 	Inscripcion **Inscripciones = this->getInscriptos();
 	for(int i=0;i<this->getCantInscriptos();i++){
-		delete *Inscripciones[i];
+		delete Inscripciones[i];
 	}
 	delete Inscripciones;
 }

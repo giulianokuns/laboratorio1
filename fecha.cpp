@@ -7,7 +7,6 @@ Fecha::Fecha(int dia, int mes, int anio) {
 		throw std::invalid_argument;
 	} else {
 		this->dia = dia;
-		
 	}
 
 	if (mes > 12 ||  mes < 1) {
