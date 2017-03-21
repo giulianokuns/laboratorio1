@@ -10,12 +10,12 @@
 #include "Fecha.h";
 #include "Incripcion.h";
 #include <iostream>;
+#include <string.h>
 
 using namespace std;
 
-
-int main()
-{
+#define MAX_CLASES 20
+#define MAX_SOCIOS 50
 	
 	Clase clases[MAX_CLASES];
 	Socio socios[MAX_SOCIOS];
@@ -27,7 +27,7 @@ int main()
 	{
 		int i = 0;
 		if (tope_socios < MAX_SOCIOS) {
-			while (i <= tope_socios && socios[i].getCI() != ci) {
+			while (i <= tope_socios && strcmp(socios[i].getNombre(),nombre) != 0) {
 				i++;
 			}
 
@@ -47,7 +47,7 @@ int main()
 		/* Diferenciar si la variable clases es de DtSpinning o de DtEntrenamiento */
 		int i = 0;
 		if (tope_clases < MAX_CLASES) {
-			while (i <= tope_clases && clases[i].getid() != clase.getid()) {
+			while (i <= tope_clases && strcmp(clases[i].getid(),clase.getid()) != 0) {
 				i++;
 			}	
 			if (i <= tope_clases) {
@@ -83,5 +83,9 @@ int main()
 
 
 
-	return 0
+int main()
+{
+    int opcion = 0;
+    while()
+    return 0
 }

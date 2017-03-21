@@ -11,6 +11,7 @@ class Fecha {
     public:
         Fecha(int dia, int mes, int anio);
         ~Fecha();
+        Fecha(const Fecha &r);
         int getDia();
         int getMes();
         int getAnio();

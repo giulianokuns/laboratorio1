@@ -21,6 +21,11 @@ Fecha::Fecha(int dia, int mes, int anio) {
 		this->anio = anio;
 	}
 };
+Fecha::Fecha(const Fecha &fecha){
+    dia = fecha.dia;
+    mes = fecha.mes;
+    anio = fecha.anio;
+}
 
 Fecha::~Fecha() {};
 /* Fin constructor y desctructor */
