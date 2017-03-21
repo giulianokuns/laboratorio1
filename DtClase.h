@@ -16,7 +16,6 @@ class DtClase{
         int getid();
         string getNombre();
         Turno getTurno();
-    protected:
     	void setid(int id);
     	void setNombre(string nombre);
     	void setTurno(Turno turno)

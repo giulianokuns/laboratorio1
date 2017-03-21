@@ -14,10 +14,12 @@ class Inscripcion{
         Inscripcion(Fecha *fecha, Socio *socio);
         ~Inscripcion();
 
-        Fecha getFecha();
+        Fecha * getFecha();
         Socio * getSocio();
-        void setFecha(Fecha *fecha);
+        void setFecha(Fecha * fecha);
         void setSocio(Socio * socio);
 }
 
 #endif
+
+Inscriptos[i]->getSocio()->getCI();

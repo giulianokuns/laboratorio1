@@ -9,7 +9,9 @@
 #include "DtSocio.h";
 #include "Fecha.h";
 #include "Incripcion.h";
+#include <iostream>;
 
+using namespace std;
 
 
 int main()

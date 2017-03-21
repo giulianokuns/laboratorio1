@@ -7,10 +7,7 @@ Entrenamiento::Entrenamiento(bool enRambla, int id, string nombre,Turno turno){
 	this->setid(id);
 	this->setNombre(nombre);
 	this->setTurno(turno);
-	if(enRambla)
-		Inscripcion **Inscripciones = new *Inscripcion[20];
-	else
-		Inscripcion **Inscripciones = new *Inscripcion[10];
+        Inscripcion **Inscripciones = new *Inscripcion[50];
 	this->setInscripciones(Inscripciones);
 	this->setInscriptos(0);
 };
