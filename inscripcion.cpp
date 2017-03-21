@@ -2,8 +2,8 @@
 #include "inscripcion.h";
 
 /* Constructor y destructor */
-Inscripcion::Inscripcion(Fecha fecha, Socio *socio); {
-	this->fecha = Fecha(getDia(fecha), getMes(fecha), getAnio(fecha));
+Inscripcion::Inscripcion(Fecha *fecha, Socio *socio); {
+	this->fecha = Fecha(fecha->getDia(), fecha->getMes(), fecha->getAnio());
 	this->socio = socio;
 };
 
@@ -20,10 +20,10 @@ Socio Inscripcion::getSocio() {
 	return this->socio;
 };
 
-void setFecha(Fecha fecha) {
-	this->fecha = Fecha(getDia(fecha), getMes(fecha), getAnio(fecha));
+void setFecha(Fecha *fecha) {
+	this->fecha = Fecha(fecha->getDia(), fecha->getMes(), fecha->getAnio());
 };
-void setSocio(Socio * socio) {
+void setSocio(Socio *socio) {
 	this->socio = socio;
 };
 

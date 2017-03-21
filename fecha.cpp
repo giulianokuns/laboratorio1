@@ -4,19 +4,19 @@
 /* Constructor y destructor */
 Fecha::Fecha(int dia, int mes, int anio) {
 	if (dia > 31 ||  dia < 1) {
-		throw std::invalid_argument;
+		throw std::invalid_argument('Dia invalido');
 	} else {
 		this->dia = dia;
 	}
 
 	if (mes > 12 ||  mes < 1) {
-		throw std::invalid_argument;
+		throw std::invalid_argument('Mes invalido');
 	} else {
 		this->mes = mes;		
 	}
 	
 	if (anio < 1900) {
-		throw std::invalid_argument;
+		throw std::invalid_argument('Año invalido');
 	} else {
 		this->anio = anio;
 	}
