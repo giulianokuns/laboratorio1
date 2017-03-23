@@ -176,7 +176,8 @@ int main()
         cout << "3. Agregar Inscripcion" << endl;
         cout << "4. Borrar Inscripcion" << endl;
         cout << "5. Imprimir Socios por clase" << endl;
-        cout << "6. Imprimir Clase" << endl << endl;
+        cout << "6. Imprimir Clase" << endl;
+        cout << "7. salir" << endl << endl; 
         
         cout << "Ingrese opcion:"
         cin >> opcion;
@@ -301,9 +302,6 @@ int main()
                 cin >> id;
 
                 cout << obtenerClase(id);                
-            }
-            else if(opcion == 7){
-                
             }
             else {
                 
