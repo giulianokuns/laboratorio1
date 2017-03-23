@@ -199,11 +199,85 @@ int main()
                 agregarSocio(ci,nombre);
                 
             }
+            else if(opcion == 2){
+                int tipoclase,id,numeroturno;
+                string nombre;
+                Turno turno;
+                cout << "1. spining" << endl;
+                cout << "2. entrenamiento";
+                cin >> tipoclase;
+                
+                cout << "ingrese id";
+                cin >> id;
+
+                cout << "ingrese el nombre";
+                cin >> nombre;
+
+                cout << "ingrese el turno" << endl;
+                cout >> "1. mañana" << endl;
+                cout >> "2. tarde" << endl;
+                cout >> "3. noche";
+                cin >> numeroturno;
+                if (numeroturno == 1){
+                    turno = Manana;
+                }else{ if (numeroturno == 2){
+                    turno = Tarde;
+                    }else turno = Noche;
+                }
+                if (tipoclase == 1){
+                   int bicis;
+
+                   cout << "ingrese cantidad de bicis";
+                   cin >> bicis;
+
+                   DtSpinning dtspinning = new DtSpinning(bicis,id,nombre,turno);
+                   agregarClase(dtspinning);
+                }
+                else{
+                    int enrambla;
+
+                    cout << "0. no es en la rambla" << endl;
+                    cout << "1. es en la rambla";
+                    cin >> enrambla;
+
+                    DtEntrenamiento dtentrenamiento == new DtEntrenamiento(enrambla,id,nombre,t);
+                    agregarClase(dtentrenamiento);
+                }
+            }
             else if(opcion == 3){
+                string ciSocio;
+                int idclase,dia,mes,anio;
+                
+                cout << "ingrese la cedula del socio";
+                cin >> ciSocio;
+
+                cout << "ingrese el ID de la clase";
+                cin >> idclase;
+                
+                cout << "ingrese el dia ";
+                cin >> dia;
+
+                cout << "ingrese le mes";
+                cin >> mes;
+
+                cout << "ingrese el año";
+                cin >> anio;
+
+                Fecha f == new Fecha(dia,mes,anio);
+                agregarInscripcion(ciSocio,idclase,f);
                 
             }
             else if(opcion == 4){
-                
+                string CI;
+                int ID;
+
+                cout << "ingrese la CI del socio";
+                cin >> CI;
+
+                cout << "ingrese el ID de la clase";
+                cin >> ID;
+
+                borrarInscripcion(CI,ID);
             }
             else if(opcion == 5){
                 
@@ -222,7 +296,11 @@ int main()
                 
             }
             else if(opcion == 6){
-                
+                int id;
+                cout << "ingrese el ID de la clase ";
+                cin >> id;
+
+                cout << obtenerClase(id);                
             }
             else if(opcion == 7){
                 
