@@ -1,7 +1,7 @@
 #include <iostream>
 
 #ifndef DTSOCIO
-#define DTSOCIO;
+#define DTSOCIO
 
 using namespace std;
 
@@ -16,7 +16,7 @@ class DtSocio{
         string getNombre();
     	void setCI(string CI);
     	void setNombre(string nombre);
-}
+};
 
 #endif  
 

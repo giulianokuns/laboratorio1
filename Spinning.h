@@ -1,7 +1,8 @@
 #include "Clase.h"
 
 #ifndef SPINNING
-#define SPINNING;
+#define SPINNING
+
 
 using namespace std;
 
@@ -14,6 +15,6 @@ class Spinning: public Clase{
         void setCantBicicletas(int cantBicicletas);
         ~Spinning();
         int cupo();
-}
+};
 
 #endif

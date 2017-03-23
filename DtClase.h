@@ -1,11 +1,11 @@
 #include <iostream>
 
 #ifndef DTCLASE
-#define DTCLASE;
+#define DTCLASE
 
 using namespace std;
 
-enum turno = {Manana, Tarde, Noche};
+enum Turno {Manana, Tarde, Noche};
 
 class DtClase{
     private:
@@ -18,7 +18,6 @@ class DtClase{
         Turno getTurno();
     	void setid(int id);
     	void setNombre(string nombre);
-    	void setTurno(Turno turno)
-}
-
+    	void setTurno(Turno turno);
+};
 #endif 

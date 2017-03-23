@@ -2,7 +2,7 @@
 #include "DtClase.h"
 
 #ifndef DTSPINNING
-#define DTSPINNING;
+#define DTSPINNING
 
 using namespace std;
 
@@ -14,6 +14,6 @@ class DtSpinning:public DtClase{
         int getCantBicicletas();
         ~DtSpinning();
         friend ostream& operator<<(ostream& os, const DtSpinning& dt_spinning);
-}
+};
 
 #endif 

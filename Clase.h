@@ -3,7 +3,7 @@
 #include "Inscripcion.h"
 
 #ifndef CLASE
-#define CLASE;
+#define CLASE
 
 using namespace std;
 
@@ -18,7 +18,7 @@ class Clase{
         virtual int cupo() = 0;
         int getid();
         string getNombre();
-        turno getTurno();
+        Turno getTurno();
         Inscripcion **getInscriptos();
         int getCantInscriptos();
         void setid(int id);
@@ -26,6 +26,6 @@ class Clase{
         void setTurno(Turno turno);
         void setInscripciones(Inscripcion **Inscripciones);
         void setInscriptos(int cantInscriptos);
-}
+};
 
 #endif 

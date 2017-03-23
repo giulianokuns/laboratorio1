@@ -2,7 +2,7 @@
 #include "DtClase.h"
 
 #ifndef DTENTRENAMIENTO
-#define DTENTRENAMIENTO;
+#define DTENTRENAMIENTO
 
 using namespace std;
 
@@ -14,6 +14,6 @@ class DtEntrenamiento:public DtClase{
         bool getenRambla();
         ~DtEntrenamiento();
         friend ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento);
-}
+};
 
 #endif 

@@ -1,4 +1,4 @@
-#include "DtEntrenamiento.h";
+#include "DtEntrenamiento.h"
 
 DtEntrenamiento::DtEntrenamiento(bool enRambla,int id, string nombre,Turno turno){
 	this->enRambla = enRamla;

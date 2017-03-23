@@ -1,7 +1,7 @@
 #include "Clase.h"
 
 #ifndef ENTRENAMIENTO
-#define ENTRENAMIENTO;
+#define ENTRENAMIENTO
 
 using namespace std;
 
@@ -14,6 +14,6 @@ class Entrenamiento:public Clase{
         void setenRambla(bool enRambla);
         ~Entrenamiento();
         int cupo();
-}
+};
 
 #endif

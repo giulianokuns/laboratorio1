@@ -1,15 +1,15 @@
 /* Main */
-#include "Clase.h";
-#include "DtClase.h";
-#include "Entrenamiento.h";
-#include "DtEntrenamiento.h";
-#include "Spinning.h";
-#include "DtSpinning.h";
-#include "Socio.h";
-#include "DtSocio.h";
-#include "Fecha.h";
-#include "Incripcion.h";
-#include <iostream>;
+#include "Clase.h"
+#include "DtClase.h"
+#include "Entrenamiento.h"
+#include "DtEntrenamiento.h"
+#include "Spinning.h"
+#include "DtSpinning.h"
+#include "Socio.h"
+#include "DtSocio.h"
+#include "Fecha.h"
+#include "Inscripcion.h"
+#include <iostream>
 #include <string.h>
 
 using namespace std;
@@ -32,14 +32,14 @@ using namespace std;
 			}
 
 			if (i <= tope_socios) {
-				throw std::invalid_argument('Ya existe el socio');
+                throw std::invalid_argument("Ya existe el socio");
 			} else {
 		 		Socio *socio = new Socio(ci, nombre);
 		 		socios[tope_socios] = socio;
 		 		tope_socios++;
 			}
 		} else {
-			throw std::invalid_argument('No hay mas lugar disponible');
+			throw std::invalid_argument("No hay mas lugar disponible");
 		}
 	}
 
@@ -51,7 +51,7 @@ using namespace std;
 				i++;
 			}	
 			if (i <= tope_clases) {
-				throw std::invalid_argument('Ya existe la clase');
+				throw std::invalid_argument("Ya existe la clase");
 			} else {
 				if (dynamic_cast<DtEntrenamiento &> clase != null) { 
 					//Entrenamiento
@@ -66,7 +66,7 @@ using namespace std;
 		 		tope_clases++;
 			}
 		} else {
-			throw std::invalid_argument('No hay mas clases disponible');
+			throw std::invalid_argument("No hay mas clases disponible");
 		}
 	}
 
@@ -94,7 +94,7 @@ using namespace std;
                 //itero enel arreglo de inscriptos buscando la inscripción
                 int j=0;
                 bool esta=false;
-                while (j<cantidad)&&(!(esta)){
+                while ((j<cantidad)&&(!(esta)){
                     esta=(strcomp(((**inscriptos[j]).getSocio()).getCI(),ciSocio)==0);// en caso de no funcionar, probar inscriptos[i]->getSocio()->getCI() para el primer argumento
                     j++;
                 }
@@ -127,7 +127,7 @@ using namespace std;
                         j++;
                 }
                 if (j>cantidad)
-                        throw std::invalid_argument("No hay inscriptos")
+                        throw std::invalid_argument("No hay inscriptos");
                 else{
                         inscriptos[j]=inscriptos[cantidad-1];
                         clases[i].setInscriptos(cantidad-1);
@@ -159,9 +159,9 @@ using namespace std;
 		            j++;
 	            if (j<tope_clases) //control de error
 		            if (dynamic_cast<Entrenamiento &> clases[j]!=NULL) 
-	                    datosClase.DtSpinning(clases[j].getCantBicicletas(),clases[j].getid(),clases[j].getNombre(),clases[j].getTurno());
+	                    datosClase.DtSpinning(clases[j]).getCantBicicletas(),clases[j].getid(),clases[j].getNombre(),clases[j].getTurno());
 	            else
-	                datosClase.DtEntrenamiento(clases[j].getenRambla(),clases[j].getid(),clases[j].getNombre(),clases[j].getTurno());
+	                datosClase.DtEntrenamiento(clases[j]).getenRambla(),clases[j].getid(),clases[j].getNombre(),clases[j].getTurno());
                 return datosClase;
         } 
 
@@ -179,7 +179,7 @@ int main()
         cout << "6. Imprimir Clase" << endl;
         cout << "7. salir" << endl << endl; 
         
-        cout << "Ingrese opcion:"
+        cout << "Ingrese opcion:";
         cin >> opcion;
         cout << endl << endl;
         
@@ -215,9 +215,9 @@ int main()
                 cin >> nombre;
 
                 cout << "ingrese el turno" << endl;
-                cout >> "1. mañana" << endl;
-                cout >> "2. tarde" << endl;
-                cout >> "3. noche";
+                cout << "1. mañana" << endl;
+                cout << "2. tarde" << endl;
+                cout << "3. noche";
                 cin >> numeroturno;
                 if (numeroturno == 1){
                     turno = Manana;
@@ -241,7 +241,7 @@ int main()
                     cout << "1. es en la rambla";
                     cin >> enrambla;
 
-                    DtEntrenamiento dtentrenamiento == new DtEntrenamiento(enrambla,id,nombre,t);
+                    DtEntrenamiento dtentrenamiento = new DtEntrenamiento(enrambla,id,nombre,turno);
                     agregarClase(dtentrenamiento);
                 }
             }
@@ -264,7 +264,7 @@ int main()
                 cout << "ingrese el año";
                 cin >> anio;
 
-                Fecha f == new Fecha(dia,mes,anio);
+                Fecha f = new Fecha(dia,mes,anio);
                 agregarInscripcion(ciSocio,idclase,f);
                 
             }
@@ -314,5 +314,5 @@ int main()
         }
     }
     
-    return 0
+    return 0;
 }

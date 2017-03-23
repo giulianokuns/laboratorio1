@@ -1,7 +1,7 @@
 #include <iostream>
 
 #ifndef SOCIO
-#define SOCIO;
+#define SOCIO
 
 using namespace std;
 
@@ -16,6 +16,6 @@ class Socio{
         string getNombre();
     	void setCI(string CI);
     	void setNombre(string nombre);
-}
+};
 
 #endif  
