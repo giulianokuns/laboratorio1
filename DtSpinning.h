@@ -13,6 +13,7 @@ class DtSpinning:public DtClase{
         DtSpinning(int cantBicicletas, int id, string nombre,Turno turno);
         int getCantBicicletas();
         ~DtSpinning();
+        friend ostream& operator<<(ostream& os, const DtSpinning& dt_spinning);
 }
 
 #endif 
