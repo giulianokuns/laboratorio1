@@ -13,6 +13,7 @@ class DtClase{
         string nombre;
         Turno turno;
     public:
+        virtual bool getEnrambla();//para poder hacer un dynamic_cast
         int getid();
         string getNombre();
         Turno getTurno();

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int Clase::getid(){
+string Clase::getid(){
 	return id
 }
 
