@@ -3,11 +3,12 @@
 #include "C.h"
 
 #include <iostream>
-
+using namespace std;
+  
 int main() {
   A a;
   B b;
-  C b;
+  C c;
 
   A ab = b.getAfromB();
   A ac = c.getAfromC();

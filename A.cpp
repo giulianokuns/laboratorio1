@@ -1,6 +1,7 @@
 #include "A.h"
 #include "B.h"
 #include "C.h"
+using namespace std;
 
 B A::getBfromA() {
   return B();

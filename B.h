@@ -1,9 +1,9 @@
-#ifndef _B_H_
-#define _B_H_
+#ifndef B_H
+#define B_H
 #include <string>
 
 class A;  // Declaración forward de la clase A 
-class C; // Declaración forward de la clase C
+class C;  // Declaración forward de la clase C
 
 class B {
 public:

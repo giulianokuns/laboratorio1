@@ -1,5 +1,5 @@
-#ifndef _A_H_
-#define _A_H_
+#ifndef A_H
+#define A_H
 #include <string>
 
 class B;  // Declaración forward de la clase B

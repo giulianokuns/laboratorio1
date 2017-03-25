@@ -1,12 +1,13 @@
 #include "C.h"
 #include "B.h"
 #include "A.h"
+using namespace std;
 
 B C::getBfromC() {
   return B();
 }
 
-A C::getCfromC(){
+A C::getAfromC(){
 	return A();
 }
 
