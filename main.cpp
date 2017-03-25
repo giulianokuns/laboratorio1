@@ -10,7 +10,9 @@
 #include "Fecha.h"
 #include "Inscripcion.h"
 #include <iostream>
+#include <cstring>
 #include <string.h>
+#include <stdexcept>
 
 using namespace std;
 
@@ -27,9 +29,9 @@ using namespace std;
 	{
 		int i = 0;
 		if (tope_socios < MAX_SOCIOS) {
-			while ((i <= tope_socios) && (strcmp(socios[i]->getNombre(),nombre) != 0)) {
-				i++;
-			}
+            while ((i <= tope_socios) && (socios[i]->getNombre() != nombre)) {
+                i++;
+            }    
 
 			if (i <= tope_socios) {
                 throw std::invalid_argument("Ya existe el socio");
@@ -53,9 +55,9 @@ using namespace std;
 			if (i <= tope_clases) {
 				throw std::invalid_argument("Ya existe la clase");
 			} else {
-				if (DtEntrenamiento dtentrenamiento=dynamic_cast<DtEntrenamiento*> (clase)){ 
+				if (DtEntrenamiento dtentrenamiento = dynamic_cast<DtEntrenamiento*> (clase)){ 
 					//Entrenamiento
-					Entrenamiento *entrenamiento = new Entrenamiento(clase.getenRambla(), clase.getid(), clase.getNombre(), clase.getTurno());
+					Entrenamiento entrenamiento = new Entrenamiento(clase.getenRambla(), clase.getid(), clase.getNombre(), clase.getTurno());
                     clases[tope_clases] = entrenamiento;
 				} else {
 					//Spinning
