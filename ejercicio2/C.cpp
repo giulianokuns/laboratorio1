@@ -1,0 +1,15 @@
+#include "C.h"
+#include "B.h"
+#include "A.h"
+
+B C::getBfromC() {
+  return B();
+}
+
+A C::getCfromC(){
+	return A();
+}
+
+std::string C::quienEres() {
+  return "Soy la clase C";
+}

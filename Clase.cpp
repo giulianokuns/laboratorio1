@@ -1,9 +1,13 @@
 #include "Clase.h"
-
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
+//using namespace std;
 using namespace std;
 
-string Clase::getid(){
-	return id
+int Clase::getid(){
+	return id;
 }
 
 string Clase::getNombre(){
@@ -19,7 +23,7 @@ Inscripcion **Clase::getInscriptos(){
 }
 
 int Clase::getCantInscriptos(){
-	return cantInscriptos
+	return cantInscriptos;
 }
 
 void Clase::setid(int id){
@@ -37,7 +41,7 @@ void Clase::setInscripciones(Inscripcion **Inscripciones){
 	this->Inscripciones = Inscripciones;
 }
 
-void setInscriptos(int cantInscriptos){
+void Clase::setInscriptos(int cantInscriptos){
 	this->cantInscriptos = cantInscriptos;
 }
 

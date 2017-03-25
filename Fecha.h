@@ -1,4 +1,8 @@
 /* Definicion de clase Fecha*/
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
 #ifndef FECHA_H
 #define FECHA_H

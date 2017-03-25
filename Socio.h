@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
 #ifndef SOCIO
 #define SOCIO

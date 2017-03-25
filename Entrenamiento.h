@@ -1,4 +1,8 @@
 #include "Clase.h"
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
 #ifndef ENTRENAMIENTO
 #define ENTRENAMIENTO

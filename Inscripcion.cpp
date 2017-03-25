@@ -1,5 +1,9 @@
 /* Implementacion clase Inscripcion */
-#include "inscripcion.h"
+#include "Inscripcion.h"
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
 /* Constructor y destructor */
 Inscripcion::Inscripcion(Fecha *fecha, Socio *socio); {

@@ -5,6 +5,10 @@
 
 #include "Fecha.h"
 #include "Socio.h"
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
 class Inscripcion{
     private:
@@ -13,7 +17,6 @@ class Inscripcion{
     public:
         Inscripcion(Fecha *fecha, Socio *socio);
         ~Inscripcion();
-
         Fecha * getFecha();
         Socio * getSocio();
         void setFecha(Fecha * fecha);

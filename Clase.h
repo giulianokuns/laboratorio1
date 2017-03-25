@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 #include "DtClase.h"
 #include "Inscripcion.h"
 

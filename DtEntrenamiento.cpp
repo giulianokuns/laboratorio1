@@ -1,7 +1,12 @@
 #include "DtEntrenamiento.h"
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
+#include "DtClase.h"
 
 DtEntrenamiento::DtEntrenamiento(bool enRambla,int id, string nombre,Turno turno){
-	this->enRambla = enRamla;
+	this->enRambla = enRambla;
 	this->setid(id);
 	this->setNombre(nombre);
 	this->setTurno(turno);
@@ -16,14 +21,14 @@ bool DtEntrenamiento::getenRambla(){
 ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento)  
 {  
 	string str_enRambla;
-	if (dt_spinning.enRambla) {
-		str_enRambla = 'Si';
+	if (dt_entrenamiento.enRambla) {
+		str_enRambla = "Si";
 	} else { 
-		str_enRambla = 'No';
+		str_enRambla = "No";
 	}
-    os 	<< 'Id Clase: ' 	<< dt_spinning.id 	  << '\n' 
-   		<< 'Nombre: ' 		<< dt_spinning.nombre << '\n' 
-   		<< 'Turno: ' 		<< dt_spinning.turno  << '\n'
-   		<< 'En rambla: ' 	<< str_enRambla;  
+    os 	<< "Id Clase: " 	<< dt_entrenamiento.id 	  << '\n' 
+   		<< "Nombre: " 		<< dt_entrenamiento.nombre << '\n' 
+   		<< "Turno: " 		<< dt_entrenamiento.turno  << '\n'
+   		<< "En rambla: " 	<< str_enRambla;  
     return os;  
 }  

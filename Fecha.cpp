@@ -1,5 +1,9 @@
 /* Implementacion clase Fecha */
-#include "fecha.h"
+#include "Fecha.h"
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
 /* Constructor y destructor */
 Fecha::Fecha(int dia, int mes, int anio) {

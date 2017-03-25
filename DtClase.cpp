@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 #include "DtClase.h"
 
 using namespace std;
@@ -15,14 +18,14 @@ Turno DtClase::getTurno(){
 	return turno;
 }
 
-void setid(int id){
+void DtClase::setid(int id){
 	this->id = id;
 }
 
-void setNombre(string nombre){
+void DtClase::setNombre(string nombre){
 	this->nombre = nombre;
 }
 
-void setTurno(Turno turno){
+void DtClase::setTurno(Turno turno){
 	this->turno = turno;
 }
