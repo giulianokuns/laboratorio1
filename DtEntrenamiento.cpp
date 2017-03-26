@@ -18,7 +18,7 @@ bool DtEntrenamiento::getenRambla() const{
 	return enRambla;
 }
 
-ostream& operator<<(ostream& os, DtEntrenamiento& dt_entrenamiento)  
+ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento)  
 {  
 	string str_enRambla;
 	if (dt_entrenamiento.getenRambla()) {

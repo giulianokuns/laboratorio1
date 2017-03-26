@@ -16,7 +16,7 @@ class DtEntrenamiento:public DtClase{
         DtEntrenamiento(bool enRambla,int id, string nombre,Turno turno);
         bool getenRambla() const;
         ~DtEntrenamiento();
-	//friend ostream& operator<<(ostream& os, DtEntrenamiento& dt_entrenamiento);
+	friend ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento);
 };
 
 #endif 

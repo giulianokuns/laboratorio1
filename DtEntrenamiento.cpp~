@@ -14,7 +14,7 @@ DtEntrenamiento::DtEntrenamiento(bool enRambla,int id, string nombre,Turno turno
 
 DtEntrenamiento::~DtEntrenamiento(){}
 
-bool DtEntrenamiento::getenRambla(){
+bool DtEntrenamiento::getenRambla() const{
 	return enRambla;
 }
 
