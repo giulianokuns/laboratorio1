@@ -8,4 +8,4 @@ Entrenamiento.cpp main.cpp
 main: $(REQUERIMIENTOS)
 	 $(CC) $(CCFLAGS) $(REQUERIMIENTOS)  -o main 
 
-                        g++ -o -Wall -g Entrenamiento.cpp Clase.cpp Inscripcion.cpp Fecha.cpp Socio.cpp Spinning.cpp  DtClase.cpp DtEntrenamiento.cpp DtSpinning.cpp DtSocio.cpp main.cpp 
+    
