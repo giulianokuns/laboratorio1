@@ -16,7 +16,7 @@ class DtClase{
         string nombre;
         Turno turno;
     public:
-        virtual ~DtClase() = 0;
+        virtual ~DtClase(){};
         int getid() const;
         string getNombre() const;
         Turno getTurno() const;
