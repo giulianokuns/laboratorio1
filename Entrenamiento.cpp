@@ -1,4 +1,5 @@
 #include "Entrenamiento.h"
+#include "Inscripcion.h"
 #include <iostream>
 #include <cstring>
 #include <string.h>
@@ -11,7 +12,7 @@ Entrenamiento::Entrenamiento(bool enRambla, int id, string nombre,Turno turno){
 	this->setid(id);
 	this->setNombre(nombre);
 	this->setTurno(turno);
-        Inscripcion **Inscripciones = new *Inscripcion[50];
+    Inscripcion **Inscripciones = new *Inscripcion[50];
 	this->setInscripciones(Inscripciones);
 	this->setInscriptos(0);
 };
