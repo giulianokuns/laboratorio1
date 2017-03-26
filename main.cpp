@@ -14,6 +14,7 @@
 #include <string.h>
 #include <stdexcept>
 
+
 using namespace std;
 
 #define MAX_CLASES 20
