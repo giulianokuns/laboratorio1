@@ -36,13 +36,13 @@ Fecha::~Fecha() {};
 
 /* Getters and Setters */
 
-int Estudiante::getDia() {
+int Fecha::getDia() {
 	return this->dia;
 };
-int Estudiante::getMes() {
+int Fecha::getMes() {
 	return this->mes;
 };
-int Estudiante::getAnio() {
+int Fecha::getAnio() {
 	return this->anio;
 };
 

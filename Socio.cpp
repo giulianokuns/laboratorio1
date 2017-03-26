@@ -18,13 +18,13 @@ string Socio::getCI(){
 } 
 
 string Socio::getNombre(){
-    return nombre
+    return nombre;
 }
 
 void Socio::setCI(string CI){
-    this->CI = CI
+    this->CI = CI;
 }
 
 void Socio::setNombre(string nombre){
-    this->nombre = nombre
+    this->nombre = nombre;
 }

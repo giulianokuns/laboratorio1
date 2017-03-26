@@ -4,6 +4,8 @@
 #include <cstring>
 #include <string.h>
 #include <stdexcept>
+#include "Fecha.h"
+#include "Socio.h"
 
 /* Constructor y destructor */
 Inscripcion::Inscripcion(Fecha *fecha, Socio *socio); {
@@ -24,11 +26,12 @@ Socio Inscripcion::getSocio() {
 	return this->socio;
 };
 
-void setFecha(Fecha *fecha) {
+void Inscripcion::setFecha(Fecha *fecha) {
 	this->fecha = Fecha(fecha->getDia(), fecha->getMes(), fecha->getAnio());
 };
-void setSocio(Socio *socio) {
+void Inscripcion::setSocio(Socio *socio) {
 	this->socio = socio;
 };
 
 /* Fin Getters and Setters */
+  

@@ -18,13 +18,13 @@ string DtSocio::getCI(){
 } 
 
 string DtSocio::getNombre(){
-    return nombre
+    return nombre;
 }
 
 void DtSocio::setCI(string CI){
-    this->CI = CI
+    this->CI = CI;
 }
 
 void DtSocio::setNombre(string nombre){
-    this->nombre = nombre
+    this->nombre = nombre;
 }
