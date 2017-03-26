@@ -14,11 +14,11 @@ DtEntrenamiento::DtEntrenamiento(bool enRambla,int id, string nombre,Turno turno
 
 DtEntrenamiento::~DtEntrenamiento(){}
 
-bool DtEntrenamiento::getenRambla(){
+bool DtEntrenamiento::getenRambla() const{
 	return enRambla;
 }
 
-ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento)  
+ostream& operator<<(ostream& os, DtEntrenamiento& dt_entrenamiento)  
 {  
 	string str_enRambla;
 	if (dt_entrenamiento.getenRambla()) {
@@ -31,4 +31,4 @@ ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento)
    		<< "Turno: " 		<< dt_entrenamiento.getTurno()  << '\n'
    		<< "En rambla: " 	<< str_enRambla;  
     return os;  
-}  
+} 

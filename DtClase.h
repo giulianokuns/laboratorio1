@@ -19,9 +19,9 @@ class DtClase{
         //virtual DtClase(int id, string nombre, Turno turno);
         virtual ~DtClase();
         //virtual bool getEnrambla();//para poder hacer un dynamic_cast
-        int getid();
-        string getNombre();
-        Turno getTurno();
+        int getid() const;
+        string getNombre() const;
+        Turno getTurno() const;
     	void setid(int id);
     	void setNombre(string nombre);
     	void setTurno(Turno turno);

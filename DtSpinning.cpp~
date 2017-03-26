@@ -14,7 +14,7 @@ DtSpinning::DtSpinning(int cantBicicletas, int id, string nombre,Turno turno){
 
 DtSpinning::~DtSpinning(){}
 
-int DtSpinning::getCantBicicletas() const{
+int DtSpinning::getCantBicicletas(){
 	return cantBicicletas;
 }
 

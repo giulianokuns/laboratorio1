@@ -6,15 +6,15 @@
 
 using namespace std;
 
-int DtClase::getid() const{
+int DtClase::getid(){
 	return id;
 }
 
-string DtClase::getNombre() const{
+string DtClase::getNombre(){
 	return nombre;
 }
 
-Turno DtClase::getTurno() const{
+Turno DtClase::getTurno(){
 	return turno;
 }
 

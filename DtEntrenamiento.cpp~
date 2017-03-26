@@ -31,4 +31,4 @@ ostream& operator<<(ostream& os, DtEntrenamiento& dt_entrenamiento)
    		<< "Turno: " 		<< dt_entrenamiento.getTurno()  << '\n'
    		<< "En rambla: " 	<< str_enRambla;  
     return os;  
-}  
+} 
