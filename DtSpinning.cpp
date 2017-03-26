@@ -7,8 +7,8 @@
 
 DtSpinning::DtSpinning(int cantBicicletas, int id, string nombre,Turno turno){
 	this->cantBicicletas = cantBicicletas;
-	this->setid(id);
 	this->setNombre(nombre);
+	this->setid(id);
 	this->setTurno(turno);
 }
 
