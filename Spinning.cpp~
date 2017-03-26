@@ -25,7 +25,7 @@ void  Spinning::setCantBicicletas(int cantBicicletas){
 }
 
 int Spinning::cupo(){
-	return this->cantBicicletas - this->getCantInscriptos();
+	this->cantBicicletas - this->getCantInscriptos();
 }
 
 Spinning::~Spinning(){

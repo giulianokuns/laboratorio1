@@ -27,9 +27,9 @@ void Entrenamiento::setenRambla(bool enRambla){
 
 int Entrenamiento::cupo(){
 	if(enRambla)
-		return 20 - this->getCantInscriptos();
+		20 - this->getCantInscriptos();
 	else
-		return 10 - this->getCantInscriptos();
+		10 - this->getCantInscriptos();
 };
 
 Entrenamiento::~Entrenamiento(){
