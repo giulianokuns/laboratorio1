@@ -18,17 +18,17 @@ bool DtEntrenamiento::getenRambla(){
 	return enRambla;
 }
 
-ostream& operator<<(ostream& os, const DtEntrenamiento& dt_entrenamiento)  
+ostream& operator<<(ostream& os, DtEntrenamiento& dt_entrenamiento)  
 {  
 	string str_enRambla;
-	if (dt_entrenamiento.enRambla) {
+	if (dt_entrenamiento.getenRambla()) {
 		str_enRambla = "Si";
 	} else { 
 		str_enRambla = "No";
 	}
-    os 	<< "Id Clase: " 	<< dt_entrenamiento.id 	  << '\n' 
-   		<< "Nombre: " 		<< dt_entrenamiento.nombre << '\n' 
-   		<< "Turno: " 		<< dt_entrenamiento.turno  << '\n'
+    os 	<< "Id Clase: " 	<< dt_entrenamiento.getid() 	  << '\n' 
+   		<< "Nombre: " 		<< dt_entrenamiento.getNombre() << '\n' 
+   		<< "Turno: " 		<< dt_entrenamiento.getTurno()  << '\n'
    		<< "En rambla: " 	<< str_enRambla;  
     return os;  
 }  

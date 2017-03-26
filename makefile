@@ -1,7 +1,10 @@
 
 
 C = g++
-CCFLAGS = -Wall -Werror   -g
-
-main: main.cpp
-	 $(CC) $(CCFLAGS) -c -o main main.cpp
+CCFLAGS = -Wall  -g
+REQUERIMIENTOS= Clase.cpp DtClase.cpp  DtEntrenamiento.cpp \
+ DtEntrenamiento.cpp  Spinning.cpp  \
+DtSpinning.cpp  Socio.cpp DtSocio.cpp  Fecha.cpp \
+Inscripcion.cpp  main.cpp
+main: $(REQUERIMIENTOS)
+	 $(CC) $(CCFLAGS) $(REQUERIMIENTOS)  -o main 
