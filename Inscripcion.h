@@ -12,15 +12,15 @@
 
 class Inscripcion{
     private:
-        Fecha fecha;
+        Fecha *fecha;
         Socio *socio;
     public:
-        Inscripcion(Fecha fecha, Socio *socio);
+        Inscripcion(Fecha *fecha, Socio *socio);
         ~Inscripcion();
-        Fecha getFecha();
+        Fecha * getFecha();
         Socio * getSocio();
-        void setFecha(Fecha fecha);
-        void setSocio(Socio * socio);
+        void setFecha(Fecha *fecha);
+        void setSocio(Socio *socio);
 };
 
 #endif

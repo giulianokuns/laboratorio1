@@ -11,7 +11,7 @@ Spinning::Spinning(int cantBicicletas, int id, string nombre,Turno turno){
 	this->setid(id);
 	this->setNombre(nombre);
 	this->setTurno(turno);
-	Inscripcion **Inscripciones = new *Inscripcion[50];
+	Inscripcion **Inscripciones = new Inscripcion*[50];
 	this->setInscripciones(Inscripciones);
 	this->setInscriptos(0);
 };
