@@ -30,11 +30,11 @@ using namespace std;
 	{
 		int i = 0;
 		if (tope_socios < MAX_SOCIOS) {
-            while ((i <= tope_socios) && (socios[i]->getNombre() != nombre)) {
+            while ((i < tope_socios) && (socios[i]->getNombre() != nombre)) {
                 i++;
             }    
 
-			if (i <= tope_socios) {
+			if (i < tope_socios) {
                 throw std::invalid_argument("Ya existe el socio");
 			} else {
 		 		Socio *socio = new Socio(ci, nombre);
@@ -50,10 +50,10 @@ using namespace std;
 		/* Diferenciar si la variable clases es de DtSpinning o de DtEntrenamiento */
 		int i = 0;
 		if (tope_clases < MAX_CLASES) {
-			while ((i <= tope_clases) && (clases[i]->getid()!=clase.getid())) {
+			while ((i < tope_clases) && (clases[i]->getid()!=clase.getid())) {
 				i++;
 			}	
-			if (i <= tope_clases) {
+			if (i < tope_clases) {
 				throw std::invalid_argument("Ya existe la clase");
 			} else {
 				if (dynamic_cast<DtEntrenamiento*> (&clase) != NULL){ 
@@ -216,44 +216,49 @@ int main()
                 
             }
             else if(opcion == 2){
-                int tipoclase,id,numeroturno;
+                int tipoclase, id, numeroturno;
                 string nombre;
                 Turno turno;
-                cout << "1. spining" << endl;
-                cout << "2. entrenamiento";
+
+                cout << "1. Spinning"       << endl;
+                cout << "2. Entrenamiento"  << endl;
                 cin >> tipoclase;
                 
-                cout << "ingrese id";
+                cout << "Ingrese id: ";
                 cin >> id;
 
-                cout << "ingrese el nombre";
+                cout << "Ingrese el nombre: ";
                 cin >> nombre;
 
-                cout << "ingrese el turno" << endl;
-                cout << "1. mañana" << endl;
-                cout << "2. tarde" << endl;
-                cout << "3. noche";
+                cout << "Ingrese el turno: " << endl;
+                cout << "1. Mañana" << endl;
+                cout << "2. Tarde"  << endl;
+                cout << "3. Noche"  << endl;
                 cin >> numeroturno;
-                if (numeroturno == 1){
-                    turno = Manana;
-                }else{ if (numeroturno == 2){
-                    turno = Tarde;
-                    }else turno = Noche;
+
+                switch (numeroturno) {
+                    case 1: turno = Manana;
+                        break;
+                    case 2: turno = Tarde;
+                        break;
+                    case 3: turno = Noche;
+                        break;
                 }
+
                 if (tipoclase == 1){
                    int bicis;
 
-                   cout << "ingrese cantidad de bicis";
+                   cout << "Ingrese cantidad de bicis: ";
                    cin >> bicis;
 
-                   DtSpinning dtspinning(bicis,id,nombre,turno);
+                   DtSpinning dtspinning(bicis, id, nombre, turno);
                    agregarClase(dtspinning);
                 }
                 else{
                     int enrambla;
 
-                    cout << "0. no es en la rambla" << endl;
-                    cout << "1. es en la rambla";
+                    cout << "0. No es en la rambla" << endl;
+                    cout << "1. Es en la rambla"    << endl;
                     cin >> enrambla;
                     
                     bool rambla = enrambla == 1;
@@ -267,34 +272,35 @@ int main()
                 string ciSocio;
                 int idclase,dia,mes,anio;
                 
-                cout << "ingrese la cedula del socio";
+                cout << "Ingrese la cedula del socio: ";
                 cin >> ciSocio;
 
-                cout << "ingrese el ID de la clase";
+                cout << "Ingrese el ID de la clase: ";
                 cin >> idclase;
                 
-                cout << "ingrese el dia ";
+                cout << "Fecha de Inscripcion: ";
+                cout << "Ingrese el dia: ";
                 cin >> dia;
 
-                cout << "ingrese le mes";
+                cout << "Ingrese le mes: ";
                 cin >> mes;
 
-                cout << "ingrese el año";
+                cout << "Ingrese el año: ";
                 cin >> anio;
 
-                Fecha f(dia,mes,anio);
+                Fecha *f = new Fecha(dia,mes,anio);
                 
-                agregarInscripcion(ciSocio,idclase,f);
+                agregarInscripcion(ciSocio, idclase, *f);
                 
             }
             else if(opcion == 4){
                 string CI;
                 int ID;
 
-                cout << "ingrese la CI del socio";
+                cout << "Ingrese la CI del socio: ";
                 cin >> CI;
 
-                cout << "ingrese el ID de la clase";
+                cout << "Ingrese el ID de la clase: ";
                 cin >> ID;
 
                 borrarInscripcion(CI,ID);
@@ -303,12 +309,12 @@ int main()
                 
                 int idClase, cantSocios;
                 
-                cout << "Ingrese Clase:";
+                cout << "Ingrese Clase: ";
                 cin >> idClase;
                 cout << endl;
                 
                 
-                cout << "Ingrese CantidadSocios:";
+                cout << "Ingrese CantidadSocios: ";
                 cin >> cantSocios;
                 cout << endl;
                 
@@ -322,7 +328,7 @@ int main()
             }
             else if(opcion == 6){
                 int id;
-                cout << "ingrese el ID de la clase ";
+                cout << "Ingrese el ID de la clase: ";
                 cin >> id;
                 
                 if(dynamic_cast<DtEntrenamiento*> (&obtenerClase(id)) != NULL){
@@ -335,15 +341,11 @@ int main()
                 }
             }
             else {
-                
-                invalid_argument("opcion no valida");
+                invalid_argument("Opcion no valida");
             }
         }catch(invalid_argument &ia){
-            
             cout << "Error: " << ia.what() << endl;
-            
         }
     }
-    
     return 0;
 }
