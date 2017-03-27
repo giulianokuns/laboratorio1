@@ -76,109 +76,116 @@ using namespace std;
 
 
     void agregarInscripcion(string ciSocio, int idClase, Fecha fecha){
-        int i=0;
+        int i = 0;
         //se busca la clase donde se debe inscribir al socio
-        while((i<tope_clases)&&(clases[i]->getid()!=idClase))
+        while((i < tope_clases) && (clases[i]->getid() != idClase)) {
             i++;
+        }
         
-        if (i>tope_clases)
-            
+        if (i >= tope_clases) {
             throw std::invalid_argument("No existe la clase");
-        
-        else if (clases[i]->cupo() == 0)
-            
+        } else if (clases[i]->cupo() == 0) {
             throw std::invalid_argument("No hay cupos");
-        
-        else {
+        } else {
             
             int cantidad = clases[i]->getCantInscriptos();
-            Inscripcion **inscriptos=clases[i]->getInscriptos();
+            Inscripcion **inscriptos = clases[i]->getInscriptos();
   
-            int j=0;
-            while ((j<cantidad)&&(inscriptos[j]->getSocio()->getCI()!=ciSocio))
+            int j = 0;
+            while ((j < cantidad) && (inscriptos[j]->getSocio()->getCI() != ciSocio)) {
                 j++;
+            }
         
-            if (j<cantidad)
+            if (j < cantidad) {
                 throw std::invalid_argument("Ya está inscripto");
-            else{
+            } else {
                 
-               int z = 0;
-               while(socios[z]->getCI() != ciSocio)
+                int z = 0;
+                while((z < tope_socios) && (socios[z]->getCI() != ciSocio)) {
                    z++;
-               
-               Inscripcion * ins = new Inscripcion(&fecha,socios[z]);
-               
-               inscriptos[j] = ins;
-               
-               clases[i]->setInscriptos(cantidad + 1);
-               clases[i]->setInscripciones(inscriptos);
+                }
+                
+                if (z >= tope_socios) {
+                    throw std::invalid_argument("No existe el socio");
+                } else {
+                    Inscripcion * ins = new Inscripcion(&fecha, socios[z]);
+                   
+                    inscriptos[j] = ins;
+                   
+                    clases[i]->setInscriptos(cantidad + 1);
+                    clases[i]->setInscripciones(inscriptos);    
+                }
             }
         }
     }
         
-        void borrarInscripcion(string ciSocio, int idClase){
-            int i=0;
-            while ((i<tope_clases)&&(clases[i]->getid()!=idClase))
-                i++;
-            if (i>tope_clases)
-                throw std::invalid_argument("La clase no existe");
-            else{
-                //busco la inscripción
-                Inscripcion **inscriptos = clases[i]->getInscriptos();
-                int cantidad = clases[i]->getCantInscriptos();
-                
-                int j=0;
-                while ((j<cantidad)&&(inscriptos[j]->getSocio()->getCI()!=ciSocio)){
-                    j++;
-                }
-                
-                if (j>cantidad)
-                        throw std::invalid_argument("No hay inscriptos");
-                else{
-                        inscriptos[j]=inscriptos[cantidad-1];
-                        clases[i]->setInscriptos(cantidad-1);
-                }
+    void borrarInscripcion(string ciSocio, int idClase){
+        int i=0;
+        while (( i < tope_clases) && (clases[i]->getid()!=idClase)) {
+            i++;
+        }
 
+        if (i >= tope_clases) {
+            throw std::invalid_argument("La clase no existe");
+        } else {
+            //busco la inscripción
+            Inscripcion **inscriptos = clases[i]->getInscriptos();
+            int cantidad = clases[i]->getCantInscriptos();
+            
+            int j=0;
+            while ((j < cantidad) && (inscriptos[j]->getSocio()->getCI() != ciSocio)) {
+                j++;
+            }
+            
+            if (j >= cantidad) {
+                throw std::invalid_argument("No esta inscripto");
+            } else {
+                inscriptos[j] = inscriptos[cantidad-1];
+                clases[i]->setInscriptos(cantidad-1);
             }
         }
+    }
+    
+    DtSocio** obtenerInfoSocioPorClase (int idClase, int& cantSocios) {
         
-        DtSocio** obtenerInfoSocioPorClase(int idClase,int& cantSocios){
-            
-                int i=0;
-                while ((i<tope_clases)&&(clases[i]->getid()!=idClase))
-                        i++;
-                DtSocio ** infoSocio = new DtSocio*[cantSocios];
-                if (i<tope_clases){
-                    Inscripcion **inscriptos=clases[i]->getInscriptos();
-                    for(int j=0; j<cantSocios;j++)
-                        infoSocio[j]=new DtSocio(inscriptos[j]->getSocio()->getCI(),inscriptos[j]->getSocio()->getNombre());
-
-                }
-                return infoSocio;
+        int i = 0;
+        while (( i < tope_clases) && (clases[i]->getid() != idClase)) {
+            i++;
         }
-        
-        DtClase& obtenerClase(int idClase){
-	     //se asume que debe existir la clase del id correspondiente
-                    DtClase * resultado;
-	            int j=0;
-	            while((j<=tope_clases)&&(clases[j]->getid()!=idClase))
-		            j++;
-                    
-	            if (j<tope_clases){ //control de error
-                        if(dynamic_cast<Entrenamiento *>(clases[j]) != NULL){
-                            Entrenamiento  * entr = dynamic_cast<Entrenamiento *>(clases[j]);
-	                    DtEntrenamiento * res = new DtEntrenamiento(entr->getenRambla(),entr->getid(),entr->getNombre(),entr->getTurno());
-                            resultado = res;
-                        }
-                        else{
-                            Spinning  * entr = dynamic_cast<Spinning *>(clases[j]);
-	                    DtSpinning * res = new DtSpinning(entr->getCantBicicletas(),entr->getid(),entr->getNombre(),entr->getTurno());
-                            resultado = res;
-                        }
-                    }    
-                        
-                return *resultado;
-        } 
+
+        DtSocio ** infoSocio = new DtSocio*[cantSocios];
+
+        if (i < tope_clases){
+            Inscripcion **inscriptos = clases[i]->getInscriptos();
+            for(int j = 0; j < cantSocios; j++) {
+                infoSocio[j] = new DtSocio(inscriptos[j]->getSocio()->getCI(), inscriptos[j]->getSocio()->getNombre());
+            }
+        }
+        return infoSocio;
+    }
+    
+    DtClase& obtenerClase(int idClase){
+        DtClase * resultado;
+        int j=0;
+        while((j < tope_clases) && (clases[j]->getid() != idClase)) {
+            j++;
+        }
+
+        if (j < tope_clases) { //control de error
+            if (dynamic_cast<Entrenamiento *>(clases[j]) != NULL) {
+                Entrenamiento  * entr = dynamic_cast<Entrenamiento *>(clases[j]);
+                DtEntrenamiento * res = new DtEntrenamiento(entr->getenRambla(), entr->getid(), entr->getNombre(), entr->getTurno());
+                resultado = res;
+            } else {
+                Spinning  * entr = dynamic_cast<Spinning *>(clases[j]);
+                DtSpinning * res = new DtSpinning(entr->getCantBicicletas(), entr->getid(), entr->getNombre(), entr->getTurno());
+                resultado = res;
+            }
+        } else {
+            throw std::invalid_argument("No existe la clase");
+        }   
+        return *resultado;
+    } 
     
 int main()
 {
@@ -243,9 +250,10 @@ int main()
                         break;
                     case 3: turno = Noche;
                         break;
+                    default: throw std::invalid_argument("Turno invalido");
                 }
 
-                if (tipoclase == 1){
+                if (tipoclase == 1) {
                    int bicis;
 
                    cout << "Ingrese cantidad de bicis: ";
@@ -253,18 +261,26 @@ int main()
 
                    DtSpinning dtspinning(bicis, id, nombre, turno);
                    agregarClase(dtspinning);
-                }
-                else{
+                } else if (tipoclase == 2) {
                     int enrambla;
 
                     cout << "0. No es en la rambla" << endl;
                     cout << "1. Es en la rambla"    << endl;
                     cin >> enrambla;
                     
-                    bool rambla = enrambla == 1;
-                    
+                    bool rambla;
+                    if (enrambla == 1) {
+                        rambla = true;
+                    } else if (enrambla == 0) {
+                        rambla = false;
+                    } else {
+                        throw std::invalid_argument("Modalidad de clase invalida");    
+                    }
+
                     DtEntrenamiento dtentrenamiento(rambla,id,nombre,turno);
                     agregarClase(dtentrenamiento);
+                } else {
+                    throw std::invalid_argument("Tipo de clase invalido");
                 }
             }
             
@@ -317,13 +333,28 @@ int main()
                 cout << "Ingrese CantidadSocios: ";
                 cin >> cantSocios;
                 cout << endl;
-                
-                DtSocio** socios = obtenerInfoSocioPorClase(idClase,cantSocios);
-                
-                for(int i=0; i<cantSocios; i++)
-                    cout << socios[i]->getCI() << " - " << socios[i]->getNombre() << endl;
-                
-                delete socios;
+
+                int i = 0;
+                while (( i < tope_clases) && (clases[i]->getid() != idClase)) {
+                    i++;
+                } 
+                if (i >= tope_clases) {
+                    throw std::invalid_argument("No existe la clase");
+                } else if (clases[i]->getCantInscriptos() > cantSocios) {
+                    DtSocio** socios = obtenerInfoSocioPorClase(idClase, cantSocios); 
+                    for(int i = 0; i < cantSocios; i++) {
+                        cout << socios[i]->getCI() << " - " << socios[i]->getNombre() << endl;
+                    }
+                    delete socios;
+                } else {
+                    int cant_inscriptos = clases[i]->getCantInscriptos();
+                    DtSocio** socios = obtenerInfoSocioPorClase(idClase, cant_inscriptos);    
+                    for(int i = 0; i < cant_inscriptos; i++) {
+                        cout << socios[i]->getCI() << " - " << socios[i]->getNombre() << endl;
+                    }
+                    delete socios;
+                }
+                    
                 
             }
             else if(opcion == 6){
@@ -333,11 +364,11 @@ int main()
                 
                 if(dynamic_cast<DtEntrenamiento*> (&obtenerClase(id)) != NULL){
                     DtEntrenamiento * imp = dynamic_cast<DtEntrenamiento*>(&obtenerClase(id));
-                    cout << *imp;	
+                    cout << *imp <<endl;	
                 }
                 else{
- 		    DtSpinning * imp = dynamic_cast<DtSpinning*>(&obtenerClase(id));
-                    cout << *imp;	
+ 		            DtSpinning * imp = dynamic_cast<DtSpinning*>(&obtenerClase(id));
+                    cout << *imp <<endl;	
                 }
             }
             else {
