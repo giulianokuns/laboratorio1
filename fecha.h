@@ -1,7 +1,11 @@
 /* Definicion de clase Fecha*/
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
 
-#ifndef FECHA_H;
-#define FECHA_H;
+#ifndef FECHA_H
+#define FECHA_H
 
 class Fecha { 
     private:
@@ -15,6 +19,6 @@ class Fecha {
         int getDia();
         int getMes();
         int getAnio();
-}
+};
 
 #endif
