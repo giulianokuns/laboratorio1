@@ -1,0 +1,21 @@
+Cambios para UML:
+1- Se crea clase asociativa entre Usuario y Grupo que contiene:
+	- FechaIngresoGrupo
+	- HoraIngresoGrupo
+2- Se agrega a la clase asociativa Recibida:
+	- FechaVisto
+	- HoraVisto
+3- Se agrega a la clase Conversacion:
+	- idConversacion
+
+
+CtrlMensaje: 
+- finalizarVerMensaje
+- finalizarEliminarMensaje
+- mensajesConversacion
+
+CtrlUsuario:
+- obtenerInfoAdicional
+- cantidadArchivadas
+- eliminarMensaje
+- listarArhivadas
