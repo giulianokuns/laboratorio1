@@ -1,0 +1,5 @@
+class Recibido{
+	private:
+
+	public:
+};
