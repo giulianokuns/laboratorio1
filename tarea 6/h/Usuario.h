@@ -1,3 +1,7 @@
+#include "Fecha.h"
+#include "Hora.h"
+
+
 class Usuario{
 	private:
 		string telCel;
@@ -7,7 +11,7 @@ class Usuario{
 		Fecha fechaUltimaConex;
 		Hora horaUltimaConex;
 	public:
-		string getTelCel();
+		string gettelCel();
 		string getnomUsuario();
 		Fecha getfechaRegistro();
 		string getimaPerfil();

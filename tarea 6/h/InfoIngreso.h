@@ -1,3 +1,6 @@
+#include "Fecha.h"
+#include "Hora.h"
+
 class InfoIngreso{
 	private:
 		Fecha fechaIngreso;

@@ -1,3 +1,7 @@
+#include "Fecha.h"
+#include "Hora.h"
+
+
 class Grupo{
 	private:
 		string nomGrupo;
