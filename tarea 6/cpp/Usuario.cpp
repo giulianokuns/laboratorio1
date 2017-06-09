@@ -2,6 +2,18 @@
 #include "Hora.h"
 
 
+Usuario::Usuario(string telCel,string nomUsuario,Fecha fechaRegistro,string imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConex){
+	
+	this->telCel = telCel;
+	this->nomUsuario = nomUsuario;
+	this->fechaRegistro = fechaRegistro;//no se crea una instancia nueva 
+	this->imaPerfil = imaPerfil;
+	this->fechaUltimaConex = fechaUltimaConex;//no se crea una instancia nueva
+	this->horaUltimaConex = horaUltimaConex;//no se crea una instancia nueva
+}
+Usuario::~Usuario(){
+	
+}
 
 string Usuario::gettelCel(){
 	return telCel;
