@@ -2,18 +2,20 @@
 #include <cstring>
 #include <string.h>
 #include <stdexcept>
-/*Incluir fecha y hora*/
+#include "Fecha.h"
+#include "Hora.h"
 
 #ifndef DTMENSAJE
 #define DTMENSAJE
 
 using namespace std;
 
-class DtMensaje : public ICollectible{
+class DtMensaje : public ICollectible {
     private:
         string  dtCodigo;
         Fecha   dtFechaMens;
         Hora    dtHora;
+
     public:
         virtual ~DtMensaje() {};
 
@@ -21,8 +23,8 @@ class DtMensaje : public ICollectible{
         Fecha   getFecha() const;
         Hora    getHora() const;
     	
-        void setCodigo(int id);
-    	void setFecha(string nombre);
-    	void setHora(Turno turno);
+        void setCodigo(string codigo);
+    	void setFecha(Fecha fecha);
+    	void setHora(Hora hora);
 };
 #endif
