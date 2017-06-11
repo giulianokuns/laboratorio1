@@ -8,6 +8,6 @@
 /* OJO que no tengo idea si esta bien lo que estoy haciendo !!!*/
 class CtrlUsuario {
 	public:
-		DtMensajae * mensajesCoversacion (int idConv);
-
+		DtMensaje * mensajesCoversacion (int idConv);
+		
 };
