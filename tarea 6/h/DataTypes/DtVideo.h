@@ -15,8 +15,9 @@ class DtVideo : public DtMultimedia {
         string  dtURLvideo;
 
     public:
-        virtual ~DtVideo() {};
-
+        DtVideo (string codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) {};
+        ~DtVideo ();
+        
         int  	getDuracion() const;
         string  getURLvideo() const;
 

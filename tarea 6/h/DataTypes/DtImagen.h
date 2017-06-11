@@ -17,8 +17,9 @@ class DtImagen : public DtMultimedia {
         string  dtURLpicture;
 
     public:
-        virtual ~DtImagen() {};
-
+        DtImagen (string codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) {};
+        ~DtImagen ();
+        
         string  getFormato() const;
         int  	getTamanio() const;
         string  getTextMulti() const;

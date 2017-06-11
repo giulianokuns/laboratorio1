@@ -13,7 +13,7 @@ class DtSimple : public DtMensaje {
         string  dtTextSimp;
 
     public:
-        virtual ~DtSimple() {};
+        DtSimple (string codigo, Fecha fecha, Hora hora, string text_simple) {};
 
         string  getTextSimp() const;
         void setTextSimp (string text);

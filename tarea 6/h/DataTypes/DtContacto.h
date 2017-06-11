@@ -15,12 +15,13 @@ class DtContacto : public DtMensaje {
         string  dtTelContacto;
 
     public:
-        virtual ~DtContacto() {};
-
+        DtContacto (string codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) {};
+        ~DtContacto ();
+        
         string  getNomContacto() const;
         string  getTelContacto() const;
 
-        void setNomContacto (string text);
-        void setTelContacto (string text);
+        void setNomContacto (string nombre);
+        void setTelContacto (string tel);
 };
 #endif
