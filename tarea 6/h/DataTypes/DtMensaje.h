@@ -2,6 +2,7 @@
 #include <cstring>
 #include <string.h>
 #include <stdexcept>
+/*Incluir fecha y hora*/
 
 #ifndef DTMENSAJE
 #define DTMENSAJE

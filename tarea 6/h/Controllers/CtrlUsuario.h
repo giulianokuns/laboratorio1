@@ -8,4 +8,7 @@ class CtrlUsuario{
 		static Singleton * getinstancia();
 		Usuario * getusuariolog();
 		void setusuariolog(Usuario * u);
+
+		/* Ver Mensaje */
+		ICollection mensajesCoversacion (int idConv);
 }
