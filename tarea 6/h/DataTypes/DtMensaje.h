@@ -15,7 +15,7 @@ class DtMensaje : public ICollectible{
         Fecha   dtFechaMens;
         Hora    dtHora;
     public:
-        virtual ~DtMensaje(){};
+        virtual ~DtMensaje() {};
 
         string  getCodigo() const;
         Fecha   getFecha() const;

@@ -6,26 +6,26 @@
 
 using namespace std;
 
-int DtClase::getid() const{
-	return id;
+int DtMensaje::getCodigo() const{
+	return codigo;
 }
 
-string DtClase::getNombre() const{
-	return nombre;
+Fecha DtMensaje::getFecha() const{
+	return dtfecha;
 }
 
-Turno DtClase::getTurno() const{
-	return turno;
+Hora DtMensaje::getHora() const{
+	return dthora;
 }
 
-void DtClase::setid(int id){
-	this->id = id;
+void DtMensaje::setCodigo (int codigo) {
+	this->dtcodigo = codigo;
 }
 
-void DtClase::setNombre(string nombre){
-	this->nombre = nombre;
+void DtMensaje::setFecha (Fecha fecha) {
+	this->dtfecha = fecha;
 }
 
-void DtClase::setTurno(Turno turno){
-	this->turno = turno;
+void DtMensaje::setHora (Hora hora) {
+	this->dthora = hora;
 }
