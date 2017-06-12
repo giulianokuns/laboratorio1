@@ -17,7 +17,7 @@ class DtImagen : public DtMultimedia {
         string  dtURLpicture;
 
     public:
-        DtImagen (string codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) {};
+        DtImagen (string codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : DtMensaje (codigo, fecha, hora) {};
         ~DtImagen ();
         
         string  getFormato() const;

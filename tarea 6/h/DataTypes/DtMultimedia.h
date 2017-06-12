@@ -11,6 +11,6 @@ using namespace std;
 
 class DtMultimedia : public DtMensaje {
     public:
-        virtual ~DtMultimedia() {};
+        virtual ~DtMultimedia() {}; /* : DtMensaje (codigo, fecha, hora) ??? */
 };
 #endif
