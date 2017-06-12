@@ -6,9 +6,11 @@ class CtrlUsuario{
 		IDictionary * usuarios;
 	public:
 		static Singleton * getinstancia();
-		Usuario * getusuariolog();
-		void setusuariolog(Usuario * u);
+		Usuario * getusuarioLog();
+		void setusuarioLog(Usuario * u);
 
 		/* Ver Mensaje */
 		ICollection mensajesCoversacion (int idConv);
+		/*archivar_conversacion*/
+		ICollection listarActivas();
 }

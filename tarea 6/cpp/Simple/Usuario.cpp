@@ -10,6 +10,7 @@ Usuario::Usuario(string telCel,string nomUsuario,Fecha fechaRegistro,string imaP
 	this->imaPerfil = imaPerfil;
 	this->fechaUltimaConex = fechaUltimaConex;//no se crea una instancia nueva
 	this->horaUltimaConex = horaUltimaConex;//no se crea una instancia nueva
+	this->arreglo_ec = arreglo_ec;
 }
 Usuario::~Usuario(){
 	
@@ -39,6 +40,10 @@ Hora Usuario::gethoraUltimaConex(){
 	return horaUltimaConex;
 }
 
+ICollection Usuario::getarreglo_ec(){
+	return arreglo_ec;
+}
+
 void Usuario::settelCel(string cel){
 	this->telCel = cel;
 }
@@ -59,4 +64,22 @@ void Usuario::setfechaUltimaConex(Fecha fechaUltimaConex){
 }
 void Usuario::sethoraUltimaConex(Hora horaUltimaConex){
 	this->horaUltimaConex = horaUltimaConex;
+}
+void Usuario::setarreglo_ec(ICollection arreglo_ec){
+	this->arreglo_ec = arreglo_ec;
+}
+	
+	/*archivar_conversacion*/
+ICollection Usuario::get_lista_activos(){
+	ICollection arreglo_ec = getarreglo_ec();
+	ICollection colecciondt = new List();
+	for(IIterator *it = arreglo_ec->getIterator();it->hasCurrent();it->next){
+		EstadoConversacion ec = getCurrent();
+		if (ec->getarchivada()!){
+			Conversacon c = ec->getconversacion();
+			Dtconversacion dtc = c->getinfo();
+			colecciondt->add(dtc);
+		}
+	}
+	return colecciondt;
 }
