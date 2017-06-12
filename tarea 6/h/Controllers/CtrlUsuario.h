@@ -14,6 +14,7 @@ class CtrlUsuario{
 
 		/* Ver Mensaje */
 		ICollection mensajesCoversacion (int idConv);
+		
 		/*archivar_conversacion*/
 		ICollection listarActivas();
 		void archivar_conversacion(string ID);

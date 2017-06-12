@@ -21,7 +21,7 @@ class DtVideo : public DtMultimedia {
         int  	getDuracion() const;
         string  getURLvideo() const;
 
-        void setDuracion (int text);
+        void setDuracion (int duracion);
         void setURLvideo (string url);
 };
 #endif

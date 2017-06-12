@@ -13,7 +13,7 @@ using namespace std;
 class DtMensaje : public ICollectible {
     private:
         string  dtCodigo;
-        Fecha   dtFechaMens;
+        Fecha   dtFecha;
         Hora    dtHora;
 
     public:

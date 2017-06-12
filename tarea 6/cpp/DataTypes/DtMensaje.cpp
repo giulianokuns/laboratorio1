@@ -7,25 +7,25 @@
 using namespace std;
 
 int DtMensaje::getCodigo() const{
-	return codigo;
+	return dtCodigo;
 }
 
 Fecha DtMensaje::getFecha() const{
-	return dtfecha;
+	return dtFecha;
 }
 
 Hora DtMensaje::getHora() const{
-	return dthora;
+	return dtHora;
 }
 
 void DtMensaje::setCodigo (int codigo) {
-	this->dtcodigo = codigo;
+	this->dtCodigo = codigo;
 }
 
 void DtMensaje::setFecha (Fecha fecha) {
-	this->dtfecha = fecha;
+	this->dtFecha = fecha;
 }
 
 void DtMensaje::setHora (Hora hora) {
-	this->dthora = hora;
+	this->dtHora = hora;
 }
