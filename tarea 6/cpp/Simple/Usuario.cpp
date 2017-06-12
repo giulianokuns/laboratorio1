@@ -2,7 +2,7 @@
 #include "Hora.h"
 
 
-Usuario::Usuario(string telCel,string nomUsuario,Fecha fechaRegistro,string imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConex){
+Usuario::Usuario(string telCel,string nomUsuario,Fecha fechaRegistro,string imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -11,6 +11,7 @@ Usuario::Usuario(string telCel,string nomUsuario,Fecha fechaRegistro,string imaP
 	this->fechaUltimaConex = fechaUltimaConex;//no se crea una instancia nueva
 	this->horaUltimaConex = horaUltimaConex;//no se crea una instancia nueva
 	this->arreglo_ec = arreglo_ec;
+	this->contactos = contactos;
 }
 Usuario::~Usuario(){
 	
@@ -43,6 +44,9 @@ Hora Usuario::gethoraUltimaConex(){
 ICollection Usuario::getarreglo_ec(){
 	return arreglo_ec;
 }
+IDictionary Usuario::getcontactos(){
+	return contactos;
+}
 
 void Usuario::settelCel(string cel){
 	this->telCel = cel;
@@ -68,12 +72,15 @@ void Usuario::sethoraUltimaConex(Hora horaUltimaConex){
 void Usuario::setarreglo_ec(ICollection arreglo_ec){
 	this->arreglo_ec = arreglo_ec;
 }
+void setcontactos(IDictionary contactos){
+	this->contactos = contactos;
+}
 	
 	/*archivar_conversacion*/
 ICollection Usuario::get_lista_activos(){
-	ICollection arreglo_ec = getarreglo_ec();
+	IDictionary arreglo_ec = getarreglo_ec();
 	ICollection colecciondt = new List();
-	for(IIterator *it = arreglo_ec->getIterator();it->hasCurrent();it->next){
+	for(IIterator *it = arreglo_ec->getIterator();it->hasCurrent();it->next()){
 		EstadoConversacion ec = getCurrent();
 		if (ec->getarchivada()!){
 			Conversacon c = ec->getconversacion();
@@ -82,4 +89,35 @@ ICollection Usuario::get_lista_activos(){
 		}
 	}
 	return colecciondt;
+}
+
+void Usuario::archivar(string ID){
+	IDictionary arreglo_ec = getarreglo_ec();
+	EstadoConversacion ec = find(ID);//o el correspondiente key
+	ec->setarchivada(true);
+}
+	/*agregarContacto*/
+ICollection Usuario::getInfoContactos(){
+	IDictionary contactos = getcontactos();
+	ICollection lista_dtInfoContacto = new list();
+	for(IIterator *it=contactos->getIterator();it->hasCurrent();it->next()){
+		Usuario u = getCurrent();
+		DtInfoContacto *dt = new DtInfoContacto(u->getnomUsuario(),u->gettelCel(),u->getimaPerfil());
+		lista_dtInfoContacto->add(dt);
+	}
+	return lista_dtInfoContacto;
+}
+bool Usuario::esContacto(telCel){
+	IDictionary contactos = getcontactos();
+	return contactos->member(telCel);
+}
+DtInfoContacto Usuario::getIfoContacto(telCel){
+	IDictionary contactos = getcontactos();
+	Usuario u = find(telCel);
+	DtInfoContacto dt = new DtInfoContacto(u->getnomUsuario(),u->gettelCel(),u->getimaPerfil());
+	return dt;
+}
+void Usuario::agregarContacto(Usuario u){
+	IDictionary set_contactos = getcontactos();
+	set_contactos->add(telCel,u);
 }
