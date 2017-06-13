@@ -16,10 +16,3 @@ string DtInfoIngreso::getFechaIngreso() {
 string DtInfoIngreso::getHoraIngreso() {
 	return dtHoraIngreso;
 }
-
-void DtInfoIngreso::setFechaIngreso (Fecha fecha_ingreso) {
-	this->dtFechaIngreso = fecha_ingreso;
-}
-void DtInfoIngreso::setHoraIngreso (Hora hora_ingreso) {
-	this->dtHoraIngreso = hora_ingreso;
-}

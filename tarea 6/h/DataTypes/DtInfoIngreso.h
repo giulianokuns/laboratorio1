@@ -20,9 +20,6 @@ class DtInfoIngreso: public ICollectible {
 		
 		string getFechaIngreso();
 		string getHoraIngreso();
-
-		void setFechaIngreso (Fecha fecha_ingreso);
-		void setHoraIngreso (Hora hora_ingreso);
 }
 
 #endif

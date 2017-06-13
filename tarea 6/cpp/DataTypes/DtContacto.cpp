@@ -23,11 +23,3 @@ string  DtContacto::getNomContacto() {
 string  DtContacto::getTelContacto() {
 	return dtTelContacto;
 }
-
-void DtContacto::setNomContacto (string nombre) {
-	this->dtNomContacto = nombre;
-}
-
-void DtContacto::setTelContacto (string tel) {
-	this->dtTelContacto = tel;
-}

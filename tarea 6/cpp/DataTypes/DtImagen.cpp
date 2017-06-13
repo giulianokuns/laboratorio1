@@ -30,16 +30,3 @@ string DtImagen::getTextMulti()  {
 string DtImagen::getURLpicture()  {
 	return dtURLpicture;
 }
-
-void DtImagen::setFormato (string formato) {
-	this->dtFormato = formato;
-}
-void DtImagen::setTamanio (int tamanio) {
-	this->dtTamanio = tamanio;
-}
-void DtImagen::setTextMulti (string text_multi) {
-	this->dtTextMulti = text_multi;
-}
-void DtImagen::setURLpicture (string url) {
-	this->dtURLpicture = url;
-}	

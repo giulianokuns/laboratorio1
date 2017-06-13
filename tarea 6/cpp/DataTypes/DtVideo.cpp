@@ -22,10 +22,3 @@ int DtVideo::getDuracion() {
 string DtVideo::getURLvideo() {
 	return dtURLvideo;
 }
-
-void DtVideo::setDuracion (int duracion) {
-	this->dtDuracion = duracion;
-}
-void DtVideo::setURLvideo (string url) {
-	this->dtURLvideo = url;
-}

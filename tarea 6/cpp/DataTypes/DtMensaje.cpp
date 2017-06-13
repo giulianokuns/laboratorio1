@@ -17,15 +17,3 @@ Fecha DtMensaje::getFecha() const{
 Hora DtMensaje::getHora() const{
 	return dtHora;
 }
-
-void DtMensaje::setCodigo (int codigo) {
-	this->dtCodigo = codigo;
-}
-
-void DtMensaje::setFecha (Fecha fecha) {
-	this->dtFecha = fecha;
-}
-
-void DtMensaje::setHora (Hora hora) {
-	this->dtHora = hora;
-}

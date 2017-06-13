@@ -20,8 +20,5 @@ class DtContacto : public DtMensaje {
         
         string  getNomContacto() const;
         string  getTelContacto() const;
-
-        void setNomContacto (string nombre);
-        void setTelContacto (string tel);
 };
 #endif

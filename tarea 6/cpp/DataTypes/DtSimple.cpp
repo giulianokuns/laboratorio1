@@ -18,7 +18,3 @@ DtSimple::~DtSimple () {}
 string  DtSimple::getTextSimp() {
 	return dtTextSimp;
 }
-
-void DtSimple::setTextSimp (string text) {
-	this->dtTextSimp = text;
-}

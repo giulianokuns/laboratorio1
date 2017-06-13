@@ -24,10 +24,5 @@ class DtImagen : public DtMultimedia {
         int  	getTamanio() const;
         string  getTextMulti() const;
         string  getURLpicture() const;
-
-        void setFormato (string formato);
-        void setTamanio (int tamanio);
-        void setTextMulti (string text_multi);
-        void setURLpicture (string url);
 };
 #endif

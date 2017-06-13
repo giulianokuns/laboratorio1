@@ -16,6 +16,5 @@ class DtSimple : public DtMensaje {
         DtSimple (string codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora) {};
 
         string  getTextSimp() const;
-        void setTextSimp (string text);
 };
 #endif

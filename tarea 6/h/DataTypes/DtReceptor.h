@@ -22,11 +22,5 @@ class DtReceptor : public ICollectible {
 		int 	getNumTel () {};
 		Fecha 	getFechaVisto () {};
 		Hora 	getHoraVisto () {};
-
-		void setNombre (string nombre) {};
-		void setNumTel (int num_cel) {};
-		void setFechaVisto (Fecha fecha_visto) {};
-		void setHoraVisto (Hora hora_visto) {};
-
 };
 #endif
