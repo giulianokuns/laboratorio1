@@ -2,11 +2,12 @@
 class CtrlCasoEnviar{
 private:
     string idContact;
-    string idConver;
+    string * idConver;
+    CtrlUsuario * ctrl;
 public:
 	    static Singleton *getInstancia();
 	    int cantidadArchivadas();
-	    string crearConvrsacion(string idContact);
+	    string* crearConvrsacion(string idContact);
 	    void crearMensajeContact();
 	    void crearMensajeImagen();
 	    void crearMensajeSimple();
@@ -20,5 +21,7 @@ public:
 	    ListaDtConversacion * listarArchivadas();
 	    ListaDtConversacion * listarActivas();
 	    ListaDtInfoContactos * listarContactos();
+	    CtrlUsuario * getCtrlUsuario();
+	    void setCtrlUsuario(CtrlUsuario ctrlU);
 	    
 }
