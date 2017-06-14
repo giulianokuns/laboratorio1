@@ -5,6 +5,29 @@
 #include "Usuario.h"
 #include "Mensaje.h"
 
+/*Singleton*/
+CtrlUsuario * CtrlUsuario::getinstancia(){
+
+	if(instancia == NULL)
+		this->instancia = new CtrlUsuario();
+	return instancia;
+}
+
+
+/*Cerrar Guasap*/
+
+void CtrlUsuario::cerrarGuasap(){
+
+	Fecha fch = FechaSistema->getFecha();
+	Hora hr = HoraSistema->getHora();
+
+	usuarioLog->setfechaUltimaConex(fch);
+	usuarioLog->sethoraUltimaConex(hr);
+
+	this->usuarioLog = NULL;
+}
+
+
 Usuario * CtrlUsuario::getusuarioLog(){
 	return usuarioLog;
 }
@@ -15,7 +38,7 @@ void CtrlUsuario::setusuarioLog(Usuario * u){
 	this->usuarioLog = u;
 }
 void CtrlUsuario::setusuarios(IDictionary lista_usuarios){
-	this usuarios = lista_usuarios;
+	this->usuarios = lista_usuarios;
 }
 
 	/*archivar_conversacion*/
