@@ -130,8 +130,12 @@ void Usuario::agregarContacto(Usuario u){
 
 ICollection Usuario::mensajesCoversacion (int idConv) {
 	IDictionary ec_array = getarreglo_ec();
-	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
+	Conversacion c = NULL;
+	
+	for (IIterator *it = ec_array->getIterator(); (it->hasCurrent() && c == NULL); it->next()) {
 		EstadoConversacion ec = getCurrent();
-		Conversacion c = ec->compararConv(idConv);	
+		Conversacion c = ec->compararConv(idConv);
+		//Si encontro la conversacion BREAK;
 	}
+	//Continuacion diagrama comunicaion mensajesconversacion
 }

@@ -1,3 +1,10 @@
+#include "Conversacion.h"
+
+#ifndef USUARIO
+#define USUARIO
+
+using namespace std;
+
 class EstadoConversacion: public ICollectible {
 	private:
 		bool archivada;
@@ -9,5 +16,6 @@ class EstadoConversacion: public ICollectible {
 		Conversacion getconversacion();
 		void setarchivada(bool archivada);
 		void setconversacion( Conversacion c); 
-
+		Conversacion * compararConv (int idConv);
 };
+#endif
