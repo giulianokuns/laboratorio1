@@ -60,9 +60,13 @@ DtFecha CtrlUsuario::altaUsuario(String numero, String nombre, String URL,String
 	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
 	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
 
-	Usuario usrnew = new Usuario(numero,nombre,fch,URL,fch,hr,NULL/*ICollection arreglo_ec*/,NULL/*ICollection arreglo_ec*/,IDictionary contactos)
+	Usuario usrnew = new Usuario(numero,nombre,fch,URL,fch,hr,NULL/*ICollection arreglo_ec*/,NULL/*ICollection arreglo_ec*/,IDictionary contactos);
 
 	/*VER COMO AÑADIR USUARIO A LA COLECCION*/
+
+	DtFecha retorno = new DtFecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
+
+	return retorno;
 
 	
 }
