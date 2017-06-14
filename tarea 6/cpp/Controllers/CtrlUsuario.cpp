@@ -79,5 +79,9 @@ void CtrlUsuario::confirmarAgregarContacto(telcel){
 ICollection CtrlUsuario::mensajesCoversacion (int idConv) {
 	//Usuario logeado
 	Usuario * user_log = usuarioLog;
-	return Usuario::mensajesConversacion(idConv);	
+	if (user_log != NULL) {
+		return user_log->mensajesConversacion(idConv);
+	}
+	// Usuario no logeado, exception de contratos
+	return false;
 }

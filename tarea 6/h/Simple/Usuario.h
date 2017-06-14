@@ -1,7 +1,6 @@
 #include "Fecha.h"
 #include "Hora.h"
 
-
 class Usuario: public ICollectible{
 	private:
 		String telCel;
@@ -41,4 +40,6 @@ class Usuario: public ICollectible{
 		bool esContacto(telCel);
 		DtInfoContacto getIfoContacto(telCel);
 		void agregarContacto(Usuario u);
+		/* Ver Mensaje */
+		ICollection mensajesCoversacion (int idConv);
 }
