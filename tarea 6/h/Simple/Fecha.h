@@ -1,3 +1,8 @@
+#ifndef FECHA
+#define FECHA
+
+using namespace std;
+
 class Fecha{
 	private:
 		int dia;
@@ -11,3 +16,5 @@ class Fecha{
 		void setmes(int mes);
 		void setanio(int anio);
 }
+
+#endif

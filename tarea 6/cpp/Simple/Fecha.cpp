@@ -1,3 +1,5 @@
+#include "Fecha.h"
+
 int Fecha::getdia(){
 	return dia;
 }
