@@ -1,5 +1,5 @@
 #include "DtInfoIngreso.h"
-#include <string.h>
+#include <String.h>
 
 using namespace std;
 
@@ -10,9 +10,9 @@ DtInfoIngreso::DtInfoIngreso (Fecha fecha_ingreso, Hora hora_ingreso) {
 
 DtInfoIngreso::~DtInfoIngreso () {}
 
-string DtInfoIngreso::getFechaIngreso() {
+String DtInfoIngreso::getFechaIngreso() {
 	return dtFechaIngreso;
 }
-string DtInfoIngreso::getHoraIngreso() {
+String DtInfoIngreso::getHoraIngreso() {
 	return dtHoraIngreso;
 }

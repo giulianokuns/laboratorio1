@@ -1,12 +1,12 @@
 #include "DtVideo.h"
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 
 using namespace std;
 
-DtVideo::DtVideo (string codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : DtMensaje (codigo, fecha, hora) {
+DtVideo::DtVideo (String codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : DtMensaje (codigo, fecha, hora) {
 	this->dtCodigo 	    = codigo;
 	this->dtFecha 	    = new Fecha(fecha->getdia(), fecha->getmes(), fecha->getanio());
 	this->dtHora 	  	= new Hora(hora->gethoras(), hora->getminutos());
@@ -19,6 +19,6 @@ DtVideo::~DtVideo () {}
 int DtVideo::getDuracion() {
 	return dtDuracion;
 }
-string DtVideo::getURLvideo() {
+String DtVideo::getURLvideo() {
 	return dtURLvideo;
 }
