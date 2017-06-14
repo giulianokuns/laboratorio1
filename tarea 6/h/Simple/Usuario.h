@@ -1,6 +1,11 @@
 #include "Fecha.h"
 #include "Hora.h"
 
+#ifndef USUARIO
+#define USUARIO
+
+using namespace std;
+
 class Usuario: public ICollectible{
 	private:
 		String telCel;
@@ -43,3 +48,5 @@ class Usuario: public ICollectible{
 		/* Ver Mensaje */
 		ICollection mensajesCoversacion (int idConv);
 }
+
+#endif

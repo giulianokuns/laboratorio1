@@ -1,6 +1,12 @@
+#include <iostream>
+#include <cString>
+#include <String.h>
+#include <stdexcept>
+
 #include "Fecha.h"
 #include "Hora.h"
-
+#include "EstadoConversacion.h"
+#include "Usuario.h"
 
 Usuario::Usuario(String telCel,String nomUsuario,Fecha fechaRegistro,String imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
 	
@@ -76,13 +82,13 @@ void setcontactos(IDictionary contactos){
 	this->contactos = contactos;
 }
 	
-	/*archivar_conversacion*/
+/*archivar_conversacion*/
 ICollection Usuario::get_lista_activos(){
 	IDictionary arreglo_ec = getarreglo_ec();
 	ICollection colecciondt = new List();
-	for(IIterator *it = arreglo_ec->getIterator();it->hasCurrent();it->next()){
+	for (IIterator *it = arreglo_ec->getIterator(); it->hasCurrent(); it->next()) {
 		EstadoConversacion ec = getCurrent();
-		if (ec->getarchivada()!){
+		if (!ec->getarchivada()) {
 			Conversacon c = ec->getconversacion();
 			Dtconversacion dtc = c->getinfo();
 			colecciondt->add(dtc);
@@ -100,9 +106,9 @@ void Usuario::archivar(String ID){
 ICollection Usuario::getInfoContactos(){
 	IDictionary contactos = getcontactos();
 	ICollection lista_dtInfoContacto = new list();
-	for(IIterator *it=contactos->getIterator();it->hasCurrent();it->next()){
+	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
 		Usuario u = getCurrent();
-		DtInfoContacto *dt = new DtInfoContacto(u->getnomUsuario(),u->gettelCel(),u->getimaPerfil());
+		DtInfoContacto *dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
 		lista_dtInfoContacto->add(dt);
 	}
 	return lista_dtInfoContacto;
@@ -114,10 +120,18 @@ bool Usuario::esContacto(telCel){
 DtInfoContacto Usuario::getIfoContacto(telCel){
 	IDictionary contactos = getcontactos();
 	Usuario u = find(telCel);
-	DtInfoContacto dt = new DtInfoContacto(u->getnomUsuario(),u->gettelCel(),u->getimaPerfil());
+	DtInfoContacto dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
 	return dt;
 }
 void Usuario::agregarContacto(Usuario u){
 	IDictionary set_contactos = getcontactos();
 	set_contactos->add(telCel,u);
+}
+
+ICollection Usuario::mensajesCoversacion (int idConv) {
+	IDictionary ec_array = getarreglo_ec();
+	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
+		EstadoConversacion ec = getCurrent();
+		Conversacion c = ec->compararConv(idConv);	
+	}
 }
