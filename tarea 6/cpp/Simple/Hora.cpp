@@ -1,4 +1,5 @@
-Hora::Hora()
+#include "Hora.h"
+
 
 int Hora::gethoras(){
 	return horas;

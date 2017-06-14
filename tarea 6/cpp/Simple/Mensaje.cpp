@@ -1,7 +1,7 @@
 #include "Fecha.h"
 #include "Hora.h"
 
-string Mensaje::getcodigo(){
+String Mensaje::getcodigo(){
 	return codigo;
 }
 Fecha Mensaje::getfechaMensaje(){
@@ -10,7 +10,7 @@ Fecha Mensaje::getfechaMensaje(){
 Hora Mensaje::gethoraMensaje(){
 	return horaMensaje;
 }
-void Mensaje::setcodigo(string codigo){
+void Mensaje::setcodigo(String codigo){
 	this->codigo = codigo;
 }
 void Mensaje::setfechaMensaje(Fecha fechaMensaje){

@@ -1,16 +1,32 @@
-class Recibido{
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
+#include "Fecha.h"
+#include "Hora.h"
+
+#ifndef RECIBIDO
+#define RECIBIDO
+
+using namespace std;
+
+class Recibido {
 	private:
         bool visto;
         bool eliminado;
         Fecha fechaVisto;
         Hora horaVisto;
+
 	public:
 		bool getVisto();
 		bool getEliminado();
 		Fecha getFechaVisto();
 		Hora getHoraVisto();
-		void setVisto(bool vist);
+
+		void setVisto(bool visto);
 		void setEliminado(bool elim);
-		void setFechaVisto(Fecha fechaVist);
-		void setHoraVisto(Hora horaVist);
+		void setFechaVisto(Fecha fechaVisto);
+		void setHoraVisto(Hora horaVisto);
 };
+
+#endif

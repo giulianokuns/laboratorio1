@@ -1,3 +1,8 @@
+#ifndef HORA
+#define HORA
+
+using namespace std;
+
 class Hora{
 	private:
 		int horas;
@@ -10,3 +15,5 @@ class Hora{
 		void setminutos(int minutos);
 
 }
+
+#endif
