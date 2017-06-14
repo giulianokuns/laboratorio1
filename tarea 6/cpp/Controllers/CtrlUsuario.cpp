@@ -19,8 +19,8 @@ CtrlUsuario * CtrlUsuario::getinstancia(){
 
 void CtrlUsuario::cerrarGuasap(){
 
-	Fecha fch = FechaSistema->getFecha();
-	Hora hr = HoraSistema->getHora();
+	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
+	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
 
 	usuarioLog->setfechaUltimaConex(fch);
 	usuarioLog->sethoraUltimaConex(hr);
@@ -28,6 +28,44 @@ void CtrlUsuario::cerrarGuasap(){
 	this->usuarioLog = NULL;
 }
 
+
+/*Abrir Guasap*/
+
+bool CtrlUsuario::inicioSesion(){
+	return usuarioLog == NULL
+}
+
+bool CtrlUsuario::ingresar(String numero){
+
+	if (usuarioLog == NULL){
+
+		//Buscar usuario y ver si existe (ver como hacer el iterador)
+
+	}else{
+
+		if(usuarioLog->gettelCel() != numero){
+
+			//Levantar excepcion de cerrar guasap para entrar con otro numero
+
+		}else{
+
+			return true // en caso de ser numeros iguales, no se hace nada
+
+		}
+	}
+}
+
+DtFecha CtrlUsuario::altaUsuario(String numero, String nombre, String URL,String Descripcion){
+
+	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
+	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
+
+	Usuario usrnew = new Usuario(numero,nombre,fch,URL,fch,hr,NULL/*ICollection arreglo_ec*/,NULL/*ICollection arreglo_ec*/,IDictionary contactos)
+
+	/*VER COMO AÑADIR USUARIO A LA COLECCION*/
+
+	
+}
 
 Usuario * CtrlUsuario::getusuarioLog(){
 	return usuarioLog;
