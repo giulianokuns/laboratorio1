@@ -1,3 +1,5 @@
+#include "Usuario.h"
+
 class CtrlUsuario{
 
 	private:

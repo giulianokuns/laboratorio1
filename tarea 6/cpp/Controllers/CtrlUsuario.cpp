@@ -4,6 +4,7 @@
 #include "Hora.h"
 #include "Usuario.h"
 #include "Mensaje.h"
+#include "CtrlUsuario.h"
 
 /*Singleton*/
 CtrlUsuario * CtrlUsuario::getinstancia(){
@@ -73,4 +74,10 @@ void CtrlUsuario::confirmarAgregarContacto(telcel){
 	IDictionary usuarios = getusuarios();
 	Usuario u = find(telCel);
 	agregarContacto(u);
+}
+
+ICollection CtrlUsuario::mensajesCoversacion (int idConv) {
+	//Usuario logeado
+	Usuario * user_log = usuarioLog;
+	return Usuario::mensajesConversacion(idConv);	
 }
