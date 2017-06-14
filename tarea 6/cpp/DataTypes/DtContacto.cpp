@@ -1,12 +1,12 @@
 #include "DtContacto.h"
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 
 using namespace std;
 
-DtContacto::DtContacto (string codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : DtMensaje (codigo, fecha, hora)  {
+DtContacto::DtContacto (String codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : DtMensaje (codigo, fecha, hora)  {
 	this->dtCodigo 	 	= codigo;
 	this->dtFecha 	 	= fecha;
 	this->dtHora 	 	= hora;
@@ -16,10 +16,10 @@ DtContacto::DtContacto (string codigo, Fecha fecha, Hora hora, string nom_contac
 
 DtContacto::~DtContacto () {}
 
-string  DtContacto::getNomContacto() {
+String  DtContacto::getNomContacto() {
 	return dtNomContacto;
 }
 
-string  DtContacto::getTelContacto() {
+String  DtContacto::getTelContacto() {
 	return dtTelContacto;
 }

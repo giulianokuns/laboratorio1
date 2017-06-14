@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 #include "Fecha.h"
 #include "Hora.h"
@@ -12,14 +12,14 @@ using namespace std;
 
 class DtMensaje : public ICollectible {
     private:
-        string  dtCodigo;
+        String  dtCodigo;
         Fecha   dtFecha;
         Hora    dtHora;
 
     public:
         virtual ~DtMensaje() {};
 
-        string  getCodigo() const;
+        String  getCodigo() const;
         Fecha   getFecha() const;
         Hora    getHora() const;
 };

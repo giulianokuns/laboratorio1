@@ -48,7 +48,7 @@ void CtrlUsuario::setusuarios(IDictionary lista_usuarios){
  	return coleccion;
  }
 
- void CtrlUsuario::archivar_conversacion(string ID){
+ void CtrlUsuario::archivar_conversacion(String ID){
  	Usuario u = getusuariolog();
  	u->archivar(ID);
  }
@@ -57,7 +57,7 @@ void CtrlUsuario::setusuarios(IDictionary lista_usuarios){
  	Usuario u = getusuariolog();
  	return u->getIfoContactos();
  }
- bool CtrlUsuario::existeUsuario(string telCel){
+ bool CtrlUsuario::existeUsuario(String telCel){
  	IDictionary usuarios = getusuarios();
  	return usuarios->member(telCel);
 }

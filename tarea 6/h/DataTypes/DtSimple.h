@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 
 #ifndef DTSIMPLE
@@ -10,11 +10,11 @@ using namespace std;
 
 class DtSimple : public DtMensaje {
 	private:
-        string  dtTextSimp;
+        String  dtTextSimp;
 
     public:
-        DtSimple (string codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora) {};
+        DtSimple (String codigo, Fecha fecha, Hora hora, String text_simple) : DtMensaje (codigo, fecha, hora) {};
 
-        string  getTextSimp() const;
+        String  getTextSimp() const;
 };
 #endif

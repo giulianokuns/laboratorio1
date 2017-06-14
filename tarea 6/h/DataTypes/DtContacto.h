@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 #include "DtMensaje.h"
 
@@ -11,14 +11,14 @@ using namespace std;
 
 class DtContacto : public DtMensaje {
 	private:
-        string  dtNomContacto;
-        string  dtTelContacto;
+        String  dtNomContacto;
+        String  dtTelContacto;
 
     public:
-        DtContacto (string codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : DtMensaje (codigo, fecha, hora) {};
+        DtContacto (String codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : DtMensaje (codigo, fecha, hora) {};
         ~DtContacto ();
         
-        string  getNomContacto() const;
-        string  getTelContacto() const;
+        String  getNomContacto() const;
+        String  getTelContacto() const;
 };
 #endif

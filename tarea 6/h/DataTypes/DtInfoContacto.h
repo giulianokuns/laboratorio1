@@ -1,12 +1,12 @@
 class DtInfoContacto: public ICollectible{
 	private:
-		string nombre,
-		string telCel;
-		string urlImagen;
+		String nombre,
+		String telCel;
+		String urlImagen;
 	public:
-		DtInfoContacto(string nombre,string telCel, string urlImagen);
+		DtInfoContacto(String nombre,String telCel, String urlImagen);
 		~DtInfoContacto();
-		string getnombre();
-		string gettelCel();
-		string geturlImagen();
+		String getnombre();
+		String gettelCel();
+		String geturlImagen();
 }

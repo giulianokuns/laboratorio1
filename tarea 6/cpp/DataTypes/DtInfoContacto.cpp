@@ -1,14 +1,14 @@
-DtInfoContacto::DtInfoContacto(string nombre,string telCel, string urlImagen){
+DtInfoContacto::DtInfoContacto(String nombre,String telCel, String urlImagen){
 	this->nombre = nombre;
 	this->telCel = telCel;
 	this->urlImagen = urlImagen;
 }
-string DtInfoContacto::getnombre(){
+String DtInfoContacto::getnombre(){
 	return nombre;
 }
-string DtInfoContacto::gettelCel(){
+String DtInfoContacto::gettelCel(){
 	return telCel;
 }
-string DtInfoContacto::geturlImagen(){
+String DtInfoContacto::geturlImagen(){
 	return urlImagen;
 }

@@ -1,13 +1,13 @@
 
 class CtrlCasoEnviar{
 private:
-    string idContact;
-    string * idConver;
+    String idContact;
+    String * idConver;
     CtrlUsuario * ctrl;
 public:
 	    static Singleton *getInstancia();
 	    int cantidadArchivadas();
-	    string* crearConvrsacion(string idContact);
+	    String* crearConvrsacion(String idContact);
 	    void crearMensajeContact();
 	    void crearMensajeImagen();
 	    void crearMensajeSimple();
@@ -15,9 +15,9 @@ public:
 	    void ingresarDtImagen(DtImagen dtImagen);
 	    void ingresarDtVideo(DtVideo dtVideo);
 	    void ingresarDtSimple(DtSimple simCont);
-	    void ingresarIDContacto(string idContact);
-	    void ingresarIDArchi(string idArchi);
-	    void ingresarIDActiva(string idActiva);
+	    void ingresarIDContacto(String idContact);
+	    void ingresarIDArchi(String idArchi);
+	    void ingresarIDActiva(String idActiva);
 	    ListaDtConversacion * listarArchivadas();
 	    ListaDtConversacion * listarActivas();
 	    ListaDtInfoContactos * listarContactos();

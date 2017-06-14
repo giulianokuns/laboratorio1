@@ -1,5 +1,5 @@
 
-Conversacion::Conversacion(bool visto,string idConversacion,bool esGrupo,Grupo grupo,Usuario receptor){
+Conversacion::Conversacion(bool visto,String idConversacion,bool esGrupo,Grupo grupo,Usuario receptor){
 	this->visto = visto;
 	this->idConversacion = idConversacion;
 	this->esGrupo = esGrupo;
@@ -9,7 +9,7 @@ Conversacion::Conversacion(bool visto,string idConversacion,bool esGrupo,Grupo g
 bool Conversacion::getvisto(){
 	return visto;
 }
-string Conversacion::getidConversacion(){
+String Conversacion::getidConversacion(){
 	return idConversacion;
 }
 bool Conversacion::getesGrupo(){
@@ -25,7 +25,7 @@ Usuario Conversacion::getreceptor(){
 void Conversacion::setvisto(bool visto){
 	this->visto = visto;
 }
-void Conversacion::setidConversacion(string ID){
+void Conversacion::setidConversacion(String ID){
 	this->idConversacion = ID;
 }
 void Conversacion::setesGrupo(bool esgrupo){

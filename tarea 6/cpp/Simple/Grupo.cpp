@@ -2,10 +2,10 @@
 #include "Hora.h"
 
 
-string Grupo::getnomGrupo(){
+String Grupo::getnomGrupo(){
 	return nomGrupo;
 }
-string Grupo::getimagenGrupo(){
+String Grupo::getimagenGrupo(){
 	return imagenGrupo;
 }
 Fecha Grupo::getfechaCreacion(){
@@ -14,10 +14,10 @@ Fecha Grupo::getfechaCreacion(){
 Hora Grupo::gethoraCreacion(){
 	return horaCreacion;
 }
-void Grupo::setnomGrupo(string nombre){
+void Grupo::setnomGrupo(String nombre){
 	this->nomGrupo = nombre;
 }
-void Grupo::setimagenGrupo(string imagen){
+void Grupo::setimagenGrupo(String imagen){
 	this->imagenGrupo = imagen;
 }
 void Grupo::setfechaCreacion(Fecha fechaCreacion){

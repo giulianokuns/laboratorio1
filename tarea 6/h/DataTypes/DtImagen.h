@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 #include "DtMultimedia.h"
 
@@ -11,18 +11,18 @@ using namespace std;
 
 class DtImagen : public DtMultimedia {
 	private:
-        string  dtFormato;
+        String  dtFormato;
         int  	dtTamanio;
-        string  dtTextMulti;
-        string  dtURLpicture;
+        String  dtTextMulti;
+        String  dtURLpicture;
 
     public:
-        DtImagen (string codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : DtMensaje (codigo, fecha, hora) {};
+        DtImagen (String codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : DtMensaje (codigo, fecha, hora) {};
         ~DtImagen ();
         
-        string  getFormato() const;
+        String  getFormato() const;
         int  	getTamanio() const;
-        string  getTextMulti() const;
-        string  getURLpicture() const;
+        String  getTextMulti() const;
+        String  getURLpicture() const;
 };
 #endif

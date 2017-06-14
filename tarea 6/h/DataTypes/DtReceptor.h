@@ -1,4 +1,4 @@
-#include <string.h>
+#include <String.h>
 #include "Fecha.h"
 #include "Hora.h"
 
@@ -9,16 +9,16 @@ using namespace std;
 
 class DtReceptor : public ICollectible {
 	private:
-		string 	dtNombre;
+		String 	dtNombre;
 		int		dtNumTel;
 		Fecha 	dtFechaVisto;
 		Hora 	dtHoraVisto;
 
 	public:
-		DtReceptor (string nombre, int num_cel, Fecha fecha_visto, hora hora_visto);
+		DtReceptor (String nombre, int num_cel, Fecha fecha_visto, hora hora_visto);
 		~DtReceptor ();	
 
-		string 	getNombre () {};
+		String 	getNombre () {};
 		int 	getNumTel () {};
 		Fecha 	getFechaVisto () {};
 		Hora 	getHoraVisto () {};

@@ -1,12 +1,12 @@
 #include "DtImagen.h"
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 
 using namespace std;
 
-DtImagen::DtImagen (string codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : DtMensaje (codigo, fecha, hora) {
+DtImagen::DtImagen (String codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : DtMensaje (codigo, fecha, hora) {
 	this->dtCodigo 	   = codigo;
 	this->dtFecha 	   = fecha;
 	this->dtHora 	   = hora;
@@ -18,15 +18,15 @@ DtImagen::DtImagen (string codigo, Fecha fecha, Hora hora, string formato, int t
 
 DtImagen::~DtImagen () {}
 
-string DtImagen::getFormato() {
+String DtImagen::getFormato() {
 	return dtFormato;
 }
 int DtImagen::getTamanio() {
 	return dtTamanio;
 }
-string DtImagen::getTextMulti()  {
+String DtImagen::getTextMulti()  {
 	return dtTextMulti;
 }
-string DtImagen::getURLpicture()  {
+String DtImagen::getURLpicture()  {
 	return dtURLpicture;
 }

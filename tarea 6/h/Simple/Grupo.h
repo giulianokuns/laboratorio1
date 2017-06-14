@@ -4,17 +4,17 @@
 
 class Grupo{
 	private:
-		string nomGrupo;
-		string imagenGrupo;
+		String nomGrupo;
+		String imagenGrupo;
 		Fecha fechaCreacion;
 		Hora horaCreacion;
 	public:
-		string getnomGrupo();
-		string getimagenGrupo();
+		String getnomGrupo();
+		String getimagenGrupo();
 		Fecha getfechaCreacion();
 		Hora gethoraCreacion();
-		void setnomGrupo(string nombre);
-		void setimagenGrupo(string imagen);
+		void setnomGrupo(String nombre);
+		void setimagenGrupo(String imagen);
 		void setfechaCreacion(Fecha fechaCreacion);
 		void sethoraCreacion(Hora horaCreacion);
 }

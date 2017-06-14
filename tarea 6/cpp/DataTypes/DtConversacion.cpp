@@ -1,4 +1,4 @@
-DtConversacion::DtConversacion(bool esGrupo,string nombre,string telcel,string idConversacion){
+DtConversacion::DtConversacion(bool esGrupo,String nombre,String telcel,String idConversacion){
 	this->esGrupo = esGrupo;
 	this->nombre = nombre;
 	this->telcel = telcel;
@@ -7,12 +7,12 @@ DtConversacion::DtConversacion(bool esGrupo,string nombre,string telcel,string i
 bool DtConversacion::getesGrupo(){
 	return esGrupo;
 }
-string DtConversacion::getnombre(){
+String DtConversacion::getnombre(){
 	return nombre;
 }
-string DtConversacion::gettelcel(){
+String DtConversacion::gettelcel(){
 	return telcel;
 }
-string DtConversacion::getidConversacion(){
+String DtConversacion::getidConversacion(){
 	return idConversacion;
 }

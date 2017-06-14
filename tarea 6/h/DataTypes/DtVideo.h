@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include <stdexcept>
 #include "DtMultimedia.h"
 
@@ -12,13 +12,13 @@ using namespace std;
 class DtVideo : public DtMultimedia {
 	private:
 		int 	dtDuracion;
-        string  dtURLvideo;
+        String  dtURLvideo;
 
     public:
-        DtVideo (string codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : DtMensaje (codigo, fecha, hora) {};
+        DtVideo (String codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : DtMensaje (codigo, fecha, hora) {};
         ~DtVideo ();
         
         int  	getDuracion() const;
-        string  getURLvideo() const;
+        String  getURLvideo() const;
 };
 #endif

@@ -21,11 +21,11 @@ class CtrlUsuario{
 		
 		/*archivar_conversacion*/
 		ICollection listarActivas();
-		void archivar_conversacion(string ID);
+		void archivar_conversacion(String ID);
 
 		/*agregarContacto*/
 		ICollection getContactos();
-		bool existeUsuario(string telCel);
+		bool existeUsuario(String telCel);
 		bool esContacto(telCel);
 		DtInfoContacto agregarContacto(telcel);
 		void confirmarAgregarContacto(telcel);

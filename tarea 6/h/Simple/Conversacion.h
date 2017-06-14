@@ -1,20 +1,20 @@
 class Conversacion{
 	private:
 		bool visto;
-		string idConversacion;
+		String idConversacion;
 		bool esGrupo;
 		Grupo grupo;
 		Usuario receptor;
 	public:
-		Conversacion(bool visto,string idConversacion,bool esGrupo,Grupo grupo,Usuario receptor);
+		Conversacion(bool visto,String idConversacion,bool esGrupo,Grupo grupo,Usuario receptor);
 		~Conversacion();
 		bool getvisto();
-		string getidConversacion();
+		String getidConversacion();
 		bool getesGrupo();
 		Grupo getgrupo();
 		Usuario getreceptor();
 		void setvisto(bool visto);
-		void setidConversacion(string ID);
+		void setidConversacion(String ID);
 		void setesGrupo(bool esgrupo);
 		void setgrupo(Grupo g);
 		void setreceptor(Usuario u);

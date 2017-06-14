@@ -2,7 +2,7 @@
 #include "Hora.h"
 
 
-Usuario::Usuario(string telCel,string nomUsuario,Fecha fechaRegistro,string imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
+Usuario::Usuario(String telCel,String nomUsuario,Fecha fechaRegistro,String imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -17,11 +17,11 @@ Usuario::~Usuario(){
 	
 }
 
-string Usuario::gettelCel(){
+String Usuario::gettelCel(){
 	return telCel;
 }
 
-string Usuario::getnomUsuario(){
+String Usuario::getnomUsuario(){
 	return nomUsuario;
 }
 
@@ -29,7 +29,7 @@ Fecha Usuario::getfechaRegistro(){
 	return fechaRegistro;
 }
 
-string Usuario::getimaPerfil(){
+String Usuario::getimaPerfil(){
 	return imaPerfil;
 }
 
@@ -48,11 +48,11 @@ IDictionary Usuario::getcontactos(){
 	return contactos;
 }
 
-void Usuario::settelCel(string cel){
+void Usuario::settelCel(String cel){
 	this->telCel = cel;
 }
 
-void Usuario::setnomUsuario(string nombre){
+void Usuario::setnomUsuario(String nombre){
 	this->nomUsuario = nombre;
 }
 
@@ -60,7 +60,7 @@ void Usuario::setfechaRegistro(Fecha fechaRegistro){
 	this->fechaRegistro = fechaRegistro;
 }
 
-void Usuario::setimaPerfil(string URL){
+void Usuario::setimaPerfil(String URL){
 	this->imaPerfil = URL;
 }
 void Usuario::setfechaUltimaConex(Fecha fechaUltimaConex){
@@ -91,7 +91,7 @@ ICollection Usuario::get_lista_activos(){
 	return colecciondt;
 }
 
-void Usuario::archivar(string ID){
+void Usuario::archivar(String ID){
 	IDictionary arreglo_ec = getarreglo_ec();
 	EstadoConversacion ec = find(ID);//o el correspondiente key
 	ec->setarchivada(true);

@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstring>
-#include <string.h>
+#include <cString>
+#include <String.h>
 #include "Fecha.h"
 #include "Hora.h"
 
@@ -18,8 +18,8 @@ class DtInfoIngreso: public ICollectible {
 		DtInfoIngreso(Fecha fecha_ingreso, Hora hora_ingreso);
 		~DtInfoIngreso();
 		
-		string getFechaIngreso();
-		string getHoraIngreso();
+		String getFechaIngreso();
+		String getHoraIngreso();
 }
 
 #endif

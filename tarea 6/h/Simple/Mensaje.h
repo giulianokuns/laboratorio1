@@ -4,14 +4,14 @@
 
 class Mensaje{
 	private:
-		string codigo;
+		String codigo;
 		Fecha fechaMensaje;
 		Hora horaMensaje;
 	public:
-		string getcodigo();
+		String getcodigo();
 		Fecha getfechaMensaje();
 		Hora gethoraMensaje();
-		void setcodigo(string codigo);
+		void setcodigo(String codigo);
 		void setfechaMensaje(Fecha fechaMensaje);
 		void sethoraMensaje(Hora horaMensaje);
 }
