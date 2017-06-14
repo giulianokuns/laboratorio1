@@ -1,3 +1,5 @@
+Hora::Hora()
+
 int Hora::gethoras(){
 	return horas;
 }
