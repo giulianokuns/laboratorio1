@@ -1,5 +1,11 @@
 #include "Hora.h"
 
+
+Hora::Hora(int horas, int minutos){
+	this->horas = horas;
+	this->minutos = minutos;
+}
+
 int Hora::gethoras(){
 	return horas;
 }

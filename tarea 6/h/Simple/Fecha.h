@@ -9,6 +9,7 @@ class Fecha{
 		int mes;
 		int anio;
 	public:
+		Fecha(int dia,int mes,int anio);
 		int getdia();
 		int getmes();
 		int getanio();
