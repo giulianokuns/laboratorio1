@@ -24,6 +24,11 @@ ICollection * CtrlCasoEnviar::listarActivas(){
 	return this->ctrl.listarActivas();
 }
 
+ICollection * listarContactos(){
+	CtrlUsuario:: *ctrl = getInstancia();
+	return this->ctrl.getInfoContactos();
+}
+
  string * CtrlCasoEnviar::crearConvrsacion(string idContact){
    
  }
