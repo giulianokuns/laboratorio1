@@ -1,4 +1,7 @@
 #include "Conversacion.h"
+#include "FechaSistema.h"
+#include "HoraSistema.h"
+
 
 Conversacion::Conversacion(bool visto, String idConversacion, bool esGrupo, Grupo grupo, Usuario receptor, IDictionary mensajes){
 	this->visto 			= visto;
@@ -62,11 +65,35 @@ DtConversacion Conversacion::getinfo(){
 }
 
 ICollection Conversacion::obtenerMensajesGrupo() {
-
 }
 
 ICollection Conversacion::obtenerMensajesConv() {
-	
+	IDictionary arr_mensj = this->getMensajes();
+	ICollection lista_mensajes = new list();
+	Usuario user_log = CtrlUsuario::getusuarioLog();
+
+	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
+		Mensaje m = getCurrent();
+		DtMensaje mensaje = m->darMensaje();
+		// Agrego el mensaje a la lista de mensajes a retornar.
+		lista_mensajes->add(mensaje);
+
+		// Marco el mensaje como visto.
+		IDictionary recibidos = m->getRecibidos();		
+		for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
+			Recibido r = getCurrent();
+			Usuario * user = r->getUsuario();
+			if (user_log->gettelCel() == user->gettelCel()) {
+				Fecha fecha_visto = new Fecha (FechaSistema::getDia(), FechaSistema::getMes(), FechaSistema::getAnio());
+				Hora Hora_visto   = new Hora (HoraSistema::getHora(), HoraSistema::getMinutos());
+				
+				r->setVisto(true);		
+				r->setFechaVisto(fecha_visto);
+				r->setHoraVisto(Hora_visto);
+			}
+		}
+	}
+
 }
 
 

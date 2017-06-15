@@ -5,7 +5,11 @@
 
 #include "Grupo.h"
 #include "Usuario.h"
+#include "Mensaje.h"
+#include "Recibido.h"
 #include "ICollection.h"
+#include "IDictionary.h"
+
 
 #ifndef CONVERSACION
 #define CONVERSACION

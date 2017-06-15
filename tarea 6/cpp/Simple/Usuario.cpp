@@ -129,7 +129,7 @@ void Usuario::agregarContacto(Usuario u){
 }
 
 ICollection Usuario::mensajesCoversacion (int idConv) {
-	IDictionary ec_array = getarreglo_ec();
+	IDictionary ec_array = this->getarreglo_ec();
 	Conversacion c = NULL;
 	
 	// Una vez obtiene la conversacion sale del for
