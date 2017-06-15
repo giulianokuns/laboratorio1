@@ -30,15 +30,15 @@ void Mensaje::setRecibidos(IDictionary recibidos) {
 
 bool Mensaje::validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso) {
 	if (this->getfechaMensaje() > fecha_hora_ingreso->getFechaIngreso()) {
-		//mensaje valido
+		return true;
 	} else if (this->getfechaMensaje() == fecha_hora_ingreso->getFechaIngreso()) {
-		//Puede valer, depende de la hora
-		if (this->gethoraMensaje() >= fecha_hora_ingreso->getHoraIngreso()) {
-			//vale mensaje
+		//Depende de la hora
+		if (this->gethoraMensaje() >= fecha_hora_ingreso->getHoraIngreso()) {	
+			return true;
 		} else {
-			//no vale mensaje
+			return false;
 		}
 	} else {
-		//no vale mensaje
+		return false;
 	}
 }

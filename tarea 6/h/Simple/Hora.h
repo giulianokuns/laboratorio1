@@ -14,6 +14,8 @@ class Hora{
 		void sethoras(int hora);
 		void setminutos(int minutos);
 
+		bool operator ==(const Hora &a, const Hora &b) const;
+		bool operator  >(const Hora &a, const Hora &b) const;
 }
 
 #endif

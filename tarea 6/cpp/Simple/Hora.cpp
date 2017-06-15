@@ -18,3 +18,26 @@ void Hora::sethoras(int hora){
 void Hora::setminutos(int minutos){
 	this->minutos = minutos;
 }
+
+bool operator ==(const Hora &a, const Hora &b) const {
+	if (a.gethoras() == b.gethoras()) {
+		if (a.minutos() == b.minutos()) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool operator  >(const Hora &a, const Hora &b) const {
+	if (a.gethoras() > b.gethoras()) {
+		return true;
+	} else if (a.gethoras() < b.gethoras()) {
+		return false;
+	} else {
+		if (a.getminutos() > b.getminutos()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
