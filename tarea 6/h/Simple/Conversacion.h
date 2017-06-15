@@ -24,7 +24,7 @@ using namespace std;
 class Conversacion {
 	private:
 		bool visto;
-		String idConversacion;
+		int idConversacion;
 		bool esGrupo;
 		Grupo grupo;
 		Usuario receptor;
@@ -32,18 +32,18 @@ class Conversacion {
 		IDictionary mensajes;
 
 	public:
-		Conversacion(bool visto, String idConversacion, bool esGrupo, Grupo grupo, Usuario receptor);
+		Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, Usuario receptor);
 		~Conversacion();
 
 		bool 	getvisto();
-		String 	getidConversacion();
+		int 	getidConversacion();
 		bool 	getesGrupo();
 		Grupo 	getgrupo();
 		Usuario getreceptor();
 		IDictionary getMensajes();
 
 		void setvisto(bool visto);
-		void setidConversacion(String ID);
+		void setidConversacion(int idConv);
 		void setesGrupo(bool esgrupo);
 		void setgrupo(Grupo g);
 		void setreceptor(Usuario u);

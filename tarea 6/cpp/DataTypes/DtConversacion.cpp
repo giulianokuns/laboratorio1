@@ -1,4 +1,6 @@
-DtConversacion::DtConversacion(bool esGrupo,String nombre,String telcel,String idConversacion){
+#include "DtConversacion.h"
+
+DtConversacion::DtConversacion(bool esGrupo, String nombre, String telcel, int idConversacion){
 	this->esGrupo = esGrupo;
 	this->nombre = nombre;
 	this->telcel = telcel;
@@ -13,6 +15,6 @@ String DtConversacion::getnombre(){
 String DtConversacion::gettelcel(){
 	return telcel;
 }
-String DtConversacion::getidConversacion(){
+int DtConversacion::getidConversacion(){
 	return idConversacion;
 }

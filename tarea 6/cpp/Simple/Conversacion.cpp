@@ -8,7 +8,7 @@
 #include "DtMultimedia.h"
 
 
-Conversacion::Conversacion(bool visto, String idConversacion, bool esGrupo, Grupo grupo, Usuario receptor, IDictionary mensajes){
+Conversacion::Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, Usuario receptor, IDictionary mensajes){
 	this->visto 			= visto;
 	this->idConversacion 	= idConversacion;
 	this->esGrupo 			= esGrupo;
@@ -20,7 +20,7 @@ Conversacion::Conversacion(bool visto, String idConversacion, bool esGrupo, Grup
 bool Conversacion::getvisto(){
 	return visto;
 }
-String Conversacion::getidConversacion(){
+int Conversacion::getidConversacion(){
 	return idConversacion;
 }
 bool Conversacion::getesGrupo(){
@@ -39,7 +39,7 @@ IDictionary Conversacion::getMensajes() {
 void Conversacion::setvisto(bool visto){
 	this->visto = visto;
 }
-void Conversacion::setidConversacion(String ID){
+void Conversacion::setidConversacion(int ID){
 	this->idConversacion = ID;
 }
 void Conversacion::setesGrupo(bool esgrupo){
@@ -74,10 +74,10 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 
 	Grupo * g = this->getgrupo();
 	IDictionary arr_info_ingresos = g->getInfoIngresos();
-	
+
 	for (IIterator *it = arr_info_ingresos->getIterator(); it->hasCurrent(); it->next()) {
 		InfoIngreso info_i = getCurrent();
-		
+
 	}
 }
 
