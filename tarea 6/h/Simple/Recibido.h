@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "Fecha.h"
 #include "Hora.h"
+#include "Usuario.h"
 
 #ifndef RECIBIDO
 #define RECIBIDO
@@ -16,17 +17,19 @@ class Recibido {
         bool eliminado;
         Fecha fechaVisto;
         Hora horaVisto;
-
+        Usuario usuario;
 	public:
 		bool getVisto();
 		bool getEliminado();
 		Fecha getFechaVisto();
 		Hora getHoraVisto();
+		Usuario getUsuario();
 
 		void setVisto(bool visto);
 		void setEliminado(bool elim);
 		void setFechaVisto(Fecha fechaVisto);
 		void setHoraVisto(Hora horaVisto);
+		void setUsuario(Usuario usuario);
 };
 
 #endif

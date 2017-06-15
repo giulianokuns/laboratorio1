@@ -20,6 +20,10 @@ Fecha Recibido::getFechaVisto () {
 	return fechaVisto;
 }
 
+Usuario Recibido::getUsuario () {
+	return usuario;
+}
+
 void Recibido::setVisto (bool visto) {
 	this->visto = visto;
 }
@@ -34,4 +38,8 @@ void Recibido::setFechaVisto (Fecha fechaVisto) {
 
 void Recibido::setHoraVisto (Hora horaVisto) {
 	this->horaVisto = new Hora(horaVisto->gethoras(), horaVisto->getminutos());
+}
+
+void Recibido::setUsuario (Usuario usuario) {
+	this->usuario = usuario;
 }
