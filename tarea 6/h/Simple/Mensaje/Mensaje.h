@@ -25,9 +25,7 @@ class Mensaje {
 		void setcodigo(String codigo);
 		void setfechaMensaje(Fecha fechaMensaje);
 		void sethoraMensaje(Hora horaMensaje);
-		void setRecibidos(IDictionary recibidos);
-
-		DtMensaje darMensaje (Mensaje mensaje);
+		void setRecibidos(IDictionary recibidos);		
 }
 
 #endif

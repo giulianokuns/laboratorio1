@@ -1,7 +1,11 @@
 #include "Conversacion.h"
 #include "FechaSistema.h"
 #include "HoraSistema.h"
-
+#include "DtSimple.h"
+#include "DtContacto.h"
+#include "DtVideo.h"
+#include "DtImagen.h"
+#include "DtMultimedia.h"
 
 Conversacion::Conversacion(bool visto, String idConversacion, bool esGrupo, Grupo grupo, Usuario receptor, IDictionary mensajes){
 	this->visto 			= visto;
@@ -79,23 +83,53 @@ ICollection Conversacion::obtenerMensajesConv() {
 
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
 		Mensaje m = getCurrent();
-		DtMensaje mensaje = m->darMensaje();
+		//DtMensaje mensaje = m->darMensaje();
 		// Agrego el mensaje a la lista de mensajes a retornar.
-		lista_mensajes->add(mensaje);
 
-		if (dynamic_cast<Simple*> (&this) != NULL) {
+		if (dynamic_cast<Simple*> (&m) != NULL) {
 			//Es Simple
-		} else if (dynamic_cast<Contacto*> (&this) != NULL) {
+			DtSimple mensaje = DtSimple::DtSimple(
+											m->getcodigo(), 
+											m->getfechaMensaje(), 
+											m->gethoraMensaje(), 
+											m->getTextSimp()
+										);
+		} else if (dynamic_cast<Contacto*> (&m) != NULL) {
 			//Es Contacto
+			DtContacto mensaje = DtContacto::DtContacto(
+													m->getcodigo(), 
+													m->getfechaMensaje(), 
+													m->gethoraMensaje(), 
+													m->getNomContacto(), 
+													m->getTelContacto()
+												);
 		} else {
 			//Es Multimedia
-			if (dynamic_cast<Imagen*> (&this) != NULL) {
+			if (dynamic_cast<Imagen*> (&m) != NULL) {
 				//Es Imagen
+				DtImagen mensaje = DtImagen::DtImagen(
+												m->getcodigo(), 
+												m->getfechaMensaje(), 
+												m->gethoraMensaje(), 
+												m->getFormato(),
+												m->getTamanio(),
+												m->getTextMulti(),
+												m->getURLpicture(),
+											);
 			} else {
 				//Es Video
+				DtVideo mensaje = DtVideo::DtVideo(
+												m->getcodigo(), 
+												m->getfechaMensaje(), 
+												m->gethoraMensaje(), 
+												m->getDuracion(),
+												m->getURLvideo()
+											);
 			}
 		}
 		
+		lista_mensajes->add(mensaje);
+
 		// Marco el mensaje como visto.
 		IDictionary recibidos = m->getRecibidos();		
 		for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {

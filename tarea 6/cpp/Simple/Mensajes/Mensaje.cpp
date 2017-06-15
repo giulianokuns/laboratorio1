@@ -27,19 +27,3 @@ void Mensaje::sethoraMensaje(Hora horaMensaje){
 void Mensaje::setRecibidos(IDictionary recibidos) {
 	this->recibidos = recibidos;
 }
-	
-	//Crear uno para cada clase
-DtMensaje Mensaje::darMensaje () {
-	if (dynamic_cast<Simple*> (&this) != NULL) {
-		//Es Simple
-	} else if (dynamic_cast<Contacto*> (&this) != NULL) {
-		//Es Contacto
-	} else {
-		//Es Multimedia
-		if (dynamic_cast<Imagen*> (&this) != NULL) {
-			//Es Imagen
-		} else {
-			//Es Video
-		}
-	}
-}
