@@ -14,7 +14,7 @@
 #include "Recibido.h"
 #include "ICollection.h"
 #include "IDictionary.h"
-
+#include "InfoIngreso.h"
 
 #ifndef CONVERSACION
 #define CONVERSACION

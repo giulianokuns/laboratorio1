@@ -7,6 +7,7 @@
 #include "DtImagen.h"
 #include "DtMultimedia.h"
 
+
 Conversacion::Conversacion(bool visto, String idConversacion, bool esGrupo, Grupo grupo, Usuario receptor, IDictionary mensajes){
 	this->visto 			= visto;
 	this->idConversacion 	= idConversacion;
@@ -72,8 +73,12 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 	Usuario user_log = CtrlUsuario::getusuarioLog();
 
 	Grupo * g = this->getgrupo();
-	IDictionary InfoIngreso * info_ingreso = g->getFechaHoraIngreso();
-
+	IDictionary arr_info_ingresos = g->getInfoIngresos();
+	
+	for (IIterator *it = arr_info_ingresos->getIterator(); it->hasCurrent(); it->next()) {
+		InfoIngreso info_i = getCurrent();
+		
+	}
 }
 
 ICollection Conversacion::obtenerMensajesConv() {
@@ -84,7 +89,6 @@ ICollection Conversacion::obtenerMensajesConv() {
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
 		Mensaje m = getCurrent();
 		//DtMensaje mensaje = m->darMensaje();
-		// Agrego el mensaje a la lista de mensajes a retornar.
 
 		if (dynamic_cast<Simple*> (&m) != NULL) {
 			//Es Simple
@@ -128,6 +132,7 @@ ICollection Conversacion::obtenerMensajesConv() {
 			}
 		}
 		
+		// Agrego el mensaje a la lista de mensajes a retornar.
 		lista_mensajes->add(mensaje);
 
 		// Marco el mensaje como visto.
