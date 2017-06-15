@@ -13,4 +13,5 @@ class DtMultimedia : public DtMensaje {
     public:
         virtual ~DtMultimedia() : DtMensaje (codigo, fecha, hora) {}; 
 };
+
 #endif
