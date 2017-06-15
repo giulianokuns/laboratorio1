@@ -1,8 +1,10 @@
-#include "DtSimple.h"
 #include <iostream>
 #include <cString>
 #include <String.h>
 #include <stdexcept>
+
+#include "DtSimple.h"
+#include "DtMensaje.h"
 
 using namespace std;
 
