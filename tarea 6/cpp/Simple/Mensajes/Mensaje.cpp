@@ -33,9 +33,10 @@ bool Mensaje::validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso) {
 		return true;
 	} else if (this->getfechaMensaje() == fecha_hora_ingreso->getFechaIngreso()) {
 		//Depende de la hora
-		if (this->gethoraMensaje() >= fecha_hora_ingreso->getHoraIngreso()) {	
+		if (this->gethoraMensaje() > fecha_hora_ingreso->getHoraIngreso() || 
+			this->gethoraMensaje() == fecha_hora_ingreso->getHoraIngreso()) {	
 			return true;
-		} else {
+		} else {	
 			return false;
 		}
 	} else {

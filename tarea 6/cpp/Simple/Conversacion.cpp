@@ -92,7 +92,6 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
 		Mensaje m = getCurrent();
 
-		//Falta implementar
 		bool es_valido = m->validarFechaHoraMensaje(fecha_hora_ingreso);
 		if (es_valido) {
 			if (dynamic_cast<Simple*> (&m) != NULL) {
