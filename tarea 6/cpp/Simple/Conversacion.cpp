@@ -83,6 +83,19 @@ ICollection Conversacion::obtenerMensajesConv() {
 		// Agrego el mensaje a la lista de mensajes a retornar.
 		lista_mensajes->add(mensaje);
 
+		if (dynamic_cast<Simple*> (&this) != NULL) {
+			//Es Simple
+		} else if (dynamic_cast<Contacto*> (&this) != NULL) {
+			//Es Contacto
+		} else {
+			//Es Multimedia
+			if (dynamic_cast<Imagen*> (&this) != NULL) {
+				//Es Imagen
+			} else {
+				//Es Video
+			}
+		}
+		
 		// Marco el mensaje como visto.
 		IDictionary recibidos = m->getRecibidos();		
 		for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
