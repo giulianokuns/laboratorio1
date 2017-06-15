@@ -1,8 +1,3 @@
-#include <iostream>
-#include <cString>
-#include <String.h>
-#include <stdexcept>
-
 #include "EstadoConversacion.h"
 
 EstadoConversacion::EstadoConversacion(bool archivada, Conversacion c){

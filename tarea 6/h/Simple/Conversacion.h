@@ -1,23 +1,51 @@
-class Conversacion{
+#include <iostream>
+#include <cString>
+#include <String.h>
+#include <stdexcept>
+
+#include "Grupo.h"
+#include "Usuario.h"
+#include "ICollection.h"
+
+#ifndef CONVERSACION
+#define CONVERSACION
+
+using namespace std;
+
+class Conversacion {
 	private:
 		bool visto;
 		String idConversacion;
 		bool esGrupo;
 		Grupo grupo;
 		Usuario receptor;
+		// Mensjaes almacenados por Key Codigo.
+		IDictionary mensajes;
+
 	public:
-		Conversacion(bool visto,String idConversacion,bool esGrupo,Grupo grupo,Usuario receptor);
+		Conversacion(bool visto, String idConversacion, bool esGrupo, Grupo grupo, Usuario receptor);
 		~Conversacion();
-		bool getvisto();
-		String getidConversacion();
-		bool getesGrupo();
-		Grupo getgrupo();
+
+		bool 	getvisto();
+		String 	getidConversacion();
+		bool 	getesGrupo();
+		Grupo 	getgrupo();
 		Usuario getreceptor();
+		IDictionary getMensajes();
+
 		void setvisto(bool visto);
 		void setidConversacion(String ID);
 		void setesGrupo(bool esgrupo);
 		void setgrupo(Grupo g);
 		void setreceptor(Usuario u);
-			/*archivar_conversacion*/
+		void setMensajes(IDictionary mensajes);
+
+		/* Archivar conversacion*/
 		DtConversacion getinfo();
+
+		/* Ver Mensajes */
+		ICollection obtenerMensajesGrupo();
+		ICollection obtenerMensajesConv();
 }
+
+#endif

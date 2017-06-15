@@ -132,10 +132,18 @@ ICollection Usuario::mensajesCoversacion (int idConv) {
 	IDictionary ec_array = getarreglo_ec();
 	Conversacion c = NULL;
 	
+	// Una vez obtiene la conversacion sale del for
 	for (IIterator *it = ec_array->getIterator(); (it->hasCurrent() && c == NULL); it->next()) {
 		EstadoConversacion ec = getCurrent();
 		Conversacion c = ec->compararConv(idConv);
-		//Si encontro la conversacion BREAK;
 	}
-	//Continuacion diagrama comunicaion mensajesconversacion
+	
+	es_grupo = c->getesGrupo();
+	if (es_grupo) {
+		ICollection	mensajes = c->obtenerMensajesGrupo(); 
+	} else {
+		ICollection	mensajes = c->obtenerMensajesConv(); 
+	}
+
+	return mensajes
 }
