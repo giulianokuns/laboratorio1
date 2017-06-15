@@ -10,9 +10,9 @@ DtInfoIngreso::DtInfoIngreso (Fecha fecha_ingreso, Hora hora_ingreso) {
 
 DtInfoIngreso::~DtInfoIngreso () {}
 
-String DtInfoIngreso::getFechaIngreso() {
+Fecha DtInfoIngreso::getFechaIngreso() {
 	return dtFechaIngreso;
 }
-String DtInfoIngreso::getHoraIngreso() {
+Hora DtInfoIngreso::getHoraIngreso() {
 	return dtHoraIngreso;
 }

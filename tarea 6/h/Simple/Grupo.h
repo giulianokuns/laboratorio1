@@ -1,3 +1,8 @@
+#include <iostream>
+#include <cString>
+#include <String.h>
+#include <stdexcept>
+
 #include "Fecha.h"
 #include "Hora.h"
 #include "IDictionary.h"

@@ -70,14 +70,91 @@ DtConversacion Conversacion::getinfo(){
 }
 
 ICollection Conversacion::obtenerMensajesGrupo() {
-	Usuario user_log = CtrlUsuario::getusuarioLog();
-
+	Usuario * user_log = CtrlUsuario::getusuarioLog();
+	ICollection lista_mensajes = new list();
 	Grupo * g = this->getgrupo();
+
+	//Buscamos la fecha y hora de ingreso del usuario logeado al Grupo
 	IDictionary arr_info_ingresos = g->getInfoIngresos();
+	bool encontrado = false;
 
-	for (IIterator *it = arr_info_ingresos->getIterator(); it->hasCurrent(); it->next()) {
+	for (IIterator *it = arr_info_ingresos->getIterator(); (it->hasCurrent() && !encontrado); it->next()) {
 		InfoIngreso info_i = getCurrent();
+		Usuario * usuario = info_i->getUsuario();
+		if (user_log->gettelCel() == usuario->gettelCel()) {
+			DtInfoIngreso fecha_hora_ingreso = DtInfoIngreso::DtInfoIngreso(info_i->getfechaIngreso(), info_i->gethoraIngreso());
+			encontrado = true;
+		}
+	}
 
+	//Obtenemos los mensajes de la conversacion.
+	IDictionary arr_mensj = this->getMensajes();
+	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
+		Mensaje m = getCurrent();
+
+		//Falta implementar
+		bool es_valido = m->validarFechaHoraMensaje(fecha_hora_ingreso);
+		if (es_valido) {
+			if (dynamic_cast<Simple*> (&m) != NULL) {
+				//Es Simple
+				DtSimple mensaje = DtSimple::DtSimple(
+												m->getcodigo(), 
+												m->getfechaMensaje(), 
+												m->gethoraMensaje(), 
+												m->getTextSimp()
+											);
+			} else if (dynamic_cast<Contacto*> (&m) != NULL) {
+				//Es Contacto
+				DtContacto mensaje = DtContacto::DtContacto(
+														m->getcodigo(), 
+														m->getfechaMensaje(), 
+														m->gethoraMensaje(), 
+														m->getNomContacto(), 
+														m->getTelContacto()
+													);
+			} else {
+				//Es Multimedia
+				if (dynamic_cast<Imagen*> (&m) != NULL) {
+					//Es Imagen
+					DtImagen mensaje = DtImagen::DtImagen(
+													m->getcodigo(), 
+													m->getfechaMensaje(), 
+													m->gethoraMensaje(), 
+													m->getFormato(),
+													m->getTamanio(),
+													m->getTextMulti(),
+													m->getURLpicture(),
+												);
+				} else {
+					//Es Video
+					DtVideo mensaje = DtVideo::DtVideo(
+													m->getcodigo(), 
+													m->getfechaMensaje(), 
+													m->gethoraMensaje(), 
+													m->getDuracion(),
+													m->getURLvideo()
+												);
+				}
+			}
+			
+			// Agrego el mensaje a la lista de mensajes a retornar.
+			lista_mensajes->add(mensaje);
+
+			// Marco el mensaje como visto.
+			IDictionary recibidos = m->getRecibidos();		
+			for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
+				Recibido r = getCurrent();
+				Usuario * user = r->getUsuario();
+				if (user_log->gettelCel() == user->gettelCel()) {
+					Fecha fecha_visto = new Fecha (FechaSistema::getDia(), FechaSistema::getMes(), FechaSistema::getAnio());
+					Hora Hora_visto   = new Hora (HoraSistema::getHora(), HoraSistema::getMinutos());
+					
+					r->setVisto(true);		
+					r->setFechaVisto(fecha_visto);
+					r->setHoraVisto(Hora_visto);
+				}
+			}
+		}
 	}
 }
 

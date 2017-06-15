@@ -12,9 +12,10 @@
 #include "Imagen.h"
 #include "Video.h"
 #include "Recibido.h"
+#include "InfoIngreso.h"
+
 #include "ICollection.h"
 #include "IDictionary.h"
-#include "InfoIngreso.h"
 
 #ifndef CONVERSACION
 #define CONVERSACION

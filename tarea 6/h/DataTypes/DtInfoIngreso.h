@@ -12,14 +12,14 @@ using namespace std;
 class DtInfoIngreso: public ICollectible {
 	private:
 		Fecha dtFechaIngreso,
-		Hora dtHoraIngreso;
+		Hora  dtHoraIngreso;
 
 	public:
 		DtInfoIngreso(Fecha fecha_ingreso, Hora hora_ingreso);
 		~DtInfoIngreso();
 		
-		String getFechaIngreso();
-		String getHoraIngreso();
+		Fecha getFechaIngreso();
+		Hora  getHoraIngreso();
 }
 
 #endif
