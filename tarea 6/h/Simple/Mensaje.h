@@ -2,6 +2,7 @@
 #include "Hora.h"
 #include "Recibido.h"
 #include "IDictionary.h"
+#include "DtMensaje.h"
 
 #ifndef MENSAJES
 #define MENSAJES

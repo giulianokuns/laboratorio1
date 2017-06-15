@@ -11,7 +11,7 @@ Fecha Mensaje::getfechaMensaje(){
 Hora Mensaje::gethoraMensaje(){
 	return horaMensaje;
 }
-IDictionary getRecibidos() {
+IDictionary Mensaje::getRecibidos() {
 	return recibidos;
 }
 
@@ -24,6 +24,6 @@ void Mensaje::setfechaMensaje(Fecha fechaMensaje){
 void Mensaje::sethoraMensaje(Hora horaMensaje){
 	this->horaMensaje = horaMensaje;
 }
-void setRecibidos(IDictionary recibidos) {
+void Mensaje::setRecibidos(IDictionary recibidos) {
 	this->recibidos = recibidos;
 }

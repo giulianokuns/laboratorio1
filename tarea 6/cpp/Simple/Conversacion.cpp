@@ -65,6 +65,11 @@ DtConversacion Conversacion::getinfo(){
 }
 
 ICollection Conversacion::obtenerMensajesGrupo() {
+	Usuario user_log = CtrlUsuario::getusuarioLog();
+
+	Grupo * g = this->getgrupo();
+	IDictionary InfoIngreso * info_ingreso = g->getFechaHoraIngreso();
+
 }
 
 ICollection Conversacion::obtenerMensajesConv() {
