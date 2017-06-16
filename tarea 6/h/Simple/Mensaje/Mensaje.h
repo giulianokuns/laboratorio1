@@ -2,7 +2,9 @@
 #include "Hora.h"
 #include "Recibido.h"
 #include "DtInfoIngreso.h"
+#include "DtReceptor.h"
 
+#include "ICollection.h"
 #include "IDictionary.h"
 
 #ifndef MENSAJES
@@ -29,6 +31,7 @@ class Mensaje {
 		void setRecibidos(IDictionary recibidos);		
 
 		bool validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso);
+		ICollection getReceptores();
 }
 
 #endif

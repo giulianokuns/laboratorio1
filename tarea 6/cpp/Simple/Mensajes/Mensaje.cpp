@@ -29,12 +29,12 @@ void Mensaje::setRecibidos(IDictionary recibidos) {
 }
 
 bool Mensaje::validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso) {
-	if (this->getfechaMensaje() > fecha_hora_ingreso->getFechaIngreso()) {
+	if (this->getfechaMensaje() > fecha_hora_ingreso.getFechaIngreso()) {
 		return true;
-	} else if (this->getfechaMensaje() == fecha_hora_ingreso->getFechaIngreso()) {
+	} else if (this->getfechaMensaje() == fecha_hora_ingreso.getFechaIngreso()) {
 		//Depende de la hora
-		if (this->gethoraMensaje() > fecha_hora_ingreso->getHoraIngreso() || 
-			this->gethoraMensaje() == fecha_hora_ingreso->getHoraIngreso()) {	
+		if (this->gethoraMensaje() > fecha_hora_ingreso.getHoraIngreso() || 
+			this->gethoraMensaje() == fecha_hora_ingreso.getHoraIngreso()) {	
 			return true;
 		} else {	
 			return false;
@@ -43,3 +43,30 @@ bool Mensaje::validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso) {
 		return false;
 	}
 }
+
+ICollection Mensaje::getReceptores() {
+	IDictionary recibidos = this->getRecibidos();
+	ICollection receptores = new List();
+	
+	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
+		Recibido r = getCurrent();
+		Fecha fechaVisto = r.getFechaVisto();
+		Hora horaVisto 	 = r.getHoraVisto();
+		Usuario usuario  = r.getUsuario();
+
+		String nombre  	 = usuario.getnomUsuario();
+		String telCel  	 = usuario.gettelCel();
+
+		DtReceptor receptor = DtReceptor::DtReceptor(nombre, telCel, fechaVisto, horaVisto);
+		receptores.add(receptor);
+	}
+
+	return receptores
+}
+
+
+
+
+
+
+

@@ -18,6 +18,7 @@ class Recibido {
         Fecha fechaVisto;
         Hora horaVisto;
         Usuario usuario;
+        
 	public:
 		bool getVisto();
 		bool getEliminado();

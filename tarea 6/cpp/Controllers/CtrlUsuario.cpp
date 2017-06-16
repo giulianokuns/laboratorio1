@@ -66,9 +66,7 @@ DtFecha CtrlUsuario::altaUsuario(String numero, String nombre, String URL,String
 
 	DtFecha retorno = new DtFecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
 
-	return retorno;
-
-	
+	return retorno;	
 }
 
 Usuario * CtrlUsuario::getusuarioLog(){
@@ -91,7 +89,7 @@ void CtrlUsuario::setusuarios(IDictionary lista_usuarios){
  	return coleccion;
  }
 
- void CtrlUsuario::archivar_conversacion(String ID){
+ void CtrlUsuario::archivar_conversacion(int ID){
  	Usuario u = getusuariolog();
  	u->archivar(ID);
  }
@@ -108,22 +106,46 @@ bool CtrlUsuario::esContacto(telCel){
 	Usuario u = getusuariolog();
 	return u->esContacto(telCel);
 }
-DtInfoContacto CtrlUsuario::agregarContacto(telcel){
+DtInfoContacto CtrlUsuario::agregarContacto(String telcel){
 	Usuario u = getusuariolog();
 	return u->getIfoContacto(telCel);
 }
-void CtrlUsuario::confirmarAgregarContacto(telcel){
+void CtrlUsuario::confirmarAgregarContacto(String telcel){
 	IDictionary usuarios = getusuarios();
 	Usuario u = find(telCel);
 	agregarContacto(u);
 }
 
 ICollection CtrlUsuario::mensajesCoversacion (int idConv) {
-	//Usuario logeado
 	Usuario * user_log = usuarioLog;
 	if (user_log != NULL) {
 		return user_log->mensajesConversacion(idConv);
 	}
-	// Usuario no logeado, exception de contratos
-	return false;
+
+	throw std::invalid_argument("No hay un usuario logeado");
 }
+
+int CtrlUsuario::cantidadArchivadas () {
+	Usuario * user_log = usuarioLog;
+	
+	int cant_archivadas = user_log->getCantidadArchivadas();
+	return cant_archivadas;
+}
+
+ICollection CtrlUsuario::obtenerInfoAdicional(String codigo) {
+	Usuario * user_log = usuarioLog;
+
+	ICollection receptores = user_log->getReceptores(String codigo);
+	return receptores;
+}
+
+
+
+
+
+
+
+
+
+
+

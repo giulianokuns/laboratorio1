@@ -53,6 +53,9 @@ ICollection Usuario::getarreglo_ec(){
 IDictionary Usuario::getcontactos(){
 	return contactos;
 }
+IDictionary Usuario::getMensajes(){
+	return mensajes;
+}
 
 void Usuario::settelCel(String cel){
 	this->telCel = cel;
@@ -78,20 +81,23 @@ void Usuario::sethoraUltimaConex(Hora horaUltimaConex){
 void Usuario::setarreglo_ec(ICollection arreglo_ec){
 	this->arreglo_ec = arreglo_ec;
 }
-void setcontactos(IDictionary contactos){
+void Usuario::setcontactos(IDictionary contactos){
 	this->contactos = contactos;
 }
-	
+void Usuario::setMensajes(IDictionary mensajes){
+	this->mensajes = mensajes;
+}
+
 /*archivar_conversacion*/
 ICollection Usuario::get_lista_activos(){
 	IDictionary arreglo_ec = getarreglo_ec();
 	ICollection colecciondt = new List();
 	for (IIterator *it = arreglo_ec->getIterator(); it->hasCurrent(); it->next()) {
 		EstadoConversacion ec = getCurrent();
-		if (!ec->getarchivada()) {
-			Conversacon c = ec->getconversacion();
-			Dtconversacion dtc = c->getinfo();
-			colecciondt->add(dtc);
+		if (!ec.getarchivada()) {
+			Conversacon c = ec.getconversacion();
+			Dtconversacion dtc = c.getinfo();
+			colecciondt.add(dtc);
 		}
 	}
 	return colecciondt;
@@ -100,7 +106,7 @@ ICollection Usuario::get_lista_activos(){
 void Usuario::archivar(String ID){
 	IDictionary arreglo_ec = getarreglo_ec();
 	EstadoConversacion ec = find(ID);//o el correspondiente key
-	ec->setarchivada(true);
+	ec.setarchivada(true);
 }
 	/*agregarContacto*/
 ICollection Usuario::getInfoContactos(){
@@ -135,15 +141,36 @@ ICollection Usuario::mensajesCoversacion (int idConv) {
 	// Una vez obtiene la conversacion sale del for
 	for (IIterator *it = ec_array->getIterator(); (it->hasCurrent() && c == NULL); it->next()) {
 		EstadoConversacion ec = getCurrent();
-		Conversacion c = ec->compararConv(idConv);
+		Conversacion c = ec.compararConv(idConv);
 	}
 	
-	es_grupo = c->getesGrupo();
+	es_grupo = c.getesGrupo();
 	if (es_grupo) {
-		ICollection	mensajes = c->obtenerMensajesGrupo(); 
+		ICollection	mensajes = c.obtenerMensajesGrupo(); 
 	} else {
-		ICollection	mensajes = c->obtenerMensajesConv(); 
+		ICollection	mensajes = c.obtenerMensajesConv(); 
 	}
 
 	return mensajes
+}
+
+int Usuario::getCantidadArhivadas() {
+	IDictionary ec_array = this->getarreglo_ec();
+	int cant_archivadas = 0;
+
+	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
+		EstadoConversacion ec = getCurrent();
+		bool esta_archivada = ec.getarchivada();
+		if (esta_archivada) {
+			cant_archivadas++;
+		}
+	}
+
+	return cant_archivadas;
+}
+
+ICollection Usuario::getReceptores(String codigo) {
+	IDictionary arr_mensj = this->getMensajes();
+	Mensaje m = arr_mensj.find(codigo);
+	ICollection receptores = m.getReceptores();
 }

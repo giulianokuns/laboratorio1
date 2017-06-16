@@ -19,6 +19,9 @@ class Usuario: public ICollectible{
 		IDictionary arreglo_ec;
 		/*se almacenan con la key correspondiente a su numero de telefono*/
 		IDictionary contactos;
+		/* Key : Codigo */
+		IDictionary mensajes;
+
 	public:
 		Usuario(String telCel,String nomUsuario,Fecha fechaRegistro,String imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos);
 		~Usuario();
@@ -31,7 +34,8 @@ class Usuario: public ICollectible{
 		Hora gethoraUltimaConex();
 		IDictionary getarreglo_ec();
 		IDictionary getcontactos();
-		
+		IDictionary getMensajes();
+
 		void settelCel(String cel);
 		void setnomUsuario(String nombre);
 		void setfechaRegistro(Fecha fechaRegistro);
@@ -40,19 +44,22 @@ class Usuario: public ICollectible{
 		void sethoraUltimaConex(Hora horaUltimaConex);
 		void setarreglo_ec(ICollection arreglo_ec); // ????? ICollection bien ?
 		void setcontactos(IDictionary contactos);
+		void setMensajes(IDictionary mensajes);		
 		
 		/*archivar_conversacion*/
 		ICollection get_lista_activos();
-		void archivar(String ID);	
+		void archivar(int ID);	
 		
 		/*agregarContacto*/
-		ICollection getInfoContactos();
+		ICollection 	getInfoContactos();
+		DtInfoContacto 	getIfoContacto(telCel);
 		bool esContacto(telCel);
-		DtInfoContacto getIfoContacto(telCel);
 		void agregarContacto(Usuario u);
 		
 		/* Ver Mensaje */
 		ICollection mensajesCoversacion (int idConv);
+		int getCantidadArhivadas();
+		ICollection getReceptores(String codigoMensaje);
 }
 
 #endif

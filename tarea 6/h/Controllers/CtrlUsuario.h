@@ -20,11 +20,13 @@ class CtrlUsuario{
 
 		/* Ver Mensaje */
 		ICollection mensajesCoversacion (int idConv);
-		
+		int cantidadArchivadas ();
+		//Info adicional de un mensaje enviado por el usuario logeado.
+		ICollection obtenerInfoAdicional(String codigo);
+
 		/*archivar_conversacion*/
 		ICollection listarActivas();
-		void archivar_conversacion(String ID);
-
+		void archivar_conversacion(int ID);
 		/*agregarContacto*/
 		ICollection getContactos();
 		bool existeUsuario(String telCel);
