@@ -160,7 +160,7 @@ IKey CtrlUsuario::crearConvNueva(IKey tel ,Ikey converID){
     participantes->add(this->getusuarioLog()->gettelCel() ,this->getusuarioLog());
     IDictionary ar_usu = getusuarios();
     participantes->add(tel ,ar_usu->find(tel)); 
-    Conversacion c = Conversacion(false, converID, false, NULL, participantes);
+    Conversacion c = new Conversacion(false, converID, false, NULL, participantes);
 
     //Se crea un nuevo estado de conversación, con la conversación
     //anteriormente creada y se lo asocia a los participantes.

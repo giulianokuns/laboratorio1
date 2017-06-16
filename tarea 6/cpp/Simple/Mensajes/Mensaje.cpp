@@ -65,7 +65,7 @@ ICollection Mensaje::getReceptores() {
 }
 
 void Mensaje::eliminarMensajeEmisor() {
-
+	
 }
 
 void Mensaje::eliminarMensajeReceptor() {

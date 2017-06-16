@@ -1,9 +1,10 @@
 #include "CtrlUsuario.h"
 #include "Mensaje.h"
 #include "Usuario.h"
+#include "CtrlCasoEnviar.h"
 
 // Singleton
-CtrlCasoEnviar * CtrlCasoEnviar::getInstancia(){
+CtrlCasoEnviar * CtrlCasoEnviar::getInstancia() {
 	if (instancia == NUL)
 		this->instancia = new CtrlCasoEnviar;
 	return instancia;
@@ -29,6 +30,6 @@ ICollection * listarContactos(){
 	return this->ctrl.getInfoContactos();
 }
 
- string * CtrlCasoEnviar::crearConvrsacion(string idContact){
+IKey * CtrlCasoEnviar::crearConvrsacion(String idContact) {
    
- }
+}
