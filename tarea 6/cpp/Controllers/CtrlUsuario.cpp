@@ -146,7 +146,10 @@ ICollection CtrlUsuario::obtenerInfoAdicional(String codigo) {
 	return receptores;
 }
 
-
+void CtrlUsuario::eliminarMensaje (String codigo) {
+	Usuario * user_log = usuarioLog;
+	u->eliminarMensaje(String codigo);
+}
 
 
 

@@ -149,7 +149,7 @@ void Usuario::agregarContacto(Usuario u){
 }
 
 ICollection Usuario::mensajesCoversacion (int idConv) {
-	IDictionary ec_array = this->getarreglo_ec();
+	IDictionary * ec_array = this->getarreglo_ec();
 	Conversacion c = NULL;
 	
 	// Una vez obtiene la conversacion sale del for
@@ -169,7 +169,7 @@ ICollection Usuario::mensajesCoversacion (int idConv) {
 }
 
 int Usuario::getCantidadArhivadas() {
-	IDictionary ec_array = this->getarreglo_ec();
+	IDictionary * ec_array = this->getarreglo_ec();
 	int cant_archivadas = 0;
 
 	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {

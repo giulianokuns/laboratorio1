@@ -24,6 +24,9 @@ class CtrlUsuario{
 		//Info adicional de un mensaje enviado por el usuario logeado.
 		ICollection obtenerInfoAdicional(String codigo);
 
+		/* Eliminar Mensaje */
+		void eliminarMensaje (String codigo);
+
 		/*archivar_conversacion*/
 		ICollection listarArchivadas();
 		ICollection listarActivas();
