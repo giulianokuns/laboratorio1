@@ -1,7 +1,7 @@
 #include "DtConversacion.h"
 #include "IKey.h"
 
-DtConversacion::DtConversacion(bool esGrupo, String nombre, String telcel, IKey idConversacion){
+DtConversacion::DtConversacion(bool esGrupo, String nombre, IKey telCel, IKey idConversacion){
 	this->esGrupo = esGrupo;
 	this->nombre = nombre;
 	this->telcel = telcel;

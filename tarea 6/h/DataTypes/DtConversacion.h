@@ -8,10 +8,10 @@ class DtConversacion: public ICollectibe {
 		IKey idConversacion;
 		bool esGrupo;
 		String nombre;
-		String telcel;
+		IKey telCel;
 
 	public:
-		DtConversacion(bool esGrupo, String nombre, String telcel, IKey idConversacion);
+		DtConversacion(bool esGrupo, String nombre, IKey telCel, IKey idConversacion);
 		~DtConversacion();
 		IKey getidConversacion();
 		bool getesGrupo();

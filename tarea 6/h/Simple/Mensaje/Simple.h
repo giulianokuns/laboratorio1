@@ -15,7 +15,7 @@ class Simple : public Mensaje {
         String  textSimp;
 
     public:
-        Simple (String codigo, Fecha fecha, Hora hora, String text_simple) : Mensaje (codigo, fecha, hora) {};
+        Simple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : Mensaje (codigo, fecha, hora) {};
 
         String  getTextSimp() const;
 };

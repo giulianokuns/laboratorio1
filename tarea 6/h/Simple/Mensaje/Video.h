@@ -16,7 +16,7 @@ class Video : public Multimedia {
         String  URLvideo;
 
     public:
-        Video (String codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : Mensaje (codigo, fecha, hora) {};
+        Video (IKey codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : Mensaje (codigo, fecha, hora) {};
         ~Video ();
         
         int  	getDuracion() const;

@@ -35,7 +35,7 @@ bool CtrlUsuario::inicioSesion(){
 	return usuarioLog == NULL
 }
 
-bool CtrlUsuario::ingresar(String numero){
+bool CtrlUsuario::ingresar(IKey numero){
 
 	if (usuarioLog == NULL){
 
@@ -55,7 +55,7 @@ bool CtrlUsuario::ingresar(String numero){
 	}
 }
 
-DtFecha CtrlUsuario::altaUsuario(String numero, String nombre, String URL,String Descripcion){
+DtFecha CtrlUsuario::altaUsuario(IKey numero, String nombre, String URL,String Descripcion){
 
 	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
 	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
@@ -105,7 +105,7 @@ ICollection CtrlUsuario::listarActivas(){
  	Usuario u = getusuariolog();
  	return u->getIfoContactos();
  }
- bool CtrlUsuario::existeUsuario(String telCel){
+ bool CtrlUsuario::existeUsuario(IKey telCel){
  	IDictionary usuarios = getusuarios();
  	return usuarios->member(telCel);
 }
@@ -113,11 +113,11 @@ bool CtrlUsuario::esContacto(telCel){
 	Usuario u = getusuariolog();
 	return u->esContacto(telCel);
 }
-DtInfoContacto CtrlUsuario::agregarContacto(String telcel){
+DtInfoContacto CtrlUsuario::agregarContacto(IKey telCel){
 	Usuario u = getusuariolog();
 	return u->getIfoContacto(telCel);
 }
-void CtrlUsuario::confirmarAgregarContacto(String telcel){
+void CtrlUsuario::confirmarAgregarContacto(IKey telCel){
 	IDictionary usuarios = getusuarios();
 	Usuario u = find(telCel);
 	agregarContacto(u);
@@ -139,16 +139,16 @@ int CtrlUsuario::cantidadArchivadas () {
 	return cant_archivadas;
 }
 
-ICollection CtrlUsuario::obtenerInfoAdicional(String codigo) {
+ICollection CtrlUsuario::obtenerInfoAdicional(IKey codigo) {
 	Usuario * user_log = usuarioLog;
 
-	ICollection receptores = user_log->getReceptores(String codigo);
+	ICollection receptores = user_log->getReceptores(IKey codigo);
 	return receptores;
 }
 
-void CtrlUsuario::eliminarMensaje (String codigo) {
+void CtrlUsuario::eliminarMensaje (IKey codigo) {
 	Usuario * user_log = usuarioLog;
-	u->eliminarMensaje(String codigo);
+	u->eliminarMensaje(IKey codigo);
 }
 
 

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Imagen::Imagen (String codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : Mensaje (codigo, fecha, hora) {
+Imagen::Imagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : Mensaje (codigo, fecha, hora) {
 	this->dtCodigo 	   = codigo;
 	this->dtFecha 	   = fecha;
 	this->dtHora 	   = hora;

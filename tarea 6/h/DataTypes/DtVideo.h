@@ -15,7 +15,7 @@ class DtVideo : public DtMultimedia {
         String  dtURLvideo;
 
     public:
-        DtVideo (String codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : DtMensaje (codigo, fecha, hora) {};
+        DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : DtMensaje (codigo, fecha, hora) {};
         ~DtVideo ();
         
         int  	getDuracion() const;

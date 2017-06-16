@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Video::Video (String codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : Mensaje (codigo, fecha, hora) {
+Video::Video (IKey codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : Mensaje (codigo, fecha, hora) {
 	this->codigo 	    = codigo;
 	this->fecha 	    = new Fecha(fecha->getdia(), fecha->getmes(), fecha->getanio());
 	this->hora 		  	= new Hora(hora->gethoras(), hora->getminutos());

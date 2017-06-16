@@ -17,7 +17,7 @@ class DtImagen : public DtMultimedia {
         String  dtURLpicture;
 
     public:
-        DtImagen (String codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : DtMensaje (codigo, fecha, hora) {};
+        DtImagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : DtMensaje (codigo, fecha, hora) {};
         ~DtImagen ();
         
         String  getFormato() const;

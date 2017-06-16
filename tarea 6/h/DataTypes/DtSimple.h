@@ -13,7 +13,7 @@ class DtSimple : public DtMensaje {
         String  dtTextSimp;
 
     public:
-        DtSimple (String codigo, Fecha fecha, Hora hora, String text_simple) : DtMensaje (codigo, fecha, hora) {};
+        DtSimple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : DtMensaje (codigo, fecha, hora) {};
 
         String  getTextSimp() const;
 };

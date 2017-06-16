@@ -17,7 +17,7 @@ class Imagen : public Multimedia {
         String  URLpicture;
 
     public:
-        Imagen (String codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : Mensaje (codigo, fecha, hora) {};
+        Imagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : Mensaje (codigo, fecha, hora) {};
         ~Imagen ();
         
         String  getFormato() const;

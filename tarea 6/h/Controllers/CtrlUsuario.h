@@ -22,10 +22,10 @@ class CtrlUsuario{
 		ICollection mensajesCoversacion (IKey idConv);
 		int cantidadArchivadas ();
 		//Info adicional de un mensaje enviado por el usuario logeado.
-		ICollection obtenerInfoAdicional(String codigo);
+		ICollection obtenerInfoAdicional(IKey codigo);
 
 		/* Eliminar Mensaje */
-		void eliminarMensaje (String codigo);
+		void eliminarMensaje (IKey codigo);
 
 		/*archivar_conversacion*/
 		ICollection listarArchivadas();
@@ -33,7 +33,7 @@ class CtrlUsuario{
 		void archivar_conversacion(IKey ID);
 		/*agregarContacto*/
 		ICollection getContactos();
-		bool existeUsuario(String telCel);
+		bool existeUsuario(IKey telCel);
 		bool esContacto(telCel);
 		DtInfoContacto agregarContacto(telcel);
 		void confirmarAgregarContacto(telcel);
@@ -44,7 +44,7 @@ class CtrlUsuario{
 		/*abrir GUASAP*/
 
 		bool inicioSesion();
-		DtFecha altaUsuario(String numero, String nombre, String URL,String Descripcion);
-		bool ingresar(String numero); 
+		DtFecha altaUsuario(IKey numero, String nombre, String URL,String Descripcion);
+		bool ingresar(IKey numero); 
 
 }

@@ -1,6 +1,6 @@
 #include "DtInfoContacto.h"
 
-DtInfoContacto::DtInfoContacto(String nombre, String telCel, String urlImagen){
+DtInfoContacto::DtInfoContacto(String nombre, IKey telCel, String urlImagen){
 	this->nombre = nombre;
 	this->telCel = telCel;
 	this->urlImagen = urlImagen;

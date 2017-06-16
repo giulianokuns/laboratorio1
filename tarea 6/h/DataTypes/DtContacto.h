@@ -15,7 +15,7 @@ class DtContacto : public DtMensaje {
         String  dtTelContacto;
         
     public:
-        DtContacto (String codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : DtMensaje (codigo, fecha, hora) {};
+        DtContacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : DtMensaje (codigo, fecha, hora) {};
         ~DtContacto ();
         
         String  getNomContacto() const;

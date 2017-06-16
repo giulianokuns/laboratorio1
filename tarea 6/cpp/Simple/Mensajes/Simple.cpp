@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Simple::Simple (String codigo, Fecha fecha, Hora hora, String text_simple) : Mensaje (codigo, fecha, hora)  {
+Simple::Simple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : Mensaje (codigo, fecha, hora)  {
 	this->Codigo 	= codigo;
 	this->Fecha 	= fecha;
 	this->Hora 	 	= hora;

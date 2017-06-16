@@ -16,7 +16,7 @@ class Contacto : public Mensaje {
         String  telContacto;
 
     public:
-        Contacto (String codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : Mensaje (codigo, fecha, hora) {};
+        Contacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : Mensaje (codigo, fecha, hora) {};
         ~Contacto ();
         
         String  getNomContacto() const;

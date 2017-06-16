@@ -15,7 +15,7 @@ IDictionary Mensaje::getRecibidos() {
 	return recibidos;
 }
 
-void Mensaje::setcodigo(String codigo){
+void Mensaje::setcodigo(IKey codigo){
 	this->codigo = codigo;
 }
 void Mensaje::setfechaMensaje(Fecha fechaMensaje){
@@ -55,7 +55,7 @@ ICollection Mensaje::getReceptores() {
 		Usuario usuario  = r.getUsuario();
 
 		String nombre  	 = usuario.getnomUsuario();
-		String telCel  	 = usuario.gettelCel();
+		IKey telCel  	 = usuario.gettelCel();
 
 		DtReceptor receptor = DtReceptor::DtReceptor(nombre, telCel, fechaVisto, horaVisto);
 		receptores.add(receptor);

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Contacto::Contacto (String codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : Mensaje (codigo, fecha, hora)  {
+Contacto::Contacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : Mensaje (codigo, fecha, hora)  {
 	this->codigo 	 	= codigo;
 	this->fecha 	 	= fecha;
 	this->hora 	 		= hora;
