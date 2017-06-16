@@ -45,5 +45,8 @@ class CtrlUsuario{
 		bool inicioSesion();
 		DtFecha altaUsuario(IKey numero, String nombre, String URL,String Descripcion);
 		bool ingresar(IKey numero); 
+       
+       /*enviar mensaje*/
+       IKey crearConvNueva(IKey tel ,Ikey converID); 
 
 }

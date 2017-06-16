@@ -151,7 +151,28 @@ void CtrlUsuario::eliminarMensaje (IKey codigo, IKey idConv) {
 	u->eliminarMensaje(IKey codigo, IKey idConv);
 }
 
+//Enviar mensaje
+IKey CtrlUsuario::crearConvNueva(IKey tel ,Ikey converID){
+	// Se crea la conversación nueva con el id de conversación
+	//autogenerado por el sistema, el usuario logeado y el
+	//usuario asociado a la IKet tel.
+    IDictionary *participantes = new OrderedDictionary();
+    participantes->add(this->getusuarioLog()->gettelCel() ,this->getusuarioLog());
+    IDictionary ar_usu = getusuarios();
+    participantes->add(tel ,ar_usu->find(tel)); 
+    Conversacion c = Conversacion(false, converID, false, NULL, participantes);
 
+    //Se crea un nuevo estado de conversación, con la conversación
+    //anteriormente creada y se lo asocia a los participantes.
+    Usuario log = this->getusuarioLog();
+    IDictionary ar_ec = log->getarreglo_ec();
+    ICollectible ec = new EstadoConversacion(true,c);
+    ar_ec->add(converID, ec);
+
+    Usuario participante = ar_usu->find(tel);
+    IDictionary *ar_ecTel = participante->getarreglo_ec();
+    ar_ecTel->add(converID, ec);
+}
 
 
 
