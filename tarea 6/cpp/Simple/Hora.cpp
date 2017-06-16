@@ -22,7 +22,7 @@ void Hora::setminutos(int minutos){
 bool operator ==(const Hora &a, const Hora &b) const {
 	if (a.gethoras() == b.gethoras()) {
 		if (a.minutos() == b.minutos()) {
-			return true;
+			return true;	
 		}
 	}
 	return false;
