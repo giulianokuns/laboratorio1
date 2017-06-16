@@ -17,7 +17,7 @@ class DtConversacion: public ICollectibe {
 		bool getesGrupo();
 		String getnombre();
 		//en caso de ser esgrupo true no deveria tomarseen cuenta telcel
-		String gettelcel();
+		IKey gettelcel();
 }
 
 #endif

@@ -47,6 +47,5 @@ class CtrlUsuario{
 		bool ingresar(IKey numero); 
        
        /*enviar mensaje*/
-       IKey crearConvNueva(IKey tel ,Ikey converID); 
-
+       IKey crearConvNueva(IKey tel ,Ikey converID);
 }

@@ -173,7 +173,3 @@ IKey CtrlUsuario::crearConvNueva(IKey tel ,Ikey converID){
     IDictionary *ar_ecTel = participante->getarreglo_ec();
     ar_ecTel->add(converID, ec);
 }
-
-
-
-
