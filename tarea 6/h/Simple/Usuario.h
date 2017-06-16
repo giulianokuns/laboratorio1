@@ -45,7 +45,9 @@ class Usuario: public ICollectible{
 		void setarreglo_ec(ICollection arreglo_ec); // ????? ICollection bien ?
 		void setcontactos(IDictionary contactos);
 		void setMensajes(IDictionary mensajes);		
-		
+
+		ICollection getListaArchivadas();
+
 		/*archivar_conversacion*/
 		ICollection get_lista_activos();
 		void archivar(int ID);	

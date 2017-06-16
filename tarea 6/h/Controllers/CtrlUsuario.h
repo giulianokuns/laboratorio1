@@ -25,6 +25,7 @@ class CtrlUsuario{
 		ICollection obtenerInfoAdicional(String codigo);
 
 		/*archivar_conversacion*/
+		ICollection listarArchivadas();
 		ICollection listarActivas();
 		void archivar_conversacion(int ID);
 		/*agregarContacto*/

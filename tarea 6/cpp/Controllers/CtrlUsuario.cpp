@@ -82,12 +82,19 @@ void CtrlUsuario::setusuarios(IDictionary lista_usuarios){
 	this->usuarios = lista_usuarios;
 }
 
+
+ICollection CtrlUsuario::listarArchivadas(){
+ 	Usuario * u = usuarioLog;
+ 	ICollection conv_arhivadas = u.getListaArchivadas();
+	return conv_arhivadas;
+}
+
 	/*archivar_conversacion*/
- ICollection CtrlUsuario::listarActivas(){
+ICollection CtrlUsuario::listarActivas(){
  	Usuario u = getusuariolog();
  	ICollection coleccion = u.get_lista_activos();
  	return coleccion;
- }
+}
 
  void CtrlUsuario::archivar_conversacion(int ID){
  	Usuario u = getusuariolog();
@@ -138,9 +145,6 @@ ICollection CtrlUsuario::obtenerInfoAdicional(String codigo) {
 	ICollection receptores = user_log->getReceptores(String codigo);
 	return receptores;
 }
-
-
-
 
 
 

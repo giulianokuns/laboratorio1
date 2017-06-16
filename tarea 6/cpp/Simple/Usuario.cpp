@@ -88,6 +88,20 @@ void Usuario::setMensajes(IDictionary mensajes){
 	this->mensajes = mensajes;
 }
 
+ICollection getListaArchivadas() {
+	IDictionary ec_array = getarreglo_ec();
+	ICollection list_archivadas = new List();
+	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
+		EstadoConversacion ec = getCurrent();
+		if (ec.getarchivada()) {
+			Conversacon c = ec.getconversacion();
+			Dtconversacion dtc = c.getinfo();
+			list_archivadas.add(dtc);
+		}
+	}
+	return list_archivadas;
+}
+
 /*archivar_conversacion*/
 ICollection Usuario::get_lista_activos(){
 	IDictionary arreglo_ec = getarreglo_ec();
@@ -113,7 +127,7 @@ ICollection Usuario::getInfoContactos(){
 	IDictionary contactos = getcontactos();
 	ICollection lista_dtInfoContacto = new list();
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
-		Usuario u = getCurrent();
+		Usuario * u = getCurrent();
 		DtInfoContacto *dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
 		lista_dtInfoContacto->add(dt);
 	}
