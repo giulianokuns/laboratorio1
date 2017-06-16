@@ -72,7 +72,8 @@ DtConversacion Conversacion::getinfo(){
 }
 
 ICollection Conversacion::obtenerMensajesGrupo() {
-	Usuario * user_log = CtrlUsuario::getusuarioLog();
+	CtrlUsuario *CI = getinstancia();
+	Usuario * user_log = CI->getusuarioLog();
 	ICollection lista_mensajes = new list();
 	Grupo * g = this->getgrupo();
 
@@ -160,6 +161,9 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 }
 
 ICollection Conversacion::obtenerMensajesConv() {
+	CtrlUsuario *CI = CtrlUsuario::getinstancia();
+	Usuario * user_log = CI->getusuarioLog();
+	
 	IDictionary arr_mensj = this->getMensajes();
 	ICollection lista_mensajes = new list();
 	Usuario user_log = CtrlUsuario::getusuarioLog();

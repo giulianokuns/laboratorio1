@@ -64,12 +64,25 @@ ICollection Mensaje::getReceptores() {
 	return receptores
 }
 
-void Mensaje::eliminarMensajeEmisor() {
+void Mensaje::eliminarMensajeEmisor(Conversacion * conversacion) {
+	IDictionary * recibidos = this->getRecibidos();
+	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
+		Recibido r = getCurrent();
+		r->setEliminado(true);
+	}
+
+	IDictionary * mensajes = conversacion->getMensajes();
+	mensajes->remove(this->getcodigo());
 	
+	delete this;
 }
 
 void Mensaje::eliminarMensajeReceptor() {
+	IDictionary * recibidos = this->getRecibidos();
+	CtrlUsuario *CI = CtrlUsuario::getinstancia();
+	Usuario * user_log = CI->getusuarioLog();
 
+	recibidos->remove(user_log->gettelCel());
 }
 
 

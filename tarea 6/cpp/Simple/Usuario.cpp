@@ -201,8 +201,8 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 	IDictionary * arr_ec = this->getarreglo_ec();
 	for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent() && !es_mensaje); it->next()) {
 		EstadoConversacion * ec = getCurrent();
-		Conversacion conv = ec->getconversacion();
-		if (idConv.compare(conv.getidConversacion())) {
+		Conversacion * conv = ec->getconversacion();
+		if (idConv.compare(conv->getidConversacion())) {
 			IDictionary mensajes = conv->getMensajes();
 			Mensaje mensj = mensajes.find(codigo);
 
@@ -215,7 +215,7 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 	if (es_emisor) {
 		mensj.eliminarMensajeEmisor();
 	} else {
-		mensj.eliminarMensajeReceptor();
+		mensj.eliminarMensajeReceptor(conv);
 	}
 }
 
