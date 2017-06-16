@@ -166,7 +166,6 @@ ICollection Conversacion::obtenerMensajesConv() {
 	
 	IDictionary arr_mensj = this->getMensajes();
 	ICollection lista_mensajes = new list();
-	Usuario user_log = CtrlUsuario::getusuarioLog();
 
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
 		Mensaje * m = getCurrent();

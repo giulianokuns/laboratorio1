@@ -73,7 +73,7 @@ void Mensaje::eliminarMensajeEmisor(Conversacion * conversacion) {
 
 	IDictionary * mensajes = conversacion->getMensajes();
 	mensajes->remove(this->getcodigo());
-	
+
 	delete this;
 }
 
@@ -84,7 +84,3 @@ void Mensaje::eliminarMensajeReceptor() {
 
 	recibidos->remove(user_log->gettelCel());
 }
-
-
-
-
