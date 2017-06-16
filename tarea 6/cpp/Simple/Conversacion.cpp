@@ -8,12 +8,12 @@
 #include "DtMultimedia.h"
 
 
-Conversacion::Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, Usuario receptor, IDictionary mensajes){
+Conversacion::Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes, IDictionary mensajes){
 	this->visto 			= visto;
 	this->idConversacion 	= idConversacion;
 	this->esGrupo 			= esGrupo;
 	this->grupo 			= grupo;
-	this->receptor 			= receptor;
+	this->participantes 	= participantes;
 	this->mensajes 			= mensajes;
 }
 
@@ -29,8 +29,8 @@ bool Conversacion::getesGrupo(){
 Grupo Conversacion::getgrupo(){
 	return grupo;
 }
-Usuario Conversacion::getreceptor(){
-	return receptor;
+IDictionary Conversacion::getparticipantes(){
+	return participantes;
 }
 IDictionary Conversacion::getMensajes() {
 	return mensajes;
@@ -48,8 +48,8 @@ void Conversacion::setesGrupo(bool esgrupo){
 void Conversacion::setgrupo(Grupo g){
 	this->grupo = grupo;
 }
-void Conversacion::setreceptor(Usuario u){
-	this->receptor = receptor;
+void Conversacion::setparticipantes(IDictionary participantes){
+	this->participantes = participantes;
 }
 void Conversacion::setMensajes(IDictionary mensajes) {
 	this->mensajes = mensajes;

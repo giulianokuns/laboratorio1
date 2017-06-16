@@ -28,26 +28,26 @@ class Conversacion {
 		int idConversacion;
 		bool esGrupo;
 		Grupo grupo;
-		Usuario receptor;
+		IDictionary participantes;
 		// Mensjaes almacenados por Key Codigo.
 		IDictionary mensajes;
 
 	public:
-		Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, Usuario receptor);
+		Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes);
 		~Conversacion();
 
 		bool 	getvisto();
 		int 	getidConversacion();
 		bool 	getesGrupo();
 		Grupo 	getgrupo();
-		Usuario getreceptor();
+		IDictionary getparticipantes();
 		IDictionary getMensajes();
 
 		void setvisto(bool visto);
 		void setidConversacion(int idConv);
 		void setesGrupo(bool esgrupo);
 		void setgrupo(Grupo g);
-		void setreceptor(Usuario u);
+		void setparticipantes(IDictionary participantes);
 		void setMensajes(IDictionary mensajes);
 
 		/* Archivar conversacion*/
