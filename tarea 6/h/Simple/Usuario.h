@@ -1,5 +1,6 @@
 #include "Fecha.h"
 #include "Hora.h"
+#include "DtConversacion.h"
 #include "IDictionary.h"
 
 #ifndef USUARIO

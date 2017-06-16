@@ -1,4 +1,6 @@
-class DtInfoContacto: public ICollectible{
+
+
+class DtInfoContacto: public ICollectible {
 	private:
 		String nombre,
 		String telCel;
