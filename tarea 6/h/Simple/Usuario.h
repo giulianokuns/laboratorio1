@@ -67,7 +67,7 @@ class Usuario: public ICollectible {
 		ICollection getReceptores(IKey codigoMensaje);
 
 		/* Eliminar Mensaje */
-		void eliminarMensaje (IKey codigo);
+		void eliminarMensaje (IKey codigo, IKey idConv);
 
 }
 

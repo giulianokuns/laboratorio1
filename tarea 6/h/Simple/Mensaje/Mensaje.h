@@ -34,6 +34,8 @@ class Mensaje : public ICollectible {
 
 		bool validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso);
 		ICollection getReceptores();
+		void eliminarMensajeEmisor();
+		void eliminarMensajeReceptor();
 }
 
 #endif

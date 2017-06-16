@@ -84,7 +84,7 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 		InfoIngreso * info_i = getCurrent();
 		Usuario * usuario = info_i->getUsuario();
 		if (user_log->gettelCel() == usuario->gettelCel()) {
-			DtInfoIngreso fecha_hora_ingreso = DtInfoIngreso::DtInfoIngreso(info_i->getfechaIngreso(), info_i->gethoraIngreso());
+			DtInfoIngreso fecha_hora_ingreso = new DtInfoIngreso(info_i->getfechaIngreso(), info_i->gethoraIngreso());
 			encontrado = true;
 		}
 	}
@@ -98,43 +98,43 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 		if (es_valido) {
 			if (dynamic_cast<Simple*> (&m) != NULL) {
 				//Es Simple
-				DtSimple mensaje = DtSimple::DtSimple(
+				DtSimple mensaje = new DtSimple(
+											m->getcodigo(), 
+											m->getfechaMensaje(), 
+											m->gethoraMensaje(), 
+											m->getTextSimp()
+										);
+			} else if (dynamic_cast<Contacto*> (&m) != NULL) {
+				//Es Contacto
+				DtContacto mensaje = new DtContacto(
 												m->getcodigo(), 
 												m->getfechaMensaje(), 
 												m->gethoraMensaje(), 
-												m->getTextSimp()
+												m->getNomContacto(), 
+												m->getTelContacto()
 											);
-			} else if (dynamic_cast<Contacto*> (&m) != NULL) {
-				//Es Contacto
-				DtContacto mensaje = DtContacto::DtContacto(
-														m->getcodigo(), 
-														m->getfechaMensaje(), 
-														m->gethoraMensaje(), 
-														m->getNomContacto(), 
-														m->getTelContacto()
-													);
 			} else {
 				//Es Multimedia
 				if (dynamic_cast<Imagen*> (&m) != NULL) {
 					//Es Imagen
-					DtImagen mensaje = DtImagen::DtImagen(
-													m->getcodigo(), 
-													m->getfechaMensaje(), 
-													m->gethoraMensaje(), 
-													m->getFormato(),
-													m->getTamanio(),
-													m->getTextMulti(),
-													m->getURLpicture(),
-												);
+					DtImagen mensaje = new DtImagen(
+												m->getcodigo(), 
+												m->getfechaMensaje(), 
+												m->gethoraMensaje(), 
+												m->getFormato(),
+												m->getTamanio(),
+												m->getTextMulti(),
+												m->getURLpicture(),
+											);
 				} else {
 					//Es Video
-					DtVideo mensaje = DtVideo::DtVideo(
-													m->getcodigo(), 
-													m->getfechaMensaje(), 
-													m->gethoraMensaje(), 
-													m->getDuracion(),
-													m->getURLvideo()
-												);
+					DtVideo mensaje = new DtVideo(
+											m->getcodigo(), 
+											m->getfechaMensaje(), 
+											m->gethoraMensaje(), 
+											m->getDuracion(),
+											m->getURLvideo()
+										);
 				}
 			}
 			

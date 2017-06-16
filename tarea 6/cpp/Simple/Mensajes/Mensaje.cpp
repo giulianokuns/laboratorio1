@@ -64,8 +64,13 @@ ICollection Mensaje::getReceptores() {
 	return receptores
 }
 
+void Mensaje::eliminarMensajeEmisor() {
 
+}
 
+void Mensaje::eliminarMensajeReceptor() {
+
+}
 
 
 

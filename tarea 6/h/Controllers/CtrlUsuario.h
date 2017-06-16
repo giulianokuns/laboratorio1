@@ -24,7 +24,7 @@ class CtrlUsuario{
 		ICollection obtenerInfoAdicional(IKey codigo);
 
 		/* Eliminar Mensaje */
-		void eliminarMensaje (IKey codigo);
+		void eliminarMensaje (IKey codigo, IKey idConv);
 
 		/*archivar_conversacion*/
 		ICollection listarArchivadas();

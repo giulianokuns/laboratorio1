@@ -189,22 +189,33 @@ ICollection Usuario::getReceptores(IKey codigo) {
 	ICollection receptores = m.getReceptores();
 }
 
-void Usuario::eliminarMensaje (IKey codigo) {	
+void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {	
 	IDictionary arr_mensj = this->getMensajes();
-	bool es_emisor = arr_mensj.member(codigo);
+	bool es_emisor 	= arr_mensj.member(codigo);
+	bool es_mensaje = false;
+
+	Mensaje mensj 	  = NULL;
+	Conversacion conv = NULL;
+
 	//Busca la conversacion que tiene el mensaje con ese codigo
 	IDictionary * arr_ec = this->getarreglo_ec();
-	for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent()); it->next()) {
+	for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent() && !es_mensaje); it->next()) {
 		EstadoConversacion * ec = getCurrent();
 		Conversacion conv = ec->getconversacion();
-		IDictionary mensajes = conv->getMensajes();
-		Mensaje mensj = mensajes.find(codigo);
+		if (idConv.compare(conv.getidConversacion())) {
+			IDictionary mensajes = conv->getMensajes();
+			Mensaje mensj = mensajes.find(codigo);
 
-		if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
-			//Ya encontramos el mensaje, hay que dejar de iterar como un boludo
-				
+			if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
+				es_mensaje = true;
+			}
 		}
+	}
 
+	if (es_emisor) {
+		mensj.eliminarMensajeEmisor();
+	} else {
+		mensj.eliminarMensajeReceptor();
 	}
 }
 

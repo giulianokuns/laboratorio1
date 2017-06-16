@@ -146,9 +146,9 @@ ICollection CtrlUsuario::obtenerInfoAdicional(IKey codigo) {
 	return receptores;
 }
 
-void CtrlUsuario::eliminarMensaje (IKey codigo) {
+void CtrlUsuario::eliminarMensaje (IKey codigo, IKey idConv) {
 	Usuario * user_log = usuarioLog;
-	u->eliminarMensaje(IKey codigo);
+	u->eliminarMensaje(IKey codigo, IKey idConv);
 }
 
 
