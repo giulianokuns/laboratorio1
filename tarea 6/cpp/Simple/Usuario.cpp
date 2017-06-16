@@ -188,3 +188,28 @@ ICollection Usuario::getReceptores(String codigo) {
 	Mensaje m = arr_mensj.find(codigo);
 	ICollection receptores = m.getReceptores();
 }
+
+void Usuario::eliminarMensaje (String codigo) {	
+	IDictionary arr_mensj = this->getMensajes();
+	bool es_emisor = arr_mensj.member(codigo);
+	//Busca la conversacion que tiene el mensaje con ese codigo
+	IDictionary * arr_ec = this->getarreglo_ec();
+	for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent()); it->next()) {
+		EstadoConversacion * ec = getCurrent();
+		Conversacion conv = ec->getconversacion();
+		IDictionary mensajes = conv->getMensajes();
+		Mensaje mensj = mensajes.find(codigo);
+
+		if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
+			//Ya encontramos el mensaje, hay que dejar de iterar como un boludo
+
+		}
+
+	}
+}
+
+
+
+
+
+

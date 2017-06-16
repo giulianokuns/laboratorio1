@@ -4,6 +4,8 @@
 #include "DtInfoIngreso.h"
 #include "DtReceptor.h"
 
+#include "IKey.h"
+#include "ICollectible.h"
 #include "ICollection.h"
 #include "IDictionary.h"
 
@@ -12,20 +14,20 @@
 
 using namespace std;
 
-class Mensaje {
+class Mensaje : public ICollectible {
 	private:
-		String codigo;
+		IKey codigo; 
 		Fecha fechaMensaje;
 		Hora horaMensaje;
 		IDictionary recibidos;
 
 	public:
-		String getcodigo();
+		IKey getcodigo();
 		Fecha getfechaMensaje();
 		Hora gethoraMensaje();
 		IDictionary getRecibidos();
 
-		void setcodigo(String codigo);
+		void setcodigo(IKey codigo);
 		void setfechaMensaje(Fecha fechaMensaje);
 		void sethoraMensaje(Hora horaMensaje);
 		void setRecibidos(IDictionary recibidos);		

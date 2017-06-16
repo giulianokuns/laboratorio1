@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Usuario: public ICollectible{
+class Usuario: public ICollectible {
 	private:
 		String telCel;
 		String nomUsuario;
@@ -43,7 +43,7 @@ class Usuario: public ICollectible{
 		void setimaPerfil(String URL);
 		void setfechaUltimaConex(Fecha fechaUltimaConex);
 		void sethoraUltimaConex(Hora horaUltimaConex);
-		void setarreglo_ec(ICollection arreglo_ec); // ????? ICollection bien ?
+		void setarreglo_ec(IDictionary arreglo_ec);
 		void setcontactos(IDictionary contactos);
 		void setMensajes(IDictionary mensajes);		
 
@@ -63,6 +63,10 @@ class Usuario: public ICollectible{
 		ICollection mensajesCoversacion (int idConv);
 		int getCantidadArhivadas();
 		ICollection getReceptores(String codigoMensaje);
+
+		/* Eliminar Mensaje */
+		void eliminarMensaje (String codigo);
+
 }
 
 #endif
