@@ -8,7 +8,7 @@
 #include "EstadoConversacion.h"
 #include "Usuario.h"
 
-Usuario::Usuario(String telCel,String nomUsuario,Fecha fechaRegistro,String imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
+Usuario::Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -23,7 +23,7 @@ Usuario::~Usuario(){
 	
 }
 
-String Usuario::gettelCel(){
+IKey Usuario::gettelCel(){
 	return telCel;
 }
 
@@ -57,7 +57,7 @@ IDictionary Usuario::getMensajes(){
 	return mensajes;
 }
 
-void Usuario::settelCel(String cel){
+void Usuario::settelCel(IKey cel){
 	this->telCel = cel;
 }
 
@@ -117,7 +117,7 @@ ICollection Usuario::get_lista_activos(){
 	return colecciondt;
 }
 
-void Usuario::archivar(String ID){
+void Usuario::archivar(IKey ID){
 	IDictionary arreglo_ec = getarreglo_ec();
 	EstadoConversacion ec = find(ID);//o el correspondiente key
 	ec.setarchivada(true);
@@ -133,11 +133,11 @@ ICollection Usuario::getInfoContactos(){
 	}
 	return lista_dtInfoContacto;
 }
-bool Usuario::esContacto(telCel){
+bool Usuario::esContacto(IKey telCel){
 	IDictionary contactos = getcontactos();
 	return contactos->member(telCel);
 }
-DtInfoContacto Usuario::getIfoContacto(telCel){
+DtInfoContacto Usuario::getIfoContacto(IKey telCel){
 	IDictionary contactos = getcontactos();
 	Usuario u = find(telCel);
 	DtInfoContacto dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
@@ -148,7 +148,7 @@ void Usuario::agregarContacto(Usuario u){
 	set_contactos->add(telCel,u);
 }
 
-ICollection Usuario::mensajesCoversacion (int idConv) {
+ICollection Usuario::mensajesCoversacion (IKey idConv) {
 	IDictionary * ec_array = this->getarreglo_ec();
 	Conversacion c = NULL;
 	
@@ -183,13 +183,13 @@ int Usuario::getCantidadArhivadas() {
 	return cant_archivadas;
 }
 
-ICollection Usuario::getReceptores(String codigo) {
+ICollection Usuario::getReceptores(IKey codigo) {
 	IDictionary arr_mensj = this->getMensajes();
 	Mensaje m = arr_mensj.find(codigo);
 	ICollection receptores = m.getReceptores();
 }
 
-void Usuario::eliminarMensaje (String codigo) {	
+void Usuario::eliminarMensaje (IKey codigo) {	
 	IDictionary arr_mensj = this->getMensajes();
 	bool es_emisor = arr_mensj.member(codigo);
 	//Busca la conversacion que tiene el mensaje con ese codigo

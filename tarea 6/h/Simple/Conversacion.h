@@ -25,7 +25,7 @@ using namespace std;
 class Conversacion {
 	private:
 		bool visto;
-		int idConversacion;
+		IKey idConversacion;
 		bool esGrupo;
 		Grupo grupo;
 		IDictionary participantes;
@@ -33,18 +33,18 @@ class Conversacion {
 		IDictionary mensajes;
 
 	public:
-		Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes);
+		Conversacion(bool visto, IKey idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes);
 		~Conversacion();
 
 		bool 	getvisto();
-		int 	getidConversacion();
+		IKey 	getidConversacion();
 		bool 	getesGrupo();
 		Grupo 	getgrupo();
 		IDictionary getparticipantes();
 		IDictionary getMensajes();
 
 		void setvisto(bool visto);
-		void setidConversacion(int idConv);
+		void setidConversacion(IKey idConv);
 		void setesGrupo(bool esgrupo);
 		void setgrupo(Grupo g);
 		void setparticipantes(IDictionary participantes);

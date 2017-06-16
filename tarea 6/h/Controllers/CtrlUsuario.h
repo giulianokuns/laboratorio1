@@ -19,7 +19,7 @@ class CtrlUsuario{
 		void setusuarios(IDictionary lista_usuarios);
 
 		/* Ver Mensaje */
-		ICollection mensajesCoversacion (int idConv);
+		ICollection mensajesCoversacion (IKey idConv);
 		int cantidadArchivadas ();
 		//Info adicional de un mensaje enviado por el usuario logeado.
 		ICollection obtenerInfoAdicional(String codigo);
@@ -30,7 +30,7 @@ class CtrlUsuario{
 		/*archivar_conversacion*/
 		ICollection listarArchivadas();
 		ICollection listarActivas();
-		void archivar_conversacion(int ID);
+		void archivar_conversacion(IKey ID);
 		/*agregarContacto*/
 		ICollection getContactos();
 		bool existeUsuario(String telCel);

@@ -8,7 +8,7 @@
 #include "DtMultimedia.h"
 
 
-Conversacion::Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes, IDictionary mensajes){
+Conversacion::Conversacion(bool visto, IKey idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes, IDictionary mensajes){
 	this->visto 			= visto;
 	this->idConversacion 	= idConversacion;
 	this->esGrupo 			= esGrupo;
@@ -20,7 +20,7 @@ Conversacion::Conversacion(bool visto, int idConversacion, bool esGrupo, Grupo g
 bool Conversacion::getvisto(){
 	return visto;
 }
-int Conversacion::getidConversacion(){
+IKey Conversacion::getidConversacion(){
 	return idConversacion;
 }
 bool Conversacion::getesGrupo(){
@@ -39,7 +39,7 @@ IDictionary Conversacion::getMensajes() {
 void Conversacion::setvisto(bool visto){
 	this->visto = visto;
 }
-void Conversacion::setidConversacion(int ID){
+void Conversacion::setidConversacion(IKey ID){
 	this->idConversacion = ID;
 }
 void Conversacion::setesGrupo(bool esgrupo){

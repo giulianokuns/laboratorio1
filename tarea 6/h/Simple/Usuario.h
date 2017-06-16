@@ -1,6 +1,8 @@
 #include "Fecha.h"
 #include "Hora.h"
 #include "DtConversacion.h"
+
+#include "IKey.h"
 #include "IDictionary.h"
 
 #ifndef USUARIO
@@ -10,7 +12,7 @@ using namespace std;
 
 class Usuario: public ICollectible {
 	private:
-		String telCel;
+		IKey telCel;
 		String nomUsuario;
 		Fecha fechaRegistro;
 		String imaPerfil;
@@ -24,10 +26,10 @@ class Usuario: public ICollectible {
 		IDictionary mensajes;
 
 	public:
-		Usuario(String telCel,String nomUsuario,Fecha fechaRegistro,String imaPerfil,Fecha fechaUltimaConex,Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos);
+		Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos);
 		~Usuario();
 		
-		String gettelCel();
+		IKey gettelCel();
 		String getnomUsuario();
 		Fecha getfechaRegistro();
 		String getimaPerfil();
@@ -37,7 +39,7 @@ class Usuario: public ICollectible {
 		IDictionary getcontactos();
 		IDictionary getMensajes();
 
-		void settelCel(String cel);
+		void settelCel(IKey cel);
 		void setnomUsuario(String nombre);
 		void setfechaRegistro(Fecha fechaRegistro);
 		void setimaPerfil(String URL);
@@ -51,21 +53,21 @@ class Usuario: public ICollectible {
 
 		/*archivar_conversacion*/
 		ICollection get_lista_activos();
-		void archivar(int ID);	
+		void archivar(IKey ID);	
 		
 		/*agregarContacto*/
 		ICollection 	getInfoContactos();
-		DtInfoContacto 	getIfoContacto(telCel);
-		bool esContacto(telCel);
+		DtInfoContacto 	getIfoContacto(IKey telCel);
+		bool esContacto(IKey telCel);
 		void agregarContacto(Usuario u);
 		
 		/* Ver Mensaje */
-		ICollection mensajesCoversacion (int idConv);
+		ICollection mensajesCoversacion (IKey idConv);
 		int getCantidadArhivadas();
-		ICollection getReceptores(String codigoMensaje);
+		ICollection getReceptores(IKey codigoMensaje);
 
 		/* Eliminar Mensaje */
-		void eliminarMensaje (String codigo);
+		void eliminarMensaje (IKey codigo);
 
 }
 

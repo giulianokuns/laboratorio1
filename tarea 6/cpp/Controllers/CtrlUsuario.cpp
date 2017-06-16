@@ -96,7 +96,7 @@ ICollection CtrlUsuario::listarActivas(){
  	return coleccion;
 }
 
- void CtrlUsuario::archivar_conversacion(int ID){
+ void CtrlUsuario::archivar_conversacion(IKey ID){
  	Usuario u = getusuariolog();
  	u->archivar(ID);
  }
@@ -123,7 +123,7 @@ void CtrlUsuario::confirmarAgregarContacto(String telcel){
 	agregarContacto(u);
 }
 
-ICollection CtrlUsuario::mensajesCoversacion (int idConv) {
+ICollection CtrlUsuario::mensajesCoversacion (IKey idConv) {
 	Usuario * user_log = usuarioLog;
 	if (user_log != NULL) {
 		return user_log->mensajesConversacion(idConv);

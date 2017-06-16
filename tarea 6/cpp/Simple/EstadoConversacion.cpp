@@ -26,7 +26,7 @@ void EstadoConversacion::setconversacion( Conversacion c){
 	Si son iguales devuelve un puntero a la Conversacion
 	NULL en otro caso.
 */
-Conversacion * EstadoConversacion::compararConv (int idConv) {
+Conversacion * EstadoConversacion::compararConv (IKey idConv) {
 	Conversacion c * = this->getconversacion();
 	if (c->getidConversacion() == idConv) {
 		return c;

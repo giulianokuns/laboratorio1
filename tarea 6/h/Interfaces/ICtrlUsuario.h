@@ -5,11 +5,11 @@ class ICtrlUsuario{
 	virtual	void setusuarios(IDictionary lista_usuarios) =0;
 
 		/* Ver Mensaje */
-	virtual	ICollection mensajesCoversacion (int idConv) = 0;
+	virtual	ICollection mensajesCoversacion (IKey idConv) = 0;
 		
 		/*archivar_conversacion*/
 	virtual	ICollection listarActivas() = 0;
-		void archivar_conversacion(String ID) = 0;
+		void archivar_conversacion(IKey ID) = 0;
 
 		/*agregarContacto*/
 	virtual	ICollection getContactos() = 0;

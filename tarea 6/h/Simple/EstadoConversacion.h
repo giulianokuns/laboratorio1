@@ -16,6 +16,6 @@ class EstadoConversacion: public ICollectible {
 		Conversacion getconversacion();
 		void setarchivada(bool archivada);
 		void setconversacion( Conversacion c); 
-		Conversacion * compararConv (int idConv);
+		Conversacion * compararConv (IKey idConv);
 };
 #endif
