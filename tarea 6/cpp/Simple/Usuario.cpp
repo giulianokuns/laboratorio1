@@ -202,7 +202,7 @@ void Usuario::eliminarMensaje (IKey codigo) {
 
 		if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
 			//Ya encontramos el mensaje, hay que dejar de iterar como un boludo
-
+				
 		}
 
 	}

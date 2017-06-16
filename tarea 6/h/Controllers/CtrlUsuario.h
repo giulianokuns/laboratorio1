@@ -9,7 +9,6 @@ class CtrlUsuario{
 		/*su key corresponde al telcel*/
 		IDictionary * usuarios;
 
-
 	public:
 
 		static CtrlUsuario * getinstancia();
