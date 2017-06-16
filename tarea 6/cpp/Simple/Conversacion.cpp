@@ -59,11 +59,13 @@ void Conversacion::setMensajes(IDictionary mensajes) {
 DtConversacion Conversacion::getinfo(){
 	DtConversacion *dtc;
 	if(getesGrupo()){
-		Grupo g = getgrupo();
+		Grupo *g = getgrupo();
 		dtc = new DtConversacion(true, g->getnomGrupo(), 0000, getidConversacion());
 	}
 	else{
-		Usuario u = getreceptor();
+		IDictionary *participantes =	getparticipantes();
+		IIterator *it = participantes->getIterator();
+		Usuario *u = getCurrent();
 		dtc = new DtConversacion(false, u->getnomUsuario, u->gettelCel, getidConversacion());
 	}
 	return dtc;
