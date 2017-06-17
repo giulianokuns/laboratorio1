@@ -18,5 +18,7 @@ class Simple : public Mensaje {
         Simple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : Mensaje (codigo, fecha, hora) {};
 
         String  getTextSimp() const;
+
+        friend ostream& operator<<(ostream& os, const Simple& mens_simple);
 };
 #endif

@@ -48,13 +48,9 @@ if (user_log != NULL) {
 	int cantidad_archivadas     = CI->cantidadArchivadas();
 
 	if (!lista_activas.isEmpty()) {
-		/*Primero, el sistema lista las conversaciones del usuario. Para cada
-		conversación activa, si se corresponde a un grupo se muestra el nombre del
-		grupo. Si es una conversación simple, se muestra nombre y número de
-		celular del contacto con el cual se mantiene la misma. Para el caso de las
-		conversaciones archivadas, se muestra una sola entrada con la etiqueta
-		“Archivadas” y la cantidad de conversaciones archivadas.*/
 		string nombre, tel_cel;
+		cout << "Conversaciones activas" << endl;
+
 		for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()) {
 			Conversacion * c = getCurrent();
 			bool es_grupo = c->getesGrupo();
@@ -74,6 +70,57 @@ if (user_log != NULL) {
 				}		
 			}
 			cout << nombre + " " + tel_cel << endl;
+		}
+		cout << "" << endl;
+		cout << "Archivadas :" + cantidad_archivadas << endl;
+
+
+		cout << "1. Seleccionar una conversación activa " 	<< endl;
+		cout << "2. Ver las conversaciones archivadas" 		<< endl;
+		int opcion;
+		cout << "Opción: ";
+		cin >> opcion;
+
+		if (opcion == 1) {
+			cout << "Ingrese el identificador de la conversación activa que desea seleccionar: ";
+			IKey idConv;
+			cin >> idConv;
+
+			ICollection mensaje =  CI->mensajesCoversacion (idConv);
+			//Todos los datos de los mensajes AYQQ
+			
+		} else if (opcion == 2) {
+			cout << "Conversaciones archivadas"	<< endl;
+			ICollection * lista_archivadas = CI->listarArchivadas();
+
+			for (IIterator *it = lista_archivadas->getIterator(); it->hasCurrent(); it->next()) {
+				Conversacion * c = getCurrent();
+				bool es_grupo = c->getesGrupo();
+				if (es_grupo) {
+					Grupo g = c->getgrupo();
+					nombre = g->getnomGrupo();
+				} else {
+					IDictionary * participantes = getparticipantes();
+					/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
+					otro*/
+					for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
+						Usuario * u = getCurrent();
+						if (!userlog->gettelCel()->compare(u->gettelCel())) {
+							nombre  = u->getnomUsuario();
+							tel_cel = u->gettelCel();
+						}
+					}		
+				}
+				cout << nombre + " " + tel_cel << endl;	
+			}
+			cout << "Ingrese el identificador de la conversación archivada que desea seleccionar: ";
+			IKey idConv;
+			cin >> idConv;
+
+			ICollection mensaje =  CI->mensajesCoversacion (idConv);
+			//Todos los datos de los mensajes AYQQ
+		} else {
+			throw std::invalid_argument('Opción invalida.')
 		}
 	} else {
 		throw std::invalid_argument('No tiene conversaciones activas.')

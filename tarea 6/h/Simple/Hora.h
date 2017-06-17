@@ -16,6 +16,7 @@ class Hora{
 
 		bool operator ==(const Hora &a, const Hora &b) const;
 		bool operator  >(const Hora &a, const Hora &b) const;
+		ostream& operator<<(ostream& os, const Hora& hora);
 }
 
 #endif

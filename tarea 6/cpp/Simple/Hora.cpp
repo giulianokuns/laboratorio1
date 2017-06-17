@@ -41,3 +41,9 @@ bool operator  >(const Hora &a, const Hora &b) const {
 		}
 	}
 }
+
+
+ostream& operator<<(ostream& os, const Hora& hora) {
+	os 	<< hora.getdia() << " - " << hora.getmes() << " - " << hora.getanio();  
+    return os;  	
+}
