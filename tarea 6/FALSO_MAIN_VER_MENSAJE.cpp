@@ -196,6 +196,32 @@ if (user_log != NULL) {
 							}
 						}
 					}
+
+					int opt = 1;				
+					while (opt == 1) {
+						cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
+						string codigo;
+						cin >> codigo;
+
+						IKey * codigo = new String (codigo);
+						ICollection * receptores = obtenerInfoAdicional(codigo);
+
+						if (!receptores->isEmpty()) {
+							for (IIterator *it_r = receptores->getIterator(); it_r->hasCurrent(); it_r->next()) {
+								Receptor receptor = getCurrent();
+								cout << receptor << endl;	
+								cout << "*****************************************" << endl;
+							}
+						} else {
+							cout << "Ningun usuario vio este mensaje." << endl;
+						}
+
+						cout << "" << endl;
+						cout << "1. Continuar viendo información adicional." << endl;
+						cout << "2. Salir." << endl;
+						cout << "Opción: ";
+						cin >> opt;					
+					}
 				} else {
 					throw std::invalid_argument("No hay mensajes para mostrar.");
 				}
