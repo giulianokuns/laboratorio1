@@ -38,3 +38,26 @@ void CtrlCasoEnviar::crearConversacion(IKey tel, IKey idConver) {
    CtrlUsuario *ctrl = CtrlUsuario::getInstancia();
    this->idConver = ctrl->crearConversacion(tel, idConver);
 }
+
+void ingresarIDActiva(IKey idActiva){
+	CtrlUsuario *ctrl = CtrlUsuario::getInstancia();
+	Usuario log = ctrl->getusuarioLog();
+	IDictionary ec_ar = log->getarreglo_ec();
+	EstadoConversacion *ec;
+	bool encontrado = false;
+
+	for (IIterator *it = ec_ar->getIterator(); (it->hasCurrent() && !encontrado); it->next()){
+           ec = dinamic_cast< EstadoConversacion*> it->getCurrent();
+           if (!ec->getarchivada()){
+              Conversacion c = ec->getconversacion();
+              if (compararConversaciones(c.getidConversacion(),idActiva)){
+              	encontrado = true;
+              	this->idConver = idActiva
+              }
+              	
+           }
+    }
+    if (!encontrado)
+    // lanzar una excepción
+        return false;      
+}
