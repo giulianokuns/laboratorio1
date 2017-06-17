@@ -186,7 +186,11 @@ int Usuario::getCantidadArhivadas() {
 ICollection Usuario::getReceptores(IKey codigo) {
 	IDictionary arr_mensj = this->getMensajes();
 	Mensaje m = arr_mensj.find(codigo);
-	ICollection receptores = m.getReceptores();
+	if (m != NULL) {
+		ICollection receptores = m->getReceptores();
+	} else {
+		throw std::invalid_argument('Mensaje seleccionado invalido, por favor, seleccione un mensaje enviado por usted');
+	}
 }
 
 void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {	

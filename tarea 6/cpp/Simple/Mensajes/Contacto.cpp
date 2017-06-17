@@ -24,3 +24,14 @@ String  Contacto::getNomContacto() {
 String  Contacto::getTelContacto() {
 	return telContacto;
 }
+
+ostream& operator<<(ostream& os, const Contacto& mens_contacto) {  
+	string codigo = new String (mens_contacto.getodigo());	
+	
+    os 	<< "Código: " 	 	<< codigo 					  		<< '\n' 
+   		<< "Fecha: " 		<< mens_contacto.getfechaMensaje() 	<< '\n' 
+   		<< "Hora: " 		<< mens_contacto.gethoraMensaje()  	<< '\n'
+   		<< "Duración: " 	<< mens_contacto.getNomContacto()  	<< '\n'
+   		<< "URL: " 			<< mens_contacto.getTelContacto(); 
+    return os;  
+}

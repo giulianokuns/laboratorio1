@@ -31,3 +31,16 @@ String Imagen::getTextMulti()  {
 String Imagen::getURLpicture()  {
 	return URLpicture;
 }
+
+ostream& operator<<(ostream& os, const Imagen& mens_img) {  
+	string codigo = new String (mens_img.getodigo());	
+	
+    os 	<< "Código: " 	 	<< codigo 					  	<< '\n' 
+   		<< "Fecha: " 		<< mens_img.getfechaMensaje() 	<< '\n' 
+   		<< "Hora: " 		<< mens_img.gethoraMensaje()  	<< '\n'
+   		<< "Duración: " 	<< mens_img.getFormato()  		<< '\n'
+   		<< "Tamaño: " 		<< mens_img.getTamanio()  		<< '\n'
+   		<< "Texto: " 		<< mens_img.getTextMulti()  	<< '\n'
+   		<< "URL: " 			<< mens_img.getURLpicture(); 
+    return os;  
+}

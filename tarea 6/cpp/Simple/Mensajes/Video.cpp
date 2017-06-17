@@ -23,3 +23,14 @@ int Video::getDuracion() {
 String Video::getURLvideo() {
 	return URLvideo;
 }
+
+ostream& operator<<(ostream& os, const Video& mens_video) {  
+	string codigo = new String (mens_video.getodigo());	
+	
+    os 	<< "Código: " 	 	<< codigo 					  	<< '\n' 
+   		<< "Fecha: " 		<< mens_video.getfechaMensaje() << '\n' 
+   		<< "Hora: " 		<< mens_video.gethoraMensaje()  << '\n'
+   		<< "Duración: " 	<< mens_video.getDuracion()  	<< '\n'
+   		<< "URL: " 			<< mens_video.getURLvideo(); 
+    return os;  
+}

@@ -24,5 +24,7 @@ class Imagen : public Multimedia {
         int  	getTamanio() const;
         String  getTextMulti() const;
         String  getURLpicture() const;
+
+        friend ostream& operator<<(ostream& os, const Imagen& mens_img);
 };
 #endif

@@ -21,10 +21,10 @@ String  Simple::getTextSimp() {
 
 ostream& operator<<(ostream& os, const Simple& mens_simple) {  
 	string codigo = new String (mens_simple.getodigo());
-	
+
     os 	<< "Código: " 	<< codigo 					  	 << '\n' 
-   		<< "Fecha:  " 	<< mens_simple.getfechaMensaje() << '\n' 
-   		<< "Hora:   " 	<< mens_simple.gethoraMensaje()  << '\n'
-   		<< "Texto:  " 	<< mens_simple.getTextSimp();  
+   		<< "Fecha: " 	<< mens_simple.getfechaMensaje() << '\n' 
+   		<< "Hora: " 	<< mens_simple.gethoraMensaje()  << '\n'
+   		<< "Texto: " 	<< mens_simple.getTextSimp();  
     return os;  
 } 

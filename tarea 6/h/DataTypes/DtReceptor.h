@@ -10,17 +10,19 @@ using namespace std;
 class DtReceptor : public ICollectible {
 	private:
 		String 	dtNombre;
-		int		dtNumTel;
+		IKey	dtNumTel;
 		Fecha 	dtFechaVisto;
 		Hora 	dtHoraVisto;
 
 	public:
-		DtReceptor (String nombre, int num_cel, Fecha fecha_visto, hora hora_visto);
+		DtReceptor (String nombre, IKey num_cel, Fecha fecha_visto, hora hora_visto);
 		~DtReceptor ();	
 
 		String 	getNombre () {};
-		int 	getNumTel () {};
+		IKey 	getNumTel () {};
 		Fecha 	getFechaVisto () {};
 		Hora 	getHoraVisto () {};
+
+		ostream& operator<<(ostream& os, const DtReceptor& dt_receptor);
 };
 #endif

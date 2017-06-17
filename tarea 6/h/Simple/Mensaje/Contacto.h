@@ -21,5 +21,7 @@ class Contacto : public Mensaje {
         
         String  getNomContacto() const;
         String  getTelContacto() const;
+
+        friend ostream& operator<<(ostream& os, const Contacto& mens_contacto);
 };
 #endif

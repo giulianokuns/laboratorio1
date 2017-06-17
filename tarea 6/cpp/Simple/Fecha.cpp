@@ -57,6 +57,6 @@ bool Fecha::operator >(const Fecha &a, const Fecha &b) const {
 }
 
 ostream& operator<<(ostream& os, const Fecha& fecha) {
-	os 	<< fecha.getdia() << " - " << fecha.getmes() << " - " << fecha.getanio();  
+	os 	<< fecha.getdia() << " - " << fecha.getmes() << " - " << fecha.getanio();
     return os;  	
 }

@@ -21,5 +21,7 @@ class Video : public Multimedia {
         
         int  	getDuracion() const;
         String  getURLvideo() const;
+
+        friend ostream& operator<<(ostream& os, const Video& mens_video);
 };
 #endif
