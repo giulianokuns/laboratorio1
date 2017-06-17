@@ -16,9 +16,6 @@ public:
 	    void crearMensajeImagen(DtImagen dtImagen);
 	    void crearMensajeSimple(DtSimple simCont);
 	    void crearMensajeVideo(DtVideo dtVideo);
-	    //void ingresarDtImagen(DtImagen dtImagen);
-	    //void ingresarDtVideo(DtVideo dtVideo);
-	    //void ingresarDtSimple(DtSimple simCont);
 	    void ingresarIDContacto(IKey idContact);
 	    void ingresarIDArchi(IKey idArchi);
 	    void ingresarIDActiva(IKey idActiva);

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Recibido {
+class Recibido: public ICollectible {
 	private:
         bool visto;
         bool eliminado;
@@ -20,6 +20,8 @@ class Recibido {
         Usuario usuario;
         
 	public:
+		Recibido(Usuario u);
+		~Recibido();
 		bool getVisto();
 		bool getEliminado();
 		Fecha getFechaVisto();

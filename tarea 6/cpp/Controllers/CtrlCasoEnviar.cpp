@@ -39,22 +39,22 @@ void CtrlCasoEnviar::crearConversacion(IKey tel, IKey idConver) {
    this->idConver = ctrl->crearConversacion(tel, idConver);
 }
 
-void ingresarIDActiva(IKey idActiva){
-	CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
-	Usuario log = ctrl->getusuarioLog();
-	IDictionary ec_ar = log->getarreglo_ec();
-	EstadoConversacion *ec;
-	bool encontrado = false;
+ void ingresarIDActiva(IKey idActiva){
+    CtrlUsuario *ctrl = CtrlUsuario::getInstancia();
+    Usuario log = ctrl->getusuarioLog();
+    IDictionary ec_ar = log->getarreglo_ec();
+    EstadoConversacion *ec;
+    bool encontrado = false;
 
-	for (IIterator *it = ec_ar->getIterator(); (it->hasCurrent() && !encontrado); it->next()){
-           ec = dinamic_cast< EstadoConversacion*> it->getCurrent();
+    for (IIterator *it = ec_ar->getIterator(); (it->hasCurrent() && !encontrado); it->next()){
+           ec = dynamic_cast< EstadoConversacion*> it->getCurrent();
            if (!ec->getarchivada()){
               Conversacion c = ec->getconversacion();
-              if (compararConversaciones(c.getidConversacion(),idActiva)){
-              	encontrado = true;
-              	this->idConver = idActiva
+              if (idActiva->compare(c.getidConversacion())){
+                encontrado = true;
+                this->idConver = idActiva
               }
-              	
+                
            }
     }
     if (!encontrado)
@@ -63,23 +63,21 @@ void ingresarIDActiva(IKey idActiva){
 }
 
 void ingresarIDArchi(IKey idArchi){
-	CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
-	Usuario log = ctrl->getusuarioLog();
-	IDictionary ec_ar = log->getarreglo_ec();
-	EstadoConversacion *ec;
-	bool encontrado = false;
+    CtrlUsuario *ctrl = CtrlUsuario::getInstancia();
+    Usuario log = ctrl->getusuarioLog();
+    IDictionary ec_ar = log->getarreglo_ec();
+    EstadoConversacion *ec;
+    bool encontrado = false;
 
-	for (IIterator *it = ec_ar->getIterator(); (it->hasCurrent() && !encontrado); it->next()){
-           ec = dinamic_cast< EstadoConversacion*> it->getCurrent();
+    for (IIterator *it = ec_ar->getIterator(); (it->hasCurrent() && !encontrado); it->next()){
+           ec = dynamic_cast< EstadoConversacion*> it->getCurrent();
            if (ec->getarchivada()){
               Conversacion c = ec->getconversacion();
-              //compararConversaciones es una operación que tiene que estar en conversacion
-              //o estar en un controlador de conversaciones.
-              if (compararConversaciones(c.getidConversacion(),idArchi)){
-              	encontrado = true;
-              	this->idConver = idArchi;
+              if (idArchi->compare(c.getidConversacion())){
+                encontrado = true;
+                this->idConver = idArchi;
               }
-              	
+                
            }
     }
     if (!encontrado)
@@ -87,18 +85,197 @@ void ingresarIDArchi(IKey idArchi){
         return false;      
 }
 
-
-void ingresarIDContacto(IKey idContact){
-	CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
-	Usuario log = ctrl->getusuarioLog();
-	IDictionary contacts = log->getcontactos();
-	bool pertenece = contacts->member(idContact);
-	if (pertenece)
-		this->idContact = idContact;
-	else{
-		//lanzar excepción
-		return false;
-	}
+void ingresarIDContacto(IKey tel){
+    CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
+    Usuario log = ctrl->getusuarioLog();
+    IDictionary contacts = log->getcontactos();
+    bool pertenece = contacts->member(tel);
+    if (pertenece)
+        this->idContact = tel;
+    else{
+        //lanzar excepción
+        return false;
+    }
 
 }
+
+void crearMensajeContact(String tel, IKey codigo, Fecha fechaSist, Hora horaSist){
+  CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
+  Usuario log = ctrl->getusuarioLog();
+
+  //Busco el usuario del cual voy a enviar la información
+  //Este usuario es contacto de log
+  IDictionary contacts = log->getcontactos();
+  IKey *i = new String(tel);
+  Usuario *u = dynamic_cast< Usuario* > contacts.find(i);
+  
+  //Se busca el estado de conversacion y se obtiene la conversacion.
+  IDictionary ec_ar = log->getarreglo_ec();
+  EstadoConversacion *estado = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+  Conversacion c = estado->getconversacion();
+
+  //Cambio el estado de conversacion de los usuarios a activa
+  //si corresponde
+
+  IDictionary participantes = c->getparticipantes();
+  Usuario *u;
+  for (IIterator *it = participantes->getIterator(); it->hasCurrent(); it->next()){
+    u = dynamic_cast< Usuario*> it->getCurrent();
+    IDictionary ec_arrParticipa = u->getarreglo_ec();
+    EstadoConversacion *estadoConvU = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+    // Si el estado de conversacion
+    if (estado->getarchivada())
+      estado->setarchivada(false);
+
+     //Creo la colección de recibidos para el mensaje 
+     //cuya ikey es el telCel de usuario asociado a r
+     IDictionary recibidos = new OrderedDictionary();
+     Recibido *r = new Recibido(u);
+     recibidos->add(u->gettelCel, r);
+
+  }
+
+  //el código del mensaje es autogenerado por el sistema
+  //necesito saber donde se va a obtener ese código
+  //Se usa la coleccion recibidos como atributo de mensaje
+  Mensaje m = new Contacto(codigo, fechaSist, horaSist, u->getnomUsuario(),tel,recibidos);
+
+  //Se agrega el mensaje a la conversacion.
+
+  IDictionary mensajes = c->getmensajes();
+  mensajes->add(codigo, m);
+  
+}
+
+void crearMensajeSimple(DtSimple simCont, IKey codigo, Fecha fechaSist, Hora horaSist){
+  CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
+  Usuario log = ctrl->getusuarioLog();
+  
+  //Se busca el estado de conversacion y se obtiene la conversacion.
+  IDictionary ec_ar = log->getarreglo_ec();
+  EstadoConversacion *estado = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+  Conversacion c = estado->getconversacion();
+
+  //Cambio el estado de conversacion de los usuarios a activa
+  //si corresponde
+
+  IDictionary participantes = c->getparticipantes();
+  Usuario *u;
+  for (IIterator *it = participantes->getIterator(); it->hasCurrent(); it->next()){
+    u = dynamic_cast< Usuario*> it->getCurrent();
+    IDictionary ec_arrParticipa = u->getarreglo_ec();
+    EstadoConversacion *estadoConvU = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+    // Si el estado de conversacion
+    if (estado->getarchivada())
+      estado->setarchivada(false);
+
+     //Creo la colección de recibidos para el mensaje 
+     //cuya ikey es el telCel de usuario asociado a r
+     IDictionary recibidos = new OrderedDictionary();
+     Recibido *r = new Recibido(u);
+     recibidos->add(u->gettelCel, r);
+
+  }
+
+  //el código del mensaje es autogenerado por el sistema
+  //necesito saber donde se va a obtener ese código
+  //Se usa la coleccion recibidos como atributo de mensaje
+  Mensaje m = new Simple(codigo, fechaSist, horaSist, simCont, recibidos);
+
+  //Se agrega el mensaje a la conversacion.
+
+  IDictionary mensajes = c->getmensajes();
+  mensajes->add(codigo, m);
+  
+}
+
+
+void crearMensajeImagen(DtImagen dtImagen, IKey codigo, Fecha fechaSist, Hora horaSist){
+  CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
+  Usuario log = ctrl->getusuarioLog();
+  
+  //Se busca el estado de conversacion y se obtiene la conversacion.
+  IDictionary ec_ar = log->getarreglo_ec();
+  EstadoConversacion *estado = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+  Conversacion c = estado->getconversacion();
+
+  //Cambio el estado de conversacion de los usuarios a activa
+  //si corresponde
+
+  IDictionary participantes = c->getparticipantes();
+  Usuario *u;
+  for (IIterator *it = participantes->getIterator(); it->hasCurrent(); it->next()){
+    u = dynamic_cast< Usuario*> it->getCurrent();
+    IDictionary ec_arrParticipa = u->getarreglo_ec();
+    EstadoConversacion *estadoConvU = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+    // Si el estado de conversacion
+    if (estado->getarchivada())
+      estado->setarchivada(false);
+
+     //Creo la colección de recibidos para el mensaje 
+     //cuya ikey es el telCel de usuario asociado a r
+     IDictionary recibidos = new OrderedDictionary();
+     Recibido *r = new Recibido(u);
+     recibidos->add(u->gettelCel, r);
+
+  }
+
+  //el código del mensaje es autogenerado por el sistema
+  //necesito saber donde se va a obtener ese código
+  //Se usa la coleccion recibidos como atributo de mensaje
+  Mensaje m = new Imagen(codigo, fechaSist, horaSist, dtImagen, recibidos);
+
+  //Se agrega el mensaje a la conversacion.
+
+  IDictionary mensajes = c->getmensajes();
+  mensajes->add(codigo, m);
+  
+}
+
+
+void crearMensajeVideo(DtVideo dtVideo, IKey codigo, Fecha fechaSist, Hora horaSist){
+  CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
+  Usuario log = ctrl->getusuarioLog();
+  
+  //Se busca el estado de conversacion y se obtiene la conversacion.
+  IDictionary ec_ar = log->getarreglo_ec();
+  EstadoConversacion *estado = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+  Conversacion c = estado->getconversacion();
+
+  //Cambio el estado de conversacion de los usuarios a activa
+  //si corresponde
+
+  IDictionary participantes = c->getparticipantes();
+  Usuario *u;
+  for (IIterator *it = participantes->getIterator(); it->hasCurrent(); it->next()){
+    u = dynamic_cast< Usuario*> it->getCurrent();
+    IDictionary ec_arrParticipa = u->getarreglo_ec();
+    EstadoConversacion *estadoConvU = dynamic_cast< EstadoConversacion* > ec_ar.find(this->idConver);
+    // Si el estado de conversacion
+    if (estado->getarchivada())
+      estado->setarchivada(false);
+
+     //Creo la colección de recibidos para el mensaje 
+     //cuya ikey es el telCel de usuario asociado a r
+     IDictionary recibidos = new OrderedDictionary();
+     Recibido *r = new Recibido(u);
+     recibidos->add(u->gettelCel, r);
+
+  }
+
+  //el código del mensaje es autogenerado por el sistema
+  //necesito saber donde se va a obtener ese código
+  //Se usa la coleccion recibidos como atributo de mensaje
+  Mensaje m = new Video(codigo, fechaSist, horaSist, dtVideo, recibidos);
+
+  //Se agrega el mensaje a la conversacion.
+
+  IDictionary mensajes = c->getmensajes();
+  mensajes->add(codigo, m);
+  
+}
+
+ 
+
+ 
 

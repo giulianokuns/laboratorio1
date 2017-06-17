@@ -19,6 +19,7 @@ class Mensaje : public ICollectible {
 		IKey codigo; 
 		Fecha fechaMensaje;
 		Hora horaMensaje;
+		//El IKey es el telcel del usuario asociado.
 		IDictionary recibidos;
 
 	public:

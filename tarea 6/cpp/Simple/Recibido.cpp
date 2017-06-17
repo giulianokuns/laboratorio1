@@ -4,6 +4,15 @@
 #include <stdexcept>
 #include "Recibido.h"
 
+Recibido::Recibido(Usuario u){
+	this->visto = false;
+	this->eliminado = false;
+	this->usuario = u;
+}
+Recibido::~Recibido(){
+	
+}
+
 bool Recibido::getVisto() {
 	return visto;
 }
