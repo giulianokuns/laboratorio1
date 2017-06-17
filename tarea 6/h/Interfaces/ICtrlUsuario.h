@@ -14,9 +14,9 @@ class ICtrlUsuario{
 		/*agregarContacto*/
 	virtual	ICollection getContactos() = 0;
 	virtual	bool existeUsuario(IKey telCel) = 0;
-	virtual	bool esContacto(telCel) = 0;
-	virtual	DtInfoContacto agregarContacto(telcel) = 0;
-	virtual	void confirmarAgregarContacto(telcel) = 0;
+	virtual	bool esContacto(IKeytelCel) = 0;
+	virtual	DtInfoContacto agregarContacto(IKeytelcel) = 0;
+	virtual	void confirmarAgregarContacto(IKey telcel) = 0;
 
 		/*cerrar GUASAP*/
 	virtual	void cerrarGuasap() = 0;
@@ -24,6 +24,6 @@ class ICtrlUsuario{
 		/*abrir GUASAP*/
 
 	virtual	bool inicioSesion() = 0;
-	virtual	DtFecha altaUsuario(IKey numero, String nombre, String URL,String Descripcion) = 0;
+	virtual	DtFecha altaUsuario(IKey numero, String nombre, String URL, String Descripcion) = 0;
 	virtual	bool ingresar(IKey numero) = 0; 
 }
