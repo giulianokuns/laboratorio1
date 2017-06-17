@@ -13,7 +13,7 @@ bool DtConversacion::getesGrupo(){
 String DtConversacion::getnombre(){
 	return nombre;
 }
-String DtConversacion::gettelcel(){
+IKey DtConversacion::gettelcel(){
 	return telcel;
 }
 int DtConversacion::getidConversacion(){

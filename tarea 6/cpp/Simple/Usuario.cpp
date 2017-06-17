@@ -218,9 +218,3 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 		mensj.eliminarMensajeReceptor(conv);
 	}
 }
-
-
-
-
-
-
