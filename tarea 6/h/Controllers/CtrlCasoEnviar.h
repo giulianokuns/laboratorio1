@@ -1,3 +1,20 @@
+#include <iostream>
+#include <cString>
+
+#include "CtrlCasoEnviar.h"
+#include "DtSimple.h"
+#include "DtContacto.h"
+#include "DtVideo.h"
+#include "DtImagen.h"
+#include "DtMultimedia.h"
+
+#include "ICollection.h"
+#include "IKey"
+
+#ifndef CTRLCASOENVIAR
+#define CTRLCASOENVIAR
+
+using namespace std;
 
 class CtrlCasoEnviar{
 private:
@@ -18,8 +35,7 @@ public:
 	    void crearMensajeVideo(DtVideo dtVideo);
 	    void ingresarIDContacto(IKey idContact);
 	    void ingresarIDArchi(IKey idArchi);
-	    void ingresarIDActiva(IKey idActiva);
-	   
-	    
-	    
+	    void ingresarIDActiva(IKey idActiva);	    
 }
+
+#endif

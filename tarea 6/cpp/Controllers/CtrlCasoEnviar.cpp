@@ -2,6 +2,10 @@
 #include "Mensaje.h"
 #include "Usuario.h"
 #include "CtrlCasoEnviar.h"
+#include "Recibido.h"
+#include "EstadoConversacion.h"
+#include "IDictionary.h"
+#include "IKey"
 
 // Singleton
 CtrlCasoEnviar * CtrlCasoEnviar::getInstancia() {
