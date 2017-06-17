@@ -8,7 +8,11 @@
 #include "EstadoConversacion.h"
 #include "Usuario.h"
 
-Usuario::Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConexICollection arreglo_ec, IDictionary contactos){
+#include "IKey.h"
+#include "IDictionary.h"
+#include "ICollection.h"
+
+Usuario::Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos, ICollection notificaciones){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -18,6 +22,7 @@ Usuario::Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String ima
 	this->horaUltimaConex = horaUltimaConex;//no se crea una instancia nueva
 	this->arreglo_ec = arreglo_ec;
 	this->contactos = contactos;
+	this->notificaciones = notificaciones
 }
 Usuario::~Usuario(){
 	

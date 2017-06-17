@@ -4,13 +4,14 @@
 
 #include "IKey.h"
 #include "IDictionary.h"
+#include "ICollection.h"
 
 #ifndef USUARIO
 #define USUARIO
 
 using namespace std;
 
-class Usuario: public ICollectible {
+class Usuario: public ICollectible, public ISuscriptos{
 	private:
 		IKey telCel;
 		String nomUsuario;
@@ -24,6 +25,8 @@ class Usuario: public ICollectible {
 		IDictionary contactos;
 		/* Key : Codigo */
 		IDictionary mensajes;
+		/*notificaciones de suscriptores*/
+		ICollection notificaciones;
 
 	public:
 		Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos);
@@ -68,6 +71,14 @@ class Usuario: public ICollectible {
 
 		/* Eliminar Mensaje */
 		void eliminarMensaje (IKey codigo, IKey idConv);
+
+		/* Suscripciones */
+		ICollection getNotificaciones();
+		void eliminarNotificaciones();
+		void agregarSuscriptor(ISuscriptos *s);
+		void eliminarSuscriptor(IKey telCel);
+
+
 
 }
 
