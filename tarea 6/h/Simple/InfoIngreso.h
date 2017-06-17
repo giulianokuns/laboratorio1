@@ -19,6 +19,7 @@ class InfoIngreso {
 		Usuario usuario;
 
 	public:
+	InfoIngreso(Fecha fechaIngreso,	Hora horaIngreso,	Usuario usuario);
 	Fecha 	getfechaIngreso();
 	Hora 	gethoraIngreso();
 	Usuario getUsuario();

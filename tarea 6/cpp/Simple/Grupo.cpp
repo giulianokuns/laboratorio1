@@ -1,6 +1,13 @@
 #include "Fecha.h"
 #include "Hora.h"
 
+Grupo::Grupo(String nomGrupo, String imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary infoIngresos){
+	this->nomGrupo = nomGrupo;
+	this->imagenGrupo = imagenGrupo;
+	this->fechaCreacion = fechaCreacion;
+	this->horaCreacion = horaCreacion;
+	this->infoIngresos = infoIngresos;
+}
 
 String Grupo::getnomGrupo(){
 	return nomGrupo;

@@ -21,6 +21,7 @@ class Grupo {
 		IDictionary infoIngresos;
 
 	public:
+		Grupo(String nomGrupo, String imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary infoIngresos);
 		String getnomGrupo();
 		String getimagenGrupo();
 		Fecha getfechaCreacion();

@@ -1,7 +1,11 @@
 #include "Fecha.h"
 #include "Hora.h"
 #include "InfoIngreso.h"
-
+InfoIngreso::InfoIngreso(Fecha fechaIngreso,	Hora horaIngreso,	Usuario usuario){
+	this->fechaIngreso = fechaIngreso;
+	this->horaIngreso = horaIngreso;
+	this->usuario = usuario;
+}
 Fecha InfoIngreso::getfechaIngreso(){
 	return fechaIngreso;
 }
