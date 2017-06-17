@@ -203,22 +203,29 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 
 	//Busca la conversacion que tiene el mensaje con ese codigo
 	IDictionary * arr_ec = this->getarreglo_ec();
-	for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent() && !es_mensaje); it->next()) {
-		EstadoConversacion * ec = getCurrent();
-		Conversacion * conv = ec->getconversacion();
-		if (idConv.compare(conv->getidConversacion())) {
-			IDictionary mensajes = conv->getMensajes();
-			Mensaje mensj = mensajes.find(codigo);
+	if (!arr_ec->isEmpty()) {
+		for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent() && !es_mensaje); it->next()) {
+			EstadoConversacion * ec = getCurrent();
+			Conversacion * conv = ec->getconversacion();
+			if (idConv.compare(conv->getidConversacion())) {
+				IDictionary mensajes = conv->getMensajes();
+				Mensaje mensj = mensajes.find(codigo);
 
-			if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
-				es_mensaje = true;
+				if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
+					es_mensaje = true;
+				}
 			}
 		}
-	}
+		if (!es_mensaje) {
+			throw std::invalid_argument('Error: Mensaje invalido');
+		}
 
-	if (es_emisor) {
-		mensj.eliminarMensajeEmisor();
-	} else {
-		mensj.eliminarMensajeReceptor(conv);
+		if (es_emisor) {
+			mensj.eliminarMensajeEmisor();
+		} else {
+			mensj.eliminarMensajeReceptor(conv);
+		}
+	} else { 	
+		throw std::invalid_argument('No tiene conversaciones.');
 	}
 }

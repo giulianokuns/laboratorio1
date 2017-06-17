@@ -36,9 +36,6 @@ procede de la misma manera.
 Los datos de los mensajes corresponden al valor de sus atributos más la
 información de visto en el caso de mensajes enviados por el usuario.*/
 
-cout << "1. " << endl;
-cout << "2. " << endl;
-cout << "3. Salir" << endl;
 ICtrlUsuario *CI = ICtrlUsuario::getinstancia();
 
 Usuario * user_log = CI->getusuarioLog();
