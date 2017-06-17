@@ -77,8 +77,7 @@ class Usuario: public ICollectible, public ISuscriptos{
 		void eliminarNotificaciones();
 		void agregarSuscriptor(ISuscriptos *s);
 		void eliminarSuscriptor(IKey telCel);
-
-
+		void agregarNotificacion(DtNotificaciones notificacion);
 
 }
 

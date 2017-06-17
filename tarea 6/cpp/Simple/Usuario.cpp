@@ -234,3 +234,4 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 		throw std::invalid_argument('No tiene conversaciones.');
 	}
 }
+

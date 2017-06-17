@@ -39,13 +39,30 @@ bool CtrlUsuario::ingresar(IKey numero){
 
 	if (usuarioLog == NULL){
 
-		//Buscar usuario y ver si existe (ver como hacer el iterador)
+		for (IIterator *it = usuarios->getIterator(); it->hasCurrent() and it->getCurrent()->gettelCel !=  numero.getVal(); it->next());
+
+		if(it->hasCurrent()){
+
+			Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
+			Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
+
+			usuarioLog = it->getCurrent();
+			usuarioLog->sethoraUltimaConex(hr);
+			usuarioLog->setfechaUltimaConex(fch);
+
+			return true;
+
+		}else{
+
+			throw std::invalid_argument('El usuario no existe');
+			return false
+		}
 
 	}else{
 
 		if(usuarioLog->gettelCel() != numero){
 
-			//Levantar excepcion de cerrar guasap para entrar con otro numero
+			throw std::invalid_argument('Cierre Guasap antes de entrar con otro numero');
 
 		}else{
 
@@ -60,14 +77,31 @@ DtFecha CtrlUsuario::altaUsuario(IKey numero, String nombre, String URL,String D
 	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
 	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
 
-	Usuario usrnew = new Usuario(numero,nombre,fch,URL,fch,hr,NULL/*ICollection arreglo_ec*/,NULL/*ICollection arreglo_ec*/,IDictionary contactos);
+	Usuario usrnew = new Usuario(numero,nombre,fch,URL,fch,hr,new List(),new List(),new List());
 
-	/*VER COMO AÑADIR USUARIO A LA COLECCION*/
+	usuarios->add(usrnew);
+	usuarioLog = &usrnew;
 
 	DtFecha retorno = new DtFecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
 
 	return retorno;	
 }
+
+ICollection CtrlUsuario::getNotificaciones(){
+	return usuarioLog->getNotificaciones();
+};
+
+void CtrlUsuario::eliminarNotificaciones(){
+	return usuarioLog->eliminarNotificaciones();
+};
+
+void CtrlUsuario::agregarSuscriptor(ISuscriptos *s){
+	return usuarioLog->agregarSuscriptor();
+};
+
+void CtrlUsuario::eliminarSuscriptor(IKey telCel){
+	return usuarioLog->eliminarSuscriptor();
+}; 
 
 Usuario * CtrlUsuario::getusuarioLog(){
 	return usuarioLog;

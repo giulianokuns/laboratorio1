@@ -44,7 +44,12 @@ class CtrlUsuario{
 
 		bool inicioSesion();
 		DtFecha altaUsuario(IKey numero, String nombre, String URL,String Descripcion);
-		bool ingresar(IKey numero); 
+		bool ingresar(IKey numero);
+
+		ICollection getNotificaciones();
+		void eliminarNotificaciones();
+		void agregarSuscriptor(ISuscriptos *s);
+		void eliminarSuscriptor(IKey telCel); 
        
        /*enviar mensaje*/
        IKey crearConvNueva(IKey tel ,Ikey converID);
