@@ -166,12 +166,13 @@ IKey CtrlUsuario::crearConvNueva(IKey tel ,Ikey converID){
     //anteriormente creada y se lo asocia a los participantes.
     Usuario log = this->getusuarioLog();
     IDictionary ar_ec = log->getarreglo_ec();
-    ICollectible ec = new EstadoConversacion(true,c);
+    ICollectible ec = new EstadoConversacion(false,c);
     ar_ec->add(converID, ec);
 
     Usuario participante = ar_usu->find(tel);
+    ICollectible ec2 = new EstadoConversacion(false,c)
     IDictionary *ar_ecTel = participante->getarreglo_ec();
-    ar_ecTel->add(converID, ec);
+    ar_ecTel->add(converID, ec2);
 
     return converID;
 }
