@@ -1087,7 +1087,7 @@ int main(){
     
     int op = 0;
     
-    while(op != ?){
+    while(op != 13){
         
         cout << "1.Establecer fecha y hora del sistema" << endl;
         cout << "2.Mostrar fecha y hora del sistema" << endl;
@@ -1105,6 +1105,42 @@ int main(){
         
         cout << endl << endl;
         
+        cout << "Ingrese opcion: ";
+        cin >> op; 
+        cout << endl;
+        
+        if(op == 1){
+            
+            int año, mes, dia, hora, minuto;
+            
+            cout << "Ingrese Año: ";
+            cin >> año; 
+            cout << endl;
+            
+            cout << "Ingrese Mes: ";
+            cin >> mes; 
+            cout << endl;
+            
+            cout << "Ingrese Dia: ";
+            cin >> dia; 
+            cout << endl;
+            
+            cout << "Ingrese Hora: ";
+            cin >> hora; 
+            cout << endl;
+            
+            cout << "Ingrese Minuto: ";
+            cin >> minuto; 
+            cout << endl;
+            
+            setFechaHora(año,mes,dia,hora,minuto);
+            
+        }else if(op == 2){
+            
+            
+        }
     }
+    
+    return 0;
 }
 
