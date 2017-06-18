@@ -27,9 +27,10 @@ class Usuario: public ICollectible, public ISuscriptos{
 		IDictionary mensajes;
 		/*notificaciones de suscriptores*/
 		ICollection notificaciones;
+                ICollection suscriptores;
 
 	public:
-		Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos);
+		Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos,ICollection suscriptores);
 		~Usuario();
 		
 		IKey gettelCel();
@@ -78,6 +79,7 @@ class Usuario: public ICollectible, public ISuscriptos{
 		void agregarSuscriptor(ISuscriptos *s);
 		void eliminarSuscriptor(IKey telCel);
 		void agregarNotificacion(DtNotificaciones notificacion);
+                void agregarNotificaciones(DtNotificaciones notificacion);
 
 }
 

@@ -92,15 +92,21 @@ ICollection CtrlUsuario::getNotificaciones(){
 };
 
 void CtrlUsuario::eliminarNotificaciones(){
-	return usuarioLog->eliminarNotificaciones();
+	usuarioLog->eliminarNotificaciones();
 };
 
 void CtrlUsuario::agregarSuscriptor(ISuscriptos *s){
-	return usuarioLog->agregarSuscriptor();
+    
+    usr = usuarios->find(new string(s->gettelCel));
+    usr->agregarSuscriptor(this->usuarioLog);
+
 };
 
+
 void CtrlUsuario::eliminarSuscriptor(IKey telCel){
-	return usuarioLog->eliminarSuscriptor();
+    
+    usr = usuarios->find(telCel);
+    usr->eliminarSuscriptor(new string(usuarioLog->gettelCel));
 }; 
 
 Usuario * CtrlUsuario::getusuarioLog(){

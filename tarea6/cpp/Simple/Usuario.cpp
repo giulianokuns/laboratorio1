@@ -12,7 +12,7 @@
 #include "IDictionary.h"
 #include "ICollection.h"
 
-Usuario::Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos, ICollection notificaciones){
+Usuario::Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos, ICollection notificaciones,ICollection suscriptores){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -22,7 +22,8 @@ Usuario::Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string ima
 	this->horaUltimaConex = horaUltimaConex;//no se crea una instancia nueva
 	this->arreglo_ec = arreglo_ec;
 	this->contactos = contactos;
-	this->notificaciones = notificaciones
+	this->notificaciones = notificaciones;
+	this->suscriptores = suscriptores;
 }
 Usuario::~Usuario(){
 	
@@ -234,4 +235,39 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 		throw std::invalid_argument('No tiene conversaciones.');
 	}
 }
+
+		
+ICollection Usuario::getNotificaciones(){
+     
+    return this->notificaciones;
+    
+}
+
+void Usuario::eliminarNotificaciones(){
+    this->notificaciones->clear();
+};
+
+
+void Usuario::agregarSuscriptor(ISuscriptos *s){
+    this->suscriptores->add(s);
+};
+
+void Usuario::eliminarSuscriptor(IKey telCel){
+    this->suscriptores->remove(telCel);    
+};
+
+void Usuario::agregarNotificacion(DtNotificaciones notificacion){
+    this->notificaciones->add(notificacion);
+};
+
+void Usuario::agregarNotificaciones(DtNotificaciones notificacion){
+    
+    for (IIterator *it = this->suscriptores->getIterator(); it->hasCurrent(); it->next()){
+        
+        it->getCurrent()->agregarNotificacion(notificacion);
+        
+    }
+        
+};
+
 
