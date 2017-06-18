@@ -5,8 +5,8 @@
 
 #include "../../Simple/Fecha.h"
 #include "../../Simple/Hora.h"
-#include "ICollectible.h"
-#include "IKey.h"
+#include "../../../lab6-colecciones/interfaces/ICollectible.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
 
 #ifndef DTMENSAJE
 #define DTMENSAJE
@@ -26,4 +26,5 @@ class DtMensaje : public ICollectible {
         Fecha   getFecha() const;
         Hora    getHora() const;
 };
+
 #endif

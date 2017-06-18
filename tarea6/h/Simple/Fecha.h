@@ -20,6 +20,6 @@ class Fecha{
 		bool operator ==(const Fecha &a, const Fecha &b) const;
 		bool operator  >(const Fecha &a, const Fecha &b) const;
 		ostream& operator<<(ostream& os, const Fecha& fecha);
-}
+};
 
 #endif
