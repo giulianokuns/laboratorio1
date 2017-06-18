@@ -151,7 +151,7 @@ void crearMensajeContact(string tel, IKey codigo, Fecha fechaSist, Hora horaSist
   
 }
 
-void crearMensajeSimple(DtSimple simCont, IKey codigo, Fecha fechaSist, Hora horaSist){
+void crearMensajeSimple(string simCont, IKey codigo, Fecha fechaSist, Hora horaSist){
   CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
   Usuario log = ctrl->getusuarioLog();
   
@@ -194,7 +194,7 @@ void crearMensajeSimple(DtSimple simCont, IKey codigo, Fecha fechaSist, Hora hor
 }
 
 
-void crearMensajeImagen(DtImagen dtImagen, IKey codigo, Fecha fechaSist, Hora horaSist){
+void crearMensajeImagen(string formato, int tamanio, string textMulti, string urlImg, IKey codigo, Fecha fechaSist, Hora horaSist){
   CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
   Usuario log = ctrl->getusuarioLog();
   
@@ -270,7 +270,7 @@ void crearMensajeVideo(DtVideo dtVideo, IKey codigo, Fecha fechaSist, Hora horaS
   //el código del mensaje es autogenerado por el sistema
   //necesito saber donde se va a obtener ese código
   //Se usa la coleccion recibidos como atributo de mensaje
-  Mensaje m = new Video(codigo, fechaSist, horaSist, dtVideo, recibidos);
+  Mensaje m = new Video(codigo, fechaSist, horaSist, duracion, urlVideo, recibidos);
 
   //Se agrega el mensaje a la conversacion.
 

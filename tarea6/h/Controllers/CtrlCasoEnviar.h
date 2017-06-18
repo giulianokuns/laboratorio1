@@ -28,11 +28,11 @@ public:
 	    ICollection * listarArchivadas();
 	    ICollection * listarActivas();
 	    ICollection * listarContactos();
-	    void crearConversacion(IKey tel, IKey idConver);
-	    void crearMensajeContact(string idContact);
-	    void crearMensajeImagen(DtImagen dtImagen);
-	    void crearMensajeSimple(DtSimple simCont);
-	    void crearMensajeVideo(DtVideo dtVideo);
+	    IKey crearConversacion(IKey tel, IKey idConver);
+	    void crearMensajeContact(string tel, IKey codigo, Fecha fechaSist, Hora horaSist);
+	    void crearMensajeImagen(string formato, int tamanio, string textMulti, string urlImg, IKey codigo, Fecha fechaSist, Hora horaSist);
+	    void crearMensajeSimple(string simCont, IKey codigo, Fecha fechaSist, Hora horaSist);
+	    void crearMensajeVideo(string urlVideo, int duracion, IKey codigo, Fecha fechaSist, Hora horaSist);
 	    void ingresarIDContacto(IKey idContact);
 	    void ingresarIDArchi(IKey idArchi);
 	    void ingresarIDActiva(IKey idActiva);	    
