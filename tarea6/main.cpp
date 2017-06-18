@@ -915,7 +915,7 @@ if (user_log != NULL) {
 		cout << "Conversaciones activas" << endl;
 
 		for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()) {
-			Conversacion * c = getCurrent();
+			Conversacion * c = dynamic_cast<Conversacion * > (it->getCurrent());
 			bool es_grupo = c->getesGrupo();
 			if (es_grupo) {
 				Grupo g = c->getgrupo();
@@ -925,7 +925,7 @@ if (user_log != NULL) {
 				/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 				otro*/
 				for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
-					Usuario * u = getCurrent();
+					Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
 					if (!userlog->gettelCel()->compare(u->gettelCel())) {
 						nombre  = u->getnomUsuario();
 						tel_cel = u->gettelCel();
@@ -953,7 +953,7 @@ if (user_log != NULL) {
 
 			if (!mensajes->isEmpty()) {
 				for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
-					Mensaje m = getCurrent();
+					Mensaje * m = dynamic_cast<Mensaje* > (it_m->getCurrent());
 
 					if (dynamic_cast<Simple*> (&m) != NULL) {
 						//Es Simple
@@ -993,7 +993,8 @@ if (user_log != NULL) {
 
 			if (!lista_archivadas->isEmpty()) {
 				for (IIterator *it = lista_archivadas->getIterator(); it->hasCurrent(); it->next()) {
-					Conversacion * c = getCurrent();
+					
+					Conversacion * c = dynamic_cast<Conversacion * > (it->getCurrent());
 					bool es_grupo = c->getesGrupo();
 					if (es_grupo) {
 						Grupo g = c->getgrupo();
@@ -1003,7 +1004,7 @@ if (user_log != NULL) {
 						/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 						otro*/
 						for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
-							Usuario * u = getCurrent();
+							Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
 							if (!userlog->gettelCel()->compare(u->gettelCel())) {
 								nombre  = u->getnomUsuario();
 								tel_cel = u->gettelCel();
@@ -1021,7 +1022,7 @@ if (user_log != NULL) {
 				
 				if (!mensajes->isEmpty()) {
 					for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
-						Mensaje m = getCurrent();
+						Mensaje * m = dynamic_cast<Mensaje *> (it_m->getCurrent());
 
 						if (dynamic_cast<Simple*> (&m) != NULL) {
 							//Es Simple

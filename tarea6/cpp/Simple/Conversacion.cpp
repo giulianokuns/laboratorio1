@@ -65,7 +65,8 @@ DtConversacion Conversacion::getinfo(){
 	else{
 		IDictionary *participantes =	getparticipantes();
 		IIterator *it = participantes->getIterator();
-		Usuario *u = getCurrent();
+		Usuario  * u = dynamic_cast<Usuario * > (it->getCurrent());
+
 		dtc = new DtConversacion(false, u->getnomUsuario, u->gettelCel, getidConversacion());
 	}
 	return dtc;
@@ -82,7 +83,8 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 	bool encontrado = false;
 
 	for (IIterator *it = arr_info_ingresos->getIterator(); (it->hasCurrent() && !encontrado); it->next()) {
-		InfoIngreso * info_i = getCurrent();
+		
+		InfoIngreso * info_i = dynamic_cast<InfoIngreso * > (it->getCurrent());
 		Usuario * usuario = info_i->getUsuario();
 		if (user_log->gettelCel() == usuario->gettelCel()) {
 			DtInfoIngreso fecha_hora_ingreso = new DtInfoIngreso(info_i->getfechaIngreso(), info_i->gethoraIngreso());
@@ -93,7 +95,7 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 	//Obtenemos los mensajes de la conversacion.
 	IDictionary arr_mensj = this->getMensajes();
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
-		Mensaje * m = getCurrent();
+		Mensaje * m = dynamic_cast<Mensaje* > (it->getCurrent());
 
 		bool es_valido = m->validarFechaHoraMensaje(fecha_hora_ingreso);
 		if (es_valido) {
@@ -145,7 +147,7 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 			// Marco el mensaje como visto.
 			IDictionary recibidos = m->getRecibidos();		
 			for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
-				Recibido * r = getCurrent();
+				Recibido * r = dynamic_cast<Recibido* > (it_r->getCurrent());
 				Usuario * user = r->getUsuario();
 				if (user_log->gettelCel() == user->gettelCel()) {
 					Fecha fecha_visto = new Fecha (FechaSistema::getDia(), FechaSistema::getMes(), FechaSistema::getAnio());
@@ -168,7 +170,7 @@ ICollection Conversacion::obtenerMensajesConv() {
 	ICollection lista_mensajes = new list();
 
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
-		Mensaje * m = getCurrent();
+		Mensaje * m = dynamic_cast<Mensaje* > (it->getCurrent());
 		//DtMensaje mensaje = m->darMensaje();
 
 		if (dynamic_cast<Simple*> (&m) != NULL) {
@@ -219,7 +221,7 @@ ICollection Conversacion::obtenerMensajesConv() {
 		// Marco el mensaje como visto.
 		IDictionary recibidos = m->getRecibidos();		
 		for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
-			Recibido * r = getCurrent();
+			Recibido * r = dynamic_cast<Recibido * > (it_r->getCurrent());();
 			Usuario * user = r->getUsuario();
 			if (user_log->gettelCel() == user->gettelCel()) {
 				Fecha fecha_visto = new Fecha (FechaSistema::getDia(), FechaSistema::getMes(), FechaSistema::getAnio());
