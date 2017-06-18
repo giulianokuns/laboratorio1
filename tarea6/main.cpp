@@ -16,7 +16,7 @@ using namespace std;
 	
 	/*CASO DE USO: MOSTRAR HORA Y FECHA*/
 	
-	string getFechaHora() 
+	void getFechaHora() 
 	{
             cout FechaSistema::getDia() << "/" << FechaSistema::getMes()  << "/" << FechaSistema::getAño()  << " " << HoraSistema::getHora() << ":" << HoraSistema::getMinutos; 
 	}
@@ -703,200 +703,6 @@ while(desea_modificar){
 }
 }
 
-    
-int main()
-{
-    int opcion = 0;
-    
-    while(opcion != 7){
-        
-        cout << "1. Agregar Socio" << endl;
-        cout << "2. Agregar Clase" << endl;
-        cout << "3. Agregar Inscripcion" << endl;
-        cout << "4. Borrar Inscripcion" << endl;
-        cout << "5. Imprimir Socios por clase" << endl;
-        cout << "6. Imprimir Clase" << endl;
-        cout << "7. salir" << endl << endl; 
-        
-        cout << "Ingrese opcion:";
-        cin >> opcion;
-        cout << endl << endl;
-        
-        try{
-            if(opcion == 1){
-                
-                string ci,nombre;
-                
-                cout << "Ingrese ci:";
-                cin >> ci;
-                cout << endl;
-                
-                
-                cout << "Ingrese Nombre:";
-                cin >> nombre;
-                cout << endl;
-                
-                agregarSocio(ci,nombre);
-                
-            }
-            else if(opcion == 2){
-                int tipoclase, id, numeroturno;
-                string nombre;
-                Turno turno;
-
-                cout << "1. Spinning"       << endl;
-                cout << "2. Entrenamiento"  << endl;
-                cin >> tipoclase;
-                
-                cout << "Ingrese id: ";
-                cin >> id;
-
-                cout << "Ingrese el nombre: ";
-                cin >> nombre;
-
-                cout << "Ingrese el turno: " << endl;
-                cout << "1. Mañana" << endl;
-                cout << "2. Tarde"  << endl;
-                cout << "3. Noche"  << endl;
-                cin >> numeroturno;
-
-                switch (numeroturno) {
-                    case 1: turno = Manana;
-                        break;
-                    case 2: turno = Tarde;
-                        break;
-                    case 3: turno = Noche;
-                        break;
-                    default: throw std::invalid_argument("Turno invalido");
-                }
-
-                if (tipoclase == 1) {
-                   int bicis;
-
-                   cout << "Ingrese cantidad de bicis: ";
-                   cin >> bicis;
-
-                   DtSpinning dtspinning(bicis, id, nombre, turno);
-                   agregarClase(dtspinning);
-                } else if (tipoclase == 2) {
-                    int enrambla;
-
-                    cout << "0. No es en la rambla" << endl;
-                    cout << "1. Es en la rambla"    << endl;
-                    cin >> enrambla;
-                    
-                    bool rambla;
-                    if (enrambla == 1) {
-                        rambla = true;
-                    } else if (enrambla == 0) {
-                        rambla = false;
-                    } else {
-                        throw std::invalid_argument("Modalidad de clase invalida");    
-                    }
-
-                    DtEntrenamiento dtentrenamiento(rambla,id,nombre,turno);
-                    agregarClase(dtentrenamiento);
-                } else {
-                    throw std::invalid_argument("Tipo de clase invalido");
-                }
-            }
-            
-            else if(opcion == 3){
-                string ciSocio;
-                int idclase,dia,mes,anio;
-                
-                cout << "Ingrese la cedula del socio: ";
-                cin >> ciSocio;
-
-                cout << "Ingrese el ID de la clase: ";
-                cin >> idclase;
-                
-                cout << "Fecha de Inscripcion: ";
-                cout << "Ingrese el dia: ";
-                cin >> dia;
-
-                cout << "Ingrese le mes: ";
-                cin >> mes;
-
-                cout << "Ingrese el año: ";
-                cin >> anio;
-
-                Fecha *f = new Fecha(dia,mes,anio);
-                
-                agregarInscripcion(ciSocio, idclase, *f);
-                
-            }
-            else if(opcion == 4){
-                string CI;
-                int ID;
-
-                cout << "Ingrese la CI del socio: ";
-                cin >> CI;
-
-                cout << "Ingrese el ID de la clase: ";
-                cin >> ID;
-
-                borrarInscripcion(CI,ID);
-            }
-            else if(opcion == 5){
-                
-                int idClase, cantSocios;
-                
-                cout << "Ingrese Clase: ";
-                cin >> idClase;
-                cout << endl;
-                
-                
-                cout << "Ingrese CantidadSocios: ";
-                cin >> cantSocios;
-                cout << endl;
-
-                int i = 0;
-                while (( i < tope_clases) && (clases[i]->getid() != idClase)) {
-                    i++;
-                } 
-                if (i >= tope_clases) {
-                    throw std::invalid_argument("No existe la clase");
-                } else if (clases[i]->getCantInscriptos() > cantSocios) {
-                    DtSocio** socios = obtenerInfoSocioPorClase(idClase, cantSocios); 
-                    for(int i = 0; i < cantSocios; i++) {
-                        cout << socios[i]->getCI() << " - " << socios[i]->getNombre() << endl;
-                    }
-                    delete socios;
-                } else {
-                    int cant_inscriptos = clases[i]->getCantInscriptos();
-                    DtSocio** socios = obtenerInfoSocioPorClase(idClase, cant_inscriptos);    
-                    for(int i = 0; i < cant_inscriptos; i++) {
-                        cout << socios[i]->getCI() << " - " << socios[i]->getNombre() << endl;
-                    }
-                    delete socios;
-                }
-                    
-                
-            }
-            else if(opcion == 6){
-                int id;
-                cout << "Ingrese el ID de la clase: ";
-                cin >> id;
-                
-                if(dynamic_cast<DtEntrenamiento*> (&obtenerClase(id)) != NULL){
-                    DtEntrenamiento * imp = dynamic_cast<DtEntrenamiento*>(&obtenerClase(id));
-                    cout << *imp <<endl;	
-                }
-                else{
- 		            DtSpinning * imp = dynamic_cast<DtSpinning*>(&obtenerClase(id));
-                    cout << *imp <<endl;	
-                }
-            }
-            else {
-                invalid_argument("Opcion no valida");
-            }
-        }catch(invalid_argument &ia){
-            cout << "Error: " << ia.what() << endl;
-        }
-    }
-    return 0;
-}
 
 /*CASO DE USO: ELIMINAR MENSAJE*/
 
@@ -1138,6 +944,47 @@ int main(){
             
         }else if(op == 2){
             
+            getFechaHora();
+            
+        }else if(op == 3){
+            
+            abrirGuasap();
+            
+        }else if(op == 4){
+            
+            cerrarGuasap();
+            
+        }else if(op == 5){
+            
+            agregarContacto();
+            
+        }else if(op == 6){
+            
+            altaGrupo();
+            
+        }else if(op == 7){
+            
+            enviarMensaje();
+            
+        }else if(op == 8){
+            
+            verMensaje();
+            
+        }else if(op == 9){
+            
+            archivarConversacion();
+            
+        }else if(op == 10){
+            
+            modificarUsuario();
+            
+        }else if(op == 11){
+            
+            eliminarMensaje();
+            
+        }else if(op == 12){
+            
+            agregarSuscriptores();
             
         }
     }
