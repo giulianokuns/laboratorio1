@@ -125,8 +125,8 @@ ICollection *Usuario::get_lista_activos(){
 
 void Usuario::archivar(IKey *ID){
 	IDictionary arreglo_ec = getarreglo_ec();
-	EstadoConversacion ec = find(ID);//o el correspondiente key
-	ec.setarchivada(true);
+	EstadoConversacion *ec = dynamic_cast<EstadoConversacion * > (arreglo_ec->find(ID));
+	ec->setarchivada(true);
 }
 	/*agregarContacto*/
 ICollection *Usuario::getInfoContactos(){
@@ -145,7 +145,7 @@ bool Usuario::esContacto(IKey *telCel){
 }
 DtInfoContacto Usuario::getIfoContacto(IKey *telCel){
 	IDictionary contactos = getcontactos();
-	Usuario u = find(telCel);
+	Usuario  * u = dynamic_cast<Usuario * > (contactos->find(telCel));
 	DtInfoContacto dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
 	return dt;
 }
@@ -191,7 +191,7 @@ int Usuario::getCantidadArhivadas() {
 
 ICollection Usuario::getReceptores(IKey *codigo) {
 	IDictionary arr_mensj = this->getMensajes();
-	Mensaje m = arr_mensj.find(codigo);
+	Mensaje  * m = dynamic_cast<Mensaje * > (arr_mensj.find(codigo));
 	if (m != NULL) {
 		ICollection receptores = m->getReceptores();
 	} else {
@@ -215,9 +215,9 @@ void Usuario::eliminarMensaje (IKey *codigo, IKey *idConv) {
 			Conversacion * conv = ec->getconversacion();
 			if (idConv.compare(conv->getidConversacion())) {
 				IDictionary mensajes = conv->getMensajes();
-				Mensaje mensj = mensajes.find(codigo);
-
-				if (mensj != NULL && codigo.compare(mensj.getcodigo())) {
+				
+				Mensaje  * mensj= dynamic_cast<Mensaje * > (mensajes.find(codigo));
+				if (mensj != NULL && codigo.compare(mensj->getcodigo())) {
 					es_mensaje = true;
 				}
 			}
