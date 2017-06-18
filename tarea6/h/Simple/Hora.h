@@ -14,9 +14,9 @@ class Hora{
 		void sethoras(int hora);
 		void setminutos(int minutos);
 
-		bool operator ==(const Hora &a, const Hora &b) const;
-		bool operator  >(const Hora &a, const Hora &b) const;
-		ostream& operator<<(ostream& os, const Hora& hora);
+		bool operator ==(const Hora &a) const;
+		bool operator  >(const Hora &a) const;
+		ostream& operator<<(ostream& os);
 };
 
 #endif

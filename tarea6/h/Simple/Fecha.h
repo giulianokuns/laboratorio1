@@ -17,9 +17,9 @@ class Fecha{
 		void setmes(int mes);
 		void setanio(int anio);
 
-		bool operator ==(const Fecha &a, const Fecha &b) const;
-		bool operator  >(const Fecha &a, const Fecha &b) const;
-		ostream& operator<<(ostream& os, const Fecha& fecha);
+		bool operator ==(const Fecha &a) const;
+		bool operator  >(const Fecha &a) const;
+		ostream& operator<<(ostream& os);
 };
 
 #endif
