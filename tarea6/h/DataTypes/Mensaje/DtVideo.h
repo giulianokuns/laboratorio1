@@ -8,13 +8,13 @@ using namespace std;
 class DtVideo : public DtMultimedia {
 	private:
 		int 	dtDuracion;
-        String  dtURLvideo;
+        string  dtURLvideo;
 
     public:
-        DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : DtMensaje (codigo, fecha, hora) {};
+        DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : DtMensaje (codigo, fecha, hora) {};
         ~DtVideo ();
         
         int  	getDuracion() const;
-        String  getURLvideo() const;
+        string  getURLvideo() const;
 };
 #endif

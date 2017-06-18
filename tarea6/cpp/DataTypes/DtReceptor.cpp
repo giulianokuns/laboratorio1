@@ -6,7 +6,7 @@
 
 using namespace std;
 
-DtReceptor::DtReceptor (String nombre, IKey num_cel, Fecha fecha_visto, hora hora_visto) {
+DtReceptor::DtReceptor (string nombre, IKey num_cel, Fecha fecha_visto, hora hora_visto) {
 	this->dtNombre 		= nombre;
 	this->dtNumTel 		= num_cel;
 	this->dtFechaVisto 	= fecha_visto;
@@ -15,7 +15,7 @@ DtReceptor::DtReceptor (String nombre, IKey num_cel, Fecha fecha_visto, hora hor
 
 DtReceptor::~DtReceptor () {}
 
-String DtReceptor::getNombre () {
+string DtReceptor::getNombre () {
 	return dtNombre;
 }
 
@@ -30,7 +30,7 @@ Hora DtReceptor::getHoraVisto () {
 }
 
 ostream& operator<<(ostream& os, const DtReceptor& dt_receptor) {
-	string tel_cel = new String (dt_receptor.getNumTel());
+	string tel_cel = new string (dt_receptor.getNumTel());
 
 	os 	<< "Nombre: " 		<< dt_receptor.getNombre()	  	<< '\n' 
    		<< "Teléfono: " 	<< tel_cel  					<< '\n' 

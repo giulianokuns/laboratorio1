@@ -13,12 +13,12 @@ while(desea_modificar){
 	Usuario *u = instancia->getusuarioLog();
 	if (i==1){
 		cout << "Ingrese el nombre" endl;
-		string nombre;
+		String nombre;
 		cin >> nombre;
 		u->setnomUsuario(nombre);
 	} else{
 		cout << "Ingrese el URL" endl;
-		string URL;
+		String URL;
 		cin >> URL;
 		u->setimaPerfil(String URL);
 	 }
@@ -54,7 +54,7 @@ if(contactos->isEmpty()){
 	}
 	//mientrasse quiera edito
 	while(desea_editar){
-		string nombre,telcel;
+		String nombre,telcel;
 		cout << "Agregados:" endl;
 		for (IIterator *it_a = lista_agregados->getIterator(); it_a->hasCurrent(); it_a->next()) {
 			DtInfoContacto *actual_agregado = it_a->getCurrent();
@@ -151,18 +151,18 @@ while ( desea_archivar){
 	//imprimo las conversaciones no archivadas 
 	for (IIterator *it = conversaciones->getIterator(); it->hasCurrent(); it->next()) {
 		DtConversacion *dtc = it->getCurrent();
-		string nombre,idconv;
+		String nombre,idconv;
 		nombre = dtc->getnombre();
 		idconv = dtc->getidConversacion();
 		if(dtc->esgrupo()){
 			//imprimir
 		}else{
-			string telcel = dtc->gettelCel();
+			String telcel = dtc->gettelCel();
 			//imprimir
 		}
 	}
 	cout << "Ingrese el id de la conversacion que desea archivar" endl;
-	string id;
+	String id;
 	cin >> id;
 	ikey *idkey = new String(id);
 	instancia->getusuarioLog()->archivar(idkey);
@@ -188,7 +188,7 @@ bool se_dese_agrear = true;
 while (se_dese_agrear){
 	cout << "Sus contactos son:" endl;
 	//imprimo los contactos del usuario
-	string telcel,nombre,urlimagen;
+	String telcel,nombre,urlimagen;
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
 		DtInfoContacto contacto_mostrar = it->getCurrent();
 		tecel = contacto_mostrar->gettelCel();

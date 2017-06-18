@@ -13,14 +13,14 @@ using namespace std;
 class Video : public Multimedia {
 	private:
 		int 	duracion;
-        String  URLvideo;
+        string  URLvideo;
 
     public:
-        Video (IKey codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : Mensaje (codigo, fecha, hora) {};
+        Video (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : Mensaje (codigo, fecha, hora) {};
         ~Video ();
         
         int  	getDuracion() const;
-        String  getURLvideo() const;
+        string  getURLvideo() const;
 
         friend ostream& operator<<(ostream& os, const Video& mens_video);
 };

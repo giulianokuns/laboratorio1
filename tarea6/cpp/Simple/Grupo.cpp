@@ -1,7 +1,7 @@
 #include "Fecha.h"
 #include "Hora.h"
 
-Grupo::Grupo(String nomGrupo, String imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary infoIngresos){
+Grupo::Grupo(string nomGrupo, string imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary infoIngresos){
 	this->nomGrupo = nomGrupo;
 	this->imagenGrupo = imagenGrupo;
 	this->fechaCreacion = fechaCreacion;
@@ -9,10 +9,10 @@ Grupo::Grupo(String nomGrupo, String imagenGrupo,	Fecha fechaCreacion,	Hora hora
 	this->infoIngresos = infoIngresos;
 }
 
-String Grupo::getnomGrupo(){
+string Grupo::getnomGrupo(){
 	return nomGrupo;
 }
-String Grupo::getimagenGrupo(){
+string Grupo::getimagenGrupo(){
 	return imagenGrupo;
 }
 Fecha Grupo::getfechaCreacion(){
@@ -21,10 +21,10 @@ Fecha Grupo::getfechaCreacion(){
 Hora Grupo::gethoraCreacion(){
 	return horaCreacion;
 }
-void Grupo::setnomGrupo(String nombre){
+void Grupo::setnomGrupo(string nombre){
 	this->nomGrupo = nombre;
 }
-void Grupo::setimagenGrupo(String imagen){
+void Grupo::setimagenGrupo(string imagen){
 	this->imagenGrupo = imagen;
 }
 void Grupo::setfechaCreacion(Fecha fechaCreacion){

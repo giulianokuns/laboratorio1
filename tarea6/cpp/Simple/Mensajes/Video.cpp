@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Video::Video (IKey codigo, Fecha fecha, Hora hora, int duracion, String urlvideo) : Mensaje (codigo, fecha, hora) {
+Video::Video (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : Mensaje (codigo, fecha, hora) {
 	this->codigo 	    = codigo;
 	this->fecha 	    = new Fecha(fecha->getdia(), fecha->getmes(), fecha->getanio());
 	this->hora 		  	= new Hora(hora->gethoras(), hora->getminutos());
@@ -20,12 +20,12 @@ Video::~Video () {}
 int Video::getDuracion() {
 	return duracion;
 }
-String Video::getURLvideo() {
+string Video::getURLvideo() {
 	return URLvideo;
 }
 
 ostream& operator<<(ostream& os, const Video& mens_video) {  
-	string codigo = new String (mens_video.getodigo());	
+	string codigo = new string (mens_video.getodigo());	
 	
     os 	<< "Código: " 	 	<< codigo 					  	<< '\n' 
    		<< "Fecha: " 		<< mens_video.getfechaMensaje() << '\n' 

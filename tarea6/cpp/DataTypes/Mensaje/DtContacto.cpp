@@ -6,7 +6,7 @@
 
 using namespace std;
 
-DtContacto::DtContacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : DtMensaje (codigo, fecha, hora)  {
+DtContacto::DtContacto (IKey codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : DtMensaje (codigo, fecha, hora)  {
 	this->dtCodigo 	 	= codigo;
 	this->dtFecha 	 	= fecha;
 	this->dtHora 	 	= hora;
@@ -16,10 +16,10 @@ DtContacto::DtContacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto
 
 DtContacto::~DtContacto () {}
 
-String  DtContacto::getNomContacto() {
+string  DtContacto::getNomContacto() {
 	return dtNomContacto;
 }
 
-String  DtContacto::getTelContacto() {
+string  DtContacto::getTelContacto() {
 	return dtTelContacto;
 }

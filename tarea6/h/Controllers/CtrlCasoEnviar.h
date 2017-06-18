@@ -29,7 +29,7 @@ public:
 	    ICollection * listarActivas();
 	    ICollection * listarContactos();
 	    void crearConversacion(IKey tel, IKey idConver);
-	    void crearMensajeContact(String idContact);
+	    void crearMensajeContact(string idContact);
 	    void crearMensajeImagen(DtImagen dtImagen);
 	    void crearMensajeSimple(DtSimple simCont);
 	    void crearMensajeVideo(DtVideo dtVideo);

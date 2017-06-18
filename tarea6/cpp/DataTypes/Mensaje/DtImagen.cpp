@@ -7,7 +7,7 @@
 
 using namespace std;
 
-DtImagen::DtImagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : DtMensaje (codigo, fecha, hora) {
+DtImagen::DtImagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : DtMensaje (codigo, fecha, hora) {
 	this->dtCodigo 	   = codigo;
 	this->dtFecha 	   = fecha;
 	this->dtHora 	   = hora;
@@ -19,15 +19,15 @@ DtImagen::DtImagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tam
 
 DtImagen::~DtImagen () {}
 
-String DtImagen::getFormato() {
+string DtImagen::getFormato() {
 	return dtFormato;
 }
 int DtImagen::getTamanio() {
 	return dtTamanio;
 }
-String DtImagen::getTextMulti()  {
+string DtImagen::getTextMulti()  {
 	return dtTextMulti;
 }
-String DtImagen::getURLpicture()  {
+string DtImagen::getURLpicture()  {
 	return dtURLpicture;
 }

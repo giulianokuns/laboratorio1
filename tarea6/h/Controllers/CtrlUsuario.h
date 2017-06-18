@@ -43,7 +43,7 @@ class CtrlUsuario{
 		/*abrir GUASAP*/
 
 		bool inicioSesion();
-		DtFecha altaUsuario(IKey numero, String nombre, String URL,String Descripcion);
+		DtFecha altaUsuario(IKey numero, string nombre, string URL,string Descripcion);
 		bool ingresar(IKey numero);
 
 		ICollection getNotificaciones();

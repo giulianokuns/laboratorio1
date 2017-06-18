@@ -14,22 +14,22 @@ using namespace std;
 
 class Grupo {
 	private:
-		String nomGrupo;
-		String imagenGrupo;
+		string nomGrupo;
+		string imagenGrupo;
 		Fecha fechaCreacion;
 		Hora horaCreacion;
 		IDictionary infoIngresos;
 
 	public:
-		Grupo(String nomGrupo, String imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary infoIngresos);
-		String getnomGrupo();
-		String getimagenGrupo();
+		Grupo(string nomGrupo, string imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary infoIngresos);
+		string getnomGrupo();
+		string getimagenGrupo();
 		Fecha getfechaCreacion();
 		Hora gethoraCreacion();
 		IDictionary getInfoIngresos();
 
-		void setnomGrupo(String nombre);
-		void setimagenGrupo(String imagen);
+		void setnomGrupo(string nombre);
+		void setimagenGrupo(string imagen);
 		void setfechaCreacion(Fecha fechaCreacion);
 		void sethoraCreacion(Hora horaCreacion);
 		void setInfoIngreso(IDictionary info_ingresos)

@@ -11,19 +11,19 @@ using namespace std;
 
 class Imagen : public Multimedia {
 	private:
-        String  formato;
+        string  formato;
         int  	tamanio;
-        String  textMulti;
-        String  URLpicture;
+        string  textMulti;
+        string  URLpicture;
 
     public:
-        Imagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : Mensaje (codigo, fecha, hora) {};
+        Imagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : Mensaje (codigo, fecha, hora) {};
         ~Imagen ();
         
-        String  getFormato() const;
+        string  getFormato() const;
         int  	getTamanio() const;
-        String  getTextMulti() const;
-        String  getURLpicture() const;
+        string  getTextMulti() const;
+        string  getURLpicture() const;
 
         friend ostream& operator<<(ostream& os, const Imagen& mens_img);
 };

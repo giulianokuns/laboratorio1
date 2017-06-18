@@ -3,12 +3,12 @@
 #include <string.h>
 #include <stdexcept>
 
-#include "DtSimple.h"
-#include "DtMensaje.h"
+#include "../../../h/DataTypes/Mensaje/DtMensaje.h"
+#include "../../../h/DataTypes/Mensaje/DtSimple.h"
 
 using namespace std;
 
-DtSimple::DtSimple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : DtMensaje (codigo, fecha, hora)  {
+DtSimple::DtSimple (IKey codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora)  {
 	this->dtCodigo 	 = codigo;
 	this->dtFecha 	 = fecha;
 	this->dtHora 	 = hora;
@@ -17,6 +17,6 @@ DtSimple::DtSimple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : D
 
 DtSimple::~DtSimple () {}
 
-String  DtSimple::getTextSimp() {
+string  DtSimple::getTextSimp() {
 	return dtTextSimp;
 }

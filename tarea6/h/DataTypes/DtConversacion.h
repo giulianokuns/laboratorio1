@@ -10,15 +10,15 @@ class DtConversacion: public ICollectibe {
 	private:
 		IKey idConversacion;
 		bool esGrupo;
-		String nombre;
+		string nombre;
 		IKey telCel;
 
 	public:
-		DtConversacion(bool esGrupo, String nombre, IKey telCel, IKey idConversacion);
+		DtConversacion(bool esGrupo, string nombre, IKey telCel, IKey idConversacion);
 		~DtConversacion();
 		IKey getidConversacion();
 		bool getesGrupo();
-		String getnombre();
+		string getnombre();
 		//en caso de ser esgrupo true no deveria tomarseen cuenta telcel
 		IKey gettelcel();
 }

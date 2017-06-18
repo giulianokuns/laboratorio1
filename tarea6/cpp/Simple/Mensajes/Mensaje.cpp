@@ -2,7 +2,7 @@
 #include "Hora.h"
 #include "Mensaje.h"
 
-String Mensaje::getcodigo(){
+string Mensaje::getcodigo(){
 	return codigo;
 }
 Fecha Mensaje::getfechaMensaje(){
@@ -54,7 +54,7 @@ ICollection Mensaje::getReceptores() {
 		Hora horaVisto 	 = r.getHoraVisto();
 		Usuario usuario  = r.getUsuario();
 
-		String nombre  	 = usuario.getnomUsuario();
+		string nombre  	 = usuario.getnomUsuario();
 		IKey telCel  	 = usuario.gettelCel();
 
 		DtReceptor receptor = DtReceptor::DtReceptor(nombre, telCel, fechaVisto, horaVisto);

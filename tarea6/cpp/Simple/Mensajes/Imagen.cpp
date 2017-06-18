@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Imagen::Imagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : Mensaje (codigo, fecha, hora) {
+Imagen::Imagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : Mensaje (codigo, fecha, hora) {
 	this->dtCodigo 	   = codigo;
 	this->dtFecha 	   = fecha;
 	this->dtHora 	   = hora;
@@ -19,21 +19,21 @@ Imagen::Imagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio
 
 Imagen::~Imagen () {}
 
-String Imagen::getFormato() {
+string Imagen::getFormato() {
 	return formato;
 }
 int Imagen::getTamanio() {
 	return tamanio;
 }
-String Imagen::getTextMulti()  {
+string Imagen::getTextMulti()  {
 	return textMulti;
 }
-String Imagen::getURLpicture()  {
+string Imagen::getURLpicture()  {
 	return URLpicture;
 }
 
 ostream& operator<<(ostream& os, const Imagen& mens_img) {  
-	string codigo = new String (mens_img.getodigo());	
+	string codigo = new string (mens_img.getodigo());	
 	
     os 	<< "Código: " 	 	<< codigo 					  	<< '\n' 
    		<< "Fecha: " 		<< mens_img.getfechaMensaje() 	<< '\n' 

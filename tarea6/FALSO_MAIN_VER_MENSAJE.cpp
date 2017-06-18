@@ -45,7 +45,7 @@ if (user_log != NULL) {
 	int cantidad_archivadas     = CI->cantidadArchivadas();
 
 	if (!lista_activas.isEmpty()) {
-		string nombre, tel_cel;
+		String nombre, tel_cel;
 		cout << "Conversaciones activas" << endl;
 
 		for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()) {
@@ -114,7 +114,7 @@ if (user_log != NULL) {
 				int opt = 1;				
 				while (opt == 1) {
 					cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
-					string codigo;
+					String codigo;
 					cin >> codigo;
 
 					IKey * codigo = new String (codigo);
@@ -200,7 +200,7 @@ if (user_log != NULL) {
 					int opt = 1;				
 					while (opt == 1) {
 						cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
-						string codigo;
+						String codigo;
 						cin >> codigo;
 
 						IKey * codigo = new String (codigo);

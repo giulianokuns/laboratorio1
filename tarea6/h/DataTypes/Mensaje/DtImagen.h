@@ -7,18 +7,18 @@ using namespace std;
 
 class DtImagen : public DtMultimedia {
 	private:
-        String  dtFormato;
+        string  dtFormato;
         int  	dtTamanio;
-        String  dtTextMulti;
-        String  dtURLpicture;
+        string  dtTextMulti;
+        string  dtURLpicture;
 
     public:
-        DtImagen (IKey codigo, Fecha fecha, Hora hora, String formato, int tamanio, String textmulti, String urlpicture) : DtMensaje (codigo, fecha, hora) {};
+        DtImagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : DtMensaje (codigo, fecha, hora) {};
         ~DtImagen ();
         
-        String  getFormato() const;
+        string  getFormato() const;
         int  	getTamanio() const;
-        String  getTextMulti() const;
-        String  getURLpicture() const;
+        string  getTextMulti() const;
+        string  getURLpicture() const;
 };
 #endif

@@ -9,16 +9,16 @@ using namespace std;
 
 class DtReceptor : public ICollectible {
 	private:
-		String 	dtNombre;
+		string 	dtNombre;
 		IKey	dtNumTel;
 		Fecha 	dtFechaVisto;
 		Hora 	dtHoraVisto;
 
 	public:
-		DtReceptor (String nombre, IKey num_cel, Fecha fecha_visto, hora hora_visto);
+		DtReceptor (string nombre, IKey num_cel, Fecha fecha_visto, hora hora_visto);
 		~DtReceptor ();	
 
-		String 	getNombre () {};
+		string 	getNombre () {};
 		IKey 	getNumTel () {};
 		Fecha 	getFechaVisto () {};
 		Hora 	getHoraVisto () {};

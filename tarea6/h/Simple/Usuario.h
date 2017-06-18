@@ -14,9 +14,9 @@ using namespace std;
 class Usuario: public ICollectible, public ISuscriptos{
 	private:
 		IKey telCel;
-		String nomUsuario;
+		string nomUsuario;
 		Fecha fechaRegistro;
-		String imaPerfil;
+		string imaPerfil;
 		Fecha fechaUltimaConex;
 		Hora horaUltimaConex;
 		/*la key con la que se almacenan es el ID de su correspondiente conversacion para facilitar la busqueda*/
@@ -29,13 +29,13 @@ class Usuario: public ICollectible, public ISuscriptos{
 		ICollection notificaciones;
 
 	public:
-		Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos);
+		Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos);
 		~Usuario();
 		
 		IKey gettelCel();
-		String getnomUsuario();
+		string getnomUsuario();
 		Fecha getfechaRegistro();
-		String getimaPerfil();
+		string getimaPerfil();
 		Fecha getfechaUltimaConex();
 		Hora gethoraUltimaConex();
 		IDictionary getarreglo_ec();
@@ -43,9 +43,9 @@ class Usuario: public ICollectible, public ISuscriptos{
 		IDictionary getMensajes();
 
 		void settelCel(IKey cel);
-		void setnomUsuario(String nombre);
+		void setnomUsuario(string nombre);
 		void setfechaRegistro(Fecha fechaRegistro);
-		void setimaPerfil(String URL);
+		void setimaPerfil(string URL);
 		void setfechaUltimaConex(Fecha fechaUltimaConex);
 		void sethoraUltimaConex(Hora horaUltimaConex);
 		void setarreglo_ec(IDictionary arreglo_ec);

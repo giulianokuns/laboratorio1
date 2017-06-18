@@ -24,6 +24,6 @@ class ICtrlUsuario{
 		/*abrir GUASAP*/
 
 	virtual	bool inicioSesion() = 0;
-	virtual	DtFecha altaUsuario(IKey numero, String nombre, String URL, String Descripcion) = 0;
+	virtual	DtFecha altaUsuario(IKey numero, string nombre, string URL, string Descripcion) = 0;
 	virtual	bool ingresar(IKey numero) = 0; 
 }

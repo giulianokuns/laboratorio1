@@ -1,7 +1,7 @@
 #include "../../h/DataTypes/DtConversacion.h"
 #include "../../../lab6-colecciones/interfaces/IKey.h"
 
-DtConversacion::DtConversacion(bool esGrupo, String nombre, IKey telCel, IKey idConversacion){
+DtConversacion::DtConversacion(bool esGrupo, string nombre, IKey telCel, IKey idConversacion){
 	this->esGrupo = esGrupo;
 	this->nombre = nombre;
 	this->telcel = telcel;
@@ -10,7 +10,7 @@ DtConversacion::DtConversacion(bool esGrupo, String nombre, IKey telCel, IKey id
 bool DtConversacion::getesGrupo(){
 	return esGrupo;
 }
-String DtConversacion::getnombre(){
+string DtConversacion::getnombre(){
 	return nombre;
 }
 IKey DtConversacion::gettelcel(){

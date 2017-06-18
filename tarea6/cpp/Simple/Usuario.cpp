@@ -12,7 +12,7 @@
 #include "IDictionary.h"
 #include "ICollection.h"
 
-Usuario::Usuario(IKey telCel, String nomUsuario, Fecha fechaRegistro, String imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos, ICollection notificaciones){
+Usuario::Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos, ICollection notificaciones){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -32,7 +32,7 @@ IKey Usuario::gettelCel(){
 	return telCel;
 }
 
-String Usuario::getnomUsuario(){
+string Usuario::getnomUsuario(){
 	return nomUsuario;
 }
 
@@ -40,7 +40,7 @@ Fecha Usuario::getfechaRegistro(){
 	return fechaRegistro;
 }
 
-String Usuario::getimaPerfil(){
+string Usuario::getimaPerfil(){
 	return imaPerfil;
 }
 
@@ -66,7 +66,7 @@ void Usuario::settelCel(IKey cel){
 	this->telCel = cel;
 }
 
-void Usuario::setnomUsuario(String nombre){
+void Usuario::setnomUsuario(string nombre){
 	this->nomUsuario = nombre;
 }
 
@@ -74,7 +74,7 @@ void Usuario::setfechaRegistro(Fecha fechaRegistro){
 	this->fechaRegistro = fechaRegistro;
 }
 
-void Usuario::setimaPerfil(String URL){
+void Usuario::setimaPerfil(string URL){
 	this->imaPerfil = URL;
 }
 void Usuario::setfechaUltimaConex(Fecha fechaUltimaConex){

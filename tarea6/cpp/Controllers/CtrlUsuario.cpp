@@ -72,7 +72,7 @@ bool CtrlUsuario::ingresar(IKey numero){
 	}
 }
 
-DtFecha CtrlUsuario::altaUsuario(IKey numero, String nombre, String URL,String Descripcion){
+DtFecha CtrlUsuario::altaUsuario(IKey numero, string nombre, string URL,string Descripcion){
 
 	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
 	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());

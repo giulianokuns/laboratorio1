@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Contacto::Contacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto, String tel_cont) : Mensaje (codigo, fecha, hora)  {
+Contacto::Contacto (IKey codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : Mensaje (codigo, fecha, hora)  {
 	this->codigo 	 	= codigo;
 	this->fecha 	 	= fecha;
 	this->hora 	 		= hora;
@@ -17,16 +17,16 @@ Contacto::Contacto (IKey codigo, Fecha fecha, Hora hora, String nom_contacto, St
 
 Contacto::~Contacto () {}
 
-String  Contacto::getNomContacto() {
+string  Contacto::getNomContacto() {
 	return nomContacto;
 }
 
-String  Contacto::getTelContacto() {
+string  Contacto::getTelContacto() {
 	return telContacto;
 }
 
 ostream& operator<<(ostream& os, const Contacto& mens_contacto) {  
-	string codigo = new String (mens_contacto.getodigo());	
+	string codigo = new string (mens_contacto.getodigo());	
 	
     os 	<< "Código: " 	 	<< codigo 					  		<< '\n' 
    		<< "Fecha: " 		<< mens_contacto.getfechaMensaje() 	<< '\n' 

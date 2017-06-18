@@ -7,11 +7,11 @@ using namespace std;
 
 class DtSimple : public DtMensaje {
 	private:
-        String  dtTextSimp;
+        string  dtTextSimp;
 
     public:
-        DtSimple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : DtMensaje (codigo, fecha, hora) {};
+        DtSimple (IKey codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora) {};
 
-        String  getTextSimp() const;
+        string  getTextSimp() const;
 };
 #endif

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Simple::Simple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : Mensaje (codigo, fecha, hora)  {
+Simple::Simple (IKey codigo, Fecha fecha, Hora hora, string text_simple) : Mensaje (codigo, fecha, hora)  {
 	this->Codigo 	= codigo;
 	this->Fecha 	= fecha;
 	this->Hora 	 	= hora;
@@ -15,12 +15,12 @@ Simple::Simple (IKey codigo, Fecha fecha, Hora hora, String text_simple) : Mensa
 
 Simple::~Simple () {}
 
-String  Simple::getTextSimp() {
+string  Simple::getTextSimp() {
 	return textSimp;
 }
 
 ostream& operator<<(ostream& os, const Simple& mens_simple) {  
-	string codigo = new String (mens_simple.getodigo());
+	string codigo = new string (mens_simple.getodigo());
 
     os 	<< "Código: " 	<< codigo 					  	 << '\n' 
    		<< "Fecha: " 	<< mens_simple.getfechaMensaje() << '\n' 

@@ -103,14 +103,14 @@ void ingresarIDContacto(IKey tel){
 
 }
 
-void crearMensajeContact(String tel, IKey codigo, Fecha fechaSist, Hora horaSist){
+void crearMensajeContact(string tel, IKey codigo, Fecha fechaSist, Hora horaSist){
   CtrlUsuario *ctrl = CtrlUsuario::getinstancia();
   Usuario log = ctrl->getusuarioLog();
 
   //Busco el usuario del cual voy a enviar la información
   //Este usuario es contacto de log
   IDictionary contacts = log->getcontactos();
-  IKey *i = new String(tel);
+  IKey *i = new string(tel);
   Usuario *u = dynamic_cast< Usuario* > contacts.find(i);
   
   //Se busca el estado de conversacion y se obtiene la conversacion.
