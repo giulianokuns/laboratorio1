@@ -3,16 +3,16 @@
 #include <string.h>
 #include <stdexcept>
 
-#include "Fecha.h"
-#include "Hora.h"
-#include "EstadoConversacion.h"
-#include "Usuario.h"
+#include "../../h/Simple/Fecha.h"
+#include "../../h/Simple/Hora.h"
+#include "../../h/Simple/EstadoConversacion.h"
+#include "../../h/Simple/suario.h"
 
-#include "IKey.h"
-#include "IDictionary.h"
-#include "ICollection.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
 
-Usuario::Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection arreglo_ec, IDictionary contactos, ICollection notificaciones,ICollection suscriptores){
+Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;
@@ -29,7 +29,7 @@ Usuario::~Usuario(){
 	
 }
 
-IKey Usuario::gettelCel(){
+IKey *Usuario::gettelCel(){
 	return telCel;
 }
 
@@ -53,17 +53,17 @@ Hora Usuario::gethoraUltimaConex(){
 	return horaUltimaConex;
 }
 
-ICollection Usuario::getarreglo_ec(){
+ICollection *Usuario::getarreglo_ec(){
 	return arreglo_ec;
 }
-IDictionary Usuario::getcontactos(){
+IDictionary *Usuario::getcontactos(){
 	return contactos;
 }
-IDictionary Usuario::getMensajes(){
+IDictionary +Usuario::getMensajes(){
 	return mensajes;
 }
 
-void Usuario::settelCel(IKey cel){
+void Usuario::settelCel(IKey *cel){
 	this->telCel = cel;
 }
 
@@ -84,17 +84,17 @@ void Usuario::setfechaUltimaConex(Fecha fechaUltimaConex){
 void Usuario::sethoraUltimaConex(Hora horaUltimaConex){
 	this->horaUltimaConex = horaUltimaConex;
 }
-void Usuario::setarreglo_ec(ICollection arreglo_ec){
+void Usuario::setarreglo_ec(ICollection *arreglo_ec){
 	this->arreglo_ec = arreglo_ec;
 }
-void Usuario::setcontactos(IDictionary contactos){
+void Usuario::setcontactos(IDictionary *contactos){
 	this->contactos = contactos;
 }
-void Usuario::setMensajes(IDictionary mensajes){
+void Usuario::setMensajes(IDictionary *mensajes){
 	this->mensajes = mensajes;
 }
 
-ICollection getListaArchivadas() {
+ICollection *getListaArchivadas() {
 	IDictionary * ec_array = getarreglo_ec();
 	ICollection list_archivadas = new List();
 	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
@@ -109,7 +109,7 @@ ICollection getListaArchivadas() {
 }
 
 /*archivar_conversacion*/
-ICollection Usuario::get_lista_activos(){
+ICollection *Usuario::get_lista_activos(){
 	IDictionary arreglo_ec = getarreglo_ec();
 	ICollection colecciondt = new List();
 	for (IIterator *it = arreglo_ec->getIterator(); it->hasCurrent(); it->next()) {
@@ -123,13 +123,13 @@ ICollection Usuario::get_lista_activos(){
 	return colecciondt;
 }
 
-void Usuario::archivar(IKey ID){
+void Usuario::archivar(IKey *ID){
 	IDictionary arreglo_ec = getarreglo_ec();
 	EstadoConversacion ec = find(ID);//o el correspondiente key
 	ec.setarchivada(true);
 }
 	/*agregarContacto*/
-ICollection Usuario::getInfoContactos(){
+ICollection *Usuario::getInfoContactos(){
 	IDictionary contactos = getcontactos();
 	ICollection lista_dtInfoContacto = new list();
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
@@ -139,11 +139,11 @@ ICollection Usuario::getInfoContactos(){
 	}
 	return lista_dtInfoContacto;
 }
-bool Usuario::esContacto(IKey telCel){
+bool Usuario::esContacto(IKey *telCel){
 	IDictionary contactos = getcontactos();
 	return contactos->member(telCel);
 }
-DtInfoContacto Usuario::getIfoContacto(IKey telCel){
+DtInfoContacto Usuario::getIfoContacto(IKey *telCel){
 	IDictionary contactos = getcontactos();
 	Usuario u = find(telCel);
 	DtInfoContacto dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
@@ -154,7 +154,7 @@ void Usuario::agregarContacto(Usuario u){
 	set_contactos->add(telCel,u);
 }
 
-ICollection Usuario::mensajesCoversacion (IKey idConv) {
+ICollection Usuario::mensajesCoversacion (IKey *idConv) {
 	IDictionary * ec_array = this->getarreglo_ec();
 	Conversacion c = NULL;
 	
@@ -189,7 +189,7 @@ int Usuario::getCantidadArhivadas() {
 	return cant_archivadas;
 }
 
-ICollection Usuario::getReceptores(IKey codigo) {
+ICollection Usuario::getReceptores(IKey *codigo) {
 	IDictionary arr_mensj = this->getMensajes();
 	Mensaje m = arr_mensj.find(codigo);
 	if (m != NULL) {
@@ -199,7 +199,7 @@ ICollection Usuario::getReceptores(IKey codigo) {
 	}
 }
 
-void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {	
+void Usuario::eliminarMensaje (IKey *codigo, IKey *idConv) {	
 	IDictionary arr_mensj = this->getMensajes();
 	bool es_emisor 	= arr_mensj.member(codigo);
 	bool es_mensaje = false;
@@ -237,7 +237,7 @@ void Usuario::eliminarMensaje (IKey codigo, IKey idConv) {
 }
 
 		
-ICollection Usuario::getNotificaciones(){
+ICollection *Usuario::getNotificaciones(){
      
     return this->notificaciones;
     
@@ -252,7 +252,7 @@ void Usuario::agregarSuscriptor(ISuscriptos *s){
     this->suscriptores->add(s);
 };
 
-void Usuario::eliminarSuscriptor(IKey telCel){
+void Usuario::eliminarSuscriptor(IKey *telCel){
     this->suscriptores->remove(telCel);    
 };
 
