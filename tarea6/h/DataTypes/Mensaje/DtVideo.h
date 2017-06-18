@@ -11,7 +11,7 @@ class DtVideo : public DtMensaje{
         string  dtURLvideo;
 
     public:
-        DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : DtMensaje (codigo, fecha, hora) {};
+        DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) {};
         ~DtVideo ();
         
         int  	getDuracion() const;

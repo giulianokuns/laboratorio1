@@ -11,7 +11,7 @@ class DtContacto : public DtMensaje {
         string  dtTelContacto;
         
     public:
-        DtContacto (IKey codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : DtMensaje (codigo, fecha, hora) {};
+        DtContacto (IKey codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) {};
         ~DtContacto ();
         
         string  getNomContacto() const;

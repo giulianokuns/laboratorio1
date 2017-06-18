@@ -1,16 +1,4 @@
-#include <iostream>
-#include <cstring>
-#include <string.h>
-#include <stdexcept>
-
-#include "../../h/Simple/Fecha.h"
-#include "../../h/Simple/Hora.h"
-#include "../../h/Simple/EstadoConversacion.h"
 #include "../../h/Simple/Usuario.h"
-
-#include "../../../lab6-colecciones/interfaces/IKey.h"
-#include "../../../lab6-colecciones/interfaces/ICollection.h"
-#include "../../../lab6-colecciones/interfaces/IDictionary.h"
 
 Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores){
 	

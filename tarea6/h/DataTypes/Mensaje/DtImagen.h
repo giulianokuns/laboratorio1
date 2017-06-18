@@ -13,7 +13,7 @@ class DtImagen : public DtMensaje {
         string  dtURLpicture;
 
     public:
-        DtImagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : DtMensaje (codigo, fecha, hora) {};
+        DtImagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) {};
         ~DtImagen ();
         
         string  getFormato() const;

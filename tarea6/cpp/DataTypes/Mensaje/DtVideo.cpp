@@ -6,7 +6,7 @@
 
 using namespace std;
 
-DtVideo::DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : DtMensaje (codigo, fecha, hora) {
+DtVideo::DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) {
 	this->dtCodigo 	    = codigo;
 	this->dtFecha 	    = new Fecha(fecha->getdia(), fecha->getmes(), fecha->getanio());
 	this->dtHora 	  	= new Hora(hora->gethoras(), hora->getminutos());

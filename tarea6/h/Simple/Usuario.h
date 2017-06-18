@@ -1,10 +1,15 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
+
 #include "Fecha.h"
 #include "Hora.h"
+#include "EstadoConversacion.h"
+
 #include "../DataTypes/DtConversacion.h"
 #include "../DataTypes/DtInfoContacto.h"
 #include "../DataTypes/DtNotificaciones.h"
-
-
 
 #include "../../lab6-colecciones/interfaces/IKey.h"
 #include "../../lab6-colecciones/interfaces/IDictionary.h"
@@ -16,7 +21,6 @@
 class Conversacion;
 class FechaSistema;
 class HoraSistema;
-
 
 using namespace std;
 
@@ -88,7 +92,7 @@ class Usuario: public ICollectible, public ISuscriptos {
 		void agregarSuscriptor(ISuscriptos *s);
 		void eliminarSuscriptor(IKey *telCel);
 		void agregarNotificacion(DtNotificaciones notificacion);
-                void agregarNotificaciones(DtNotificaciones notificacion);
+        void agregarNotificaciones(DtNotificaciones notificacion);
 
 };
 

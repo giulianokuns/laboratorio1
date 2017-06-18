@@ -16,11 +16,11 @@ using namespace std;
 class DtMensaje : public ICollectible {
     private:
         string  dtCodigo;
-        Fecha   dtFecha;
-        Hora    dtHora;
+        Fecha   *dtFecha;
+        Hora    *dtHora;
 
     public:
-       	DtMensaje(string dtcodigo, Fecha &fecha, Hora &hora);
+       	//DtMensaje(string dtcodigo, Fecha *fecha, Hora *hora);
        	~DtMensaje();
 
         string 	getCodigo() const;

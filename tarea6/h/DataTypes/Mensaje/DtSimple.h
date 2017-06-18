@@ -10,7 +10,7 @@ class DtSimple : public DtMensaje {
         string  dtTextSimp;
 
     public:
-        DtSimple (string codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora) {};
+        DtSimple (string codigo, Fecha fecha, Hora hora, string text_simple) {};
 
         string  getTextSimp() const;
 };
