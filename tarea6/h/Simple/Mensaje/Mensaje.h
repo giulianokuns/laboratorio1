@@ -1,13 +1,14 @@
-#include "Fecha.h"
-#include "Hora.h"
+#include "../Fecha.h"
+#include "../Hora.h"
 #include "Recibido.h"
-#include "DtInfoIngreso.h"
-#include "DtReceptor.h"
 
-#include "IKey.h"
-#include "ICollectible.h"
-#include "ICollection.h"
-#include "IDictionary.h"
+#include "../../DataTypes/DtInfoIngreso.h"
+#include "../../DataTypesDtReceptor.h"
+
+#include "../../../lab6-colecciones/interfaces/IKey.h"
+#include "../../../lab6-colecciones/interfaces/ICollectible.h"
+#include "../../../lab6-colecciones/interfaces/ICollection.h"
+#include "../../../lab6-colecciones/interfaces/IDictionary.h"
 
 #ifndef MENSAJES
 #define MENSAJES

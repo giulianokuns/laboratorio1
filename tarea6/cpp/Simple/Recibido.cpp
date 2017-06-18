@@ -2,7 +2,7 @@
 #include <cstring>
 #include <string.h>
 #include <stdexcept>
-#include "Recibido.h"
+#include "../../h/Simple/Recibido.h"
 
 Recibido::Recibido(Usuario u){
 	this->visto = false;
@@ -23,6 +23,7 @@ bool Recibido::getEliminado() {
 
 Hora Recibido::getHoraVisto () {
 	return horaVisto;
+
 }
 
 Fecha Recibido::getFechaVisto () {
