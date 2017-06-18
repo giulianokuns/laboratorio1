@@ -3,25 +3,45 @@ MODIFICAR USUARIO
 
 bool desea_modificar = true;
 while(desea_modificar){
-	cout << "Que desea modificar?" endl;
-	cout << "1. Nombre de usuario" endl;
-	cout << "2. URL de la imagen" endl;
+	cout << "Que desea modificar?" << endl;
+	cout << "1. Nombre de usuario" << endl;
+	cout << "2. URL de la imagen" << endl;
+        cout << "3. Descripcion de usuario" << endl
 	
 	int i;
 	cin >> i;
 	ICtrlUsuario *instancia= ICtrlUsuario::getinstancia();
 	Usuario *u = instancia->getusuarioLog();
 	if (i==1){
-		cout << "Ingrese el nombre" endl;
+		cout << "Ingrese el nombre" << endl;
 		String nombre;
 		cin >> nombre;
 		u->setnomUsuario(nombre);
-	} else{
-		cout << "Ingrese el URL" endl;
+                
+                DtNotificaciones notificacion = new DtNotificaciones(u->gettelCel(),"nombre",nombre);
+                
+                u->agregarNotificaciones(notificacion);
+                
+	} else if (i==2){
+		cout << "Ingrese el URL" << endl;
 		String URL;
 		cin >> URL;
-		u->setimaPerfil(String URL);
-	 }
+		u->setimaPerfil(URL);
+                
+                DtNotificaciones notificacion = new DtNotificaciones(u->gettelCel(),"imagen",URL);
+                
+                u->agregarNotificaciones(notificacion);
+	 }else{
+                cout << "Ingrese el Descripcion" << endl;
+		String Descripcion;
+		cin >> Descripcion;
+		u->setimaPerfil(Descripcion);
+                
+                DtNotificaciones notificacion = new DtNotificaciones(u->gettelCel(),"descripcion",Descripcion);
+                
+                u->agregarNotificaciones(notificacion);
+             
+         }
 	 cout << "1. Seguir modificando" endl;
 	 cout << "2. Terminar caso de uso" endl;
 	 cin >> i;
