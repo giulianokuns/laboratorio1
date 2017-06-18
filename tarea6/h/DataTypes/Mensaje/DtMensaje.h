@@ -6,7 +6,7 @@
 #include "../../Simple/Hora.h"
 #include "../../../lab6-colecciones/interfaces/ICollectible.h"
 #include "../../../lab6-colecciones/interfaces/IKey.h"
-
+ 
 #ifndef DTMENSAJE
 #define DTMENSAJE
 
