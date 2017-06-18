@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <string.h>
-#include <stdexcept>
+
 
 #ifndef DTCONVERSACION
 #define DTCONVERSACION

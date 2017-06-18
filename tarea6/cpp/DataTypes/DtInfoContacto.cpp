@@ -1,7 +1,7 @@
-#include "../../h/DataTypes/DtContacto.h"
+#include "../../h/DataTypes/DtInfoContacto.h"
 #include "../../../lab6-colecciones/interfaces/IKey.h"
 
-DtInfoContacto::DtInfoContacto(string nombre, IKey telCel, string urlImagen){
+DtInfoContacto::DtInfoContacto(string nombre, IKey *telCel, string urlImagen){
 	this->nombre = nombre;
 	this->telCel = telCel;
 	this->urlImagen = urlImagen;
@@ -9,7 +9,7 @@ DtInfoContacto::DtInfoContacto(string nombre, IKey telCel, string urlImagen){
 string DtInfoContacto::getnombre(){
 	return nombre;
 }
-string DtInfoContacto::gettelCel(){
+IKey *DtInfoContacto::gettelCel(){
 	return telCel;
 }
 string DtInfoContacto::geturlImagen(){
