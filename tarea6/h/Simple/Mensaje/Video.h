@@ -3,20 +3,19 @@
 #include <string.h>
 #include <stdexcept>
 
-#include "Multimedia.h"
 
 #ifndef VIDEO
 #define VIDEO
 
 using namespace std;
 
-class Video : public Multimedia {
+class Video : public Mensaje {
 	private:
 		int 	duracion;
         string  URLvideo;
 
     public:
-        Video (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : Mensaje (codigo, fecha, hora) {};
+        Video (IKey *codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : Mensaje (codigo, fecha, hora) {};
         ~Video ();
         
         int  	getDuracion() const;

@@ -27,6 +27,6 @@ class InfoIngreso {
 	void setfechaIngreso(Fecha fechaIngreso);
 	void sethoraIngreso(Hora horaIngreso);
 	void setUsuario(Usuario usuario);
-}
+};
 
 #endif

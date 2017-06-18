@@ -2,6 +2,7 @@
 #include "../Hora.h"
 #include "../Recibido.h"
 
+
 #include "../../DataTypes/DtInfoIngreso.h"
 #include "../../DataTypes/DtReceptor.h"
 
@@ -21,7 +22,7 @@ class Mensaje : public ICollectible {
 		Fecha fechaMensaje;
 		Hora horaMensaje;
 		//El IKey es el telcel del usuario asociado.
-		IDictionary recibidos;
+		IDictionary *recibidos;
 
 	public:
 		IKey *getcodigo();

@@ -13,6 +13,11 @@
 #ifndef USUARIO
 #define USUARIO
 
+class Conversacion;
+class FechaSistema;
+class HoraSistema;
+
+
 using namespace std;
 
 class Usuario: public ICollectible, public ISuscriptos {
