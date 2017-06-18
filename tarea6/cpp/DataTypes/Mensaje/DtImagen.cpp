@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdexcept>
 
-#include "DtImagen.h"
+#include "../../../h/DataTypes/Mensaje/DtImagen.h"
 
 using namespace std;
 

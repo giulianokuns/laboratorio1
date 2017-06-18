@@ -49,13 +49,13 @@ ICollection Mensaje::getReceptores() {
 	ICollection receptores = new List();
 	
 	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
-		Recibido r = getCurrent();
-		Fecha fechaVisto = r.getFechaVisto();
-		Hora horaVisto 	 = r.getHoraVisto();
-		Usuario usuario  = r.getUsuario();
+		Recibido * r = dynamic_cast<Recibido * > (it->getCurrent());
+		Fecha fechaVisto = r->getFechaVisto();
+		Hora horaVisto 	 = r->getHoraVisto();
+		Usuario *usuario  = r->getUsuario();
 
-		string nombre  	 = usuario.getnomUsuario();
-		IKey telCel  	 = usuario.gettelCel();
+		string nombre  	 = usuario->getnomUsuario();
+		IKey telCel  	 = usuario->gettelCel();
 
 		DtReceptor receptor = DtReceptor::DtReceptor(nombre, telCel, fechaVisto, horaVisto);
 		receptores.add(receptor);
@@ -67,7 +67,7 @@ ICollection Mensaje::getReceptores() {
 void Mensaje::eliminarMensajeEmisor(Conversacion * conversacion) {
 	IDictionary * recibidos = this->getRecibidos();
 	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
-		Recibido r = getCurrent();
+		Recibido * r = dynamic_cast<Recibido * > (it->getCurrent());
 		r->setEliminado(true);
 	}
 

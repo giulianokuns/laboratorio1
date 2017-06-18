@@ -6,11 +6,11 @@
 #include "../../h/Simple/Fecha.h"
 #include "../../h/Simple/Hora.h"
 #include "../../h/Simple/EstadoConversacion.h"
-#include "../../h/Simple/suario.h"
+#include "../../h/Simple/Usuario.h"
 
 #include "../../../lab6-colecciones/interfaces/IKey.h"
-#include "../../../lab6-colecciones/interfaces/IKey.h"
-#include "../../../lab6-colecciones/interfaces/IKey.h"
+#include "../../../lab6-colecciones/interfaces/ICollection.h"
+#include "../../../lab6-colecciones/interfaces/IDictionary.h"
 
 Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores){
 	
@@ -59,7 +59,7 @@ ICollection *Usuario::getarreglo_ec(){
 IDictionary *Usuario::getcontactos(){
 	return contactos;
 }
-IDictionary +Usuario::getMensajes(){
+IDictionary Usuario::getMensajes(){
 	return mensajes;
 }
 
@@ -98,9 +98,9 @@ ICollection *getListaArchivadas() {
 	IDictionary * ec_array = getarreglo_ec();
 	ICollection list_archivadas = new List();
 	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
-		EstadoConversacion ec = getCurrent();
+		EstadoConversacion *ec = dynamic_cast<EstadoConversacion * > (it->getCurrent());
 		if (ec.getarchivada()) {
-			Conversacon c = ec.getconversacion();
+			Conversacon c = ec->getconversacion();
 			DtConversacion dtc = c.getinfo();
 			list_archivadas.add(dtc);
 		}
@@ -113,7 +113,7 @@ ICollection *Usuario::get_lista_activos(){
 	IDictionary arreglo_ec = getarreglo_ec();
 	ICollection colecciondt = new List();
 	for (IIterator *it = arreglo_ec->getIterator(); it->hasCurrent(); it->next()) {
-		EstadoConversacion ec = getCurrent();
+		EstadoConversacion *ec = dynamic_cast<EstadoConversacion * > (it->getCurrent());
 		if (!ec.getarchivada()) {
 			Conversacon c = ec.getconversacion();
 			DtConversacion dtc = c.getinfo();
@@ -133,7 +133,7 @@ ICollection *Usuario::getInfoContactos(){
 	IDictionary contactos = getcontactos();
 	ICollection lista_dtInfoContacto = new list();
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
-		Usuario * u = getCurrent();
+		Usuario  * u = dynamic_cast<Usuario * > (it->getCurrent());
 		DtInfoContacto *dt = new DtInfoContacto(u->getnomUsuario(), u->gettelCel(), u->getimaPerfil());
 		lista_dtInfoContacto->add(dt);
 	}
@@ -160,7 +160,7 @@ ICollection Usuario::mensajesCoversacion (IKey *idConv) {
 	
 	// Una vez obtiene la conversacion sale del for
 	for (IIterator *it = ec_array->getIterator(); (it->hasCurrent() && c == NULL); it->next()) {
-		EstadoConversacion ec = getCurrent();
+		EstadoConversacion *ec = dynamic_cast<EstadoConversacion * > (it->getCurrent());
 		Conversacion c = ec.compararConv(idConv);
 	}
 	
@@ -179,8 +179,8 @@ int Usuario::getCantidadArhivadas() {
 	int cant_archivadas = 0;
 
 	for (IIterator *it = ec_array->getIterator(); it->hasCurrent(); it->next()) {
-		EstadoConversacion ec = getCurrent();
-		bool esta_archivada = ec.getarchivada();
+		EstadoConversacion *ec = dynamic_cast<EstadoConversacion * > (it->getCurrent());
+		bool esta_archivada = ec->getarchivada();
 		if (esta_archivada) {
 			cant_archivadas++;
 		}
@@ -211,7 +211,7 @@ void Usuario::eliminarMensaje (IKey *codigo, IKey *idConv) {
 	IDictionary * arr_ec = this->getarreglo_ec();
 	if (!arr_ec->isEmpty()) {
 		for (IIterator *it = arr_ec->getIterator(); (it->hasCurrent() && !es_mensaje); it->next()) {
-			EstadoConversacion * ec = getCurrent();
+			EstadoConversacion *ec = dynamic_cast<EstadoConversacion * > (it->getCurrent());
 			Conversacion * conv = ec->getconversacion();
 			if (idConv.compare(conv->getidConversacion())) {
 				IDictionary mensajes = conv->getMensajes();
@@ -263,8 +263,8 @@ void Usuario::agregarNotificacion(DtNotificaciones notificacion){
 void Usuario::agregarNotificaciones(DtNotificaciones notificacion){
     
     for (IIterator *it = this->suscriptores->getIterator(); it->hasCurrent(); it->next()){
-        
-        it->getCurrent()->agregarNotificacion(notificacion);
+        Usuario  * u = dynamic_cast<Usuario * > (it->getCurrent());
+        u->agregarNotificacion(notificacion);
         
     }
         

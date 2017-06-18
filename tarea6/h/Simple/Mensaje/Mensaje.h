@@ -1,9 +1,9 @@
 #include "../Fecha.h"
 #include "../Hora.h"
-#include "Recibido.h"
+#include "../Recibido.h"
 
 #include "../../DataTypes/DtInfoIngreso.h"
-#include "../../DataTypesDtReceptor.h"
+#include "../../DataTypes/DtReceptor.h"
 
 #include "../../../lab6-colecciones/interfaces/IKey.h"
 #include "../../../lab6-colecciones/interfaces/ICollectible.h"
@@ -17,27 +17,27 @@ using namespace std;
 
 class Mensaje : public ICollectible {
 	private:
-		IKey codigo; 
+		IKey *codigo; 
 		Fecha fechaMensaje;
 		Hora horaMensaje;
 		//El IKey es el telcel del usuario asociado.
 		IDictionary recibidos;
 
 	public:
-		IKey getcodigo();
+		IKey *getcodigo();
 		Fecha getfechaMensaje();
 		Hora gethoraMensaje();
-		IDictionary getRecibidos();
+		IDictionary *getRecibidos();
 
-		void setcodigo(IKey codigo);
+		void setcodigo(IKey *codigo);
 		void setfechaMensaje(Fecha fechaMensaje);
 		void sethoraMensaje(Hora horaMensaje);
-		void setRecibidos(IDictionary recibidos);		
+		void setRecibidos(IDictionary *recibidos);		
 
 		bool validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso);
-		ICollection getReceptores();
+		ICollection *getReceptores();
 		void eliminarMensajeEmisor();
 		void eliminarMensajeReceptor(Conversacion * conversacion);
-}
+};
 
 #endif
