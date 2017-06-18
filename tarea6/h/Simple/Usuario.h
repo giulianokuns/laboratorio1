@@ -4,7 +4,7 @@
 #include "../DataTypes/DtInfoContacto.h"
 #include "../DataTypes/DtNotificaciones.h"
 
-#include "../Interfaces/ISuscriptos.h"
+
 
 #include "../../lab6-colecciones/interfaces/IKey.h"
 #include "../../lab6-colecciones/interfaces/IDictionary.h"
