@@ -1,8 +1,9 @@
+#include "../../h/DataTypes/DtNotificaciones.h"
 
-DtNotificaciones::DtNotificaciones(string telCel,string tipo,string desc){
+DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc){
     	
-    Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
-    Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
+    Fecha fch   = new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio);
+    Hora hr     = new Hora(HoraSistema::hora, HoraSistema::minutos);
     
     this->fecha = fch;
     this->hora = hr;
@@ -12,29 +13,27 @@ DtNotificaciones::DtNotificaciones(string telCel,string tipo,string desc){
     
 }
 
-void DtNotificaciones::~DtNotificaciones(){
-    
+DtNotificaciones::~DtNotificaciones(){    
     delete this->fecha;
-    delete this->hora;
-    
+    delete this->hora;    
 }
 
 Fecha DtNotificaciones::getFecha(){
     return this->fecha;
 }
 
-Hora DtNotificaciones::getHora{
+Hora DtNotificaciones::getHora(){
     return this->hora;
 }
 
-string DtNotificaciones::gettelCel{
+string DtNotificaciones::gettelCel (){
     return this->telCel;
 }
 
-string DtNotificaciones::getTipo{
+string DtNotificaciones::getTipo (){
     return this->tipo;
 }
 
-string DtNotificaciones::getDesc{
+string DtNotificaciones::getDesc (){
     return this->desc;
 }

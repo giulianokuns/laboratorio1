@@ -1,10 +1,4 @@
-//instancia = NULL
-
-#include "Fecha.h"
-#include "Hora.h"
-#include "Usuario.h"
-#include "Mensaje.h"
-#include "CtrlUsuario.h"
+#include "../../cpp/Controllers/CtrlUsuario.h"
 
 /*Singleton*/
 CtrlUsuario * CtrlUsuario::getinstancia(){
