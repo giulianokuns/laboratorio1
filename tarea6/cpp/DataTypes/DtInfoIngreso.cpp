@@ -1,5 +1,6 @@
-#include "DtInfoIngreso.h"
-#include <String.h>
+#include "../../h/DataTypes/DtInfoIngreso.h"
+#include "../../h/Fecha.h"
+#include "../../h/hora.h"
 
 using namespace std;
 
