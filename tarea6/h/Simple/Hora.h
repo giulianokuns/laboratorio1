@@ -1,3 +1,7 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+
 #ifndef HORA
 #define HORA
 
@@ -7,15 +11,18 @@ class Hora{
 	private:
 		int horas;
 		int minutos;
+
 	public:
 		Hora(int horas, int minutos);
+		
 		int gethoras();
 		int getminutos();
+
 		void sethoras(int hora);
 		void setminutos(int minutos);
 
-		bool operator ==(const Hora &a) const;
-		bool operator  >(const Hora &a) const;
+		bool operator ==(Hora &a);
+		bool operator  >(Hora &a);
 		ostream& operator<<(ostream& os);
 };
 

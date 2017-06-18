@@ -1,5 +1,4 @@
-#include "Hora.h"
-
+#include "../../h/Simple/Hora.h"
 
 Hora::Hora(int horas, int minutos){
 	this->horas = horas;
@@ -19,22 +18,22 @@ void Hora::setminutos(int minutos){
 	this->minutos = minutos;
 }
 
-bool Hora::operator ==(const Hora &a) const {
-	if (this.gethoras() == a.gethoras()) {
-		if (this.minutos() == a.minutos()) {
+bool Hora::operator ==(Hora &a) {
+	if (this->gethoras() == a.gethoras()) {
+		if (this->getminutos() == a.getminutos()) {
 			return true;	
 		}
 	}
 	return false;
 }
 
-bool Hora::operator  >(const Hora &a) const {
-	if (this.gethoras() > a.gethoras()) {
+bool Hora::operator  >(Hora &a) {
+	if (this->gethoras() > a.gethoras()) {
 		return true;
-	} else if (this.gethoras() < a.gethoras()) {
+	} else if (this->gethoras() < a.gethoras()) {
 		return false;
 	} else {
-		if (this.getminutos() > a.getminutos()) {
+		if (this->getminutos() > a.getminutos()) {
 			return true;
 		} else {
 			return false;
@@ -42,8 +41,7 @@ bool Hora::operator  >(const Hora &a) const {
 	}
 }
 
-
-ostream& Hora::operator<<(ostream& os, const Hora& hora) {
-	os 	<< hora.getdia() << " - " << hora.getmes() << " - " << hora.getanio();  
+ostream& Hora::operator<<(ostream& os) {
+	os 	<< this->gethoras() << ":" << this->getminutos();  
     return os;  	
 }

@@ -1,19 +1,15 @@
-#include <iostream>
-#include <cString>
-#include <String.h>
-#include <stdexcept>
-#include "DtMensaje.h"
+#include "../../../h/DataTypes/Mensaje/DtMensaje.h"
 
 using namespace std;
 
-int DtMensaje::getCodigo() const{
+string DtMensaje::getCodigo() const {
 	return dtCodigo;
 }
 
-Fecha DtMensaje::getFecha() const{
+Fecha DtMensaje::getFecha() const {
 	return dtFecha;
 }
 
-Hora DtMensaje::getHora() const{
+Hora DtMensaje::getHora() const {
 	return dtHora;
 }

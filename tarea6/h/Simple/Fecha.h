@@ -1,3 +1,7 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+
 #ifndef FECHA
 #define FECHA
 
@@ -8,8 +12,9 @@ class Fecha{
 		int dia;
 		int mes;
 		int anio;
+
 	public:
-		Fecha(int dia,int mes,int anio);
+		Fecha(int dia, int mes, int anio);
 		int getdia();
 		int getmes();
 		int getanio();
@@ -17,8 +22,8 @@ class Fecha{
 		void setmes(int mes);
 		void setanio(int anio);
 
-		bool operator ==(const Fecha &a) const;
-		bool operator  >(const Fecha &a) const;
+		bool operator ==(Fecha &a);
+		bool operator  >(Fecha &a);
 		ostream& operator<<(ostream& os);
 };
 
