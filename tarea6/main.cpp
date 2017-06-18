@@ -197,7 +197,8 @@ if(contactos->isEmpty()){
 			cout << "Ingrese el telefono del contacto que desea agregar" endl;
 			cin >> telcel;
 			ikey *telefono_agregar = new String(telcel);
-			DtInfoContacto contacto_a_agregar = find(telefono_agregar);
+			//DtInfoContacto contacto_a_agregar = find(telefono_agregar);
+			DtInfoContacto * contacto_a_agregar = dynamic_cast<DtInfoContacto * > (lista_no_agregados->find(telefono_agregar));
 			DtInfoContacto contacto_a_agrega_aux = new DtInfoContacto(contacto_a_agregar->nombre(),contacto_a_agregar->gettelCel(),contacto_a_agregar->geturlImagen());
 			lista_no_agregados->remove(telefono_agregar);
 			lista_agregados->add(telefono_agregar,contacto_a_agrega_aux);
@@ -208,7 +209,8 @@ if(contactos->isEmpty()){
 			if(telefono_eliminar->equals(u->gettelCel())){
 				throw std::invalid_argument("NO puedes eliminarte del grupo") endl;
 			}else{
-				DtInfoContacto contacto_a_eliminar = find(telefono_eliminar);
+				//DtInfoContacto contacto_a_eliminar = find(telefono_eliminar);
+				DtInfoContacto * contacto_a_eliminar = dynamic_cast<DtInfoContacto * > (lista_agregados->find(telefono_eliminar));
 				DtInfoContacto contacto_a_eliminar_aux = new DtInfoContacto(contacto_a_eliminar->nombre(),contacto_a_eliminar->gettelCel(),contacto_a_eliminar->geturlImagen());
 				lista_agregados->remove(telefono_eliminar);
 				lista_no_agregados->add(telefono_eliminar,contacto_a_eliminar_aux);
@@ -242,7 +244,8 @@ if(contactos->isEmpty()){
 		DtInfoContacto *actual_a_crear = dynamic_cast<DtInfoContacto * > (it_i->getCurrent());
 
 		ikey *tel = new String(actual_a_crear->gettelCel());
-		Usuario *usuario_a_agregar = instancia->getusuarios()->find(tel);
+		//Usuario *usuario_a_agregar = instancia->getusuarios()->find(tel);
+		Usuario * usuario_a_agregar = dynamic_cast<Usuario * > (instancia->getusuarios()->find(tel));
 		//creo los info ingreso y los agrego a los info ingreso del grupo(que se agregan al grupo luego de la iteracion)
 		//para info ingreso tengo que crear una fecha y hora nueva
 		fechaIngreso = new Fecha(FechaSistema::getdia(), FechaSistema::getmes(), FechaSistema::getanio());

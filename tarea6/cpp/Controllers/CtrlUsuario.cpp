@@ -97,9 +97,8 @@ void CtrlUsuario::eliminarNotificaciones(){
 	usuarioLog->eliminarNotificaciones();
 };
 
-void CtrlUsuario::agregarSuscriptor(ISuscriptos *s){
-    
-    usr = usuarios->find(new string(s->gettelCel));
+void CtrlUsuario::agregarSuscriptor(ISuscriptos *s) {
+    Usuario usr = dynamic_cast<Usuario * > (usuarios->find(new string(s->gettelCel)));
     usr->agregarSuscriptor(this->usuarioLog);
 
 };
@@ -107,7 +106,7 @@ void CtrlUsuario::agregarSuscriptor(ISuscriptos *s){
 
 void CtrlUsuario::eliminarSuscriptor(IKey telCel){
     
-    usr = usuarios->find(telCel);
+    Usuario usr = dynamic_cast<Usuario * > (usuarios->find(telCel));
     usr->eliminarSuscriptor(new string(usuarioLog->gettelCel));
 }; 
 
@@ -161,7 +160,7 @@ DtInfoContacto CtrlUsuario::agregarContacto(IKey telCel){
 }
 void CtrlUsuario::confirmarAgregarContacto(IKey telCel){
 	IDictionary usuarios = getusuarios();
-	Usuario u = find(telCel);
+	Usuario u = dynamic_cast<Usuario * > (usuarios->find(telCel));
 	agregarContacto(u);
 }
 
@@ -201,7 +200,8 @@ IKey CtrlUsuario::crearConvNueva(IKey tel ,Ikey converID){
     IDictionary *participantes = new OrderedDictionary();
     participantes->add(this->getusuarioLog()->gettelCel() ,this->getusuarioLog());
     IDictionary ar_usu = getusuarios();
-    participantes->add(tel ,ar_usu->find(tel)); 
+
+    participantes->add(tel, dynamic_cast<Usuario * > (ar_usu->find(tel))); 
     Conversacion c = new Conversacion(false, converID, false, NULL, participantes);
 
     //Se crea un nuevo estado de conversación, con la conversación
@@ -212,6 +212,7 @@ IKey CtrlUsuario::crearConvNueva(IKey tel ,Ikey converID){
     ar_ec->add(converID, ec);
 
     Usuario participante = ar_usu->find(tel);
+    Usuario * participante  = dynamic_cast<Usuario * > (ar_usu->find(tel));
     ICollectible ec2 = new EstadoConversacion(false,c)
     IDictionary *ar_ecTel = participante->getarreglo_ec();
     ar_ecTel->add(converID, ec2);
