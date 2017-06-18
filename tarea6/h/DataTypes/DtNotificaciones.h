@@ -1,24 +1,32 @@
+#include <cstring>
+#include <string.h>
  
+#include "../Simple/Fecha.h"
+#include "../Simple/Hora.h"
+
+#include "../../../lab6-colecciones/interfaces/ICollectible.h"
+
 #ifndef DTNOTIFICACIONES
 #define DTNOTIFICACIONES
 
 using namespace std;
 
-class DtNotificaciones{
+class DtNotificaciones : public ICollectible {
 	private:
-		Fecha fecha;
-		Hora hora;
-		string telCel;
-                string tipo;
-                string desc;
+		string 	telCel;
+        string 	tipo;
+        string 	desc;
+		Fecha 	fecha;
+		Hora 	hora;
+
 	public:
-                DtNotificaciones(string telCel,string tipo,string desc);
-                ~DtNotificaciones();
-		Fecha getFecha();
-		Hora getHora;
-		string gettelCel;
-                string getTipo;
-                string getDesc;
+        DtNotificaciones(string telCel, string tipo, string desc);
+		~DtNotificaciones();
+		string 	gettelCel();
+        string 	getTipo();
+        string 	getDesc();
+		Fecha 	getFecha();
+		Hora 	getHora();
 }
 
 #endif

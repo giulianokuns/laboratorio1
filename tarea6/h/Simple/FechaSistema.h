@@ -1,11 +1,6 @@
-
-class FechaSistema{
-	
-	private:
-
-
+class FechaSistema {
 	public:
-		 int dia;
-		 int mes;
-		 int anio;
+		static int dia;
+		static int mes;
+		static int anio;
 };

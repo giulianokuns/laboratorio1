@@ -1,4 +1,8 @@
-#include "Usuario.h"
+#include "../Simple/Usuario.h"
+#include "../Simple/Fecha.h"
+#include "../Simple/Hora.h"
+#include "../Simple/Usuario.h"
+#include "../Simple/Mensaje.h"
 
 class CtrlUsuario{
 

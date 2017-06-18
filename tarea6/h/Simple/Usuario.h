@@ -1,86 +1,90 @@
 #include "Fecha.h"
 #include "Hora.h"
-#include "DtConversacion.h"
+#include "../DataTypes/DtConversacion.h"
+#include "../DataTypes/DtInfoContacto.h"
+#include "../DataTypes/DtNotificaciones.h"
 
-#include "IKey.h"
-#include "IDictionary.h"
-#include "ICollection.h"
+
+
+#include "../../lab6-colecciones/interfaces/IKey.h"
+#include "../../lab6-colecciones/interfaces/IDictionary.h"
+#include "../../lab6-colecciones/interfaces/ICollection.h"
 
 #ifndef USUARIO
 #define USUARIO
 
 using namespace std;
 
-class Usuario: public ICollectible, public ISuscriptos{
+class Usuario: public ICollectible, public ISuscriptos {
 	private:
-		IKey telCel;
+		IKey *telCel;
 		string nomUsuario;
 		Fecha fechaRegistro;
 		string imaPerfil;
 		Fecha fechaUltimaConex;
 		Hora horaUltimaConex;
 		/*la key con la que se almacenan es el ID de su correspondiente conversacion para facilitar la busqueda*/
-		IDictionary arreglo_ec;
+		IDictionary *arreglo_ec;
 		/*se almacenan con la key correspondiente a su numero de telefono*/
-		IDictionary contactos;
+		IDictionary *contactos;
 		/* Key : Codigo */
-		IDictionary mensajes;
+		IDictionary *mensajes;
 		/*notificaciones de suscriptores*/
-		ICollection notificaciones;
-                ICollection suscriptores;
+		ICollection *notificaciones;
+        ICollection *suscriptores;
 
 	public:
-		Usuario(IKey telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection arreglo_ec, IDictionary contactos,ICollection suscriptores);
+		Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection *arreglo_ec, IDictionary *contactos,ICollection *suscriptores);
 		~Usuario();
 		
-		IKey gettelCel();
+		IKey *gettelCel();
 		string getnomUsuario();
 		Fecha getfechaRegistro();
 		string getimaPerfil();
 		Fecha getfechaUltimaConex();
 		Hora gethoraUltimaConex();
-		IDictionary getarreglo_ec();
-		IDictionary getcontactos();
-		IDictionary getMensajes();
+		IDictionary *getarreglo_ec();
+		IDictionary *getcontactos();
+		IDictionary *getMensajes();
 
-		void settelCel(IKey cel);
+		void settelCel(IKey *cel);
 		void setnomUsuario(string nombre);
 		void setfechaRegistro(Fecha fechaRegistro);
 		void setimaPerfil(string URL);
 		void setfechaUltimaConex(Fecha fechaUltimaConex);
 		void sethoraUltimaConex(Hora horaUltimaConex);
-		void setarreglo_ec(IDictionary arreglo_ec);
-		void setcontactos(IDictionary contactos);
-		void setMensajes(IDictionary mensajes);		
+		void setarreglo_ec(IDictionary *arreglo_ec);
+		void setcontactos(IDictionary *contactos);
+		void setMensajes(IDictionary *mensajes);		
 
-		ICollection getListaArchivadas();
+		ICollection *getListaArchivadas();
 
 		/*archivar_conversacion*/
-		ICollection get_lista_activos();
-		void archivar(IKey ID);	
+		ICollection *get_lista_activos();
+		void archivar(IKey *ID);	
 		
 		/*agregarContacto*/
-		ICollection 	getInfoContactos();
-		DtInfoContacto 	getIfoContacto(IKey telCel);
-		bool esContacto(IKey telCel);
+		ICollection 	*getInfoContactos();
+		DtInfoContacto 	getIfoContacto(IKey *telCel);
+		bool esContacto(IKey *telCel);
 		void agregarContacto(Usuario u);
 		
 		/* Ver Mensaje */
-		ICollection mensajesCoversacion (IKey idConv);
+		ICollection *mensajesCoversacion (IKey *idConv);
 		int getCantidadArhivadas();
-		ICollection getReceptores(IKey codigoMensaje);
+		ICollection *getReceptores(IKey *codigoMensaje);
 
 		/* Eliminar Mensaje */
-		void eliminarMensaje (IKey codigo, IKey idConv);
+		void eliminarMensaje (IKey *codigo, IKey *idConv);
 
 		/* Suscripciones */
-		ICollection getNotificaciones();
+		ICollection *getNotificaciones();
 		void eliminarNotificaciones();
 		void agregarSuscriptor(ISuscriptos *s);
-		void eliminarSuscriptor(IKey telCel);
+		void eliminarSuscriptor(IKey *telCel);
 		void agregarNotificacion(DtNotificaciones notificacion);
                 void agregarNotificaciones(DtNotificaciones notificacion);
 
-}
+};
 
 #endif

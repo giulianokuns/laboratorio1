@@ -1,13 +1,12 @@
 #include <iostream>
 #include <cstring>
 #include <string.h>
-#include <stdexcept>
 
 #include "../../Simple/Fecha.h"
 #include "../../Simple/Hora.h"
 #include "../../../lab6-colecciones/interfaces/ICollectible.h"
 #include "../../../lab6-colecciones/interfaces/IKey.h"
-
+ 
 #ifndef DTMENSAJE
 #define DTMENSAJE
 
@@ -20,8 +19,8 @@ class DtMensaje : public ICollectible {
         Hora    dtHora;
 
     public:
-        DtMensaje (string dtcodigo, Fecha &dtfecha, Hora &dthora);
-        virtual ~DtMensaje() {};
+       	DtMensaje(string dtcodigo, Fecha &fecha, Hora &hora);
+       	~DtMensaje();
 
         string 	getCodigo() const;
         Fecha   getFecha() const;

@@ -1,15 +1,22 @@
 #include <iostream>
 #include <cstring>
 
-#include "CtrlCasoEnviar.h"
-#include "DtSimple.h"
-#include "DtContacto.h"
-#include "DtVideo.h"
-#include "DtImagen.h"
-#include "DtMultimedia.h"
+#include "../DataTypes/Mensaje/DtSimple.h"
+#include "../DataTypes/Mensaje/DtContacto.h"
+#include "../DataTypes/Mensaje/DtVideo.h"
+#include "../DataTypes/Mensaje/DtImagen.h"
+#include "../DataTypes/Mensaje/DtMultimedia.h"
 
-#include "ICollection.h"
-#include "IKey"
+#include "../Simple/Mensaje.h"
+#include "../Simple/Usuario.h"
+#include "../Simple/Recibido.h"
+#include "../Simple/EstadoConversacion.h"
+
+#include "../../cpp/Controllers/CtrlUsuario.h"
+
+#include "../../lab6-colecciones/interfaces/ICollection.h"
+#include "../../lab6-colecciones/interfaces/IKey"
+#include "../../lab6-colecciones/interfaces/IDictionary.h"
 
 #ifndef CTRLCASOENVIAR
 #define CTRLCASOENVIAR
