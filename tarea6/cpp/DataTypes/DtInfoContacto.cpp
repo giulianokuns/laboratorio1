@@ -1,4 +1,5 @@
-#include "DtInfoContacto.h"
+#include "../../h/DataTypes/DtContacto.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
 
 DtInfoContacto::DtInfoContacto(String nombre, IKey telCel, String urlImagen){
 	this->nombre = nombre;

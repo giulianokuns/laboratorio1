@@ -1,5 +1,5 @@
-#include "DtConversacion.h"
-#include "IKey.h"
+#include "../../h/DataTypes/DtConversacion.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
 
 DtConversacion::DtConversacion(bool esGrupo, String nombre, IKey telCel, IKey idConversacion){
 	this->esGrupo = esGrupo;

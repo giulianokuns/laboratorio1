@@ -1,5 +1,8 @@
 #ifndef DTCONVERSACION
 #define DTCONVERSACION
+#include "../../cpp/DataTypes/DtConversacion.cpp"
+#include "../../lab6-colecciones/interfaces/ICollectible.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
 
 using namespace std;
 
