@@ -5,17 +5,17 @@
 
 #include "Grupo.h"
 #include "Usuario.h"
-#include "Mensaje.h"
-#include "Multimedia.h"
-#include "Simple.h"
-#include "Contacto.h"
-#include "Imagen.h"
-#include "Video.h"
+#include "Mensaje/Mensaje.h"
+#include "Mensaje/Multimedia.h"
+#include "Mensaje/Simple.h"
+#include "Mensaje/Contacto.h"
+#include "Mensaje/Imagen.h"
+#include "Mensaje/Video.h"
 #include "Recibido.h"
 #include "InfoIngreso.h"
 
-#include "ICollection.h"
-#include "IDictionary.h"
+#include "../../../lab6-colecciones/interfaces/ICollection.h"
+#include "../../../lab6-colecciones/interfaces/IDictionary.h"
 
 #ifndef CONVERSACION
 #define CONVERSACION

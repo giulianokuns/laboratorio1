@@ -6,11 +6,11 @@
 #include "../../h/Simple/Fecha.h"
 #include "../../h/Simple/Hora.h"
 #include "../../h/Simple/EstadoConversacion.h"
-#include "../../h/Simple/suario.h"
+#include "../../h/Simple/Usuario.h"
 
 #include "../../../lab6-colecciones/interfaces/IKey.h"
-#include "../../../lab6-colecciones/interfaces/IKey.h"
-#include "../../../lab6-colecciones/interfaces/IKey.h"
+#include "../../../lab6-colecciones/interfaces/ICollection.h"
+#include "../../../lab6-colecciones/interfaces/IDictionary.h"
 
 Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores){
 	
@@ -59,7 +59,7 @@ ICollection *Usuario::getarreglo_ec(){
 IDictionary *Usuario::getcontactos(){
 	return contactos;
 }
-IDictionary +Usuario::getMensajes(){
+IDictionary Usuario::getMensajes(){
 	return mensajes;
 }
 
@@ -263,8 +263,8 @@ void Usuario::agregarNotificacion(DtNotificaciones notificacion){
 void Usuario::agregarNotificaciones(DtNotificaciones notificacion){
     
     for (IIterator *it = this->suscriptores->getIterator(); it->hasCurrent(); it->next()){
-        
-        it->getCurrent()->agregarNotificacion(notificacion);
+        Usuario  * u = dynamic_cast<Usuario * > (it->getCurrent());
+        u->agregarNotificacion(notificacion);
         
     }
         
