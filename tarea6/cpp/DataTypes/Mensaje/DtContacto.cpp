@@ -1,8 +1,8 @@
-#include "DtContacto.h"
 #include <iostream>
 #include <cstring>
 #include <string.h>
-#include <stdexcept>
+
+#include "../../../h/DataTypes/Mensaje/DtContacto.h"
 
 using namespace std;
 
