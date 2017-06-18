@@ -3,39 +3,37 @@
 
 
 using namespace std;
-
+        
+        /*CASO DE USO: SETEAR HORA Y FECHA*/
 	void setFechaHora(int año, int mes, int dia, int hora, int minutos) 
 	{
-            HoraSistema::
+            HoraSistema::setHora(hora);
+            HoraSistema::setMinutos(minutos);
+            FechaSistema::setAño(año);
+            FechaSistema::setMes(mes);
+            FechaSistema::setDia(dia);
+	}
+	
+	/*CASO DE USO: MOSTRAR HORA Y FECHA*/
+	
+	string getFechaHora() 
+	{
+            cout FechaSistema::getDia() << "/" << FechaSistema::getMes()  << "/" << FechaSistema::getAño()  << " " << HoraSistema::getHora() << ":" << HoraSistema::getMinutos; 
 	}
 
-	void agregarClase(DtClase& clase) {
-		/* Diferenciar si la variable clases es de DtSpinning o de DtEntrenamiento */
-		int i = 0;
-		if (tope_clases < MAX_CLASES) {
-			while ((i < tope_clases) && (clases[i]->getid()!=clase.getid())) {
-				i++;
-			}	
-			if (i < tope_clases) {
-				throw std::invalid_argument("Ya existe la clase");
-			} else {
-				if (dynamic_cast<DtEntrenamiento*> (&clase) != NULL){ 
-					//Entrenamiento
-                                        DtEntrenamiento * aux = dynamic_cast<DtEntrenamiento*> (&clase);
-					Entrenamiento * entrenamiento = new Entrenamiento(aux->getenRambla(), aux->getid(), aux->getNombre(), aux->getTurno());
-                                        clases[tope_clases] = entrenamiento;
-				} else {
-					//Spinning
-                                        DtSpinning * aux = dynamic_cast<DtSpinning*> (&clase);
-                                        Spinning *spinning = new Spinning(aux->getCantBicicletas(), aux->getid(), aux->getNombre(), aux->getTurno());
-                                        clases[tope_clases] = spinning;           
-		 		}
-                tope_clases++;
-			}
-		} else {
-			throw std::invalid_argument("No hay mas clases disponible");
-		}
+	void cerrarGuasap(){
+            
+            ICtrlUsuario *instancia= ICtrlUsuario::getinstancia();
+            instancia->cerrarGuasap();
+            
 	}
+	
+	void abrirGuasap(){
+           
+            ICtrlUsuario *instancia= ICtrlUsuario::getinstancia();
+            
+            
+        }
 
 
     void agregarInscripcion(string ciSocio, int idClase, Fecha fecha){
