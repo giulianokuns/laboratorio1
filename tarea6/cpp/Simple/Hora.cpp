@@ -19,22 +19,22 @@ void Hora::setminutos(int minutos){
 	this->minutos = minutos;
 }
 
-bool operator ==(const Hora &a, const Hora &b) const {
-	if (a.gethoras() == b.gethoras()) {
-		if (a.minutos() == b.minutos()) {
+bool Hora::operator ==(const Hora &a) const {
+	if (this.gethoras() == a.gethoras()) {
+		if (this.minutos() == a.minutos()) {
 			return true;	
 		}
 	}
 	return false;
 }
 
-bool operator  >(const Hora &a, const Hora &b) const {
-	if (a.gethoras() > b.gethoras()) {
+bool Hora::operator  >(const Hora &a) const {
+	if (this.gethoras() > a.gethoras()) {
 		return true;
-	} else if (a.gethoras() < b.gethoras()) {
+	} else if (this.gethoras() < a.gethoras()) {
 		return false;
 	} else {
-		if (a.getminutos() > b.getminutos()) {
+		if (this.getminutos() > a.getminutos()) {
 			return true;
 		} else {
 			return false;
@@ -43,7 +43,7 @@ bool operator  >(const Hora &a, const Hora &b) const {
 }
 
 
-ostream& operator<<(ostream& os, const Hora& hora) {
+ostream& Hora::operator<<(ostream& os, const Hora& hora) {
 	os 	<< hora.getdia() << " - " << hora.getmes() << " - " << hora.getanio();  
     return os;  	
 }

@@ -25,10 +25,10 @@ void Fecha::setanio(int anio){
 	this->anio = anio;
 }
 
-bool Fecha::operator ==(const Fecha &a, const Fecha &b) const {
-	if (a.getanio() == b.getanio()) {
-		if (a.getmes() == b.getmes()) {
-			if (a.getdia() == a.getdia()) {
+bool Fecha::operator ==(const Fecha &a) const {
+	if (this.getanio() == a.getanio()) {
+		if (this.getmes() == a.getmes()) {
+			if (this.getdia() == a.getdia()) {
 				return true;
 			}
 		}
@@ -36,18 +36,18 @@ bool Fecha::operator ==(const Fecha &a, const Fecha &b) const {
 	return false;
 }
 
-bool Fecha::operator >(const Fecha &a, const Fecha &b) const {
-	if (a.getanio() > b.getanio()) {
+bool Fecha::operator >(const Fecha &a) const {
+	if (this.getanio() > a.getanio()) {
 		return true;
-	} else if (a.getanio() < b.getanio()) {
+	} else if (this.getanio() < a.getanio()) {
 		return false;
 	} else {
-		if (a.getmes() > b.getmes()) {
+		if (this.getmes() > a.getmes()) {
 			return true;
-		} else if (a.getmes() < b.getmes()) {
+		} else if (this.getmes() < a.getmes()) {
 			return false;
 		} else {
-			if (a.getdia() > a.getdia()) {
+			if (this.getdia() > a.getdia()) {
 				return true;
 			} else {
 				return false;
@@ -56,7 +56,7 @@ bool Fecha::operator >(const Fecha &a, const Fecha &b) const {
 	}
 }
 
-ostream& operator<<(ostream& os, const Fecha& fecha) {
-	os 	<< fecha.getdia() << " - " << fecha.getmes() << " - " << fecha.getanio();
+ostream& Fecha::operator<<(ostream& os) {
+	os 	<< this.getdia() << " - " << this.getmes() << " - " << this.getanio();
     return os;  	
 }
