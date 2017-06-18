@@ -8,7 +8,7 @@
 
 using namespace std;
 
-DtSimple::DtSimple (IKey codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora)  {
+DtSimple::DtSimple (string codigo, Fecha fecha, Hora hora, string text_simple) : DtMensaje (codigo, fecha, hora)  {
 	this->dtCodigo 	 = codigo;
 	this->dtFecha 	 = fecha;
 	this->dtHora 	 = hora;
