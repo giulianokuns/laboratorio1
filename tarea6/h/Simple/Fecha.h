@@ -2,6 +2,7 @@
 #include <cstring>
 #include <string.h>
 
+
 #ifndef FECHA
 #define FECHA
 
