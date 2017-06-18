@@ -1,11 +1,11 @@
-#include "DtMultimedia.h"
+#include "DtMensaje.h"
 
 #ifndef DTIMAGEN
 #define DTIMAGEN
 
 using namespace std;
 
-class DtImagen : public DtMultimedia {
+class DtImagen : public DtMensaje {
 	private:
         string  dtFormato;
         int  	dtTamanio;

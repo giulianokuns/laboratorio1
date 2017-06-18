@@ -1,11 +1,11 @@
-#include "DtMultimedia.h"
+#include "DtMensaje.h"
 
 #ifndef DTVIDEO
 #define DTVIDEO
 
 using namespace std;
 
-class DtVideo : public DtMultimedia {
+class DtVideo : public DtMensaje{
 	private:
 		int 	dtDuracion;
         string  dtURLvideo;
