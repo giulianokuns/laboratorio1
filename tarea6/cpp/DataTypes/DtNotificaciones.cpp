@@ -1,15 +1,15 @@
 #include "../../h/DataTypes/DtNotificaciones.h"
 
-DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc){
+DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc) {
     	
-    Fecha fch   = new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio);
-    Hora hr     = new Hora(HoraSistema::hora, HoraSistema::minutos);
+    Fecha *fch   = new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio);
+    Hora *hr     = new Hora(HoraSistema::hora, HoraSistema::minutos);
     
-    this->fecha = fch;
-    this->hora = hr;
-    this->telCel = telCel;
-    this->tipo = tipo;
-    this->desc = desc;
+    this->fecha     = fch;
+    this->hora      = hr;
+    this->telCel    = telCel;
+    this->tipo      = tipo;
+    this->desc      = desc;
     
 }
 
