@@ -30,6 +30,6 @@ class DtReceptor : public ICollectible {
 		Fecha 	getFechaVisto ();
 		Hora 	getHoraVisto ();
 
-		ostream& operator<<(ostream& os, const DtReceptor& dt_receptor);
+		ostream& operator<<(ostream& os);
 };
 #endif

@@ -27,12 +27,17 @@ Hora DtReceptor::getHoraVisto () {
 	return dtHoraVisto;
 }
 
+<<<<<<< HEAD
 ostream& operator<<(ostream& os, const DtReceptor& dt_receptor) {
 	IKey *tel_cel = new string (dt_receptor.getNumTel());
+=======
+ostream& operator<<(ostream& os) {
+	string tel_cel = new string (this->getNumTel());
+>>>>>>> ca3a662782c2b8cb8a512d5f9eb6e512ca4af96c
 
-	os 	<< "Nombre: " 		<< dt_receptor.getNombre()	  	<< '\n' 
-   		<< "Teléfono: " 	<< tel_cel  					<< '\n' 
-   		<< "Fecha Visto: " 	<< dt_receptor.getFechaVisto() 	<< '\n' 
-   		<< "Hora Visto:" 	<< mens_simple.getHoraVisto();
+	os 	<< "Nombre: " 		<< this->getNombre()	  	<< '\n' 
+   		<< "Teléfono: " 	<< tel_cel  				<< '\n' 
+   		<< "Fecha Visto: " 	<< this->getFechaVisto() 	<< '\n' 
+   		<< "Hora Visto:" 	<< this->getHoraVisto();
     return os;  	
 }
