@@ -1098,6 +1098,13 @@ int main(){
         cout << "6.Alta Grupo" << endl;
         cout << "7.Enviar Mensaje" << endl;
         cout << "8.Ver Mensajes" << endl;
+        cout << "9.Archivar Conversacion" << endl;
+        cout << "10.Modificar Usuario" << endl;
+        cout << "11.Eliminar Mensaje" << endl;
+        cout << "12.Suscribirse a un usuario" << endl;
+        cout << "13.Salir aplicacion" << endl;
+        
+        cout << endl << endl;
         
     }
 }

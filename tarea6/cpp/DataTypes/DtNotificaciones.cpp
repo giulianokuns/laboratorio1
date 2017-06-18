@@ -1,4 +1,8 @@
 #include "../../h/DataTypes/DtNotificaciones.h"
+#include "../../h/Simple/Fecha.h"
+#include "../../h/Simple/Hora.h"
+
+
 
 DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc) {
     	
@@ -18,11 +22,11 @@ DtNotificaciones::~DtNotificaciones(){
     delete this->hora;    
 }
 
-Fecha DtNotificaciones::getFecha(){
+Fecha *DtNotificaciones::getFecha(){
     return this->fecha;
 }
 
-Hora DtNotificaciones::getHora(){
+Hora *DtNotificaciones::getHora(){
     return this->hora;
 }
 

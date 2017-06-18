@@ -18,8 +18,8 @@ class DtNotificaciones : public ICollectible {
 		string 	telCel;
         string 	tipo;
         string 	desc;
-		Fecha 	fecha;
-		Hora 	hora;
+		Fecha 	*fecha;
+		Hora 	*hora;
 
 	public:
         DtNotificaciones(string telCel, string tipo, string desc);
@@ -27,8 +27,8 @@ class DtNotificaciones : public ICollectible {
 		string 	gettelCel();
         string 	getTipo();
         string 	getDesc();
-		Fecha 	getFecha();
-		Hora 	getHora();
+		Fecha 	*getFecha();
+		Hora 	*getHora();
 };
 
 #endif
