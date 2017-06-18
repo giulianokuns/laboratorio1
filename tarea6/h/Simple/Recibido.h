@@ -2,6 +2,7 @@
 #include <cstring>
 #include <string.h>
 #include <stdexcept>
+
 #include "Fecha.h"
 #include "Hora.h"
 #include "Usuario.h"
@@ -22,6 +23,7 @@ class Recibido: public ICollectible {
 	public:
 		Recibido(Usuario u);
 		~Recibido();
+
 		bool getVisto();
 		bool getEliminado();
 		Fecha getFechaVisto();
