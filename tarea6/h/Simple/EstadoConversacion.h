@@ -1,5 +1,8 @@
 #include "Conversacion.h"
 
+#include "../../lab6-colecciones/interfaces/ICollectible.h"
+#include "../../lab6-colecciones/interfaces/IKey.h"
+
 #ifndef USUARIO
 #define USUARIO
 
