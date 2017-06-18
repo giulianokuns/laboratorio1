@@ -2,7 +2,7 @@
 #include "../../../lab6-colecciones/interfaces/IKey.h"
 #include "../../h/Fecha.h"
 #include "../../h/hora.h"
-#include <String.h>
+#include <string.h>
 
 using namespace std;
 

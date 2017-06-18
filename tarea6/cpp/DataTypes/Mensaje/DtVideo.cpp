@@ -1,7 +1,7 @@
 #include "DtVideo.h"
 #include <iostream>
-#include <cString>
-#include <String.h>
+#include <cstring>
+#include <string.h>
 #include <stdexcept>
 
 using namespace std;

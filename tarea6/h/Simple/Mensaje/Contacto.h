@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cString>
-#include <String.h>
+#include <cstring>
+#include <string.h>
 #include <stdexcept>
 
 #include "Mensaje.h"

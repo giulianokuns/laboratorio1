@@ -1,4 +1,4 @@
-#include <String.h>
+#include <string.h>
 #include "Fecha.h"
 #include "Hora.h"
 

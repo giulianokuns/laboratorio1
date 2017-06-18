@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cString>
+#include <cstring>
 
 #include "CtrlCasoEnviar.h"
 #include "DtSimple.h"

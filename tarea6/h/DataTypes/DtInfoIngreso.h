@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cString>
-#include <String.h>
+#include <cstring>
+#include <string.h>
 #include "Fecha.h"
 #include "Hora.h"
 
