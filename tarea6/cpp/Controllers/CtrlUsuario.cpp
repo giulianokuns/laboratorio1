@@ -55,7 +55,7 @@ bool CtrlUsuario::ingresar(IKey numero){
 		}else{
 
 			throw std::invalid_argument('El usuario no existe');
-			return false
+			return false;
 		}
 
 	}else{
@@ -63,10 +63,23 @@ bool CtrlUsuario::ingresar(IKey numero){
 		if(usuarioLog->gettelCel() != numero){
 
 			throw std::invalid_argument('Cierre Guasap antes de entrar con otro numero');
+                        cout << "Quiere cerrar guasap?(s/n): "
+                        string s;
+                        cin >> s;
+                        
+                        if(s == "s"){
+                            
+                            this->cerrarGuasap();
+                            cout << "guasap cerrado correctamente";
+                            return true
+                        }
+                            
+                        
+                        return false;
 
 		}else{
 
-			return true // en caso de ser numeros iguales, no se hace nada
+			return true; // en caso de ser numeros iguales, no se hace nada
 
 		}
 	}
