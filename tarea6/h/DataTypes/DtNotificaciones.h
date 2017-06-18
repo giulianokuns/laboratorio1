@@ -3,6 +3,8 @@
  
 #include "../Simple/Fecha.h"
 #include "../Simple/Hora.h"
+#include "../Simple/FechaSistema.h"
+#include "../Simple/HoraSistema.h"
 
 #include "../../../lab6-colecciones/interfaces/ICollectible.h"
 
@@ -27,6 +29,6 @@ class DtNotificaciones : public ICollectible {
         string 	getDesc();
 		Fecha 	getFecha();
 		Hora 	getHora();
-}
+};
 
 #endif
