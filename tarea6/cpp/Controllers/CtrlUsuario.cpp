@@ -13,8 +13,8 @@ CtrlUsuario * CtrlUsuario::getinstancia(){
 
 void CtrlUsuario::cerrarGuasap(){
 
-	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
-	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
+	Fecha fch = new Fecha(FechaSistema::dia,FechaSistema:mes,FechaSistema::anio);
+	Hora hr = new Hora(HoraSistema::hora,HoraSistema::minutos);
 
 	usuarioLog->setfechaUltimaConex(fch);
 	usuarioLog->sethoraUltimaConex(hr);
@@ -31,23 +31,18 @@ bool CtrlUsuario::inicioSesion(){
 
 bool CtrlUsuario::ingresar(IKey numero){
 
-	if (usuarioLog == NULL){
+	if (usuarioLog == NULL) {
+		if (usuarios->member(numero)) {
 
-		for (IIterator *it = usuarios->getIterator(); it->hasCurrent() and it->getCurrent()->gettelCel !=  numero.getVal(); it->next());
+			Fecha fch 	= new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio);
+			Hora hr 	= new Hora(HoraSistema::hora, HoraSistema::minutos);
 
-		if(it->hasCurrent()){
-
-			Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
-			Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
-
-			usuarioLog = it->getCurrent();
+			Usuario  * usuarioLog = dynamic_cast<Usuario * > (usuarios->find(numero));
 			usuarioLog->sethoraUltimaConex(hr);
 			usuarioLog->setfechaUltimaConex(fch);
 
 			return true;
-
-		}else{
-
+		} else {
 			throw std::invalid_argument('El usuario no existe');
 			return false;
 		}
@@ -81,15 +76,15 @@ bool CtrlUsuario::ingresar(IKey numero){
 
 DtFecha CtrlUsuario::altaUsuario(IKey numero, string nombre, string URL,string Descripcion){
 
-	Fecha fch = new Fecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
-	Hora hr = new Hora(HoraSistema::getHora(),HoraSistema::getMinutos());
+	Fecha fch = new Fecha(FechaSistema::dia,FechaSistema:mes,FechaSistema::anio);
+	Hora hr = new Hora(HoraSistema::hora,HoraSistema::minutos);
 
 	Usuario usrnew = new Usuario(numero,nombre,fch,URL,fch,hr,new List(),new List(),new List());
 
 	usuarios->add(usrnew);
 	usuarioLog = &usrnew;
 
-	DtFecha retorno = new DtFecha(FechaSistema::getDia(),FechaSistema::getMes(),FechaSistema::getAnio());
+	DtFecha retorno = new DtFecha(FechaSistema::dia,FechaSistema:mes,FechaSistema::anio);
 
 	return retorno;	
 }

@@ -92,7 +92,8 @@ while (se_dese_agrear){
 	//imprimo los contactos del usuario
 	String telcel,nombre,urlimagen;
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
-		DtInfoContacto contacto_mostrar = it->getCurrent();
+		DtInfoContacto * contacto_mostrar = dynamic_cast<DtInfoContacto* > (it->getCurrent());
+
 		tecel = contacto_mostrar->gettelCel();
 		nombre = contacto_mostrar->getnombre();
 		urlimagen = contacto_mostrar->geturlImagen();
@@ -154,7 +155,7 @@ if(contactos->isEmpty()){
 	lista_agregados->add(u->gettelCel(),usuario_agregar);
 	//agrego todos a la lista de no agregados
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
-		Usuario *actual = it->getCurrent();
+		Usuario  *actual = dynamic_cast<Usuario * > (it->getCurrent());
 		DtInfoContacto actual_agregar = new DtInfoContacto(actual->getnombre(),actual->gettelCel()->getValue(), actual-actualgeturlImagen());
 		lista_no_agregados->add(actual->gettelCel(),actual_agregar);
 	}
@@ -163,13 +164,13 @@ if(contactos->isEmpty()){
 		String nombre,telcel;
 		cout << "Agregados:" endl;
 		for (IIterator *it_a = lista_agregados->getIterator(); it_a->hasCurrent(); it_a->next()) {
-			DtInfoContacto *actual_agregado = it_a->getCurrent();
+			DtInfoContacto *actual_agregado = dynamic_cast<DtInfoContacto * > (it_a->getCurrent());
 			nombre = actual_agregado->getnombre();
 			telcel = actual_agregado->gettelCel();
 			cout << nombre "   " telcel endl;
 		}
 		for (IIterator *it_n = lista_no_agregados->getIterator(); it_n->hasCurrent(); it_n->next()) {
-			DtInfoContacto *actual_no_agregado = it_n->getCurrent();
+			DtInfoContacto *actual_no_agregado = dynamic_cast<DtInfoContacto * > (it_n->getCurrent());
 			nombre = actual_no_agregado->getnombre();
 			telcel = actual_no_agregado->gettelCel();
 			cout << nombre "   " telcel endl;
@@ -226,7 +227,8 @@ if(contactos->isEmpty()){
 	idconversaciones++;
 	for (IIterator *it_i = lista_agregados->getIterator(); it_i->hasCurrent(); it_i->next()) {
 		//itero entre usuarios
-		DtInfoContacto *actual_a_crear = it_i->getCurrent();
+		DtInfoContacto *actual_a_crear = dynamic_cast<DtInfoContacto * > (it_i->getCurrent());
+
 		ikey *tel = new String(actual_a_crear->gettelCel());
 		Usuario *usuario_a_agregar = instancia->getusuarios()->find(tel);
 		//creo los info ingreso y los agrego a los info ingreso del grupo(que se agregan al grupo luego de la iteracion)
@@ -261,7 +263,8 @@ if (user_log != NULL) {
 		cout << "Conversaciones activas" << endl;
 
 		for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()) {
-			Conversacion * c = getCurrent();
+			Conversacion *c = dynamic_cast<Conversacion * > (it->getCurrent());
+
 			bool es_grupo = c->getesGrupo();
 			if (es_grupo) {
 				Grupo g = c->getgrupo();
@@ -271,7 +274,7 @@ if (user_log != NULL) {
 				/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 				otro*/
 				for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
-					Usuario * u = getCurrent();
+					Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
 					if (!userlog->gettelCel()->compare(u->gettelCel())) {
 						nombre  = u->getnomUsuario();
 						tel_cel = u->gettelCel();
@@ -306,7 +309,7 @@ if (user_log != NULL) {
 
 			if (!lista_archivadas->isEmpty()) {
 				for (IIterator *it = lista_archivadas->getIterator(); it->hasCurrent(); it->next()) {
-					Conversacion * c = getCurrent();
+					Conversacion * c = dynamic_cast<Conversacion * > (it->getCurrent());
 					bool es_grupo = c->getesGrupo();
 					if (es_grupo) {
 						Grupo g = c->getgrupo();
@@ -316,7 +319,7 @@ if (user_log != NULL) {
 						/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 						otro*/
 						for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
-							Usuario * u = getCurrent();
+							Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
 							if (!userlog->gettelCel()->compare(u->gettelCel())) {
 								nombre  = u->getnomUsuario();
 								tel_cel = u->gettelCel();
@@ -410,7 +413,7 @@ if (user_log != NULL) {
 		cout << "Conversaciones activas" << endl;
 
 		for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()) {
-			Conversacion * c = getCurrent();
+			Conversacion * c = dynamic_cast<Conversacion * > (it->getCurrent());
 			bool es_grupo = c->getesGrupo();
 			if (es_grupo) {
 				Grupo g = c->getgrupo();
@@ -420,7 +423,7 @@ if (user_log != NULL) {
 				/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 				otro*/
 				for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
-					Usuario * u = getCurrent();
+					Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
 					if (!userlog->gettelCel()->compare(u->gettelCel())) {
 						nombre  = u->getnomUsuario();
 						tel_cel = u->gettelCel();
@@ -448,7 +451,7 @@ if (user_log != NULL) {
 
 			if (!mensajes->isEmpty()) {
 				for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
-					Mensaje m = getCurrent();
+					Mensaje * m = dynamic_cast<Mensaje * > (it_m->getCurrent());
 
 					if (dynamic_cast<Simple*> (&m) != NULL) {
 						//Es Simple
@@ -483,7 +486,7 @@ if (user_log != NULL) {
 
 					if (!receptores->isEmpty()) {
 						for (IIterator *it_r = receptores->getIterator(); it_r->hasCurrent(); it_r->next()) {
-							Receptor receptor = getCurrent();
+							Receptor *receptor = dynamic_cast<Receptor* > (it_r->getCurrent());
 							cout << receptor << endl;	
 							cout << "*****************************************" << endl;
 						}
@@ -506,7 +509,7 @@ if (user_log != NULL) {
 
 			if (!lista_archivadas->isEmpty()) {
 				for (IIterator *it = lista_archivadas->getIterator(); it->hasCurrent(); it->next()) {
-					Conversacion * c = getCurrent();
+					Conversacion * c = dynamic_cast<Conversacion* > (it->getCurrent());
 					bool es_grupo = c->getesGrupo();
 					if (es_grupo) {
 						Grupo g = c->getgrupo();
@@ -516,7 +519,7 @@ if (user_log != NULL) {
 						/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 						otro*/
 						for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
-							Usuario * u = getCurrent();
+							Usuario  * u = dynamic_cast<Usuario* > (it_p->getCurrent());
 							if (!userlog->gettelCel()->compare(u->gettelCel())) {
 								nombre  = u->getnomUsuario();
 								tel_cel = u->gettelCel();
@@ -534,7 +537,7 @@ if (user_log != NULL) {
 				
 				if (!mensajes->isEmpty()) {
 					for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
-						Mensaje m = getCurrent();
+						Mensaje * m = dynamic_cast<Mensaje* > (it_m->getCurrent());
 
 						if (dynamic_cast<Simple*> (&m) != NULL) {
 							//Es Simple
@@ -569,7 +572,8 @@ if (user_log != NULL) {
 
 						if (!receptores->isEmpty()) {
 							for (IIterator *it_r = receptores->getIterator(); it_r->hasCurrent(); it_r->next()) {
-								Receptor receptor = getCurrent();
+								
+								Receptor * receptores = dynamic_cast<Receptor* > (it_r->getCurrent());
 								cout << receptor << endl;	
 								cout << "*****************************************" << endl;
 							}
@@ -608,7 +612,7 @@ bool desea_archivar = true;
 while ( desea_archivar){
 	//imprimo las conversaciones no archivadas 
 	for (IIterator *it = conversaciones->getIterator(); it->hasCurrent(); it->next()) {
-		DtConversacion *dtc = it->getCurrent();
+		DtConversacion * dtc = dynamic_cast<DtConversacion* > (it->getCurrent());
 		String nombre,idconv;
 		nombre = dtc->getnombre();
 		idconv = dtc->getidConversacion();
