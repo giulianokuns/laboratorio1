@@ -22,7 +22,7 @@ class DtNotificaciones : public ICollectible {
 		Hora 	*hora;
 
 	public:
-        DtNotificaciones(string telCel, string tipo, string desc);
+        DtNotificaciones(string telCel, string tipo, string desc):fecha(new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio)),hora(new Hora(HoraSistema::hora, HoraSistema::minutos));
 		~DtNotificaciones();
 		string 	gettelCel();
         string 	getTipo();

@@ -5,11 +5,7 @@
 
 
 
-DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc) {
-    	
-    Fecha *fch   = new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio);
-    Hora *hr     = new Hora(HoraSistema::hora, HoraSistema::minutos);
-    
+DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc):fecha(new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio)),hora(new Hora(HoraSistema::hora, HoraSistema::minutos)){
     this->fecha     = fch;
     this->hora      = hr;
     this->telCel    = telCel;
