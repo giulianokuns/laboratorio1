@@ -23,6 +23,6 @@ class EstadoConversacion: public ICollectible {
 		void setarchivada(bool archivada);
 		void setconversacion( Conversacion c); 
 
-		Conversacion * compararConv (IKey idConv);
+		Conversacion * compararConv (IKey *idConv);
 };
 #endif
