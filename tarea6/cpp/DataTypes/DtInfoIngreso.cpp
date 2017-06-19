@@ -3,9 +3,9 @@
 
 using namespace std;
 
-DtInfoIngreso::DtInfoIngreso(Fecha fecha_ingreso, Hora hora_ingreso){
-	this->dtFechaIngreso = fecha_ingreso;
-	this->dtHoraIngreso  = hora_ingreso;
+DtInfoIngreso::DtInfoIngreso(Fecha *fecha_ingreso, Hora *hora_ingreso){
+	this->dtFechaIngreso = new Fecha (fecha_ingreso->getdia(), fecha_ingreso->getmes(), fecha_ingreso->getanio());
+	this->dtHoraIngreso  = new Hora (hora_ingreso->gethoras(), hora_ingreso->getminutos());
 }
 
 DtInfoIngreso::~DtInfoIngreso () {}

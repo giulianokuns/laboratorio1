@@ -18,7 +18,7 @@ class DtInfoIngreso  : public ICollectible {
 		Hora  dtHoraIngreso;
 
 	public:
-		DtInfoIngreso(Fecha fecha_ingreso, Hora hora_ingreso);
+		DtInfoIngreso(Fecha *fecha_ingreso, Hora *hora_ingreso);
 		~DtInfoIngreso();
 		
 		Fecha getFechaIngreso();

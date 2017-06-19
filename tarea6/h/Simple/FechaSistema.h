@@ -1,8 +1,6 @@
 #ifndef FECHASISTEMA
 #define FECHASISTEMA
 
-
-
 class FechaSistema {
 	public:
 		static int dia;
