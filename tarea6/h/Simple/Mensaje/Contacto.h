@@ -16,7 +16,7 @@ class Contacto : public Mensaje {
         string  telContacto;
 
     public:
-        Contacto (IKey *codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : Mensaje (codigo, fecha, hora) {};
+        Contacto (IKey *codigo, Fecha *fecha, Hora *hora, string nom_contacto, string tel_cont);
         ~Contacto ();
         
         string  getNomContacto() const;

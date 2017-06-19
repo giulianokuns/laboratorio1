@@ -16,7 +16,7 @@ class Imagen : public Mensaje {
         string  URLpicture;
 
     public:
-        Imagen (IKey *codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : Mensaje (codigo, fecha, hora) {};
+        Imagen (IKey *codigo, Fecha *fecha, Hora *hora, string formato, int tamanio, string textmulti, string urlpicture);
         ~Imagen ();
         
         string  getFormato() const;

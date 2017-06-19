@@ -15,7 +15,7 @@ class Video : public Mensaje {
         string  URLvideo;
 
     public:
-        Video (IKey *codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : Mensaje (codigo, fecha, hora) {};
+        Video (IKey *codigo, Fecha *fecha, Hora *hora, int duracion, string urlvideo);
         ~Video ();
         
         int  	getDuracion() const;

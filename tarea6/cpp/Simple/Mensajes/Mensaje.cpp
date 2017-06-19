@@ -1,25 +1,25 @@
 #include "../../../h/Simple/Mensaje/Mensaje.h"
 
-string Mensaje::getcodigo(){
-	return codigo;
+IKey Mensaje::getcodigo(){
+	return *codigo;
 }
 Fecha Mensaje::getfechaMensaje(){
-	return fechaMensaje;
+	return *fechaMensaje;
 }
 Hora Mensaje::gethoraMensaje(){
-	return horaMensaje;
+	return *horaMensaje;
 }
 IDictionary Mensaje::getRecibidos() {
-	return recibidos;
+	return *recibidos;
 }
 
-void Mensaje::setcodigo(IKey codigo){
+void Mensaje::setcodigo(IKey *codigo){
 	this->codigo = codigo;
 }
-void Mensaje::setfechaMensaje(Fecha fechaMensaje){
+void Mensaje::setfechaMensaje(Fecha *fechaMensaje){
 	this->fechaMensaje = fechaMensaje;
 }
-void Mensaje::sethoraMensaje(Hora horaMensaje){
+void Mensaje::sethoraMensaje(Hora *horaMensaje){
 	this->horaMensaje = horaMensaje;
 }
 void Mensaje::setRecibidos(IDictionary recibidos) {

@@ -7,10 +7,10 @@
 
 using namespace std;
 
-Contacto::Contacto (IKey codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) : Mensaje (codigo, fecha, hora)  {
-	this->codigo 	 	= codigo;
-	this->fecha 	 	= fecha;
-	this->hora 	 		= hora;
+Contacto::Contacto (IKey *codigo, Fecha *fecha, Hora *hora, string nom_contacto, string tel_cont) {
+	this->setcodigo(codigo);
+	this->setfechaMensaje(fecha);
+	this->sethoraMensaje(hora);
 	this->nomContacto 	= nom_contacto;
 	this->telContacto 	= tel_cont;
 }

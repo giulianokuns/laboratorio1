@@ -7,10 +7,10 @@
 
 using namespace std;
 
-Imagen::Imagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) : Mensaje (codigo, fecha, hora) {
-	this->dtCodigo 	   = codigo;
-	this->dtFecha 	   = fecha;
-	this->dtHora 	   = hora;
+Imagen::Imagen (IKey *codigo, Fecha *fecha, Hora *hora, string formato, int tamanio, string textmulti, string urlpicture) {
+	this->setcodigo(codigo);
+	this->setfechaMensaje(fecha);
+	this->sethoraMensaje(hora);
 	this->dtFormato    = formato;
 	this->dtTamanio    = tamanio;
 	this->dtTextMulti  = textmulti;

@@ -15,7 +15,7 @@ class Simple : public Mensaje {
         string  textSimp;
 
     public:
-        Simple (IKey *codigo, Fecha fecha, Hora hora, string text_simple) : Mensaje (codigo, fecha, hora) {};
+        Simple (IKey *codigo, Fecha *fecha, Hora *hora, string text_simple);
 
         string  getTextSimp() const;
 

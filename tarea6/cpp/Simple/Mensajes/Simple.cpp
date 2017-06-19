@@ -6,10 +6,10 @@
 
 using namespace std;
 
-Simple::Simple (IKey codigo, Fecha fecha, Hora hora, string text_simple) : Mensaje (codigo, fecha, hora)  {
-	this->Codigo 	= codigo;
-	this->Fecha 	= fecha;
-	this->Hora 	 	= hora;
+Simple::Simple (IKey *codigo, Fecha *fecha, Hora *hora, string text_simple) : Mensaje (codigo, fecha, hora)  {
+	this->setcodigo(codigo);
+	this->setfechaMensaje(fecha);
+	this->sethoraMensaje(hora);
 	this->TextSimp 	= text_simple;
 }
 

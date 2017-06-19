@@ -7,10 +7,10 @@
 
 using namespace std;
 
-Video::Video (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) : Mensaje (codigo, fecha, hora) {
-	this->codigo 	    = codigo;
-	this->fecha 	    = new Fecha(fecha->getdia(), fecha->getmes(), fecha->getanio());
-	this->hora 		  	= new Hora(hora->gethoras(), hora->getminutos());
+Video::Video (IKey *codigo, Fecha *fecha, Hora *hora, int duracion, string urlvideo) {
+	this->setcodigo(codigo);
+	this->setfechaMensaje(fecha);
+	this->sethoraMensaje(hora);
 	this->duracion  	= duracion;
 	this->URLvideo    	= urlvideo;
 }

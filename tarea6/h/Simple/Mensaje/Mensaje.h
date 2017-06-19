@@ -18,20 +18,20 @@ using namespace std;
 class Mensaje : public ICollectible {
 	private:
 		IKey *codigo; 
-		Fecha fechaMensaje;
-		Hora horaMensaje;
+		Fecha *fechaMensaje;
+		Hora *horaMensaje;
 		//El IKey es el telcel del usuario asociado.
 		IDictionary *recibidos;
 
 	public:
-		IKey *getcodigo();
-		Fecha getfechaMensaje();
-		Hora gethoraMensaje();
+		IKey 		*getcodigo();
+		Fecha 		*getfechaMensaje();
+		Hora  		*gethoraMensaje();
 		IDictionary *getRecibidos();
 
 		void setcodigo(IKey *codigo);
-		void setfechaMensaje(Fecha fechaMensaje);
-		void sethoraMensaje(Hora horaMensaje);
+		void setfechaMensaje(Fecha *fechaMensaje);
+		void sethoraMensaje(Hora *horaMensaje);
 		void setRecibidos(IDictionary *recibidos);		
 
 		bool validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso);
