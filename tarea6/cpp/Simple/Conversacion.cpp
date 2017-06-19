@@ -20,7 +20,7 @@ Conversacion::Conversacion(bool visto, IKey idConversacion, bool esGrupo, Grupo 
 bool Conversacion::getvisto(){
 	return visto;
 }
-IKey Conversacion::getidConversacion(){
+IKey *Conversacion::getidConversacion(){
 	return idConversacion;
 }
 bool Conversacion::getesGrupo(){

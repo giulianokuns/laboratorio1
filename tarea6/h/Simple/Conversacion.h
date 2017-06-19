@@ -32,11 +32,11 @@ class Conversacion {
 		IDictionary *mensajes;
 
 	public:
-		Conversacion(bool visto, IKey *idConversacion, bool esGrupo, Grupo grupo, IDictionary *participantes);
+		Conversacion(bool visto, IKey *idConversacion, bool esGrupo, Grupo grupo, IDictionary *participantes,IDictionary *mensajes);
 		~Conversacion();
 
 		bool 	getvisto();
-		IKey 	getidConversacion();
+		IKey 	*getidConversacion();
 		bool 	getesGrupo();
 		Grupo 	getgrupo();
 		IDictionary *getparticipantes();

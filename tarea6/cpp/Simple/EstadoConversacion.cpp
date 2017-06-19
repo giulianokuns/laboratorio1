@@ -1,6 +1,6 @@
 #include "../../h/Simple/EstadoConversacion.h"
 
-EstadoConversacion::EstadoConversacion(bool archivada, Conversacion c){
+EstadoConversacion::EstadoConversacion(bool archivada, Conversacion c):conversacion(c.getvisto(),c.getidConversacion(),c.getesGrupo(),c.getgrupo(),c.getparticipantes(),c.getMensajes()){
 	this->archivada = archivada;
 	this->conversacion = c;
 }
@@ -26,9 +26,9 @@ void EstadoConversacion::setconversacion( Conversacion c){
 	Si son iguales devuelve un puntero a la Conversacion
 	NULL en otro caso.
 */
-Conversacion * EstadoConversacion::compararConv (IKey idConv) {
-	Conversacion c * = this->getconversacion();
-	if (c->getidConversacion() == idConv) {
+Conversacion * EstadoConversacion::compararConv (IKey *idConv) {
+	Conversacion c  = this->getconversacion();
+	if (c.getidConversacion() == idConv) {
 		return c;
 	} else {
 		return NULL;
