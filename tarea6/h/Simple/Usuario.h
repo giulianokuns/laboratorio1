@@ -5,11 +5,14 @@
 
 #include "Fecha.h"
 #include "Hora.h"
-#include "EstadoConversacion.h"
+
+
+
 
 #include "../DataTypes/DtConversacion.h"
 #include "../DataTypes/DtInfoContacto.h"
 #include "../DataTypes/DtNotificaciones.h"
+#include "../Interfaces/ISuscriptos.h"
 
 #include "../../lab6-colecciones/interfaces/IKey.h"
 #include "../../lab6-colecciones/interfaces/IDictionary.h"
@@ -43,7 +46,7 @@ class Usuario: public ICollectible, public ISuscriptos {
         ICollection *suscriptores;
 
 	public:
-		Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, ICollection *arreglo_ec, IDictionary *contactos,ICollection *suscriptores);
+		Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores);
 		~Usuario();
 		
 		IKey *gettelCel();

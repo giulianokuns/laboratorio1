@@ -1,4 +1,4 @@
-#include "EstadoConversacion.h"
+#include "../../h/Simple/EstadoConversacion.h"
 
 EstadoConversacion::EstadoConversacion(bool archivada, Conversacion c){
 	this->archivada = archivada;

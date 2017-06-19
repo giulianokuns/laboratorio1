@@ -1,11 +1,11 @@
-#include "Conversacion.h"
-#include "FechaSistema.h"
-#include "HoraSistema.h"
-#include "DtSimple.h"
-#include "DtContacto.h"
-#include "DtVideo.h"
-#include "DtImagen.h"
-#include "DtMultimedia.h"
+#include "../../h/Simple/Conversacion.h"
+#include "../../h/Simple/FechaSistema.h"
+#include "../../h/Simple/HoraSistema.h"
+#include "../../h/DataTypes/DtSimple.h"
+#include "../../h/DataTypesDtContacto.h"
+#include "../../h/DataTypesDtVideo.h"
+#include "../../h/DataTypesDtImagen.h"
+#include "../../h/DataTypesDtMultimedia.h"
 
 
 Conversacion::Conversacion(bool visto, IKey idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes, IDictionary mensajes){
