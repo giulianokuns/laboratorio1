@@ -18,17 +18,17 @@ class DtNotificaciones : public ICollectible {
 		string 	telCel;
         string 	tipo;
         string 	desc;
-		Fecha 	*fecha;
-		Hora 	*hora;
+		Fecha 	fecha;
+		Hora 	hora;
 
 	public:
-        DtNotificaciones(string telCel, string tipo, string desc):fecha(new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio)),hora(new Hora(HoraSistema::hora, HoraSistema::minutos));
+        DtNotificaciones(string telCel, string tipo, string desc);
 		~DtNotificaciones();
 		string 	gettelCel();
         string 	getTipo();
         string 	getDesc();
-		Fecha 	*getFecha();
-		Hora 	*getHora();
+		Fecha 	getFecha();
+		Hora 	getHora();
 };
 
 #endif

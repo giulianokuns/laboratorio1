@@ -2,12 +2,12 @@
 #include "../../h/DataTypes/DtNotificaciones.h"
 #include "../../h/Simple/Fecha.h"
 #include "../../h/Simple/Hora.h"
+#include "../../h/Simple/HoraSistema.h"
+#include "../../h/Simple/FechaSistema.h"
 
 
 
-DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc):fecha(new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio)),hora(new Hora(HoraSistema::hora, HoraSistema::minutos)){
-    this->fecha     = fch;
-    this->hora      = hr;
+DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc) : fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio), hora(HoraSistema::hora, HoraSistema::minutos){
     this->telCel    = telCel;
     this->tipo      = tipo;
     this->desc      = desc;
@@ -15,15 +15,15 @@ DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc):fech
 }
 
 DtNotificaciones::~DtNotificaciones(){    
-    delete this->fecha;
-    delete this->hora;    
+    fecha.~Fecha();
+    hora.~Hora();    
 }
 
-Fecha *DtNotificaciones::getFecha(){
+Fecha DtNotificaciones::getFecha(){
     return this->fecha;
 }
 
-Hora *DtNotificaciones::getHora(){
+Hora DtNotificaciones::getHora(){
     return this->hora;
 }
 
