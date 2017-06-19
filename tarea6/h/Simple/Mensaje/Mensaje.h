@@ -1,6 +1,7 @@
 #include "../Fecha.h"
 #include "../Hora.h"
-#include "../Recibido.h"
+//#include "../Recibido.h"
+//#include "../Conversacion.h"
 
 #include "../../DataTypes/DtInfoIngreso.h"
 #include "../../DataTypes/DtReceptor.h"
@@ -16,6 +17,7 @@
 using namespace std;
 
 class Recibido;
+class Conversacion;
 
 class Mensaje : public ICollectible {
 	private:
