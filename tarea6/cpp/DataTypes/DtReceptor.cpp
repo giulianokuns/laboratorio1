@@ -40,10 +40,11 @@ Hora *DtReceptor::getHoraVisto () {
 ostream& operator<<(ostream& os, DtReceptor& dt_receptor)  
 {  
 	//string tel_cel = new String (dt_receptor.getNumTel()); 
-	string tel_cel = dt_receptor.getNumTel()->getVal();
+	//string tel_cel = dt_receptor.getNumTel()->getVal();
 	
 	os 	<< "Nombre: " 		<< dt_receptor.getNombre()	  	<< '\n' 
-   		<< "Teléfono: " 	<< tel_cel  					<< '\n' 
+   		//<< "Teléfono: " 	<< tel_cel  					<< '\n'
+		<< "Teléfono: " 	<< dt_receptor.getNumTel() 		<< '\n'
    		<< "Fecha Visto: " 	<< dt_receptor.getFechaVisto() 	<< '\n' 
    		<< "Hora Visto:" 	<< dt_receptor.getHoraVisto();
     return os;  	
