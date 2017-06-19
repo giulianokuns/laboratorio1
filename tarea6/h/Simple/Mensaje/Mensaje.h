@@ -15,6 +15,8 @@
 
 using namespace std;
 
+class Recibido;
+
 class Mensaje : public ICollectible {
 	private:
 		IKey *codigo; 
