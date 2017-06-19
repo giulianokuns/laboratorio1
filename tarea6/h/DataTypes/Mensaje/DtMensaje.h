@@ -24,8 +24,12 @@ class DtMensaje : public ICollectible {
        	~DtMensaje();
 
         string 	getCodigo() const;
-        Fecha   getFecha() const;
-        Hora    getHora() const;
+        Fecha   *getFecha() const;
+        Hora    *getHora() const;
+
+        void setCodigo(string codigo);
+        void setFecha(Fecha *fecha);
+        void setHora(Hora *hora);
 };
 
 #endif

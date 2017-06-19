@@ -1,3 +1,7 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+
 #include "DtMensaje.h"
 
 #ifndef DTCONTACTO
@@ -11,7 +15,7 @@ class DtContacto : public DtMensaje {
         string  dtTelContacto;
         
     public:
-        DtContacto (IKey codigo, Fecha fecha, Hora hora, string nom_contacto, string tel_cont) {};
+        DtContacto (string codigo, Fecha *fecha, Hora *hora, string nom_contacto, string tel_cont);
         ~DtContacto ();
         
         string  getNomContacto() const;

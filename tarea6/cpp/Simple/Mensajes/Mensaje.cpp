@@ -1,6 +1,4 @@
-#include "Fecha.h"
-#include "Hora.h"
-#include "Mensaje.h"
+#include "../../../h/Simple/Mensaje/Mensaje.h"
 
 string Mensaje::getcodigo(){
 	return codigo;

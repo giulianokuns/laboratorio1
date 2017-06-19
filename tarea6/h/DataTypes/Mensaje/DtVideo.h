@@ -1,3 +1,7 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+
 #include "DtMensaje.h"
 
 #ifndef DTVIDEO
@@ -11,7 +15,7 @@ class DtVideo : public DtMensaje{
         string  dtURLvideo;
 
     public:
-        DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) {};
+        DtVideo (string codigo, Fecha *fecha, Hora *hora, int duracion, string urlvideo);
         ~DtVideo ();
         
         int  	getDuracion() const;

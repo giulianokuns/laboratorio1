@@ -1,24 +1,20 @@
-#include <iostream>
-#include <cstring>
-#include <string.h>
-
 #include "../../../h/DataTypes/Mensaje/DtVideo.h"
 
 using namespace std;
 
-DtVideo::DtVideo (IKey codigo, Fecha fecha, Hora hora, int duracion, string urlvideo) {
-	this->dtCodigo 	    = codigo;
-	this->dtFecha 	    = new Fecha(fecha->getdia(), fecha->getmes(), fecha->getanio());
-	this->dtHora 	  	= new Hora(hora->gethoras(), hora->getminutos());
+DtVideo::DtVideo (string codigo, Fecha *fecha, Hora *hora, int duracion, string urlvideo) {
+	this->setCodigo(codigo);
+	this->setFecha(fecha);
+	this->setHora(hora);
 	this->dtDuracion    = duracion;
 	this->dtURLvideo    = urlvideo;
 }
 
-DtVideo::~DtVideo () {}
+//DtVideo::~DtVideo () {}
 
-int DtVideo::getDuracion() {
+int DtVideo::getDuracion() const{
 	return dtDuracion;
 }
-string DtVideo::getURLvideo() {
+string DtVideo::getURLvideo() const{
 	return dtURLvideo;
 }

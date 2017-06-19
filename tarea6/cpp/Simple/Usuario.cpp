@@ -1,6 +1,4 @@
 #include "../../h/Simple/Usuario.h"
-#include "../../lab6-colecciones/collections/List.h"
-
 
 Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores){
 	

@@ -6,9 +6,6 @@
 #include "Fecha.h"
 #include "Hora.h"
 
-
-
-
 #include "../DataTypes/DtConversacion.h"
 #include "../DataTypes/DtInfoContacto.h"
 #include "../DataTypes/DtNotificaciones.h"
@@ -17,6 +14,7 @@
 #include "../../lab6-colecciones/interfaces/IKey.h"
 #include "../../lab6-colecciones/interfaces/IDictionary.h"
 #include "../../lab6-colecciones/interfaces/ICollection.h"
+#include "../../lab6-colecciones/collections/List.h"
 
 #ifndef USUARIO
 #define USUARIO

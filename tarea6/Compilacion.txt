@@ -1,4 +1,1 @@
-cpp/DataTypes/Mensaje/DtMensaje.cpp 
-cpp/Simple/Fecha.cpp 
-cpp/Simple/Hora.cpp
-
+g++ -Wall -g cpp/DataTypes/Mensaje/DtMensaje.cpp cpp/Simple/Fecha.cpp cpp/Simple/Hora.cpp cpp/DataTypes/Mensaje/DtSimple.cpp cpp/DataTypes/Mensaje/DtVideo.cpp cpp/DataTypes/Mensaje/DtContacto.cpp cpp/DataTypes/Mensaje/DtImagen.cpp cpp/DataTypes/DtReceptor.cpp 

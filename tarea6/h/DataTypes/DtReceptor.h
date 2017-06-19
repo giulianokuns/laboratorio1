@@ -18,18 +18,19 @@ class DtReceptor : public ICollectible {
 	private:
 		string 	dtNombre;
 		IKey	*dtNumTel;
-		Fecha 	dtFechaVisto;
-		Hora 	dtHoraVisto;
+		Fecha 	*dtFechaVisto;
+		Hora 	*dtHoraVisto;
 
 	public:
-		DtReceptor (string nombre, IKey *num_cel, Fecha fecha_visto, Hora hora_visto);
+		DtReceptor (string nombre, IKey *num_cel, Fecha *fecha_visto, Hora *hora_visto);
 		~DtReceptor ();	
 
 		string 	getNombre ();
 		IKey 	*getNumTel ();
-		Fecha 	getFechaVisto ();
-		Hora 	getHoraVisto ();
+		Fecha 	*getFechaVisto ();
+		Hora 	*getHoraVisto ();
 
-		ostream& operator<<(ostream& os);
+		//ostream& operator<<(ostream& os);
+		friend ostream& operator<<(ostream& os, DtReceptor& dt_receptor);
 };
 #endif

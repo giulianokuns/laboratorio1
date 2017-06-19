@@ -1,3 +1,8 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+#include <stdexcept>
+
 #include "DtMensaje.h"
 
 #ifndef DTIMAGEN
@@ -13,7 +18,7 @@ class DtImagen : public DtMensaje {
         string  dtURLpicture;
 
     public:
-        DtImagen (IKey codigo, Fecha fecha, Hora hora, string formato, int tamanio, string textmulti, string urlpicture) {};
+        DtImagen (string codigo, Fecha *fecha, Hora *hora, string formato, int tamanio, string textmulti, string urlpicture);
         ~DtImagen ();
         
         string  getFormato() const;

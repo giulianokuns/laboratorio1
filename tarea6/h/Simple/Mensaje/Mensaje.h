@@ -2,7 +2,6 @@
 #include "../Hora.h"
 #include "../Recibido.h"
 
-
 #include "../../DataTypes/DtInfoIngreso.h"
 #include "../../DataTypes/DtReceptor.h"
 
