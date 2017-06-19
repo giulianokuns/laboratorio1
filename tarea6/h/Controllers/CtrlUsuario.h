@@ -2,7 +2,7 @@
 #include "../Simple/Fecha.h"
 #include "../Simple/Hora.h"
 #include "../Simple/Usuario.h"
-#include "../Simple/Mensaje.h"
+#include "../Simple/Mensaje/Mensaje.h"
 
 class CtrlUsuario{
 
