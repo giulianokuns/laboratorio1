@@ -2,14 +2,11 @@
 #include "../../h/Simple/Hora.h"
 #include "../../h/Simple/Grupo.h"
 
-Grupo::Grupo(string nomGrupo, string imagenGrupo,	Fecha fechaCreacion,	Hora horaCreacion,	IDictionary *infoIngresos){
+Grupo::Grupo(string nomGrupo, string imagenGrupo,	Fecha fechacreacion,	Hora horacreacion,	IDictionary *infoIngresos): fechaCreacion(fechacreacion.getdia(), fechacreacion.getmes(), fechacreacion.getanio()), horaCreacion(horacreacion.gethoras(), horacreacion.getminutos()){
 	this->nomGrupo = nomGrupo;
 	this->imagenGrupo = imagenGrupo;
-	this->fechaCreacion = fechaCreacion;
-	this->horaCreacion = horaCreacion;
 	this->infoIngresos = infoIngresos;
 }
-
 string Grupo::getnomGrupo(){
 	return nomGrupo;
 }
