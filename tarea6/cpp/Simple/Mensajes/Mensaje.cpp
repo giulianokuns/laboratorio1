@@ -22,7 +22,7 @@ void Mensaje::setfechaMensaje(Fecha *fechaMensaje){
 void Mensaje::sethoraMensaje(Hora *horaMensaje){
 	this->horaMensaje = horaMensaje;
 }
-void Mensaje::setRecibidos(IDictionary recibidos) {
+void Mensaje::setRecibidos(IDictionary *recibidos) {
 	this->recibidos = recibidos;
 }
 
