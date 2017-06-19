@@ -17,10 +17,10 @@ void Mensaje::setcodigo(IKey *codigo){
 	this->codigo = codigo;
 }
 void Mensaje::setfechaMensaje(Fecha *fechaMensaje){
-	this->fechaMensaje = fechaMensaje;
+	this->fechaMensaje = new Fecha(fechaMensaje->getdia(), fechaMensaje->getmes(), fechaMensaje->getanio());
 }
 void Mensaje::sethoraMensaje(Hora *horaMensaje){
-	this->horaMensaje = horaMensaje;
+	this->horaMensaje = new Hora(horaMensaje->gethoras(), horaMensaje->getminutos());
 }
 void Mensaje::setRecibidos(IDictionary *recibidos) {
 	this->recibidos = recibidos;
