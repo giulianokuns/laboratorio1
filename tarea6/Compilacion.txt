@@ -1,1 +1,8 @@
-g++ -Wall -g cpp/DataTypes/Mensaje/DtMensaje.cpp cpp/Simple/Fecha.cpp cpp/Simple/Hora.cpp cpp/DataTypes/Mensaje/DtSimple.cpp cpp/DataTypes/Mensaje/DtVideo.cpp cpp/DataTypes/Mensaje/DtContacto.cpp cpp/DataTypes/Mensaje/DtImagen.cpp cpp/DataTypes/DtReceptor.cpp 
+**************************************************
+DATATYPES
+
+g++ -Wall -g cpp/Simple/Fecha.cpp cpp/Simple/FechaSistema.cpp cpp/Simple/Hora.cpp cpp/Simple/HoraSistema.cpp cpp/DataTypes/DtInfoIngreso.cpp cpp/DataTypes/DtInfoContacto.cpp cpp/DataTypes/DtConversacion.cpp cpp/DataTypes/DtNotificaciones.cpp cpp/DataTypes/DtReceptor.cpp cpp/DataTypes/Mensaje/DtMensaje.cpp cpp/DataTypes/Mensaje/DtVideo.cpp cpp/DataTypes/Mensaje/DtImagen.cpp cpp/DataTypes/Mensaje/DtContacto.cpp cpp/DataTypes/Mensaje/DtSimple.cpp lab6-colecciones/interfaces/ICollectible.h lab6-colecciones/interfaces/IKey.h
+
+***********************************************************************
+
+
