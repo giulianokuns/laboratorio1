@@ -1,5 +1,8 @@
 #include "../../h/Controllers/CtrlUsuario.h"
-#include "../../lab6-colecciones/interfaces/IKey.h"
+#include "../../../lab6-colecciones/interfaces/IKey.h"
+
+
+
 
 class ICtrlUsuario{
 public:
@@ -22,9 +25,6 @@ public:
 	virtual	bool esContacto(IKey *telCel) = 0;
 	virtual	DtInfoContacto agregarContacto(IKey *telcel) = 0;
 	virtual	void confirmarAgregarContacto(IKey *telcel) = 0;
-
-		/*eliminar mensaje*/
-	virtual void eliminarMensaje (IKey *codigo, IKey *idConv) = 0;
 
 		/*cerrar GUASAP*/
 	virtual	void cerrarGuasap() = 0;

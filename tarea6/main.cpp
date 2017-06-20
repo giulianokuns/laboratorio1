@@ -4,7 +4,11 @@
 #include <string.h>
 #include <stdexcept>
 
+
 #include "./h/Interfaces/ICtrlUsuario.h"
+#include "./h/Controllers/CtrlUsuario.h"
+#include "./lab6-colecciones/String.h"
+#include "./lab6-colecciones/interfaces/IKey.h"
 
 
 
@@ -591,7 +595,7 @@ void verMensaje(){
 								}
 							}
 						}
-
+						
 						int opt = 1;				
 						while (opt == 1) {
 							cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
@@ -877,11 +881,11 @@ if (user_log != NULL) {
 						}
 
 						cout << "Ingrese el código del mensaje que desea eliminar.";
-						string codigo;
+						char * codigo;
 						cin >> codigo;
 
-						IKey * codigo = new String (codigo);
-						CI->eliminarMensaje(codigo, idConv);
+						IKey * codigoString = new String (codigo);
+						CI->eliminarMensaje(codigoString, idConv);
 					}
 				} else {
 					throw std::invalid_argument("No hay mensajes para mostrar.");
@@ -906,7 +910,7 @@ if (user_log != NULL) {
 void agregarSuscriptores(){
     
     ICtrlUsuario *CI = ICtrlUsuario::getinstancia();
-    string numero;
+    char * numero;
     
     cout << "Ingrese usuario al que desea suscribirse: ";
     cin >> numero;
