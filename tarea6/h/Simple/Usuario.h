@@ -26,7 +26,7 @@ class HoraSistema;
 using namespace std;
 class Conversacion;
 
-class Usuario: public ICollectible, public ISuscriptos{
+class Usuario: public ICollectible, public Isuscriptos{
 	private:
 		IKey *telCel;
 		string nomUsuario;
@@ -91,7 +91,7 @@ class Usuario: public ICollectible, public ISuscriptos{
 		/* Suscripciones */
 		ICollection *getNotificaciones();
 		void eliminarNotificaciones();
-		void agregarSuscriptor(ISuscriptos *s);
+		void agregarSuscriptor(Isuscriptos *s);
 		void eliminarSuscriptor(IKey *telCel);
 		void agregarNotificacion(DtNotificaciones notificacion);
         void agregarNotificaciones(DtNotificaciones notificacion);

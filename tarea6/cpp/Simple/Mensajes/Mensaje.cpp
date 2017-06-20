@@ -1,4 +1,5 @@
 #include "../../../h/Simple/Mensaje/Mensaje.h"
+#include "../../../h/Simple/Usuario.h"
 
 IKey *Mensaje::getcodigo(){
 	return codigo;
@@ -76,22 +77,23 @@ ICollection *Mensaje::getReceptores() {
 	ICollection *receptores = new List();
 	
 	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
-		Recibido r = dynamic_cast<Recibido * > (it->getCurrent());
+		Recibido *r = dynamic_cast<Recibido * > (it->getCurrent());
 		Fecha fechaVisto = r->getFechaVisto();
 		Hora horaVisto 	 = r->getHoraVisto();
 		Usuario *usuario  = r->getUsuario();
 
 		string nombre  	 = usuario->getnomUsuario();
-		IKey telCel  	 = usuario->gettelCel();
+		IKey *telCel  	 = usuario->gettelCel();
 
-		DtReceptor receptor = new DtReceptor(nombre, telCel, fechaVisto, horaVisto);
-		receptores.add(receptor);
+		DtReceptor *receptor = new DtReceptor(nombre, telCel, fechaVisto, horaVisto);
+		ICollectible *Ireceptor = receptor;
+		receptores->add(Ireceptor);
 	}
 
-	return receptores
+	return receptores;
 }
 
-void Mensaje::eliminarMensajeEmisor(Conversacion * conversacion) {
+void Mensaje::eliminarMensajeEmisor(Conversacion *conversacion) {
 	IDictionary * recibidos = this->getRecibidos();
 	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
 		Recibido * r = dynamic_cast<Recibido * > (it->getCurrent());

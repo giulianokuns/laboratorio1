@@ -4,11 +4,9 @@
 
 using namespace std;
 
-DtReceptor::DtReceptor (string nombre, IKey *num_cel, Fecha *fecha_visto, Hora *hora_visto) {
+DtReceptor::DtReceptor (string nombre, IKey *num_cel, Fecha *fecha_visto, Hora *hora_visto): dtFechaVisto(fecha_visto->getdia(), fecha_visto->getmes(), fecha_visto->getanio()), dtHoraVisto(hora_visto->gethoras(), hora_visto->getminutos()) {
 	this->dtNombre 		= nombre;
 	this->dtNumTel 		= num_cel;
-	this->dtFechaVisto 	= new Fecha(fecha_visto->getdia(), fecha_visto->getmes(), fecha_visto->getanio());
-	this->dtHoraVisto 	= new Hora(hora_visto->gethoras(), hora_visto->getminutos());
 }
 
 DtReceptor::~DtReceptor () {}
@@ -20,10 +18,11 @@ string DtReceptor::getNombre () {
 IKey *DtReceptor::getNumTel () {
 	return dtNumTel;
 }
-Fecha *DtReceptor::getFechaVisto () {
+Fecha DtReceptor::getFechaVisto () {
 	return dtFechaVisto;
 }
-Hora *DtReceptor::getHoraVisto () {
+Hora DtReceptor::getHoraVisto () {
+
 	return dtHoraVisto;
 }
 

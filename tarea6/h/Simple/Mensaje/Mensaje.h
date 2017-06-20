@@ -1,6 +1,6 @@
 #include "../Fecha.h"
 #include "../Hora.h"
-//#include "../Recibido.h"
+#include "../Recibido.h"
 //#include "../Conversacion.h"
 
 #include "../../DataTypes/DtInfoIngreso.h"
@@ -42,7 +42,7 @@ class Mensaje : public ICollectible {
 
 		bool validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso);
 		ICollection *getReceptores();
-		void eliminarMensajeEmisor();
+		void eliminarMensajeEmisor(Conversacion *converscaion);
 		void eliminarMensajeReceptor(Conversacion * conversacion);
 };
 

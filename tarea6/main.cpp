@@ -8,7 +8,12 @@
 #include "./h/Interfaces/ICtrlUsuario.h"
 #include "./h/Controllers/CtrlUsuario.h"
 #include "./lab6-colecciones/String.h"
+#include "./lab6-colecciones/Integer.h"
 #include "./lab6-colecciones/interfaces/IKey.h"
+#include "./h/Simple/Grupo.h"
+#include "./h/Simple/Conversacion.h"
+
+
 
 
 
@@ -599,7 +604,7 @@ void verMensaje(){
 						int opt = 1;				
 						while (opt == 1) {
 							cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
-							String codigo;
+							string codigo;
 							cin >> codigo;
 
 							IKey * codigo = new String (codigo);
@@ -664,18 +669,18 @@ while ( desea_archivar){
 			//imprimir
 		}
 	}
-	cout << "Ingrese el id de la conversacion que desea archivar" endl;
-	String id;
+	cout << "Ingrese el id de la conversacion que desea archivar" <<endl;
+	string id;
 	cin >> id;
 	ikey *idkey = new String(id);
 	instancia->getusuarioLog()->archivar(idkey);
-	cout << "1. Archivar otra conversacion" endl;
-	cout << "2. Terminar caso de uso" endl;
+	cout << "1. Archivar otra conversacion" <<endl;
+	cout << "2. Terminar caso de uso" <<endl;
 	int k;
 	cin >> k;
 	if(k==1){
 
-	}else {desea_archivar = false}	
+	}else {desea_archivar = false;}	
 }
 }
 
@@ -687,7 +692,7 @@ while(desea_modificar){
 	cout << "Que desea modificar?" << endl;
 	cout << "1. Nombre de usuario" << endl;
 	cout << "2. URL de la imagen" << endl;
-        cout << "3. Descripcion de usuario" << endl
+        cout << "3. Descripcion de usuario" << endl;
 	
 	int i;
 	cin >> i;
@@ -695,7 +700,7 @@ while(desea_modificar){
 	Usuario *u = instancia->getusuarioLog();
 	if (i==1){
 		cout << "Ingrese el nombre" << endl;
-		String nombre;
+		string nombre;
 		cin >> nombre;
 		u->setnomUsuario(nombre);
                 
@@ -705,7 +710,7 @@ while(desea_modificar){
                 
 	} else if (i==2){
 		cout << "Ingrese el URL" << endl;
-		String URL;
+		string URL;
 		cin >> URL;
 		u->setimaPerfil(URL);
                 
@@ -714,7 +719,7 @@ while(desea_modificar){
                 u->agregarNotificaciones(notificacion);
 	 }else{
                 cout << "Ingrese el Descripcion" << endl;
-		String Descripcion;
+		string Descripcion;
 		cin >> Descripcion;
 		u->setimaPerfil(Descripcion);
                 
@@ -746,7 +751,9 @@ if (user_log != NULL) {
 	int cantidad_archivadas     = CI->cantidadArchivadas();
 
 	if (!lista_activas.isEmpty()) {
-		string nombre, tel_cel;
+		string nombre; 
+		char *tel_cel;
+		IKey *telcel;
 		cout << "Conversaciones activas" << endl;
 
 		for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()) {
@@ -763,7 +770,9 @@ if (user_log != NULL) {
 					Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
 					if (!userlog->gettelCel()->compare(u->gettelCel())) {
 						nombre  = u->getnomUsuario();
-						tel_cel = u->gettelCel();
+						telcel = u->gettelCel();
+						tel_cel= telcel->getValue();
+
 					}
 				}		
 			}
@@ -833,16 +842,17 @@ if (user_log != NULL) {
 					bool es_grupo = c->getesGrupo();
 					if (es_grupo) {
 						Grupo g = c->getgrupo();
-						nombre = g->getnomGrupo();
+						nombre = g.getnomGrupo();
 					} else {
-						IDictionary * participantes = getparticipantes();
+						IDictionary * participantes = c->getparticipantes();
 						/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 						otro*/
 						for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
 							Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
-							if (!userlog->gettelCel()->compare(u->gettelCel())) {
+							if (!user_log->gettelCel()->compare(u->gettelCel())) {
 								nombre  = u->getnomUsuario();
-								tel_cel = u->gettelCel();
+								telcel = u->gettelCel();
+								tel_cel = telcel->getValue();
 							}
 						}		
 					}
@@ -851,7 +861,7 @@ if (user_log != NULL) {
 				cout << "Ingrese el identificador de la conversación archivada que desea seleccionar: ";
 				int idC;
 				cin >> idC;
-				IKey * idConv = new int (idC);
+				IKey * idConv = new Integer (idC);
 
 				ICollection * mensajes =  CI->mensajesCoversacion (idConv);
 				
