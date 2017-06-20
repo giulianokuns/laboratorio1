@@ -50,7 +50,7 @@ class Conversacion {
 		void setMensajes(IDictionary *mensajes);
 
 		/* Archivar conversacion*/
-		DtConversacion getinfo();
+		DtConversacion *getinfo();
 
 		/* Ver Mensajes */
 		ICollection *obtenerMensajesGrupo();

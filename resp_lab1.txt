@@ -1,0 +1,11 @@
+1) Las dependencias circulares que fueron necesarias solucionar para que el programa compile fueron:
+   
+_La dependencia que existe entre la clase A y la clase B
+   
+_La dependencia que existe entre la clase A y la clase C
+  
+_La dependencia que existe entre la clase B y la clase C
+
+
+2)Una declaración de avance (forward declaration) es una declaración de un identificador (que denotará una entidad tal como un tipo, una variable, una constante o una función) para el cual el programador no ha dado una identificación completa.
+Es necesario que un compilador conozca ciertas propiedades de un identificador (tamaño parala asignación de memoria, tipo de datos para la comprobación de tipo,como tipo de firma de funciones), pero no otros detalles, como el valor particular que tiene (en el caso de variables o constantes) o definición (en el caso de funciones).Esto es útil para compiladores de una sola pasada y compilación separada.

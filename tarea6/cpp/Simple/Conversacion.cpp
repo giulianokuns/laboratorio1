@@ -1,18 +1,21 @@
 #include "../../h/Simple/Conversacion.h"
 #include "../../h/Simple/FechaSistema.h"
 #include "../../h/Simple/HoraSistema.h"
-#include "../../h/DataTypes/DtSimple.h"
-#include "../../h/DataTypesDtContacto.h"
-#include "../../h/DataTypesDtVideo.h"
-#include "../../h/DataTypesDtImagen.h"
-#include "../../h/DataTypesDtMultimedia.h"
+#include "../../h/DataTypes/Mensaje/DtSimple.h"
+#include "../../h/DataTypes/Mensaje/DtContacto.h"
+#include "../../h/DataTypes/Mensaje/DtVideo.h"
+#include "../../h/DataTypes/Mensaje/DtImagen.h"
+#include "../../lab6-colecciones/collections/List.h"
+#include "../../h/Interfaces/ICtrlUsuario.h"
 
 
-Conversacion::Conversacion(bool visto, IKey idConversacion, bool esGrupo, Grupo grupo, IDictionary participantes, IDictionary mensajes){
+
+
+
+Conversacion::Conversacion(bool visto, IKey *idConversacion, bool esGrupo, Grupo grupo, IDictionary *participantes, IDictionary *mensajes) : grupo(grupo.getnomGrupo(),grupo.getimagenGrupo(), grupo.getfechaCreacion(), grupo.gethoraCreacion(), grupo.getInfoIngresos()){
 	this->visto 			= visto;
 	this->idConversacion 	= idConversacion;
 	this->esGrupo 			= esGrupo;
-	this->grupo 			= grupo;
 	this->participantes 	= participantes;
 	this->mensajes 			= mensajes;
 }
@@ -29,17 +32,17 @@ bool Conversacion::getesGrupo(){
 Grupo Conversacion::getgrupo(){
 	return grupo;
 }
-IDictionary Conversacion::getparticipantes(){
+IDictionary *Conversacion::getparticipantes(){
 	return participantes;
 }
-IDictionary Conversacion::getMensajes() {
+IDictionary *Conversacion::getMensajes() {
 	return mensajes;
 }
 
 void Conversacion::setvisto(bool visto){
 	this->visto = visto;
 }
-void Conversacion::setidConversacion(IKey ID){
+void Conversacion::setidConversacion(IKey *ID){
 	this->idConversacion = ID;
 }
 void Conversacion::setesGrupo(bool esgrupo){
@@ -48,19 +51,19 @@ void Conversacion::setesGrupo(bool esgrupo){
 void Conversacion::setgrupo(Grupo g){
 	this->grupo = grupo;
 }
-void Conversacion::setparticipantes(IDictionary participantes){
+void Conversacion::setparticipantes(IDictionary *participantes){
 	this->participantes = participantes;
 }
-void Conversacion::setMensajes(IDictionary mensajes) {
+void Conversacion::setMensajes(IDictionary *mensajes) {
 	this->mensajes = mensajes;
 }
 
 /* Archivar conversacion */
-DtConversacion Conversacion::getinfo(){
+DtConversacion *Conversacion::getinfo(){
 	DtConversacion *dtc;
 	if(getesGrupo()){
-		Grupo *g = getgrupo();
-		dtc = new DtConversacion(true, g->getnomGrupo(), 0000, getidConversacion());
+		Grupo g = getgrupo();
+		dtc = new DtConversacion(true, g.getnomGrupo(), 0000, getidConversacion());
 	}
 	else{
 		IDictionary *participantes =	getparticipantes();
@@ -72,20 +75,20 @@ DtConversacion Conversacion::getinfo(){
 	return dtc;
 }
 
-ICollection Conversacion::obtenerMensajesGrupo() {
+ICollection *Conversacion::obtenerMensajesGrupo() {
 	CtrlUsuario *CI = getinstancia();
 	Usuario * user_log = CI->getusuarioLog();
-	ICollection lista_mensajes = new list();
-	Grupo * g = this->getgrupo();
+	ICollection *lista_mensajes = new List();
+	Grupo  g = this->getgrupo();
 
 	//Buscamos la fecha y hora de ingreso del usuario logeado al Grupo
-	IDictionary arr_info_ingresos = g->getInfoIngresos();
+	IDictionary *arr_info_ingresos = g.getInfoIngresos();
 	bool encontrado = false;
 
 	for (IIterator *it = arr_info_ingresos->getIterator(); (it->hasCurrent() && !encontrado); it->next()) {
 		
 		InfoIngreso * info_i = dynamic_cast<InfoIngreso * > (it->getCurrent());
-		Usuario * usuario = info_i->getUsuario();
+		Usuario  usuario = info_i->getUsuario();
 		if (user_log->gettelCel() == usuario->gettelCel()) {
 			DtInfoIngreso fecha_hora_ingreso = new DtInfoIngreso(info_i->getfechaIngreso(), info_i->gethoraIngreso());
 			encontrado = true;
@@ -93,7 +96,7 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 	}
 
 	//Obtenemos los mensajes de la conversacion.
-	IDictionary arr_mensj = this->getMensajes();
+	IDictionary *arr_mensj = this->getMensajes();
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
 		Mensaje * m = dynamic_cast<Mensaje* > (it->getCurrent());
 
@@ -145,13 +148,13 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 			lista_mensajes.add(mensaje);
 
 			// Marco el mensaje como visto.
-			IDictionary recibidos = m->getRecibidos();		
+			IDictionary *recibidos = m->getRecibidos();		
 			for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
 				Recibido * r = dynamic_cast<Recibido* > (it_r->getCurrent());
-				Usuario * user = r->getUsuario();
+				Usuario  user = r->getUsuario();
 				if (user_log->gettelCel() == user->gettelCel()) {
-					Fecha fecha_visto = new Fecha (FechaSistema::getDia(), FechaSistema::getMes(), FechaSistema::getAnio());
-					Hora Hora_visto   = new Hora (HoraSistema::getHora(), HoraSistema::getMinutos());
+					Fecha fecha_visto = new Fecha (FechaSistema::dia, FechaSistema::mes, FechaSistema::anio);
+					Hora Hora_visto   = new Hora (HoraSistema::hora, HoraSistema::minutos);
 					
 					r->setVisto(true);		
 					r->setFechaVisto(fecha_visto);
@@ -162,12 +165,12 @@ ICollection Conversacion::obtenerMensajesGrupo() {
 	}
 }
 
-ICollection Conversacion::obtenerMensajesConv() {
+ICollection *Conversacion::obtenerMensajesConv() {
 	CtrlUsuario *CI = CtrlUsuario::getinstancia();
 	Usuario * user_log = CI->getusuarioLog();
 	
-	IDictionary arr_mensj = this->getMensajes();
-	ICollection lista_mensajes = new list();
+	IDictionary *arr_mensj = this->getMensajes();
+	ICollection lista_mensajes = new List();
 
 	for (IIterator *it = arr_mensj->getIterator(); it->hasCurrent(); it->next()) {
 		Mensaje * m = dynamic_cast<Mensaje* > (it->getCurrent());
@@ -219,15 +222,15 @@ ICollection Conversacion::obtenerMensajesConv() {
 		lista_mensajes.add(mensaje);
 
 		// Marco el mensaje como visto.
-		IDictionary recibidos = m->getRecibidos();		
+		IDictionary *recibidos = m->getRecibidos();		
 		for (IIterator *it_r = recibidos->getIterator(); it_r->hasCurrent(); it_r->next()) {
 			Recibido * r = dynamic_cast<Recibido * > (it_r->getCurrent());();
-			Usuario * user = r->getUsuario();
-			if (user_log->gettelCel() == user->gettelCel()) {
-				Fecha fecha_visto = new Fecha (FechaSistema::getDia(), FechaSistema::getMes(), FechaSistema::getAnio());
-				Hora Hora_visto   = new Hora (HoraSistema::getHora(), HoraSistema::getMinutos());
+			Usuario  user = r->getUsuario();
+			if (user_log->gettelCel() == user.gettelCel()) {
+				Fecha *fecha_visto = new Fecha (FechaSistema::dia, FechaSistema::mes, FechaSistema::anio);
+				Hora *Hora_visto   = new Hora (HoraSistema::hora, HoraSistema::minutos);
 				
-				r->setVisto(true);		
+				r->setVisto(true);	
 				r->setFechaVisto(fecha_visto);
 				r->setHoraVisto(Hora_visto);
 			}
