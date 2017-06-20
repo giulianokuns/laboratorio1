@@ -5,12 +5,16 @@
 
 #include "Fecha.h"
 #include "Hora.h"
-#include "Usuario.h"
+#include "../../../lab6-colecciones/interfaces/ICollectible.h"
+#include "../Simple/FechaSistema.h"
+#include "../Simple/HoraSistema.h"
+//#include "Usuario.h"
 
 #ifndef RECIBIDO
 #define RECIBIDO
 
 using namespace std;
+class Usuario;
 
 class Recibido: public ICollectible {
 	private:
@@ -18,23 +22,23 @@ class Recibido: public ICollectible {
         bool eliminado;
         Fecha fechaVisto;
         Hora horaVisto;
-        Usuario usuario;
+        Usuario *usuario;
         
 	public:
-		Recibido(Usuario u);
+		Recibido(Usuario *u);
 		~Recibido();
 
 		bool getVisto();
 		bool getEliminado();
 		Fecha getFechaVisto();
 		Hora getHoraVisto();
-		Usuario getUsuario();
+		Usuario* getUsuario();
 
 		void setVisto(bool visto);
 		void setEliminado(bool elim);
 		void setFechaVisto(Fecha fechaVisto);
 		void setHoraVisto(Hora horaVisto);
-		void setUsuario(Usuario usuario);
+		void setUsuario(Usuario *usuario);
 };
 
 #endif

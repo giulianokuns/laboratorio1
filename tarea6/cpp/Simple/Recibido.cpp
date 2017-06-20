@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include "../../h/Simple/Recibido.h"
 
-Recibido::Recibido(Usuario u){
+Recibido::Recibido(Usuario *u) : fechaVisto(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio), horaVisto(HoraSistema::hora, HoraSistema::minutos){
 	this->visto = false;
 	this->eliminado = false;
 	this->usuario = u;
@@ -30,7 +30,7 @@ Fecha Recibido::getFechaVisto () {
 	return fechaVisto;
 }
 
-Usuario Recibido::getUsuario () {
+Usuario* Recibido::getUsuario () {
 	return usuario;
 }
 
@@ -43,13 +43,13 @@ void Recibido::setEliminado (bool elim) {
 }
 
 void Recibido::setFechaVisto (Fecha fechaVisto) {
-	this->fechaVisto = new Fecha(fechaVisto->getdia(), fechaVisto->getmes(), fechaVisto->getanio());
+	this->fechaVisto = Fecha(fechaVisto.getdia(), fechaVisto.getmes(), fechaVisto.getanio());
 }
 
 void Recibido::setHoraVisto (Hora horaVisto) {
-	this->horaVisto = new Hora(horaVisto->gethoras(), horaVisto->getminutos());
+	this->horaVisto = Hora(horaVisto.gethoras(), horaVisto.getminutos());
 }
 
-void Recibido::setUsuario (Usuario usuario) {
+void Recibido::setUsuario (Usuario *usuario) {
 	this->usuario = usuario;
 }
