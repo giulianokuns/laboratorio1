@@ -11,7 +11,6 @@ DtNotificaciones::DtNotificaciones(string telCel, string tipo, string desc) : fe
     this->telCel    = telCel;
     this->tipo      = tipo;
     this->desc      = desc;
-    
 }
 
 DtNotificaciones::~DtNotificaciones(){    

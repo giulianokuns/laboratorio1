@@ -24,7 +24,7 @@ class Fecha{
 		void setanio(int anio);
 
 		bool operator ==(Fecha &a);
-		bool operator  >(Fecha &a);
+		bool operator  >(Fecha *a);
 		ostream& operator<<(ostream& os);
 };
 

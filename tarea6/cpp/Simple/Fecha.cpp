@@ -36,18 +36,18 @@ bool Fecha::operator ==(Fecha &a) {
 	return false;
 }
 
-bool Fecha::operator >(Fecha &a) {
-	if (this->getanio() > a.getanio()) {
+bool Fecha::operator >(Fecha *a) {
+	if (this->getanio() > a->getanio()) {
 		return true;
-	} else if (this->getanio() < a.getanio()) {
+	} else if (this->getanio() < a->getanio()) {
 		return false;
 	} else {
-		if (this->getmes() > a.getmes()) {
+		if (this->getmes() > a->getmes()) {
 			return true;
-		} else if (this->getmes() < a.getmes()) {
+		} else if (this->getmes() < a->getmes()) {
 			return false;
 		} else {
-			if (this->getdia() > a.getdia()) {
+			if (this->getdia() > a->getdia()) {
 				return true;
 			} else {
 				return false;

@@ -1,16 +1,16 @@
 #include "../../../h/Simple/Mensaje/Mensaje.h"
 
-IKey Mensaje::getcodigo(){
-	return *codigo;
+IKey *Mensaje::getcodigo(){
+	return codigo;
 }
-Fecha Mensaje::getfechaMensaje(){
-	return *fechaMensaje;
+Fecha *Mensaje::getfechaMensaje(){
+	return fechaMensaje;
 }
-Hora Mensaje::gethoraMensaje(){
-	return *horaMensaje;
+Hora *Mensaje::gethoraMensaje(){
+	return horaMensaje;
 }
-IDictionary Mensaje::getRecibidos() {
-	return *recibidos;
+IDictionary *Mensaje::getRecibidos() {
+	return recibidos;
 }
 
 void Mensaje::setcodigo(IKey *codigo){
@@ -27,27 +27,56 @@ void Mensaje::setRecibidos(IDictionary *recibidos) {
 }
 
 bool Mensaje::validarFechaHoraMensaje(DtInfoIngreso fecha_hora_ingreso) {
-	if (this->getfechaMensaje() > fecha_hora_ingreso.getFechaIngreso()) {
+	/*if (this->getfechaMensaje() > fecha_hora_ingreso.getFechaIngreso()) {
 		return true;
-	} else if (this->getfechaMensaje() == fecha_hora_ingreso.getFechaIngreso()) {
+	} else if (this->getfechaMensaje() == *fecha_hora_ingreso.getFechaIngreso()) {
 		//Depende de la hora
-		if (this->gethoraMensaje() > fecha_hora_ingreso.getHoraIngreso() || 
-			this->gethoraMensaje() == fecha_hora_ingreso.getHoraIngreso()) {	
+		if (this->gethoraMensaje() > *fecha_hora_ingreso.getHoraIngreso() || 
+			this->gethoraMensaje() == *fecha_hora_ingreso.getHoraIngreso()) {	
 			return true;
 		} else {	
 			return false;
 		}
 	} else {
 		return false;
+	}*/
+	if (this->getfechaMensaje()->getanio() > fecha_hora_ingreso.getFechaIngreso().getanio()) {
+		return true;		
+	} else if (this->getfechaMensaje()->getanio() < fecha_hora_ingreso.getFechaIngreso().getanio()) {
+		return false;
+	} else {
+		if (this->getfechaMensaje()->getmes() > fecha_hora_ingreso.getFechaIngreso().getmes()) {
+			return true;
+		} else if (this->getfechaMensaje()->getmes() < fecha_hora_ingreso.getFechaIngreso().getmes()) {
+			return false;
+		} else {
+			if (this->getfechaMensaje()->getdia() > fecha_hora_ingreso.getFechaIngreso().getdia()) {
+				return true;
+			} else if (this->getfechaMensaje()->getdia() < fecha_hora_ingreso.getFechaIngreso().getdia()) {
+				return false;
+			} else {
+				if (this->gethoraMensaje()->gethoras() > fecha_hora_ingreso.getHoraIngreso().gethoras()) {
+					return true;
+				} else if (this->gethoraMensaje()->gethoras() < fecha_hora_ingreso.getHoraIngreso().gethoras()) {
+					return false;
+				} else {
+					if (this->gethoraMensaje()->getminutos() >= fecha_hora_ingreso.getHoraIngreso().getminutos()) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+		}
 	}
 }
 
-ICollection Mensaje::getReceptores() {
-	IDictionary recibidos = this->getRecibidos();
-	ICollection receptores = new List();
+ICollection *Mensaje::getReceptores() {
+	IDictionary *recibidos = this->getRecibidos();
+	ICollection *receptores = new List();
 	
 	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
-		Recibido * r = dynamic_cast<Recibido * > (it->getCurrent());
+		Recibido r = dynamic_cast<Recibido * > (it->getCurrent());
 		Fecha fechaVisto = r->getFechaVisto();
 		Hora horaVisto 	 = r->getHoraVisto();
 		Usuario *usuario  = r->getUsuario();
@@ -55,7 +84,7 @@ ICollection Mensaje::getReceptores() {
 		string nombre  	 = usuario->getnomUsuario();
 		IKey telCel  	 = usuario->gettelCel();
 
-		DtReceptor receptor = DtReceptor::DtReceptor(nombre, telCel, fechaVisto, horaVisto);
+		DtReceptor receptor = new DtReceptor(nombre, telCel, fechaVisto, horaVisto);
 		receptores.add(receptor);
 	}
 

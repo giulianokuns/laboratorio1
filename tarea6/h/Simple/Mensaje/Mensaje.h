@@ -10,6 +10,7 @@
 #include "../../../lab6-colecciones/interfaces/ICollectible.h"
 #include "../../../lab6-colecciones/interfaces/ICollection.h"
 #include "../../../lab6-colecciones/interfaces/IDictionary.h"
+#include "../../../lab6-colecciones/collections/List.h"
 
 #ifndef MENSAJES
 #define MENSAJES
