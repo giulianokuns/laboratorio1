@@ -5,17 +5,16 @@
 #include "../DataTypes/Mensaje/DtContacto.h"
 #include "../DataTypes/Mensaje/DtVideo.h"
 #include "../DataTypes/Mensaje/DtImagen.h"
-#include "../DataTypes/Mensaje/DtMultimedia.h"
 
-#include "../Simple/Mensaje.h"
+#include "../Simple/Mensaje/Mensaje.h"
 #include "../Simple/Usuario.h"
 #include "../Simple/Recibido.h"
 #include "../Simple/EstadoConversacion.h"
 
-#include "../../cpp/Controllers/CtrlUsuario.h"
+#include "CtrlUsuario.h"
 
 #include "../../lab6-colecciones/interfaces/ICollection.h"
-#include "../../lab6-colecciones/interfaces/IKey"
+#include "../../lab6-colecciones/interfaces/IKey.h"
 #include "../../lab6-colecciones/interfaces/IDictionary.h"
 
 #ifndef CTRLCASOENVIAR
@@ -43,6 +42,6 @@ public:
 	    void ingresarIDContacto(IKey idContact);
 	    void ingresarIDArchi(IKey idArchi);
 	    void ingresarIDActiva(IKey idActiva);	    
-}
+};
 
 #endif

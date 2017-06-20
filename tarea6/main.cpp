@@ -6,8 +6,9 @@
 
 
 #include "./h/Interfaces/ICtrlUsuario.h"
-#include "./h/Interfaces/ICtrlCasoEnviar.h"
+#include "./h/Controllers/CtrlCasoEnviar.h"
 #include "./h/Controllers/CtrlUsuario.h"
+#include "./h/Simple/Recibido.h"
 #include "./lab6-colecciones/String.h"
 #include "./lab6-colecciones/Integer.h"
 #include "./lab6-colecciones/interfaces/IKey.h"
@@ -244,13 +245,13 @@ if(contactos->isEmpty()){
 	cout << "Ingrese el URL de la imagen" endl;
 	cin >> telcel; // que ahora es el url de la imagen
 	//creo el grupo sin los info ingreso
-	Fecha *fechaIngreso = new Fecha(FechaSistema::getdia(), FechaSistema::getmes(), FechaSistema::getanio());
-	Hora *horaIngreso = new Hora(HoraSistema::gethoras(), HoraSistema::getminutos());
+	Fecha fechaIngreso =  Fecha(FechaSistema::dia, FechaSistema::mes, FechaSistema::anio);
+	Hora horaIngreso =  Hora(HoraSistema::horas, HoraSistema::minutos);
  	Grupo *g = new Grupo(nombre, telcel, fechaIngreso, horaIngreso;  NULL);
 	IDictionary *infoIngresos = new OrderedDictionaryEntry();
 	//agrego al usuario logueado
-	fechaIngreso = new Fecha(FechaSistema::getdia(), FechaSistema::getmes(), FechaSistema::getanio());
-	horaIngreso = new Hora(HoraSistema::gethoras(), HoraSistema::getminutos());
+	fechaIngreso = Fecha(FechaSistema::dia, FechaSistema::mes, FechaSistema::anio);
+	horaIngreso = Hora(HoraSistema::horas, HoraSistema::minutos);
 	InfoIngreso *info_loegueado_agregar = new InfoIngreso(fechaIngreso, horaIngreso, u);
 	infoIngresos->add(u->gettelCel(), info_logueado_agregar);
 	Conversacion *c = new (false, idconversaciones, true, g, NULL);
@@ -266,23 +267,24 @@ if(contactos->isEmpty()){
 		Usuario * usuario_a_agregar = dynamic_cast<Usuario * > (instancia->getusuarios()->find(tel));
 		//creo los info ingreso y los agrego a los info ingreso del grupo(que se agregan al grupo luego de la iteracion)
 		//para info ingreso tengo que crear una fecha y hora nueva
-		fechaIngreso = new Fecha(FechaSistema::getdia(), FechaSistema::getmes(), FechaSistema::getanio());
-		horaIngreso = new Hora(HoraSistema::gethoras(), HoraSistema::getminutos());
+		fechaIngreso =  Fecha(FechaSistema::getdia(), FechaSistema::getmes(), FechaSistema::getanio());
+		horaIngreso =  Hora(HoraSistema::gethoras(), HoraSistema::getminutos());
 		info_a_agregar = new InfoIngreso(fechaIngreso, horaIngreso, usuario_a_agregar);
 		infoIngresos->add(tel, info_a_agregar);
 		//para cada usuario creo una conversacion y su ec correspondiente y los agrego al arreglo de ec
 		c = new (false, idconversaciones, true, g, NULL);
 		ec = new EstadoConversacion(false, c);
-		usuario_a_agregar->getcarreglo_ec()->add(idconversaciones, ec);
+		usuario_a_agregar->getarreglo_ec()->add(idconversaciones, ec);
 		idconversaciones++;
 	}
-	g->setInfoIngresos(infoIngresos);
+	g->setInfoIngreso(infoIngresos);
 
 	//libero memoria
 }}
 
 /*CASO DE USO: ENVIAR MENSAJE*/
 void enviarMensaje(){
+CtrlCasoEnviar *i = CtrlCasoEnviar::getinstancia();
 ICtrlUsuario *CI = ICtrlUsuario::getinstancia();
 
 Usuario * user_log = CI->getusuarioLog();
@@ -291,7 +293,7 @@ if (user_log != NULL) {
 	ICollection * lista_activas = CI->listarActivas();
 	int cantidad_archivadas     = CI->cantidadArchivadas();
 
-	if (!lista_activas.isEmpty()) {
+	if (!lista_activas->isEmpty()) {
 		string nombre, tel_cel;
 		cout << "Conversaciones activas" << endl;
 
@@ -301,17 +303,18 @@ if (user_log != NULL) {
 			bool es_grupo = c->getesGrupo();
 			if (es_grupo) {
 				Grupo g = c->getgrupo();
-				nombre = g->getnomGrupo();
+				nombre = g.getnomGrupo();
 			} else {
 				IDictionary * participantes = getparticipantes();
 				/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 				otro*/
 				for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
 					Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
-					if (!userlog->gettelCel()->compare(u->gettelCel())) {
-						nombre  = u->getnomUsuario();
-						tel_cel = u->gettelCel();
-					}
+					String *logtelcel = dynamic_cast<String* > (user_log->gettelCel());
+					String *utelcel = dynamic_cast<String* > (u->gettelCel());
+					if (!logtelcel->compare(utelcel)){
+						String *telcelaux = dynamic_cast<String * > (u->gettelCel());
+						tel_cel = telcelaux->getValue();
 				}		
 			}
 			cout << nombre + " " + tel_cel << endl;
@@ -322,7 +325,7 @@ if (user_log != NULL) {
 		cout << "****************************************" 	<< endl;
 		cout << "1. Seleccionar una conversación activa " 	<< endl;
 		cout << "2. Ver las conversaciones archivadas " 		<< endl;
-		cout << "3. Enviar un mensaje a un contacto con el cuál aún no ha iniciado una conversación" <<endl
+		cout << "3. Enviar un mensaje a un contacto con el cuál aún no ha iniciado una conversación" <<endl;
 		int opcion;
 		cout << "Opción: ";
 		cin >> opcion;
@@ -331,8 +334,7 @@ if (user_log != NULL) {
 			cout << "Ingrese el identificador de la conversación activa que desea seleccionar: ";
 			int idC;
 			cin >> idC;
-			IKey * idConv = new int (idC);
-			ICtrlCasoEnviar *i = ICtrlCasoEnviar::getinstancia();
+			IKey * idConv = new Integer (idC);
 			i->ingresarIDActiva(idConv)
 
 		} else if (opcion == 2){
@@ -381,7 +383,7 @@ if (user_log != NULL) {
 			cin >> telefono;
 			IKey * keytel = new String(telefono);
 			//El actualIdConver es el identificador de la coversacion actual
-			i->ingresarIDActiva(crearConversacion(keytel, actualIdConver));
+			i->ingresarIDActiva(CI->crearConvNueva(keytel, actualIdConver));
 
 		} else {
             //lanzar una excepción de opcion invalida
@@ -529,7 +531,7 @@ void verMensaje(){
 
 						if (!receptores->isEmpty()) {
 							for (IIterator *it_r = receptores->getIterator(); it_r->hasCurrent(); it_r->next()) {
-								Receptor *receptor = dynamic_cast<Receptor* > (it_r->getCurrent());
+								Recibido *receptor = dynamic_cast<Recibido* > (it_r->getCurrent());
 								cout << receptor << endl;	
 								cout << "*****************************************" << endl;
 							}
@@ -625,8 +627,8 @@ void verMensaje(){
 							if (!receptores->isEmpty()){
 								for (IIterator *it_r = receptores->getIterator(); it_r->hasCurrent(); it_r->next()){
 								
-									Receptor * receptores = dynamic_cast<Receptor* > (it_r->getCurrent());
-									cout << receptor << endl;	
+									Recibido * receptores = dynamic_cast<Recibido* > (it_r->getCurrent());
+									cout << receptores << endl;	
 									cout << "*****************************************" << endl;
 								}
 							} 
@@ -716,8 +718,8 @@ while(desea_modificar){
 		string nombre;
 		cin >> nombre;
 		u->setnomUsuario(nombre);
-                
-                DtNotificaciones notificacion = new DtNotificaciones(u->gettelCel(),"nombre",nombre);
+                String *pepestring = dynamic_cast<String * > (u->gettelCel());
+                DtNotificaciones notificacion =  DtNotificaciones(pepestring->getValue(),"nombre",nombre);
                 
                 u->agregarNotificaciones(notificacion);
                 
@@ -726,19 +728,19 @@ while(desea_modificar){
 		string URL;
 		cin >> URL;
 		u->setimaPerfil(URL);
-                
-                DtNotificaciones notificacion = new DtNotificaciones(u->gettelCel(),"imagen",URL);
+                String *pepestring = dynamic_cast<String * > (u->gettelCel());
+                DtNotificaciones notificacion =  DtNotificaciones(pepestring->getValue(),"imagen",URL);
                 
                 u->agregarNotificaciones(notificacion);
 	 }else{
-                cout << "Ingrese el Descripcion" << endl;
-		string Descripcion;
-		cin >> Descripcion;
-		u->setimaPerfil(Descripcion);
-                
-                DtNotificaciones notificacion = new DtNotificaciones(u->gettelCel(),"descripcion",Descripcion);
-                
-                u->agregarNotificaciones(notificacion);
+            cout << "Ingrese el Descripcion" << endl;
+			string Descripcion;
+			cin >> Descripcion;
+			u->setimaPerfil(Descripcion);
+			String *pepestring = dynamic_cast<String * > (u->gettelCel());
+            DtNotificaciones notificacion =  DtNotificaciones(pepestring->getValue(),"descripcion",Descripcion);
+              
+            u->agregarNotificaciones(notificacion);
              
          }
 	 cout << "1. Seguir modificando" <<endl;
@@ -887,7 +889,7 @@ if (user_log != NULL) {
 					for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
 						Mensaje * m = dynamic_cast<Mensaje *> (it_m->getCurrent());
 
-						if (dynamic_cast<Simple*> (m) != NULL) {
+						if ((dynamic_cast<Simple*> (m)) != NULL) {
 							//Es Simple
 							Simple * mensj = dynamic_cast<Simple*> (m);
 							cout << * mensj << endl;
