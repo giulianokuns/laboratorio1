@@ -11,8 +11,10 @@ public:
 
 		/* Ver Mensaje */
 	virtual	ICollection *mensajesCoversacion (IKey *idConv) = 0;
-		
+	virtual	int cantidadArchivadas ();
+
 		/*archivar_conversacion*/
+	virtual ICollection *listarArchivadas();
 	virtual	ICollection *listarActivas() = 0;
 	virtual	void archivar_conversacion(IKey *ID) = 0;
 

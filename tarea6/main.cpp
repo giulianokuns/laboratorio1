@@ -6,6 +6,7 @@
 
 
 #include "./h/Interfaces/ICtrlUsuario.h"
+#include "./h/Interfaces/ICtrlCasoEnviar.h"
 #include "./h/Controllers/CtrlUsuario.h"
 #include "./lab6-colecciones/String.h"
 #include "./lab6-colecciones/Integer.h"
@@ -115,9 +116,10 @@ Usuario *u = instancia->getusuarioLog();
 ICollection contactos = u->getInfoContactos();
 bool se_dese_agrear = true;
 while (se_dese_agrear){
-	cout << "Sus contactos son:" endl;
+	cout << "Sus contactos son:"<<endl;
 	//imprimo los contactos del usuario
-	String telcel,nombre,urlimagen;
+	String nombre,urlimagen;
+	char* telcel;
 	for (IIterator *it = contactos->getIterator(); it->hasCurrent(); it->next()) {
 		DtInfoContacto * contacto_mostrar = dynamic_cast<DtInfoContacto* > (it->getCurrent());
 
@@ -126,12 +128,12 @@ while (se_dese_agrear){
 		urlimagen = contacto_mostrar->geturlImagen();
 		cout << telcel "  " nombre "  " urlimagen endl;
 	}
-	cout << "1. Agregar un contacto " endl;
-	cout << "2.finalizar el caso de uso" endl;
+	cout << "1. Agregar un contacto "<< endl;
+	cout << "2.finalizar el caso de uso" <<endl;
 	int l;
 	cin >> l;
 	if(l==1){
-		cout << "Ingrese el telefono del contacto que desea agregar" endl;
+		cout << "Ingrese el telefono del contacto que desea agregar" <<endl;
 		cin >>telcel;
 		Ikey *telcelkey = new String(telcel);
 		if (u->esContacto(telcelkey)){
@@ -144,16 +146,16 @@ while (se_dese_agrear){
 				tecel = contacto_mostrar->gettelCel();
 				nombre = contacto_mostrar->getnombre();
 				urlimagen = contacto_mostrar->geturlImagen();
-				cout << "Su informacion es:"endl;
+				cout << "Su informacion es:"<<endl;
 				cout << telcel "  " nombre "  " urlimagen endl;
-				cout << "1. Agregar"endl;
-				cout << "2. No agregar"endl;
+				cout << "1. Agregar"<<endl;
+				cout << "2. No agregar"<<endl;
 				cin >> l; 
 				if (l==1){
 					u->confirmarAgregarContacto(telcelkey);
 				}else{}
-				cout << "1. Agregar otro contacto"endl;
-				cout << "2. No agregar otro contacto"endl;
+				cout << "1. Agregar otro contacto"<<endl;
+				cout << "2. No agregar otro contacto"<<endl;
 				cin >> l;
 				if(l==1){
 				}else{
@@ -188,7 +190,8 @@ if(contactos->isEmpty()){
 	}
 	//mientrasse quiera edito
 	while(desea_editar){
-		String nombre,telcel;
+		string nombre;
+		char* telcel;
 		cout << "Agregados:" endl;
 		for (IIterator *it_a = lista_agregados->getIterator(); it_a->hasCurrent(); it_a->next()) {
 			DtInfoContacto *actual_agregado = dynamic_cast<DtInfoContacto * > (it_a->getCurrent());
@@ -335,7 +338,7 @@ if (user_log != NULL) {
 		} else if (opcion == 2){
 			// se llama a la funcion listarArchivadas y se muestra las conversaciones archivadas
 			cout << "Conversaciones archivadas"	<< endl;
-			ICollection * lista_archivadas = i->listarArchivadas();
+			ICollection * lista_archivadas = CI->listarArchivadas();
 
 			if (!lista_archivadas->isEmpty()) {
 				for (IIterator *it = lista_archivadas->getIterator(); it->hasCurrent(); it->next()) {
@@ -343,16 +346,18 @@ if (user_log != NULL) {
 					bool es_grupo = c->getesGrupo();
 					if (es_grupo) {
 						Grupo g = c->getgrupo();
-						nombre = g->getnomGrupo();
+						nombre = g.getnomGrupo();
 					} else {
-						IDictionary * participantes = getparticipantes();
+						IDictionary * participantes = c->getparticipantes();
 						/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 						otro*/
 						for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
 							Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
-							if (!userlog->gettelCel()->compare(u->gettelCel())) {
-								nombre  = u->getnomUsuario();
-								tel_cel = u->gettelCel();
+							String *logtelcel = dynamic_cast<String* > (user_log->gettelCel());
+							String *utelcel = dynamic_cast<String* > (u->gettelCel());
+							if (!logtelcel->compare(utelcel)){
+								String *telcelaux = dynamic_cast<String * > (u->gettelCel());
+								tel_cel = telcelaux->getValue();
 							}
 						}		
 					}
@@ -361,7 +366,7 @@ if (user_log != NULL) {
 				cout << "Ingrese el identificador de la conversación archivada que desea seleccionar: ";
 				int idC;
 				cin >> idC;
-				IKey * idConvArchi = new int (idC);
+				IKey * idConvArchi = new Integer (idC);
 				i->ingresarIDArchi(idConvArchi);
 	    
 		} else if (opcion == 3){
@@ -369,12 +374,12 @@ if (user_log != NULL) {
 			ICollection * contactos = i->listarContactos();
 			for (IIterator *it_c = contactos->getIterator(); it_c->hasCurrent(); it_c->next()){
 				Usuario *u = dynamic_cast <Usuario *> it_c->getCurrent();
-				cout << u->getnomUsuario() + " " + u->gettelCel() << endl;
+				cout << u->getnomUsuario() << " " << u->gettelCel() << endl;
 			}
 			cout <<"Ingrese el número de teléfono a iniciar una conversación nueva";
-			string telefono;
+			char* telefono;
 			cin >> telefono;
-			IKey * keytel = new String(telefono)
+			IKey * keytel = new String(telefono);
 			//El actualIdConver es el identificador de la coversacion actual
 			i->ingresarIDActiva(crearConversacion(keytel, actualIdConver));
 
@@ -392,6 +397,8 @@ if (user_log != NULL) {
 
 		int mensaje;
 		cin >> mensaje;
+		Fecha *fechaSist = new Fecha(FechaSistema::dia,FechaSistema::mes,FechaSistema::anio);
+		Hora *horaSist = new Hora(HoraSistema::hora, HoraSistema::minutos);
 		if (mensaje == 1){
 			cout << "Ingrese el texto";
 			string text;
@@ -439,8 +446,9 @@ void verMensaje(){
 		ICollection * lista_activas = CI->listarActivas();
 		int cantidad_archivadas     = CI->cantidadArchivadas();
 
-		if (!lista_activas.isEmpty()){
-			String nombre, tel_cel;
+		if (!lista_activas->isEmpty()){
+			string nombre;
+			const char* tel_cel;
 			cout << "Conversaciones activas" << endl;
 
 			for (IIterator *it = lista_activas->getIterator(); it->hasCurrent(); it->next()){
@@ -448,19 +456,21 @@ void verMensaje(){
 				bool es_grupo = c->getesGrupo();
 				if (es_grupo) {
 					Grupo g = c->getgrupo();
-					nombre = g->getnomGrupo();
+					nombre = g.getnomGrupo();
 				} 
 				else {
-					IDictionary * participantes = getparticipantes();
+					IDictionary * participantes = c->getparticipantes();
 					for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
 						Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
-						if (!userlog->gettelCel()->compare(u->gettelCel())) {
-							nombre  = u->getnomUsuario();
-							tel_cel = u->gettelCel();
+						String *logtelcel = dynamic_cast<String* > (user_log->gettelCel());
+						String *utelcel = dynamic_cast<String* > (u->gettelCel());
+						if (!logtelcel->compare(utelcel)){
+							String *telcelaux = dynamic_cast<String * > (u->gettelCel());
+							tel_cel = telcelaux->getValue();
 						}
 					}		
 				}
-				cout << nombre + " " + tel_cel << endl;
+				cout << nombre <<  " " << tel_cel << endl;
 			}
 			cout << "" << endl;
 			cout << "Archivadas :" + cantidad_archivadas << endl;
@@ -476,33 +486,33 @@ void verMensaje(){
 				cout << "Ingrese el identificador de la conversación activa que desea seleccionar: ";
 				int idC;
 				cin >> idC;
-				IKey * idConv = new int (idC);
+				IKey * idConv = new Integer (idC);
 				ICollection * mensajes =  CI->mensajesCoversacion (idConv);
 
 				if (!mensajes->isEmpty()) {
 					for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
 						Mensaje * m = dynamic_cast<Mensaje * > (it_m->getCurrent());
 
-						if (dynamic_cast<Simple*> (&m) != NULL) {
+						if (dynamic_cast<Simple*> (m) != NULL) {
 							//Es Simple
-							Simple * mensj = dynamic_cast<Simple*> (&m);
+							Simple * mensj = dynamic_cast<Simple*> (m);
 							cout << * mensj << endl;
 						} 
-						else if (dynamic_cast<Contacto*> (&m) != NULL) {
+						else if (dynamic_cast<Contacto*> (m) != NULL) {
 							//Es Contacto
-							Contacto * mensj = dynamic_cast<Contacto*> (&m);
+							Contacto * mensj = dynamic_cast<Contacto*> (m);
 							cout << * mensj << endl;
 						} 
 						else {
 							//Es Multimedia
-							if (dynamic_cast<Imagen*> (&m) != NULL) {
+							if (dynamic_cast<Imagen*> (m) != NULL) {
 								//Es Imagen
-								Imagen * mensj = dynamic_cast<Imagen*> (&m);
+								Imagen * mensj = dynamic_cast<Imagen*> (m);
 								cout << * mensj << endl;
 							} 
 							else {
 								//Es Video
-								Video * mensj = dynamic_cast<Video*> (&m);
+								Video * mensj = dynamic_cast<Video*> (m);
 								cout << * mensj << endl;
 							}
 						}
@@ -511,10 +521,10 @@ void verMensaje(){
 					int opt = 1;				
 					while (opt == 1) {
 						cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
-						String codigo;
-						cin >> codigo;
+						char* codigoc;
+						cin >> codigoc;
 
-						IKey * codigo = new String (codigo);
+						IKey * codigo = new String (codigoc);
 						ICollection * receptores = obtenerInfoAdicional(codigo);
 
 						if (!receptores->isEmpty()) {
@@ -549,25 +559,27 @@ void verMensaje(){
 						bool es_grupo = c->getesGrupo();
 						if (es_grupo){
 							Grupo g = c->getgrupo();
-							nombre = g->getnomGrupo();
+							nombre = g.getnomGrupo();
 						} 
 						else {
 							IDictionary * participantes = c->getparticipantes();
 							for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()){
 								Usuario  * u = dynamic_cast<Usuario* > (it_p->getCurrent());
-								if (!userlog->gettelCel()->compare(u->gettelCel())){
-									nombre  = u->getnomUsuario();
-									tel_cel = u->gettelCel();
+								String *logtelcel = dynamic_cast<String* > (user_log->gettelCel());
+								String *utelcel = dynamic_cast<String* > (u->gettelCel());
+								if (!logtelcel->compare(utelcel)){
+									String *telcelaux = dynamic_cast<String * > (u->gettelCel());
+									tel_cel = telcelaux->getValue();
 								}
 							}		
 						}
-						cout << nombre + " " + tel_cel << endl;	
+						cout << nombre << " " << tel_cel << endl;	
 					}
 
 					cout << "Ingrese el identificador de la conversación archivada que desea seleccionar: ";
 					int idC;
 					cin >> idC;
-					IKey * idConv = new int (idC);
+					IKey * idConv = new Integer (idC);
 
 					ICollection * mensajes = CI->mensajesCoversacion (idConv);
 				
@@ -576,26 +588,26 @@ void verMensaje(){
 						for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()){
 							Mensaje * m = dynamic_cast<Mensaje* > (it_m->getCurrent());
 
-							if (dynamic_cast<Simple*> (&m) != NULL){
+							if (dynamic_cast<Simple*> (m) != NULL){
 								//Es Simple
-								Simple * mensj = dynamic_cast<Simple*> (&m);
+								Simple * mensj = dynamic_cast<Simple*> (m);
 								cout << * mensj << endl;
 							} 
-							else if (dynamic_cast<Contacto*> (&m) != NULL){
+							else if (dynamic_cast<Contacto*> (m) != NULL){
 								//Es Contacto
-								Contacto * mensj = dynamic_cast<Contacto*> (&m);
+								Contacto * mensj = dynamic_cast<Contacto*> (m);
 								cout << * mensj << endl;
 							} 
 							else {
 								//Es Multimedia
-								if (dynamic_cast<Imagen*> (&m) != NULL) {
+								if (dynamic_cast<Imagen*> (m) != NULL) {
 									//Es Imagen
-									Imagen * mensj = dynamic_cast<Imagen*> (&m);
+									Imagen * mensj = dynamic_cast<Imagen*> (m);
 									cout << * mensj << endl;
 								} 
 								else {
 									//Es Video
-									Video * mensj = dynamic_cast<Video*> (&m);
+									Video * mensj = dynamic_cast<Video*> (m);
 									cout << * mensj << endl;
 								}
 							}
@@ -604,10 +616,10 @@ void verMensaje(){
 						int opt = 1;				
 						while (opt == 1) {
 							cout << "Ingrese el código del mensaje enviado que desea ver la información adicional." << endl;
-							string codigo;
-							cin >> codigo;
+							char *codigoc;
+							cin >> codigoc;
 
-							IKey * codigo = new String (codigo);
+							IKey * codigo = new String (codigoc);
 							ICollection * receptores = obtenerInfoAdicional(codigo);
 
 							if (!receptores->isEmpty()){
@@ -644,35 +656,36 @@ void verMensaje(){
 		else {
 			throw std::invalid_argument("No tiene conversaciones activas.");
 		}
-		 
+	}		 
 	else{
 		throw std::invalid_argument("No hay un usuario logeado en el sistema.");
 	}	
 }
 
 /*CASO DE USO: ARCHIVAR CONVERSACIONES*/
-
+ICtrlUsuario *instancia= ICtrlUsuario::getinstancia();
 void archivarConversacion(){
-ICollection *conversaciones = get_lista_activos();
+ICollection *conversaciones = instancia->getusuarioLog()->get_lista_activos();
 bool desea_archivar = true;
 while ( desea_archivar){
 	//imprimo las conversaciones no archivadas 
 	for (IIterator *it = conversaciones->getIterator(); it->hasCurrent(); it->next()) {
 		DtConversacion * dtc = dynamic_cast<DtConversacion* > (it->getCurrent());
-		String nombre,idconv;
+		string nombre;
+		IKey *idconv;
 		nombre = dtc->getnombre();
 		idconv = dtc->getidConversacion();
-		if(dtc->esgrupo()){
+		if(dtc->getesGrupo()){
 			//imprimir
 		}else{
-			String telcel = dtc->gettelCel();
+			IKey *telcel = dtc->gettelcel();
 			//imprimir
 		}
 	}
 	cout << "Ingrese el id de la conversacion que desea archivar" <<endl;
-	string id;
+	char* id;
 	cin >> id;
-	ikey *idkey = new String(id);
+	IKey *idkey = new String(id);
 	instancia->getusuarioLog()->archivar(idkey);
 	cout << "1. Archivar otra conversacion" <<endl;
 	cout << "2. Terminar caso de uso" <<endl;
@@ -728,8 +741,8 @@ while(desea_modificar){
                 u->agregarNotificaciones(notificacion);
              
          }
-	 cout << "1. Seguir modificando" endl;
-	 cout << "2. Terminar caso de uso" endl;
+	 cout << "1. Seguir modificando" <<endl;
+	 cout << "2. Terminar caso de uso" <<endl;
 	 cin >> i;
 	 if (i==1){
 
@@ -750,9 +763,9 @@ if (user_log != NULL) {
 	ICollection * lista_activas = CI->listarActivas();
 	int cantidad_archivadas     = CI->cantidadArchivadas();
 
-	if (!lista_activas.isEmpty()) {
+	if (!lista_activas->isEmpty()) {
 		string nombre; 
-		char *tel_cel;
+		const char *tel_cel;
 		IKey *telcel;
 		cout << "Conversaciones activas" << endl;
 
@@ -761,18 +774,20 @@ if (user_log != NULL) {
 			bool es_grupo = c->getesGrupo();
 			if (es_grupo) {
 				Grupo g = c->getgrupo();
-				nombre = g->getnomGrupo();
+				nombre = g.getnomGrupo();
 			} else {
-				IDictionary * participantes = getparticipantes();
+				IDictionary * participantes = c->getparticipantes();
 				/*Es una conversacion Simple, tiene 2 participantes, si no es el usuario logeado entonces es el
 				otro*/
 				for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
 					Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
-					if (!userlog->gettelCel()->compare(u->gettelCel())) {
+					String *logtelcel = dynamic_cast<String* > (user_log->gettelCel());
+					String *utelcel = dynamic_cast<String* > (u->gettelCel());
+					if (!logtelcel->compare(utelcel)) {
 						nombre  = u->getnomUsuario();
 						telcel = u->gettelCel();
-						tel_cel= telcel->getValue();
-
+						String *telcelaux = dynamic_cast<String * > (telcel);
+						tel_cel = telcelaux->getValue();
 					}
 				}		
 			}
@@ -792,40 +807,40 @@ if (user_log != NULL) {
 			cout << "Ingrese el identificador de la conversación activa que desea seleccionar: ";
 			int idC;
 			cin >> idC;
-			IKey * idConv = new int (idC);
+			IKey * idConv = new Integer (idC);
 			ICollection * mensajes =  CI->mensajesCoversacion (idConv);
 
 			if (!mensajes->isEmpty()) {
 				for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
 					Mensaje * m = dynamic_cast<Mensaje* > (it_m->getCurrent());
 
-					if (dynamic_cast<Simple*> (&m) != NULL) {
+					if (dynamic_cast<Simple*> (m) != NULL) {
 						//Es Simple
-						Simple * mensj = dynamic_cast<Simple*> (&m);
+						Simple * mensj = dynamic_cast<Simple*> (m);
 						cout << * mensj << endl;
-					} else if (dynamic_cast<Contacto*> (&m) != NULL) {
+					} else if (dynamic_cast<Contacto*> (m) != NULL) {
 						//Es Contacto
-						Contacto * mensj = dynamic_cast<Contacto*> (&m);
+						Contacto * mensj = dynamic_cast<Contacto*> (m);
 						cout << * mensj << endl;
 					} else {
 						//Es Multimedia
-						if (dynamic_cast<Imagen*> (&m) != NULL) {
+						if (dynamic_cast<Imagen*> (m) != NULL) {
 							//Es Imagen
-							Imagen * mensj = dynamic_cast<Imagen*> (&m);
+							Imagen * mensj = dynamic_cast<Imagen*> (m);
 							cout << * mensj << endl;
 						} else {
 							//Es Video
-							Video * mensj = dynamic_cast<Video*> (&m);
+							Video * mensj = dynamic_cast<Video*> (m);
 							cout << * mensj << endl;
 						}
 					}
 				}
 						
 				cout << "Ingrese el código del mensaje que desea eliminar.";
-				string codigo;
-				cin >> codigo;
+				char* codigoc;
+				cin >> codigoc;
 
-				IKey * codigo = new String (codigo);
+				IKey * codigo = new String (codigoc);
 				CI->eliminarMensaje(codigo, idConv);
 
 			} else {
@@ -849,10 +864,13 @@ if (user_log != NULL) {
 						otro*/
 						for (IIterator *it_p = participantes->getIterator(); it_p->hasCurrent(); it_p->next()) {
 							Usuario  * u = dynamic_cast<Usuario * > (it_p->getCurrent());
-							if (!user_log->gettelCel()->compare(u->gettelCel())) {
+							String *logtelcel = dynamic_cast<String* > (user_log->gettelCel());
+							String *utelcel = dynamic_cast<String* > (u->gettelCel());
+							if (!logtelcel->compare(utelcel)) {
 								nombre  = u->getnomUsuario();
 								telcel = u->gettelCel();
-								tel_cel = telcel->getValue();
+								String *telcelaux = dynamic_cast<String * > (telcel);
+								tel_cel = telcelaux->getValue();
 							}
 						}		
 					}
@@ -869,23 +887,23 @@ if (user_log != NULL) {
 					for (IIterator *it_m = mensajes->getIterator(); it_m->hasCurrent(); it_m->next()) {
 						Mensaje * m = dynamic_cast<Mensaje *> (it_m->getCurrent());
 
-						if (dynamic_cast<Simple*> (&m) != NULL) {
+						if (dynamic_cast<Simple*> (m) != NULL) {
 							//Es Simple
-							Simple * mensj = dynamic_cast<Simple*> (&m);
+							Simple * mensj = dynamic_cast<Simple*> (m);
 							cout << * mensj << endl;
-						} else if (dynamic_cast<Contacto*> (&m) != NULL) {
+						} else if (dynamic_cast<Contacto*> (m) != NULL) {
 							//Es Contacto
-							Contacto * mensj = dynamic_cast<Contacto*> (&m);
+							Contacto * mensj = dynamic_cast<Contacto*> (m);
 							cout << * mensj << endl;
 						} else {
 							//Es Multimedia
-							if (dynamic_cast<Imagen*> (&m) != NULL) {
+							if (dynamic_cast<Imagen*> (m) != NULL) {
 								//Es Imagen
-								Imagen * mensj = dynamic_cast<Imagen*> (&m);
+								Imagen * mensj = dynamic_cast<Imagen*> (m);
 								cout << * mensj << endl;
 							} else {
 								//Es Video
-								Video * mensj = dynamic_cast<Video*> (&m);
+								Video * mensj = dynamic_cast<Video*> (m);
 								cout << * mensj << endl;
 							}
 						}
