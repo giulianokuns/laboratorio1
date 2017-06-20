@@ -1,16 +1,21 @@
+#include <iostream>
+#include <cstring>
+#include <string.h>
+
 #include "../Simple/Usuario.h"
 #include "../Simple/Fecha.h"
 #include "../Simple/Hora.h"
 #include "../Simple/Usuario.h"
 #include "../Simple/Mensaje/Mensaje.h"
-#include "../Interfaces/ISuscriptos.h"
-#include "../../lab6-colecciones/interfaces/IKey.h"
 
+#include "../Interfaces/ISuscriptos.h"
+
+#include "../../lab6-colecciones/interfaces/IKey.h"
 
 class CtrlUsuario{
 
 	private:
-		static CtrlUsuario * instancia = NULL;
+		CtrlUsuario * instancia = NULL;
 		CtrlUsuario();
 		Usuario * usuarioLog = NULL;
 		/*su key corresponde al telcel*/
@@ -18,7 +23,7 @@ class CtrlUsuario{
 
 	public:
 
-		static CtrlUsuario * getinstancia();
+		CtrlUsuario * getinstancia();
 		Usuario * getusuarioLog();
 		IDictionary *getusuarios();
 		void setusuarioLog(Usuario * u);
@@ -50,7 +55,7 @@ class CtrlUsuario{
 		/*abrir GUASAP*/
 
 		bool inicioSesion();
-		DtFecha altaUsuario(IKey *numero, string nombre, string URL,string Descripcion);
+		Fecha altaUsuario(IKey *numero, string nombre, string URL,string Descripcion);
 		bool ingresar(IKey *numero);
 
 		ICollection *getNotificaciones();

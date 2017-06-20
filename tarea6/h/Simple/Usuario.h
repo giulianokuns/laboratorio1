@@ -10,7 +10,7 @@
 #include "../DataTypes/DtInfoContacto.h"
 #include "../DataTypes/DtNotificaciones.h"
 #include "../Interfaces/ISuscriptos.h"
-
+	
 #include "../../lab6-colecciones/interfaces/IKey.h"
 #include "../../lab6-colecciones/interfaces/IDictionary.h"
 #include "../../lab6-colecciones/interfaces/ICollection.h"
@@ -19,12 +19,12 @@
 #ifndef USUARIO
 #define USUARIO
 
+using namespace std;
+
 class Conversacion;
+class EstadoConversacion;
 class FechaSistema;
 class HoraSistema;
-
-using namespace std;
-class Conversacion;
 
 class Usuario: public ICollectible, public Isuscriptos{
 	private:
@@ -45,7 +45,7 @@ class Usuario: public ICollectible, public Isuscriptos{
         ICollection *suscriptores;
 
 	public:
-		Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores);
+		Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, IDictionary *arreglo_ec, IDictionary *contactos, IDictionary *notificaciones, IDictionary *suscriptores);
 		~Usuario();
 		
 		IKey *gettelCel();

@@ -74,7 +74,7 @@ bool CtrlUsuario::ingresar(IKey numero){
 	}
 }
 
-DtFecha CtrlUsuario::altaUsuario(IKey numero, string nombre, string URL,string Descripcion){
+Fecha CtrlUsuario::altaUsuario(IKey numero, string nombre, string URL,string Descripcion){
 
 	Fecha fch = new Fecha(FechaSistema::dia,FechaSistema:mes,FechaSistema::anio);
 	Hora hr = new Hora(HoraSistema::hora,HoraSistema::minutos);
@@ -84,7 +84,7 @@ DtFecha CtrlUsuario::altaUsuario(IKey numero, string nombre, string URL,string D
 	usuarios->add(usrnew);
 	usuarioLog = &usrnew;
 
-	DtFecha retorno = new DtFecha(FechaSistema::dia,FechaSistema:mes,FechaSistema::anio);
+	Fecha retorno = new Fecha(FechaSistema::dia, FechaSistema:mes, FechaSistema::anio);
 
 	return retorno;	
 }

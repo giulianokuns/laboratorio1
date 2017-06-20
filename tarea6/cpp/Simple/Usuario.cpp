@@ -1,6 +1,10 @@
 #include "../../h/Simple/Usuario.h"
+#include "../../h/Simple/Conversacion.h"
+#include "../../h/Simple/EstadoConversacion.h"
+#include "../../h/Simple/FechaSistema.h"
+#include "../../h/Simple/HoraSistema.h"
 
-Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex,ICollection *arreglo_ec, IDictionary *contactos, ICollection *notificaciones,ICollection *suscriptores){
+Usuario::Usuario(IKey *telCel, string nomUsuario, Fecha fechaRegistro, string imaPerfil, Fecha fechaUltimaConex, Hora horaUltimaConex, IDictionary *arreglo_ec, IDictionary *contactos, IDictionary *notificaciones, IDictionary *suscriptores){
 	
 	this->telCel = telCel;
 	this->nomUsuario = nomUsuario;

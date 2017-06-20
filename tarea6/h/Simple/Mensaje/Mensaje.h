@@ -1,6 +1,6 @@
 #include "../Fecha.h"
 #include "../Hora.h"
-#include "../Recibido.h"
+//#include "../Recibido.h"
 //#include "../Conversacion.h"
 
 #include "../../DataTypes/DtInfoIngreso.h"
@@ -16,7 +16,6 @@
 #define MENSAJES
 
 using namespace std;
-class Recibido;
 
 class Recibido;
 class Conversacion;

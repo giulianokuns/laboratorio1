@@ -1,5 +1,7 @@
 #include "../../../h/Simple/Mensaje/Mensaje.h"
-#include "../../../h/Simple/Usuario.h"
+#include "../../../h/Simple/Recibido.h"
+#include "../../../h/Simple/Conversacion.h"
+#include "../../../h/Controllers/CtrlUsuario.h"
 
 IKey *Mensaje::getcodigo(){
 	return codigo;
@@ -78,14 +80,14 @@ ICollection *Mensaje::getReceptores() {
 	
 	for (IIterator *it = recibidos->getIterator(); it->hasCurrent(); it->next()) {
 		Recibido *r = dynamic_cast<Recibido * > (it->getCurrent());
-		Fecha fechaVisto = r->getFechaVisto();
-		Hora horaVisto 	 = r->getHoraVisto();
+		Fecha fechaVisto  = r->getFechaVisto();
+		Hora horaVisto    = r->getHoraVisto();
 		Usuario *usuario  = r->getUsuario();
 
 		string nombre  	 = usuario->getnomUsuario();
 		IKey *telCel  	 = usuario->gettelCel();
 
-		DtReceptor *receptor = new DtReceptor(nombre, telCel, fechaVisto, horaVisto);
+		DtReceptor receptor = new DtReceptor(nombre, telCel, fechaVisto, horaVisto);
 		ICollectible *Ireceptor = receptor;
 		receptores->add(Ireceptor);
 	}
@@ -106,7 +108,7 @@ void Mensaje::eliminarMensajeEmisor(Conversacion *conversacion) {
 	delete this;
 }
 
-void Mensaje::eliminarMensajeReceptor() {
+void Mensaje::eliminarMensajeReceptor(Conversacion *conversacion) {
 	IDictionary * recibidos = this->getRecibidos();
 	CtrlUsuario *CI = CtrlUsuario::getinstancia();
 	Usuario * user_log = CI->getusuarioLog();
