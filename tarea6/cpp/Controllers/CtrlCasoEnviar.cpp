@@ -1,4 +1,4 @@
-#include "../../cpp/Controllers/CtrlCasoEnviar.h"
+#include "../../h/Controllers/CtrlCasoEnviar.h"
 
 // Singleton
 CtrlCasoEnviar * CtrlCasoEnviar::getInstancia() {
