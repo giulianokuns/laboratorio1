@@ -1,0 +1,7 @@
+
+
+C = g++
+CCFLAGS = -Wall -Werror -g
+
+main2: A.cpp B.cpp C.cpp main2.cpp
+	 $(C) $(CCFLAGS) A.cpp B.cpp C.cpp main2.cpp -o main2

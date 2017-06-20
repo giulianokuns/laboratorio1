@@ -3,6 +3,8 @@
 
 
 class ICtrlUsuario{
+
+	virtual static ICtrlUsuario * getinstancia() = 0;
 	virtual Usuario * getusuarioLog() = 0;
 	virtual	IDictionary *getusuarios() = 0;
 	virtual	void setusuarioLog(Usuario * u) =0;
@@ -29,5 +31,10 @@ class ICtrlUsuario{
 
 	virtual	bool inicioSesion() = 0;
 	virtual	DtFecha altaUsuario(IKey *numero, string nombre, string URL, string Descripcion) = 0;
-	virtual	bool ingresar(IKey *numero) = 0; 
+	virtual	bool ingresar(IKey *numero) = 0;
+	virtual ICollection *getNotificaciones() = 0;
+	virtual void eliminarNotificaciones() = 0;
+	virtual void agregarSuscriptor(Isuscriptos *s) = 0;
+	virtual void eliminarSuscriptor(IKey *telCel) = 0; 
+        
 }
