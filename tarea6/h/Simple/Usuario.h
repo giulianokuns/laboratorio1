@@ -24,8 +24,9 @@ class FechaSistema;
 class HoraSistema;
 
 using namespace std;
+class Conversacion;
 
-class Usuario: public ICollectible, public ISuscriptos {
+class Usuario: public ICollectible, public ISuscriptos{
 	private:
 		IKey *telCel;
 		string nomUsuario;

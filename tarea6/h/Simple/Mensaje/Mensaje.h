@@ -16,6 +16,7 @@
 #define MENSAJES
 
 using namespace std;
+class Recibido;
 
 class Recibido;
 class Conversacion;
